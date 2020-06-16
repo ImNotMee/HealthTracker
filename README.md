@@ -11,7 +11,7 @@
 
 #### Optional
 - Installing yarn run: `curl -o- -L https://yarnpkg.com/install.sh | bash`
-  - Other way for installing yarn [here](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
+  - Other ways for installing yarn [here](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
 - For a guide on using npm click [here](https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/)
 
 ### Start Web App
