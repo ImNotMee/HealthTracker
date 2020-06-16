@@ -7,7 +7,7 @@
   - Mac node/npm download guide [here](https://treehouse.github.io/installation-guides/mac/node-mac.html)
   - We're using node@12.18.0
 - Clone git repo `cd ~/Desktop; git clone https://github.com/csc309-summer-2020/team27.git`
-- Download web app dependences `npm install` (make sure you're in the repo dir when you run this cmd)
+- To install web app dependences `npm install` (make sure you're in the repo dir when you run this cmd)
 
 #### Optional
 - Installing yarn run: `curl -o- -L https://yarnpkg.com/install.sh | bash`
