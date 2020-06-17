@@ -25,6 +25,7 @@
 ### CSS Styling
 - See `App.css` for general css classes that can be reused
 - Use css variable to unify app styling by using `property: var(--some-var-name);`
+- Ensure CSS class names follow the [BEM methodology](http://getbem.com/naming/).
 
 ### Using Git Issues
 - Create issues (github verion of 'stories' for small tasks that need to be completed
