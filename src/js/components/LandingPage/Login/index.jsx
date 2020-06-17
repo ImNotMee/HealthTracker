@@ -22,7 +22,7 @@ class LoginForm extends Component {
         }
     }
 
-    loginInputHandler = (event) => {
+    onInputChangeHandler = (event) => {
         const TARGET = event.target;
         this.setState({
             [TARGET.name]: TARGET.value,
@@ -35,14 +35,14 @@ class LoginForm extends Component {
                 <input className={`text-input ${this.props.invalidLoginStatus ? 'invalidInput' : ''}`}
                        type="email" 
                        value={this.state.email}
-                       onChange={this.loginInputHandler}
+                       onChange={this.onInputChangeHandler}
                        placeholder="email"
                        name="email"
                 />
                 <input className={`text-input ${this.props.invalidLoginStatus ? 'invalidInput' : ''}`}
                        type="password" 
                        value={this.state.password} 
-                       onChange={this.loginInputHandler}
+                       onChange={this.onInputChangeHandler}
                        name="password"
                        placeholder="password"
                 />
