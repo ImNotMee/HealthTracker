@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import LoginForm from './login-form';
-import logo from '../../../assets/logo.svg'
-import {APP_NAME} from '../../constants';
-import '../../../css/header.css';
+import LoginForm from '../Login';
+import logo from '../../../../assets/logo.svg'
+import {APP_NAME} from '../../../constants';
+
+import './styles.css';
 
 class Header extends Component {
 

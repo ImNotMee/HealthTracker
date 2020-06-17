@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Header from './js/components/landing-page/title-header'
-import './css/App.css';
-import SignUpForm from './js/components/landing-page/signup-form';
+import Header from './js/components/landing-page/Header'
+import './App.css';
+import SignUpForm from './js/components/landing-page/SignUp';
 const log = console.log;
 class App extends Component {
   
