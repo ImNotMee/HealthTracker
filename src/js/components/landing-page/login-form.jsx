@@ -44,7 +44,7 @@ class LoginForm extends Component {
                        name="password"
                        placeholder="password"
                 />
-                <button onClick={() => {this.props.loginHandler(this.state.email, this.state.password)}}> login </button>
+                <button className="primary-btn" onClick={() => {this.props.loginHandler(this.state.email, this.state.password)}}> login </button>
             </div>
         );
     }
