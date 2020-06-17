@@ -28,8 +28,7 @@ class LoginForm extends Component {
     }
 
     render() {
-        return (
-            
+        return (  
             <div id="LoginFrom">
                 <input className={`text-input ${this.props.invalidLoginStatus ? 'invalidInput' : ''}`}
                        type="email" 
