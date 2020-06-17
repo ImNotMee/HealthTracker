@@ -15,4 +15,44 @@
 - For a guide on using npm click [here](https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/)
 
 ### Start Web App
-- To start web app in browser run: `npm start` (make sure you're in the repo dir when you run this cmd) 
+- To start web app in browser run: `npm start` (make sure you're in the repo dir when you run this cmd)
+
+## Working On App
+
+### Working On A Page
+- Put reusable components of that page into a folder with that page's name in the `components` dir
+
+### CSS Styling
+- See `App.css` for general css classes that can be reused
+- Use css variable to unify app styling by using `property: var(--some-var-name);`
+
+### Project Tree
+team27
+├── README.md
+├── YARN_README.md
+├── node_modules
+├── package.json
+├── yark.lock
+├── .gitignore
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+└── src
+    ├── assets
+    │   └── logo.svg
+    ├── css
+    ├── js
+    │   ├── components
+    │   │   ├── landing-page
+    │   │   └── side-menu
+    │   └── constants.js
+    ├── App.js
+    ├── App.test.js
+    ├── index.js
+    ├── setupTests.js
+    ├── setupTests.js
+    └── serviceWorker.js
