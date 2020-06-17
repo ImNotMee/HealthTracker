@@ -26,6 +26,12 @@
 - See `App.css` for general css classes that can be reused
 - Use css variable to unify app styling by using `property: var(--some-var-name);`
 
+### Using Git Issues
+- Create issues (github verion of 'stories' for small tasks that need to be completed
+  - Tag issuess with piority level
+  - Tag issues with an 'epic'
+- Create 'milestone' for major sections involing the completion of multiple epics
+
 ### Project Tree
 ```
 team27
