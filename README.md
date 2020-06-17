@@ -29,7 +29,7 @@
 ### Using Git Issues
 - Create issues (github verion of 'stories' for small tasks that need to be completed
   - Tag issuess with piority level
-  - Tag issues with an 'epic'
+  - Tag issues with an 'epic' following this format `Epic: Name of Epic`
 - Create 'milestone' for major sections involing the completion of multiple epics
 
 ### Project Tree
