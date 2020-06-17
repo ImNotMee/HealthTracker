@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import SignUpForm from '../SignUp'
+
 class LandingContentWrapper extends Component {
 
     constructor(props) {
@@ -10,7 +12,7 @@ class LandingContentWrapper extends Component {
         return (
             <div>
                 <div>
-                
+                    <SignUpForm/>
                 </div>
                 <div>
 

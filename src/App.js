@@ -1,65 +1,30 @@
 import React, {Component} from 'react';
-import Header from './js/components/landing-page/Header'
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
+
+import LandingPage from './js/components/LandingPage'
+
 import './App.css';
-import SignUpForm from './js/components/landing-page/SignUp';
-const log = console.log;
+
 class App extends Component {
   
   state = {
     users: [],
-    loginUserIdMap: {
-      userpass: 0
-    },
     activeUser: null,
-    userEmail:'test',
-    userPassword:'test',
-    invalidLogin: false,
   };
-
-  onLogin = (email, password) => {
-    const authKey = this.getUserHash(email, password);
-    const user = this.getUserByAuthKey(authKey)
-
-    // check login attempt
-    if (user === null) {
-      this.setState({
-        invalidLogin: true
-      })
-    } else {
-      this.setState({
-        activeUser: user,
-        userEmail: email, 
-        userPassword: password,
-        invalidLogin: false
-      });
-    }
-  }
-
-  getUserHash = (email, password) => {
-    return (email + password);
-  }
-
-  getUserByAuthKey = (authKey) => {
-    const userId = this.state.loginUserIdMap[authKey]
-    if (userId === undefined) {
-      log("Invalid aogin attempt. Try again")
-      return null;
-    }
-    log("Successful login")
-    return this.getUserById(userId);
-  }
-  getUserById = (id) => {
-    return this.state.users[id];
-  }
 
   render() {
     return (
       <div className="App">
-        <Header 
-          loginValidityStatus={this.state.invalidLogin}
-          loginHandler={this.onLogin.bind(this)}
-        />
-        <SignUpForm/>
+        <div>
+        <BrowserRouter>
+          <Switch> { /* Similar to a switch statement - shows the component depending on the URL path */ }
+            { /* Each Route below shows a different component depending on the exact path in the URL  */ }
+            <Route exact path='/' render={() => 
+                            (<LandingPage state={this.state}/>)}/>
+            
+          </Switch>
+        </BrowserRouter>
+      </div>
       </div>
     );
   }
