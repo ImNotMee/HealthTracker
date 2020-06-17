@@ -27,6 +27,7 @@
 - Use css variable to unify app styling by using `property: var(--some-var-name);`
 
 ### Project Tree
+```
 team27
 ├── README.md
 ├── YARN_README.md
@@ -56,3 +57,4 @@ team27
     ├── setupTests.js
     ├── setupTests.js
     └── serviceWorker.js
+```
