@@ -42,21 +42,20 @@ team27
 ├── yark.lock
 ├── .gitignore
 ├── public
-│   ├── favicon.ico
 │   ├── index.html
-│   ├── logo192.png
-│   ├── logo512.png
-│   ├── manifest.json
-│   └── robots.txt
+│   └── ...
+├── package.json
+├── tests
+│   └── ...
 └── src
-    ├── assets
-    │   └── logo.svg
-    ├── css
-    ├── js
-    │   ├── components
-    │   │   ├── landing-page
-    │   │   └── side-menu
-    │   └── constants.js
+    ├── actions
+    │   └── login.js
+    ├── components
+    │   ├── LandingPage
+    │   │   ├── Login
+    │   │   ├── index.js
+    │   │   └── styles.css
+    │   └── ...
     ├── App.js
     ├── App.test.js
     ├── index.js
