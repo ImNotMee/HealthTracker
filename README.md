@@ -16,6 +16,7 @@
 
 ### Start Web App
 - To start web app in browser run: `npm start` (make sure you're in the repo dir when you run this cmd)
+  - Make sure you've installed all app dependencies with `npm install`
 
 ## Working On App
 
