@@ -1,0 +1,25 @@
+#sidebar {
+  width: 20%;
+  position: absolute;
+  border: red 1px solid;
+}
+
+#icon {
+  width: 20px;
+  margin: 10px;
+  vertical-align:middle;
+}
+
+#userprofile {
+  border-radius: 50%;
+}
+
+#links{
+  text-decoration: none;
+}
+
+#navlink {
+  text-align: left;
+  font-size: 25px;
+  padding: 15px;
+}
