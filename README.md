@@ -5,7 +5,7 @@
 ### First Time Setup
 - Download node.js and npm [here](https://nodejs.org/en/download/) (node.js and npm come together in this download)
   - Mac node/npm download guide [here](https://treehouse.github.io/installation-guides/mac/node-mac.html)
-  - We're using node@12.18.0
+  - We're using node version `12.18.0`
 - Clone git repo `cd ~/Desktop; git clone https://github.com/csc309-summer-2020/team27.git`
 - To install web app dependences run: `npm install` (make sure you're in the repo dir when you run this cmd)
 
