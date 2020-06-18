@@ -33,7 +33,7 @@
   - Tag issues with an 'epic' following this format `Epic: Name of Epic`
 - Create 'milestone' for major sections involing the completion of multiple epics
 
-## Pull Requests
+### Pull Requests
 - Make them small! Less than 150 lines! 
 
 ### Project Tree
