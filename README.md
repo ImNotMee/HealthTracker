@@ -20,7 +20,11 @@
 ## Working On App
 
 ### Working On A Page
-- Put reusable components of that page into a folder with that page's name in the `components` dir
+- Put reusable components of that page into a folder with that page's name (e.g. `MyComponent`) in the `components` dir
+- Inside `MyComponent` dir make a `index.jxs` file (we use `.jsx` to make commenting easier)
+  - If applicable, you can add a `sytles.css` to put all your component's sytling in
+  - If applicable, you can add a `action.js` file to the `actoins` dir
+    - this file is where you can put state or other business logic for your component. This is recommneded to us by the prof, to make phase 2 easier
 
 ### CSS Styling
 - See `App.css` for general css classes that can be reused
