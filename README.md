@@ -39,7 +39,8 @@
 - Create 'milestone' for major sections involing the completion of multiple epics
 
 ### Pull Requests
-- Make them small! Less than 150 lines! 
+- Make them small! Less than 150 lines!
+- Make sure the app builds!
 
 ### Project Tree
 ```
