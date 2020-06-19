@@ -5,6 +5,7 @@
   justify-content: space-between;
   position: fixed;
   height: 100vh;
+  width: 16vw;
 }
 
 #icon {

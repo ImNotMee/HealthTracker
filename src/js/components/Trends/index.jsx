@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './styles.css';
 
-class Overview extends Component {
+class Trends extends Component {
   constructor(props) {
     super(props);
   }
@@ -10,8 +10,8 @@ class Overview extends Component {
     user: this.props.activeUser,
   };
   render() {
-    return <div id="OverviewWrapper">some text and stuff</div>;
+    return <div id="TrendsWrapper">some trend text and stuff</div>;
   }
 }
 
-export default Overview;
+export default Trends;
