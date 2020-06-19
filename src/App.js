@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
+
+import LandingPage from './js/components/LandingPage'
+
+import {setActiveUser} from './js/actions/login'
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  
+  // TODO: fix prop drilling for active user
+  state = {
+    activeUser: null,
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <div>
+        <BrowserRouter>
+          <Switch> { /* Similar to a switch statement - shows the component depending on the URL path */ }
+            { /* Each Route below shows a different component depending on the exact path in the URL  */ }
+            <Route exact path='/' 
+                  render={() => (
+                    <LandingPage 
+                      state={this.state}
+                      setActiveUserHandler={(user) => {setActiveUser(this, user)}}
+                    />
+                  )}
+            />
+            
+          </Switch>
+        </BrowserRouter>
+      </div>
+      </div>
+    );
+  }
 }
 
 export default App;

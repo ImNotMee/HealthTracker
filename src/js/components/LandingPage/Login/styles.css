@@ -1,0 +1,11 @@
+#LoginFrom {
+    margin-left: auto;
+    height: 100%;
+    padding: 20px 40px;
+}
+
+.text-input {
+    height: 20px;
+    margin: 10px;
+    border-radius: 12px;
+}
