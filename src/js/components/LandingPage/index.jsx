@@ -12,9 +12,9 @@ import './styles.css';
 
 class LandingPage extends Component {
   state = {
-    users: [{ firstName: 'Ben', lastName: 'John' }],
+    users: [{ firstName: 'Ben', lastName: 'John' }, { firstName: 'IAmAdmin', lastName: 'John' }],
     loginUserIdMap: {
-      userpass: 0,
+      useruser: 0,
     },
     userEmail: 'test',
     userPassword: 'test',
