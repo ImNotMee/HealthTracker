@@ -22,7 +22,7 @@ class App extends Component {
       return <Redirect to="/signup" />;
     }
     if (window.location.pathname === '/signup') {
-      return <Redirect to="/home" />;
+      return <Redirect to="/overview" />;
     }
   };
 
@@ -49,7 +49,7 @@ class App extends Component {
             />
             <Route
               exact
-              path={['/home', '/overview', '/trends', '/reminders', '/calendar', '/check-in']}
+              path={['/overview', '/trends', '/reminders', '/calendar', '/check-in']}
               render={() => (
                 <div>
                   <HomePage

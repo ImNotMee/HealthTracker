@@ -29,14 +29,20 @@
   margin: auto;
   display: flex;
   flex-direction: column;
-  align-items: space-between;
+  align-items: left;
   justify-content: space-between;
   height: 42vh;
+  width: 100%;
 }
 
 .home_navlink {
+  padding: 0 25px;
   font-size: 1.3em;
   text-decoration: none;
+}
+.activeLink {
+  background-color: var(--primary-color);
+  color: var(--contrast-text-color);
 }
 
 #logOut {
