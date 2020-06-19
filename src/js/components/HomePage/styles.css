@@ -1,0 +1,11 @@
+#HomeWrapper {
+  display: flex;
+}
+
+#NavBarWrapper {
+  width: 25vw;
+}
+
+#HomeContentWrapper {
+  width: 78vw;
+}

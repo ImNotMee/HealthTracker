@@ -6,7 +6,7 @@
 #icon {
   width: 20px;
   margin: 10px;
-  vertical-align:middle;
+  vertical-align: middle;
 }
 
 #userPicture {
@@ -19,15 +19,13 @@
   margin-bottom: 15%;
 }
 
-#links{
+#links {
   text-decoration: none;
 }
 
-#navLink {
-  text-align: left;
-  margin-left: 5%;
-  font-size: 25px;
-  padding: 3%;
+.home_navlink {
+  font-size: 1.3em;
+  text-decoration: none;
 }
 
 #logOut {
