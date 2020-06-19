@@ -1,9 +1,31 @@
-.App {
+:root {
+   --primary-color: #0bbbeb;
+   --secondary-color: #203b71;
+   --accent-color: pink;
+   --error-color: red;
+   --contrast-text-color: white;
+   --border-radius-val: 12px;
+   --title-font-family: arial;
+   --sub-title-font-family: arial;
+   --btn-font-family: arial;
+   --text-font-family: arial;
+}
+
+.primary-btn {
+  padding: 10px;
+  background: var(--primary-color);
+  color: var(--contrast-text-color);
   text-align: center;
+  border-radius: var(--border-radius-val);
+  font: bold 1em var(--btn-font-family), sans-serif;
+
+}
+
+.invalidInput {
+  border: 2px solid  var(--error-color);
 }
 
 .App-logo {
-  height: 40vmin;
   pointer-events: none;
 }
 
@@ -13,20 +35,6 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
 
 @keyframes App-logo-spin {
   from {
