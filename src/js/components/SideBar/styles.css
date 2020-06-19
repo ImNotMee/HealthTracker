@@ -1,0 +1,37 @@
+#sideBar {
+  width: 20%;
+  position: absolute;
+}
+
+#icon {
+  width: 20px;
+  margin: 10px;
+  vertical-align:middle;
+}
+
+#userPicture {
+  border-radius: 50%;
+  width: 150px;
+}
+
+#userProfile {
+  margin-top: 10%;
+  margin-bottom: 15%;
+}
+
+#links{
+  text-decoration: none;
+}
+
+#navLink {
+  text-align: left;
+  margin-left: 5%;
+  font-size: 25px;
+  padding: 3%;
+}
+
+#logOut {
+  font-size: 16px;
+  width: 25%;
+  margin-top: 10%;
+}
