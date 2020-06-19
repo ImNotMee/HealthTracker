@@ -1,10 +1,14 @@
 #sideBar {
-  width: 20%;
-  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: space-between;
+  position: fixed;
+  height: 100vh;
 }
 
 #icon {
-  width: 20px;
+  width: 30px;
   margin: 10px;
   vertical-align: middle;
 }
@@ -12,15 +16,21 @@
 #userPicture {
   border-radius: 50%;
   width: 150px;
+  margin: auto;
 }
 
 #userProfile {
-  margin-top: 10%;
-  margin-bottom: 15%;
+  text-align: center;
+  margin: 20px;
 }
 
-#links {
-  text-decoration: none;
+#NavOptions {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: space-between;
+  height: 42vh;
 }
 
 .home_navlink {
@@ -30,6 +40,6 @@
 
 #logOut {
   font-size: 16px;
-  width: 25%;
-  margin-top: 10%;
+  margin-top: auto;
+  height: 35px;
 }
