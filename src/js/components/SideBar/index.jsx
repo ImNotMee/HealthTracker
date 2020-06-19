@@ -5,7 +5,6 @@ import './styles.css';
 class Sidebar extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props.activeUser);
   }
 
   state = {
@@ -43,7 +42,7 @@ class Sidebar extends Component {
             Check-In
           </NavLink>
         </div>
-        <button id="logOut" onClick={() => {}}>
+        <button id="logOut" onClick={this.props.logoutHandler}>
           logout
         </button>
       </div>

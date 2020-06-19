@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch, BrowserRouter } from 'react-router-dom';
+
 import LandingPage from './js/components/LandingPage';
-import { setActiveUser } from './js/actions/login';
-import './App.css';
 import HomePage from './js/components/HomePage';
-import Overview from './js/components/Overview';
+
+import { setActiveUser } from './js/actions/login';
+import { logoutUser } from './js/actions/logout';
+
+import './App.css';
 
 const log = console.log();
 
@@ -19,7 +22,6 @@ class App extends Component {
       return <Redirect to="/signup" />;
     }
     if (window.location.pathname === '/signup') {
-      console.log('CHEKECCE:' + window.location.pathname);
       return <Redirect to="/home" />;
     }
   };
@@ -50,7 +52,12 @@ class App extends Component {
               path={['/home', '/overview', '/trends', '/reminders', '/calendar', '/check-in']}
               render={() => (
                 <div>
-                  <HomePage activeUser={this.state.activeUser} />
+                  <HomePage
+                    logoutHandler={() => {
+                      logoutUser(this);
+                    }}
+                    activeUser={this.state.activeUser}
+                  />
                 </div>
               )}
             />
