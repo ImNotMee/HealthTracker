@@ -1,37 +1,52 @@
 #sideBar {
-  width: 20%;
-  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: space-between;
+  position: fixed;
+  height: 100vh;
+  width: 16vw;
 }
 
 #icon {
-  width: 20px;
+  width: 30px;
   margin: 10px;
-  vertical-align:middle;
+  vertical-align: middle;
 }
 
 #userPicture {
   border-radius: 50%;
   width: 150px;
+  margin: auto;
 }
 
 #userProfile {
-  margin-top: 10%;
-  margin-bottom: 15%;
+  text-align: center;
+  margin: 20px;
 }
 
-#links{
+#NavOptions {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+  height: 42vh;
+  width: 100%;
+}
+
+.home_navlink {
+  padding: 0 25px;
+  font-size: 1.3em;
   text-decoration: none;
 }
-
-#navLink {
-  text-align: left;
-  margin-left: 5%;
-  font-size: 25px;
-  padding: 3%;
+.activeLink {
+  background-color: var(--primary-color);
+  color: var(--contrast-text-color);
 }
 
 #logOut {
   font-size: 16px;
-  width: 25%;
-  margin-top: 10%;
+  margin-top: auto;
+  height: 35px;
 }

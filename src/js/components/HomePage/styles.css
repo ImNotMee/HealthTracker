@@ -1,0 +1,13 @@
+#HomeWrapper {
+  display: flex;
+  margin: 0;
+}
+
+#NavBarWrapper {
+  width: 16vw;
+}
+
+#HomeContentWrapper {
+  margin: 0;
+  width: 83.5vw;
+}

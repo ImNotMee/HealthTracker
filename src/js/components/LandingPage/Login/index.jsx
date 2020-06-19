@@ -1,24 +1,17 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom';
 
 import './styles.css'
 
 class LoginForm extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            email: '',
-            password: '',
-            invalidLogin: false,
-        }
     }
 
-    // TODO: temp hack to force render
-    componentDidUpdate(props) {
-        if (props.invalidLoginStatus !== this.props.invalidLoginStatus) {
-            this.setState({
-                invalidLogin: props.invalidLoginStatus,
-            })
-        }
+    state = {
+        email: '',
+        password: '',
+        invalidLogin: this.props.invalidLoginStatus,
     }
 
     onInputChangeHandler = (event) => {

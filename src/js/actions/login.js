@@ -9,19 +9,17 @@ export const setActiveUser = (app, user) => {
 export const onLogin = (landingPage, email, password) => {
     const authKey = _getUserHash(email, password);
     const user = getUserByAuthKey(landingPage, authKey)
-
     // check login attempt
     if (user === null) {
         landingPage.setState({
-        invalidLogin: true
-      })
+            invalidLogin: true,
+        })
     } else {
         landingPage.setState({
             userEmail: email, 
             userPassword: password,
-            invalidLogin: false
+            invalidLogin: false,
         });
-
         landingPage.props.setActiveUserHandler(user)
     }
 }
