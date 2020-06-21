@@ -1,3 +1,8 @@
+#OWrapper {
+  width: 84vw;
+  height: 100vh;
+  padding: 10px;
+}
 h1 {
   color: black;
   margin-top: 10%;
@@ -25,18 +30,19 @@ h1 {
 }
 
 .leftBox {
-  width: 70%;
+  margin-left: 16vw;
+  width: 59vw;
   left: 0;
   border-left: 1px solid #0bbbeb;
 }
 
 .rightBox {
-  width: 30%;
+  width: 25vw;
   right: 0;
   border-left: 1px solid #0bbbeb;
 }
 
-.logbox {
+.logBox {
   margin: auto;
   margin-top: 100px;
   width: 50%;
@@ -44,22 +50,27 @@ h1 {
   border-radius: 10px;
 }
 
-.logbox form fieldset {
+.logBox form fieldset {
   border: none;
   padding: 15px;
 }
-.logbox form fieldset input {
+.logBox form fieldset input {
   font-size: 15px;
-  width: 75%;
+  width: 65%;
   margin: 10px 0;
   padding: 10px 5%;
-  border: thin solid #0bbbeb;
+  border: thin solid var(--primary-color);
 }
 
-.logbox input[type='submit'] {
+.logBox form fieldset select {
+  margin-left: 10px;
+  padding: 10px;
+  border: thin solid var(--primary-color);
+}
+.logBox input[type='submit'] {
   width: 50%;
   float: right;
-  background-color: #0bbbeb;
+  background-color: var(--primary-color);
   color: white;
 }
 
