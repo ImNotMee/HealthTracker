@@ -42,7 +42,11 @@ class WeightLog extends Component {
             Healthy Weight
           </h1>
           <div id="tipBox">
-            <li>Reduce sugar</li>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in dapibus quam.
+            Donec tempor justo est, at luctus turpis viverra eget. Nunc tincidunt sapien ut elit
+            sollicitudin, vitae pulvinar orci laoreet. Mauris gravida pellentesque elit eget
+            vulputate. Ut vel elit massa. Vestibulum sed sapien quis erat hendrerit pellentesque.
+            Morbi dignissim malesuada elit, et condimentum nibh sagittis eu. /*<li>Reduce sugar</li>
             <li>Work out at least 3 times a week</li>
             <li>Drink water</li>
             <li>Reduce carbs</li>
@@ -50,7 +54,7 @@ class WeightLog extends Component {
             <li>Keep healthy lifestyle</li>
             <li>Get good Sleep</li>
             <li>No sugary drinks</li>
-            <li>Chew slowly, Eat slowly</li>
+            <li>Chew slowly, Eat slowly</li>*/
           </div>
         </div>
       </div>
