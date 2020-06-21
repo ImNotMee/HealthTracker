@@ -1,0 +1,81 @@
+h1 {
+  color: black;
+  margin-top: 10%;
+  text-align: center;
+}
+
+#tipHead {
+  color: black;
+  margin-top: 25%;
+}
+
+#icon {
+  width: 30px;
+  margin: 10px;
+  vertical-align: middle;
+}
+
+.split {
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.leftBox {
+  width: 70%;
+  left: 0;
+  border-left: 1px solid #0bbbeb;
+}
+
+.rightBox {
+  width: 30%;
+  right: 0;
+  border-left: 1px solid #0bbbeb;
+}
+
+.logbox {
+  margin: auto;
+  margin-top: 100px;
+  width: 50%;
+  box-shadow: 0px 9px 22px -6px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+}
+
+.logbox form fieldset {
+  border: none;
+  padding: 15px;
+}
+.logbox form fieldset input {
+  font-size: 15px;
+  width: 75%;
+  margin: 10px 0;
+  padding: 10px 5%;
+  border: thin solid #0bbbeb;
+}
+
+.logbox input[type='submit'] {
+  width: 50%;
+  float: right;
+  background-color: #0bbbeb;
+  color: white;
+}
+
+#tipBox {
+  margin: auto;
+  width: 80%;
+  box-shadow: 0px 9px 22px -6px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  padding: 5px;
+  vertical-align: middle;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
