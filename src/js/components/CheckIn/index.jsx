@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ListSelector from '../General/ListSelector';
+import { PARK_LOCATIONS } from '../../constants';
 import './styles.css';
 
 class Calendar extends Component {
@@ -10,7 +12,14 @@ class Calendar extends Component {
     user: this.props.activeUser,
   };
   render() {
-    return <div id="CalendarWrapper">some check-in text and stuff</div>;
+    return (
+      <div id="CalendarWrapper">
+        <div id="LeftWrapper">
+          <ListSelector options={PARK_LOCATIONS} onChangeHandler={() => {}} />
+        </div>
+        <div id="RightWrapper"></div>
+      </div>
+    );
   }
 }
 
