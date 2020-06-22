@@ -1,0 +1,123 @@
+#LogCaloriesWrapper {
+  height: 100vh;
+  width: 84vw;
+  padding: 10px;
+}
+#caloriesHeader {
+  color: black;
+  margin-top: 10%;
+  text-align: center;
+  font-style: var(--title-font-family);
+}
+
+#tipHead {
+  color: black;
+  margin-top: 23%;
+}
+
+#icon {
+  width: 30px;
+  margin: 0 2px 5px 0;
+  vertical-align: middle;
+}
+
+#icon2 {
+  width: 30px;
+  margin-bottom: 3px;
+  vertical-align: middle;
+}
+
+caloriesUnit {
+  font-size: 20px;
+  margin-left: 10%;
+}
+
+li {
+  font-style: var(--text-font-family);
+}
+
+#closeButton {
+  margin-top: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #0bbbeb;
+  background-color: white;
+  float: right;
+  box-shadow: 0px 9px 9px -6px rgba(0, 0, 0, 0.75);
+  margin-right: 3%;
+}
+
+.view {
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+}
+
+.left {
+  width: 59vw;
+  left: 0;
+  border-left: 1px solid skyblue;
+}
+
+.right {
+  right: 0;
+  width: 25vw%;
+  border-left: 1px solid skyblue;
+}
+
+.logbox {
+  margin: auto;
+  margin-top: 100px;
+  width: 50%;
+  box-shadow: 0px 9px 22px -6px rgba(0, 0, 0, 0.75);
+  border-radius: 12px;
+}
+
+.logbox form fieldset {
+  border: none;
+  padding: 15px;
+}
+
+.logbox form fieldset input {
+  font-size: 15px;
+  width: 70%;
+  margin: 0;
+  padding: 10px 5%;
+  border: thin solid #0bbbeb;
+}
+
+.logbox form fieldset select {
+  font-size: 15px;
+  width: 15%;
+  height: 30px;
+  border: thin solid #0bbbeb;
+}
+
+.logbox input[type='submit'] {
+  width: 50%;
+  float: right;
+  background-color: #0bbbeb;
+  color: white;
+  font-style: var(--btn-font-family);
+  border-radius: 12px;
+}
+
+#tipBox {
+  margin: auto;
+  width: 80%;
+  box-shadow: 0px 9px 22px -6px rgba(0, 0, 0, 0.75);
+  border-radius: 12px;
+  padding: 5px;
+  vertical-align: middle;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}

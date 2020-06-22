@@ -10,7 +10,7 @@ class Overview extends Component {
     user: this.props.activeUser,
   };
   render() {
-    return <div id="OverviewWrapper">some text and stuff</div>;
+    return <div id="OverviewWrapper">some trend text and stuff</div>;
   }
 }
 
