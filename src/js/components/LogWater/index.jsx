@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './styles.css';
 
+import { NavLink } from 'react-router-dom';
 class LogWater extends Component {
   constructor(props) {
     super(props);
@@ -13,13 +14,15 @@ class LogWater extends Component {
   render() {
     return (
       <div id="LogWaterWrapper">
-        <div class="view left">
-          <button id="closeButton">X</button>
+        <div className="view left">
+          <NavLink to="/overview" id="closeButton">
+            <img id="xButton" src="https://image.flaticon.com/icons/svg/565/565313.svg"></img>
+          </NavLink>
           <h1 id="waterHeader">
             <img id="icon" src="https://image.flaticon.com/icons/svg/3039/3039889.svg"></img>Water
             Consumption
           </h1>
-          <div class="logbox">
+          <div className="logbox">
             <form>
               <fieldset>
                 <h3>
@@ -35,7 +38,7 @@ class LogWater extends Component {
           </div>
         </div>
 
-        <div class="view right">
+        <div className="view right">
           <h1 id="tipHead">
             <img id="icon" src="https://image.flaticon.com/icons/png/512/900/900516.png"></img>Tips:
             Healthy Weight

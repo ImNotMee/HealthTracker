@@ -11,7 +11,8 @@
 }
 
 #units {
-  font-size: 15px;
+  font-size: 18px;
+  margin-left: 5px;
 }
 #icon {
   width: 30px;
@@ -24,13 +25,19 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 2px solid #0bbbeb;
+  border: 2px solid var(--primary-color);
   background-color: white;
   float: right;
   box-shadow: 0px 9px 9px -6px rgba(0, 0, 0, 0.75);
   margin-right: 3%;
+  text-align: center;
 }
 
+#xButton {
+  margin-top: 10px;
+  width: 20px;
+  height: 20px;
+}
 .view {
   height: 100%;
   position: fixed;
@@ -42,11 +49,36 @@
 .left {
   left: 0;
   width: 15%;
-  border-left: 1px solid skyblue;
+  border-left: 1px solid var(--primary-color);
   margin-left: 16vw;
 }
+.tabList {
+  overflow: hidden;
+  border: 1px solid var(--primary-color);
+  background-color: var(--primary-color);
+  border-radius: 12px;
+}
 
-.tab {
+.tabButton {
+  width: 50%;
+  font-size: 15px;
+  background-color: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px;
+  color: white;
+  border-radius: 12px;
+}
+.tabButton:hover {
+  background-color: dodgerblue;
+}
+.tabButton.active {
+  background-color: white;
+  color: black;
+}
+
+/*.tab {
   overflow: hidden;
   border: 1px solid #0bbbeb;
   background-color: #0bbbeb;
@@ -73,9 +105,9 @@
   color: black;
 }
 
-.tabContent #Standard {
+.tabContent Standard {
   display: none;
-}
+}*/
 
 .logbox {
   margin: auto;
@@ -94,20 +126,13 @@
   width: 60%;
   margin-bottom: 5px;
   padding: 10px 5%;
-  border: thin solid #0bbbeb;
-}
-
-.logbox form fieldset select {
-  font-size: 15px;
-  width: 15%;
-  height: 30px;
-  border: thin solid #0bbbeb;
+  border: thin solid var(--primary-color);
 }
 
 .logbox input[type='submit'] {
   width: 50%;
   float: right;
-  background-color: #0bbbeb;
+  background-color: var(--primary-color);
   color: white;
   font-style: var(--btn-font-family);
   border-radius: 12px;
@@ -117,7 +142,7 @@
 .right {
   right: 0;
   width: 25vw;
-  border-left: 1px solid skyblue;
+  border-left: 1px solid var(--primary-color);
 }
 
 #tipHead {

@@ -49,7 +49,16 @@ class App extends Component {
             />
             <Route
               exact
-              path={['/overview', '/trends', '/reminders', '/calendar', '/check-in']}
+              path={[
+                '/overview',
+                '/trends',
+                '/reminders',
+                '/calendar',
+                '/check-in',
+                '/overview/logWeight',
+                '/overview/logWater',
+                '/overview/logCalories',
+              ]}
               render={() => (
                 <div>
                   <HomePage

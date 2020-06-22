@@ -29,6 +29,7 @@
 
 #waterUnits {
   font-size: 20px;
+  margin-left: 5px;
 }
 
 li {
@@ -55,6 +56,11 @@ li {
   margin-right: 3%;
 }
 
+#xButton {
+  margin-top: 10px;
+  width: 20px;
+  height: 20px;
+}
 .left {
   width: 59vw;
   left: 0;
@@ -81,18 +87,11 @@ li {
   padding: 15px;
 }
 
-.logbox form fieldset input {
+.logbox form fieldset input #waterLog {
   font-size: 15px;
   width: 70%;
   margin: 0;
   padding: 10px 5%;
-  border: thin solid #0bbbeb;
-}
-
-.logbox form fieldset select {
-  font-size: 15px;
-  width: 15%;
-  height: 30px;
   border: thin solid #0bbbeb;
 }
 
@@ -112,12 +111,4 @@ li {
   border-radius: 12px;
   padding: 5px;
   vertical-align: middle;
-}
-
-.relative {
-  position: relative;
-}
-
-.absolute {
-  position: absolute;
 }

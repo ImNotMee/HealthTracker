@@ -3,3 +3,9 @@
   width: 84vw;
   padding: 10px;
 }
+
+#cardsContainer {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 3%;
+}
