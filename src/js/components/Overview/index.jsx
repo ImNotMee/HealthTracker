@@ -25,15 +25,15 @@ class Overview extends Component {
             id="cards"
             activeUser={this.props.activeUser}
             title="Water Consumption"
-            value="1.5L"
-            image="https://image.flaticon.com/icons/svg/3039/3039889.svg"
+            value={[0.8, 2, 'L']}
+            image=""
           />
           <Card
             id="cards"
             activeUser={this.props.activeUser}
             title="Calories"
-            value="1700 Calories"
-            image="https://image.flaticon.com/icons/svg/1599/1599302.svg"
+            value={[1700, 300, 'Calories']}
+            image=""
           />
         </div>
         <div id="cardsContainer"></div>

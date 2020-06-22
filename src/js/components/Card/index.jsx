@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './styles.css';
+import PieChart from './Chart.js';
 
 class Card extends Component {
   constructor(props) {
@@ -14,12 +15,31 @@ class Card extends Component {
     image: this.props.image,
   };
 
+  RequireChart() {
+    if (typeof this.state.value == 'object') {
+      return (
+        <div>
+          <PieChart data={this.state.value} />
+          <p id="cardValue">
+            {this.state.value[0]} {this.state.value[2]}
+          </p>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <img id="cardIcon" src={this.state.image}></img>
+          <p id="cardValue">{this.state.value}</p>
+        </div>
+      );
+    }
+  }
+
   render() {
     return (
       <div id="cardWrapper">
         <h2 id="cardTitle">{this.state.title}</h2>
-        <img id="cardIcon" src={this.state.image}></img>
-        <p id="cardValue">{this.state.value}</p>
+        {this.RequireChart()}
       </div>
     );
   }
