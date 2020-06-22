@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
 import './styles.css';
 
-class WeightLog extends Component {
+class LogCalories extends Component {
   constructor(props) {
     super(props);
   }
 
   /*createList = {
-        this.prop.tipList
-        for loop
-
-    }*/
+          this.prop.tipList
+          for loop
+  
+      }*/
   state = {
     user: this.props.activeUser,
   };
 
   render() {
     return (
-      <div id="OWrapper">
+      <div id="LogCaloriesWrapper">
         <div class="split leftBox">
           <h1>
-            <img id="icon" src="https://image.flaticon.com/icons/svg/2906/2906436.svg"></img>
-            Log Weight
+            <img id="icon" src="https://image.flaticon.com/icons/svg/2738/2738658.svg"></img>
+            Log Calories
           </h1>
           <div class="logBox">
             <form>
@@ -47,14 +47,6 @@ class WeightLog extends Component {
             sollicitudin, vitae pulvinar orci laoreet. Mauris gravida pellentesque elit eget
             vulputate. Ut vel elit massa. Vestibulum sed sapien quis erat hendrerit pellentesque.
             Morbi dignissim malesuada elit, et condimentum nibh sagittis eu. /*<li>Reduce sugar</li>
-            <li>Work out at least 3 times a week</li>
-            <li>Drink water</li>
-            <li>Reduce carbs</li>
-            <li>Exercise protein control and count calories</li>
-            <li>Keep healthy lifestyle</li>
-            <li>Get good Sleep</li>
-            <li>No sugary drinks</li>
-            <li>Chew slowly, Eat slowly</li>*/
           </div>
         </div>
       </div>
@@ -62,4 +54,4 @@ class WeightLog extends Component {
   }
 }
 
-export default WeightLog;
+export default LogCalories;
