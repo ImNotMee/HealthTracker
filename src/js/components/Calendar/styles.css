@@ -3,3 +3,26 @@
   width: 82vw;
   padding: 10px;
 }
+
+#calendarContainer {
+  display: flex;
+  text-align: center;
+}
+
+#tabs {
+  width: 250px;
+  height: 50px;
+  border-radius: 10px 10px 0 0;
+}
+
+#header {
+  width: 250px;
+  height: 50px;
+  border: #000000 1px solid;
+}
+
+#dates {
+  width: 250px;
+  height: 175px;
+  border: #000000 1px solid;
+}
