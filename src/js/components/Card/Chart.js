@@ -5,6 +5,7 @@ class PieChart extends Component {
   chartRef = React.createRef();
   constructor(props) {
     super(props);
+    console.log('Finished loading chart.');
   }
 
   componentDidMount() {
