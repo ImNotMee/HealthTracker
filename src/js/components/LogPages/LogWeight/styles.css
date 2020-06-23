@@ -78,37 +78,6 @@
   color: black;
 }
 
-/*.tab {
-  overflow: hidden;
-  border: 1px solid #0bbbeb;
-  background-color: #0bbbeb;
-  border-radius: 12px;
-}
-
-.tab button {
-  font-size: 15px;
-  width: 50%;
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 10px;
-  color: white;
-}
-
-.tab button:hover {
-  background-color: dodgerblue;
-}
-.tab button.active {
-  background-color: white;
-  color: black;
-}
-
-.tabContent Standard {
-  display: none;
-}*/
-
 .logbox {
   margin: auto;
   margin-top: 100px;
