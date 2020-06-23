@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './styles.css';
-import Calendar from './cal.js';
+import Calendar from './calendar.js';
 
 class CheckIn extends Component {
   constructor(props) {

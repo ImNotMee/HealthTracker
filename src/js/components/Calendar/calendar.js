@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './styles.css';
-const col = 7;
-let date = 1;
+import Appointment from './appointment.js';
+let date;
 
 class Calendar extends Component {
   constructor(props) {
     super(props);
+    date = 1;
     console.log('Calendar Loaded successfully');
   }
 
@@ -15,6 +16,25 @@ class Calendar extends Component {
     let d = new Date();
     const firstDay = new Date(d.getFullYear(), d.getMonth(), 1);
     return firstDay.getDay();
+  }
+
+  getMonth() {
+    const months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+    let d = new Date();
+    return months[d.getMonth()];
   }
 
   renderTabs() {
@@ -27,37 +47,21 @@ class Calendar extends Component {
   }
 
   renderHeaders() {
-    return (
-      <div id="calendarContainer">
-        <div id="header">
-          <p>Sunday</p>
-        </div>
-        <div id="header">
-          <p>Monday</p>
-        </div>
-        <div id="header">
-          <p>Tuesday</p>
-        </div>
-        <div id="header">
-          <p>Wednesday</p>
-        </div>
-        <div id="header">
-          <p>Thursdsay</p>
-        </div>
-        <div id="header">
-          <p>Friday</p>
-        </div>
-        <div id="header">
-          <p>Saturday</p>
-        </div>
-      </div>
-    );
+    const headers = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursdsay', 'Friday', 'Saturday'];
+    let head = [];
+    for (let i = 0; i < 7; i++) {
+      head.push(
+        <div id="header" key={i}>
+          <p>{headers[i]}</p>
+        </div>,
+      );
+    }
+    return <div id="calendarContainer">{head}</div>;
   }
 
   renderFirstWeek() {
     const days = [];
     let temp = this.getFirstDay();
-    console.log(temp);
     for (let i = 0; i < 7; i++) {
       if (i >= temp) {
         days.push(
@@ -77,11 +81,21 @@ class Calendar extends Component {
     const days = [];
     for (let i = 0; i < 7; i++) {
       if (date < 32) {
-        days.push(
-          <div id="dates" key={i}>
-            <p>{date}</p>
-          </div>,
-        );
+        // only make it to show that on the 24th, this person has some appointments
+        if (date == 24) {
+          days.push(
+            <div id="dates" key={i}>
+              <p>{date}</p>
+              <Appointment appointments={['Doctor Appointment', ' Check up Appointment']} />
+            </div>,
+          );
+        } else {
+          days.push(
+            <div id="dates" key={i}>
+              <p>{date}</p>
+            </div>,
+          );
+        }
       } else {
         days.push(<div id="dates" key={i}></div>);
       }
@@ -93,6 +107,7 @@ class Calendar extends Component {
   render() {
     return (
       <div>
+        <h1 id="month">{this.getMonth()}</h1>
         {this.renderTabs()}
         {this.renderHeaders()}
         {this.renderFirstWeek()}
