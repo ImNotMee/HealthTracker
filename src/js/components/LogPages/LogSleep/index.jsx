@@ -1,34 +1,44 @@
 import React, { Component } from 'react';
 import './styles.css';
-import Radio from './Radio';
+
 import { NavLink } from 'react-router-dom';
 
-class LogMood extends Component {
+class LogSleep extends Component {
   constructor(props) {
     super(props);
   }
 
   state = {
-    user: this.props.activeUser,
+    user: this.props.activeuser,
+    sleepHour: 0,
   };
+
   render() {
     return (
-      <div id="LogMoodWrapper">
+      <div id="logSleepWrapper">
         <div className="view left">
           <NavLink to="/overview" id="closeButton">
             <img id="xButton" src="https://image.flaticon.com/icons/svg/565/565313.svg"></img>
           </NavLink>
-          <h1 id="moodHeader">
-            <img id="icon" src="https://image.flaticon.com/icons/svg/3010/3010884.svg"></img>
-            Mood of the day
+
+          <h1 id="sleepHeader">
+            <img id="icon" src="https://image.flaticon.com/icons/png/512/865/865813.png"></img>
+            Hours of Sleep
           </h1>
-          <div className="logMoodBox">
+          <div className="logSleepBox">
             <form>
               <fieldset>
-                <h3>How do you feel today?</h3>
-                <div id="iconContainer">
-                  <Radio></Radio>
-                </div>
+                <h3>
+                  How much did you sleep?
+                  <img
+                    id="sleepIcon"
+                    src="https://image.flaticon.com/icons/svg/3094/3094837.svg"
+                  ></img>
+                </h3>
+
+                <input type="text" id="sleepLog" placeholder="Enter Hours" />
+                <label id="sleepUnits">Hours</label>
+                <p>Average person needs 7 ~ 8 hours sleep per day</p>
                 <input type="submit" id="logButton" value="Save" />
               </fieldset>
             </form>
@@ -57,5 +67,4 @@ class LogMood extends Component {
     );
   }
 }
-
-export default LogMood;
+export default LogSleep;

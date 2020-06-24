@@ -52,13 +52,14 @@
   border-left: 1px solid var(--primary-color);
   margin-left: 16vw;
 }
-.tabList {
+.tab {
   overflow: hidden;
   border: 1px solid var(--primary-color);
   background-color: var(--primary-color);
   border-radius: 12px;
 }
 
+/* Tab.js*/
 .tabButton {
   width: 50%;
   font-size: 15px;
@@ -73,6 +74,7 @@
 .tabButton:hover {
   background-color: dodgerblue;
 }
+
 .tabButton.active {
   background-color: white;
   color: black;
@@ -124,7 +126,7 @@
   margin: auto;
   width: 80%;
   box-shadow: 0px 9px 22px -6px rgba(0, 0, 0, 0.75);
-  border-radius: 12px;
+  border-radius: var(--border-radius-val);
   padding: 5px;
   vertical-align: middle;
 }

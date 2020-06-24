@@ -21,17 +21,6 @@
   vertical-align: middle;
 }
 
-#icon2 {
-  width: 30px;
-  margin-bottom: 3px;
-  vertical-align: middle;
-}
-
-#waterUnits {
-  font-size: 20px;
-  margin-left: 5px;
-}
-
 li {
   font-style: var(--text-font-family);
 }
@@ -49,7 +38,7 @@ li {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 2px solid #0bbbeb;
+  border: 2px solid var(--primary-color);
   background-color: white;
   float: right;
   box-shadow: 0px 9px 9px -6px rgba(0, 0, 0, 0.75);
@@ -64,51 +53,64 @@ li {
 .left {
   width: 59vw;
   left: 0;
-  border-left: 1px solid skyblue;
+  border-left: 1px solid var(--primary-color);
   margin-left: 16vw;
 }
 
 .right {
   right: 0;
   width: 25vw;
-  border-left: 1px solid skyblue;
+  border-left: 1px solid var(--primary-color);
 }
 
-.logbox {
+.logWaterBox {
   margin: auto;
   margin-top: 100px;
   width: 50%;
   box-shadow: 0px 9px 22px -6px rgba(0, 0, 0, 0.75);
-  border-radius: 12px;
+  border-radius: var(--border-radius-val);
 }
 
-.logbox form fieldset {
+.logWaterBox form fieldset {
   border: none;
   padding: 15px;
 }
 
-.logbox form fieldset input #waterLog {
+.logWaterBox form fieldset #waterLog {
   font-size: 15px;
   width: 70%;
   margin: 0;
   padding: 10px 5%;
-  border: thin solid #0bbbeb;
+  border: thin solid var(--primary-color);
 }
 
-.logbox input[type='submit'] {
+#iconWater {
+  width: 30px;
+  margin-bottom: 3px;
+  vertical-align: middle;
+}
+
+#waterUnits {
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+.logWaterBox input[type='submit'] {
   width: 50%;
+  height: 40px;
+  border: none;
   float: right;
   background-color: #0bbbeb;
   color: white;
   font-style: var(--btn-font-family);
-  border-radius: 12px;
+  border-radius: var(--border-radius-val);
 }
 
 #tipBox {
   margin: auto;
   width: 80%;
   box-shadow: 0px 9px 22px -6px rgba(0, 0, 0, 0.75);
-  border-radius: 12px;
+  border-radius: var(--border-radius-val);
   padding: 5px;
   vertical-align: middle;
 }

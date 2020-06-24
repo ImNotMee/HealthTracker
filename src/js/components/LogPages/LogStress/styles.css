@@ -1,9 +1,10 @@
-#LogCaloriesWrapper {
+#LogStresssWrapper {
   height: 100vh;
   width: 84vw;
   padding: 10px;
 }
-#caloriesHeader {
+
+#stressHeader {
   color: black;
   margin-top: 10%;
   text-align: center;
@@ -25,6 +26,14 @@ li {
   font-style: var(--text-font-family);
 }
 
+.view {
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+}
+
 #closeButton {
   margin-top: 20px;
   width: 40px;
@@ -42,18 +51,12 @@ li {
   width: 20px;
   height: 20px;
 }
-.view {
-  height: 100%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  overflow-x: hidden;
-}
 
 .left {
   width: 59vw;
   left: 0;
   border-left: 1px solid var(--primary-color);
+  margin-left: 16vw;
 }
 
 .right {
@@ -62,7 +65,7 @@ li {
   border-left: 1px solid var(--primary-color);
 }
 
-.logCaloriesBox {
+.logStressBox {
   margin: auto;
   margin-top: 100px;
   width: 50%;
@@ -70,35 +73,41 @@ li {
   border-radius: var(--border-radius-val);
 }
 
-.logCaloriesBox form fieldset {
+.logStressBox form fieldset {
   border: none;
   padding: 15px;
 }
 
-.logCaloriesBox form fieldset #caloriesLog {
-  font-size: 15px;
-  width: 70%;
-  margin: 0;
-  padding: 10px 5%;
-  border: thin solid var(--primary-color);
+.sliderContainer {
+  margin-bottom: 8%;
 }
 
-#caloriesUnits {
-  font-size: 20px;
-  margin-left: 5px;
+.sliderContainer #stressIcon {
+  width: 30px;
+  margin-bottom: 3px;
+  vertical-align: middle;
+}
+.logStressBox input[type='range'] {
+  width: 100%;
 }
 
-.logCaloriesBox input[type='submit'] {
-  width: 50%;
-  height: 40px;
-  border: none;
+#sliderNum1 {
   float: right;
+}
+
+.logStressBox input[type='submit'] {
+  width: 50%;
+  float: right;
+  height: 40px;
   background-color: var(--primary-color);
   color: white;
+  border: none;
   font-style: var(--btn-font-family);
   border-radius: var(--border-radius-val);
 }
 
+label #outputValue {
+}
 #tipBox {
   margin: auto;
   width: 80%;

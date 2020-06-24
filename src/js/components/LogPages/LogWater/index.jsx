@@ -22,12 +22,15 @@ class LogWater extends Component {
             <img id="icon" src="https://image.flaticon.com/icons/svg/3039/3039889.svg"></img>Water
             Consumption
           </h1>
-          <div className="logbox">
+          <div className="logWaterBox">
             <form>
               <fieldset>
                 <h3>
                   How much water did you drink?{' '}
-                  <img id="icon2" src="https://image.flaticon.com/icons/svg/3100/3100525.svg"></img>
+                  <img
+                    id="iconWater"
+                    src="https://image.flaticon.com/icons/svg/3100/3100525.svg"
+                  ></img>
                 </h3>
                 <input type="text" id="waterLog" placeholder="Enter Amount" />
                 <label id="waterUnits">ml</label>

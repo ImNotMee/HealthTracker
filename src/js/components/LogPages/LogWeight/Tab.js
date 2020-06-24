@@ -4,25 +4,18 @@ class Tab extends Component {
   constructor(props) {
     super(props);
   }
-
   onClick = () => {
-    const { label, onClick } = this.props;
-    onClick(label);
+    this.props.onClick(this.props.label);
   };
 
   render() {
-    const {
-      onClick,
-      props: { activeTab, label },
-    } = this;
     let className = 'tabButton';
-    if (activeTab === label) {
+    if (this.props.activeTab === this.props.label) {
       className += ' active';
     }
     return (
-      <button className={className} onClick={onClick}>
-        {' '}
-        {label}{' '}
+      <button className={className} onClick={this.onClick}>
+        {this.props.label}
       </button>
     );
   }

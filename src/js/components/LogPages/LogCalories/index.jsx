@@ -22,7 +22,7 @@ class LogCalories extends Component {
             <img id="icon" src="https://image.flaticon.com/icons/svg/1599/1599302.svg"></img>
             Calories
           </h1>
-          <div className="logbox">
+          <div className="logCaloriesBox">
             <form>
               <fieldset>
                 <input type="text" id="caloriesLog" placeholder="Enter Amount" />

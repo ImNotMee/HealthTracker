@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Tab from './Tab';
 
-class Tabs extends Component {
+class TabList extends Component {
   constructor(props) {
     super(props);
   }
@@ -11,27 +11,29 @@ class Tabs extends Component {
     activeTab: this.props.children[0].props.label,
   };
   onClickTab = (tab) => {
-    this.setState({ activeTab: tab });
+    this.setState({
+      activeTab: tab,
+    });
   };
 
   render() {
-    const {
-      onClickTab,
-      props: { children },
-      state: { activeTab },
-    } = this;
-
     return (
-      <div className="tabs">
-        <div className="tabList">
-          {children.map((child) => {
-            const { label } = child.props;
-            return <Tab activeTab={activeTab} key={label} label={label} onClick={onClickTab} />;
+      <div className="tabList">
+        <div className="tab">
+          {this.props.children.map((child) => {
+            return (
+              <Tab
+                activeTab={this.state.activeTab}
+                key={child.props.label}
+                label={child.props.label}
+                onClick={this.onClickTab}
+              />
+            );
           })}
         </div>
         <div className="tabContent">
-          {children.map((child) => {
-            if (child.props.label === activeTab) {
+          {this.props.children.map((child) => {
+            if (child.props.label === this.state.activeTab) {
               return child.props.children;
             }
           })}
@@ -41,4 +43,4 @@ class Tabs extends Component {
   }
 }
 
-export default Tabs;
+export default TabList;

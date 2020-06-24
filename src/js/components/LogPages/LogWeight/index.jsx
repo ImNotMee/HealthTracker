@@ -9,55 +9,50 @@ class LogWeight extends Component {
 
   state = {
     user: this.props.activeUser,
+    weight: 0,
+    height: 0,
+    BMI: 0,
   };
 
   metricInput() {
     return (
-      <div className="tabContent">
-        <div id="Metric">
-          <form>
-            <fieldset>
-              <input type="text" id="weightLog" placeholder="Enter Weight" />
-              <label id="units">kg(kilograms)</label>
-              <input type="text" id="heightLog" placeholder="Enter Height" />
-              <label id="units">m(meters)</label>
-              <p>BMI = Weight(kg) / [height(m)]^2</p>
-              <ul>
-                <li>Underweight: ~18.5</li>
-                <li>Healthy weight: 18.5 ~ 24.9</li>
-                <li>Overweight: 25 ~ 29.9</li>
-                <li>Obese: 30 ~ 39.9</li>
-              </ul>
-              <input type="submit" id="logButton" value="Save" />
-            </fieldset>
-          </form>
-        </div>
-      </div>
+      <form>
+        <fieldset>
+          <input type="text" id="weightLog" placeholder="Enter Weight" />
+          <label id="units">kg(kilograms)</label>
+          <input type="text" id="heightLog" placeholder="Enter Height" />
+          <label id="units">m(meters)</label>
+          <p>BMI = Weight(kg) / [height(m)]^2</p>
+          <ul>
+            <li>Underweight: ~18.5</li>
+            <li>Healthy weight: 18.5 ~ 24.9</li>
+            <li>Overweight: 25 ~ 29.9</li>
+            <li>Obese: 30 ~ 39.9</li>
+          </ul>
+          <input type="submit" id="logButton" value="Save" />
+        </fieldset>
+      </form>
     );
   }
 
   standardInput() {
     return (
-      <div className="tabContent">
-        <div id="Standard">
-          <form>
-            <fieldset>
-              <input type="text" id="weightLog" placeholder="Enter Weight" />
-              <label id="units">lbs(pounds)</label>
-              <input type="text" id="heightLog" placeholder="Enter Height" />
-              <label id="units">in(inches)</label>
-              <p>BMI = 703 * Weight(lbs) / [height(in)]^2</p>
-              <ul>
-                <li>Underweight: ~18.5</li>
-                <li>Healthy weight: 18.5 ~ 24.9</li>
-                <li>Overweight: 25 ~ 29.9</li>
-                <li>Obese: 30 ~ 39.9</li>
-              </ul>
-              <input type="submit" id="logButton" value="Save" />
-            </fieldset>
-          </form>
-        </div>
-      </div>
+      <form>
+        <fieldset>
+          <input type="text" id="weightLog" placeholder="Enter Weight" />
+          <label id="units">lbs(pounds)</label>
+          <input type="text" id="heightLog" placeholder="Enter Height" />
+          <label id="units">in(inches)</label>
+          <p>BMI = 703 * Weight(lbs) / [height(in)]^2</p>
+          <ul>
+            <li>Underweight: ~18.5</li>
+            <li>Healthy weight: 18.5 ~ 24.9</li>
+            <li>Overweight: 25 ~ 29.9</li>
+            <li>Obese: 30 ~ 39.9</li>
+          </ul>
+          <input type="submit" id="logButton" value="Save" />
+        </fieldset>
+      </form>
     );
   }
   render() {
