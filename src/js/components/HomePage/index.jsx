@@ -40,9 +40,9 @@ class HomePage extends Component {
             <Route exact path="/reminders" render={() => <Reminders />} />
             <Route exact path="/calendar" render={() => <Calendar />} />
             <Route exact path="/check-in" render={() => <CheckIn />} />
-            <Route exact path="/overview/logWeight" render={() => <LogMood />} />
-            <Route exact path="/overview/logWater" render={() => <LogSleep />} />
-            <Route exact path="/overview/logCalories" render={() => <LogStress />} />
+            <Route exact path="/overview/logWeight" render={() => <LogWeight />} />
+            <Route exact path="/overview/logWater" render={() => <LogWater />} />
+            <Route exact path="/overview/logCalories" render={() => <LogCalories />} />
           </Switch>
         </div>
       </div>

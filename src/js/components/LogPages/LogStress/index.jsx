@@ -40,7 +40,7 @@ class LogStress extends Component {
                   <input
                     type="range"
                     min={0}
-                    max={7}
+                    max={10}
                     className="stressSlider"
                     onChange={this.onChangeSlide}
                   ></input>
@@ -56,7 +56,7 @@ class LogStress extends Component {
                       id="stressIcon"
                       src="https://image.flaticon.com/icons/svg/2534/2534673.svg"
                     ></img>
-                    7
+                    10
                   </label>
                 </div>
                 <div class="resultContainer">
