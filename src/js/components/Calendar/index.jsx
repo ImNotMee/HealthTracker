@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './styles.css';
-import Calendar from './calendar.js';
 
 class CheckIn extends Component {
   constructor(props) {
@@ -11,11 +10,7 @@ class CheckIn extends Component {
     user: this.props.activeUser,
   };
   render() {
-    return (
-      <div id="CheckInWrapper">
-        <Calendar />
-      </div>
-    );
+    return <div id="CheckInWrapper">some calendar text and stuff</div>;
   }
 }
 
