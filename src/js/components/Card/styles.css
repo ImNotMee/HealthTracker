@@ -1,0 +1,15 @@
+#cardWrapper {
+  width: 300px;
+  height: 300px;
+  border: #000000 2px solid;
+  text-align: center;
+}
+
+#cardIcon {
+  width: 150px;
+}
+
+#cardValue {
+  font-weight: bold;
+  font-size: 18px;
+}
