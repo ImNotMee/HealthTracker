@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 class Radio extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: 'React',
-    };
     this.onChangeValue = this.onChangeValue.bind(this);
   }
 
+  state = {
+    user: this.props.activeuser,
+  };
   onChangeValue = (event) => {
     this.setState({
       selectedOption: event.target.value,
