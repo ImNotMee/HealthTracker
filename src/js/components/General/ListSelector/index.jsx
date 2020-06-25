@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import './styles.css';
 
 class ListSelector extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     user: this.props.activeUser,
   };
@@ -25,7 +21,7 @@ class ListSelector extends Component {
         />
         <datalist id="list">
           {options.map((value) => (
-            <option value={value} />
+            <option className="option" value={value} />
           ))}
         </datalist>
       </div>

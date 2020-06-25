@@ -1,4 +1,4 @@
-#CheckInWrapper {
+#PageWrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -14,8 +14,24 @@
   align-items: space-between;
   justify-content: center;
   height: 100%;
+  width: 50%;
 }
 
 #RightWrapper {
   height: 100%;
+}
+
+#CheckInWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  justify-content: space-evenly;
+}
+
+#List {
+  display: flex;
+  width: 90% !important;
+  height: 30px;
+  align-self: center;
+  margin: 20px auto;
 }
