@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, BrowserRouter, useRouteMatch, NavLink } from 'react-router-dom';
 import SideBar from '../SideBar';
 import Overview from '../Overview';
 import Trends from '../Trends';
@@ -10,6 +10,10 @@ import CheckIn from '../CheckIn';
 import './styles.css';
 
 class HomePage extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   state = {
     user: this.props.activeUser,
     check: false,

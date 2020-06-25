@@ -3,6 +3,10 @@ import './styles.css';
 import Card from '../Card';
 
 class Overview extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   state = {
     user: this.props.activeUser,
   };

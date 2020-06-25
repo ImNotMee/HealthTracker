@@ -28,7 +28,7 @@ class Card extends Component {
     } else {
       return (
         <div>
-          <img id="cardIcon" src={this.state.image} alt="card icon"></img>
+          <img id="cardIcon" src={this.state.image}></img>
           <p id="cardValue">{this.state.value}</p>
         </div>
       );

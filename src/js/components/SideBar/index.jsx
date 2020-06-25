@@ -3,6 +3,10 @@ import { NavLink } from 'react-router-dom';
 import './styles.css';
 
 class Sidebar extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   state = {
     user: this.props.activeUser,
     profilePic:
@@ -13,48 +17,28 @@ class Sidebar extends Component {
     return (
       <div id="sideBar">
         <div id="userProfile">
-          <img id="userPicture" alt="profile" src={this.state.profilePic}></img>
+          <img id="userPicture" src={this.state.profilePic}></img>
           <h2>{this.state.user.firstName}</h2>
         </div>
         <div id="NavOptions">
           <NavLink to="/overview" activeClassName="activeLink" className="home_navlink">
-            <img
-              id="icon"
-              alt="overview icon"
-              src="https://image.flaticon.com/icons/svg/3062/3062317.svg"
-            ></img>
+            <img id="icon" src="https://image.flaticon.com/icons/svg/3062/3062317.svg"></img>
             Overview
           </NavLink>
           <NavLink to="/trends" activeClassName="activeLink" className="home_navlink">
-            <img
-              id="icon"
-              alt="trends icon"
-              src="https://image.flaticon.com/icons/svg/1720/1720256.svg"
-            ></img>
+            <img id="icon" src="https://image.flaticon.com/icons/svg/1720/1720256.svg"></img>
             Trends
           </NavLink>
           <NavLink to="/reminders" activeClassName="activeLink" className="home_navlink">
-            <img
-              id="icon"
-              alt="reminders icon"
-              src="https://image.flaticon.com/icons/svg/1792/1792756.svg"
-            ></img>
+            <img id="icon" src="https://image.flaticon.com/icons/svg/1792/1792756.svg"></img>
             Reminders
           </NavLink>
           <NavLink to="/calendar" activeClassName="activeLink" className="home_navlink">
-            <img
-              id="icon"
-              alt="calendar icon"
-              src="https://image.flaticon.com/icons/svg/747/747310.svg"
-            ></img>
+            <img id="icon" src="https://image.flaticon.com/icons/svg/747/747310.svg"></img>
             Calendar
           </NavLink>
           <NavLink to="/check-in" activeClassName="activeLink" className="home_navlink">
-            <img
-              id="icon"
-              alt="check-in icon"
-              src="https://image.flaticon.com/icons/svg/684/684809.svg"
-            ></img>
+            <img id="icon" src="https://image.flaticon.com/icons/svg/684/684809.svg"></img>
             Check-In
           </NavLink>
         </div>
