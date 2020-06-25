@@ -16,10 +16,18 @@ class LogMood extends Component {
       <div id="LogMoodWrapper">
         <div className="view left">
           <NavLink to="/overview" id="closeButton">
-            <img id="xButton" src="https://image.flaticon.com/icons/svg/565/565313.svg"></img>
+            <img
+              id="xButton"
+              src="https://image.flaticon.com/icons/svg/565/565313.svg"
+              alt="icon"
+            ></img>
           </NavLink>
           <h1 id="moodHeader">
-            <img id="icon" src="https://image.flaticon.com/icons/svg/3010/3010884.svg"></img>
+            <img
+              id="icon"
+              src="https://image.flaticon.com/icons/svg/3010/3010884.svg"
+              alt="icon"
+            ></img>
             Mood of the day
           </h1>
           <div className="logMoodBox">
@@ -36,8 +44,12 @@ class LogMood extends Component {
         </div>
         <div className="view right">
           <h1 id="tipHead">
-            <img id="icon" src="https://image.flaticon.com/icons/png/512/900/900516.png"></img>Tips:
-            Healthy Weight
+            <img
+              id="icon"
+              src="https://image.flaticon.com/icons/png/512/900/900516.png"
+              alt="icon"
+            ></img>
+            Tips: Healthy Weight
           </h1>
           <div id="tipBox">
             <ol>

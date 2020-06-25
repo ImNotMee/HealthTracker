@@ -24,11 +24,19 @@ class LogStress extends Component {
       <div id="logStressWrapper">
         <div className="view left">
           <NavLink to="/overview" id="closeButton">
-            <img id="xButton" src="https://image.flaticon.com/icons/svg/565/565313.svg"></img>
+            <img
+              id="xButton"
+              src="https://image.flaticon.com/icons/svg/565/565313.svg"
+              alt="icon"
+            ></img>
           </NavLink>
 
           <h1 id="stressHeader">
-            <img id="icon" src="https://image.flaticon.com/icons/svg/2534/2534673.svg"></img>
+            <img
+              id="icon"
+              src="https://image.flaticon.com/icons/svg/2534/2534673.svg"
+              alt="icon"
+            ></img>
             Stress Level
           </h1>
           <div className="logStressBox">
@@ -49,12 +57,14 @@ class LogStress extends Component {
                     <img
                       id="stressIcon"
                       src="https://image.flaticon.com/icons/svg/2534/2534929.svg"
+                      alt="icon"
                     ></img>
                   </label>
                   <label id="sliderNum1">
                     <img
                       id="stressIcon"
                       src="https://image.flaticon.com/icons/svg/2534/2534673.svg"
+                      alt="icon"
                     ></img>
                     10
                   </label>
@@ -69,8 +79,12 @@ class LogStress extends Component {
         </div>
         <div className="view right">
           <h1 id="tipHead">
-            <img id="icon" src="https://image.flaticon.com/icons/png/512/900/900516.png"></img>Tips:
-            Healthy Weight
+            <img
+              id="icon"
+              src="https://image.flaticon.com/icons/png/512/900/900516.png"
+              alt="icon"
+            ></img>
+            Tips: Healthy Weight
           </h1>
           <div id="tipBox">
             <ol>

@@ -18,11 +18,19 @@ class LogSleep extends Component {
       <div id="logSleepWrapper">
         <div className="view left">
           <NavLink to="/overview" id="closeButton">
-            <img id="xButton" src="https://image.flaticon.com/icons/svg/565/565313.svg"></img>
+            <img
+              id="xButton"
+              src="https://image.flaticon.com/icons/svg/565/565313.svg"
+              alt="icon"
+            ></img>
           </NavLink>
 
           <h1 id="sleepHeader">
-            <img id="icon" src="https://image.flaticon.com/icons/png/512/865/865813.png"></img>
+            <img
+              id="icon"
+              src="https://image.flaticon.com/icons/png/512/865/865813.png"
+              alt="icon"
+            ></img>
             Hours of Sleep
           </h1>
           <div className="logSleepBox">
@@ -33,6 +41,7 @@ class LogSleep extends Component {
                   <img
                     id="sleepIcon"
                     src="https://image.flaticon.com/icons/svg/3094/3094837.svg"
+                    alt="icon"
                   ></img>
                 </h3>
 
@@ -46,8 +55,12 @@ class LogSleep extends Component {
         </div>
         <div className="view right">
           <h1 id="tipHead">
-            <img id="icon" src="https://image.flaticon.com/icons/png/512/900/900516.png"></img>Tips:
-            Healthy Weight
+            <img
+              id="icon"
+              src="https://image.flaticon.com/icons/png/512/900/900516.png"
+              alt="icon"
+            ></img>
+            Tips: Healthy Weight
           </h1>
           <div id="tipBox">
             <ol>

@@ -19,7 +19,11 @@ class Radio extends Component {
     return (
       <div>
         <div id="carrier">
-          <img id="emoticon" src="https://image.flaticon.com/icons/svg/3084/3084520.svg"></img>
+          <img
+            id="emoticon"
+            src="https://image.flaticon.com/icons/svg/3084/3084520.svg"
+            alt="icon"
+          ></img>
           <input
             type="radio"
             value="angry"
@@ -28,7 +32,11 @@ class Radio extends Component {
           />
         </div>
         <div id="carrier">
-          <img id="emoticon" src="https://image.flaticon.com/icons/svg/3084/3084540.svg"></img>
+          <img
+            id="emoticon"
+            src="https://image.flaticon.com/icons/svg/3084/3084540.svg"
+            alt="icon"
+          ></img>
           <input
             type="radio"
             value="sad"
@@ -37,7 +45,11 @@ class Radio extends Component {
           />
         </div>
         <div id="carrier">
-          <img id="emoticon" src="https://image.flaticon.com/icons/svg/3084/3084437.svg"></img>
+          <img
+            id="emoticon"
+            src="https://image.flaticon.com/icons/svg/3084/3084437.svg"
+            alt="icon"
+          ></img>
           <input
             type="radio"
             value="thoughtful"
@@ -46,7 +58,11 @@ class Radio extends Component {
           />
         </div>
         <div id="carrier">
-          <img id="emoticon" src="https://image.flaticon.com/icons/svg/3084/3084473.svg"></img>
+          <img
+            id="emoticon"
+            src="https://image.flaticon.com/icons/svg/3084/3084473.svg"
+            alt="icon"
+          ></img>
           <input
             type="radio"
             value="soso"
@@ -55,7 +71,11 @@ class Radio extends Component {
           />
         </div>
         <div id="carrier">
-          <img id="emoticon" src="https://image.flaticon.com/icons/svg/3084/3084424.svg"></img>
+          <img
+            id="emoticon"
+            src="https://image.flaticon.com/icons/svg/3084/3084424.svg"
+            alt="icon"
+          ></img>
           <input
             type="radio"
             value="happy"
@@ -64,7 +84,11 @@ class Radio extends Component {
           />
         </div>
         <div id="carrier">
-          <img id="emoticon" src="https://image.flaticon.com/icons/svg/3084/3084622.svg"></img>
+          <img
+            id="emoticon"
+            src="https://image.flaticon.com/icons/svg/3084/3084622.svg"
+            alt="icon"
+          ></img>
           <input
             type="radio"
             value="lovely"

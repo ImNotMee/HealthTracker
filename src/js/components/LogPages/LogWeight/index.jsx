@@ -60,11 +60,20 @@ class LogWeight extends Component {
       <div id="LogWeightWrapper">
         <div className="view left">
           <NavLink to="/overview" id="closeButton">
-            <img id="xButton" src="https://image.flaticon.com/icons/svg/565/565313.svg"></img>
+            <img
+              id="xButton"
+              src="https://image.flaticon.com/icons/svg/565/565313.svg"
+              alt="icon"
+              s
+            ></img>
           </NavLink>
           <h1 id="weightHeader">
-            <img id="icon" src="https://image.flaticon.com/icons/svg/3023/3023711.svg"></img>Body
-            Mass Index
+            <img
+              id="icon"
+              src="https://image.flaticon.com/icons/svg/3023/3023711.svg"
+              alt="icon"
+            ></img>
+            Body Mass Index
           </h1>
           <div className="logbox">
             <TabList>
@@ -76,8 +85,12 @@ class LogWeight extends Component {
 
         <div className="view right">
           <h1 id="tipHead">
-            <img id="icon" src="https://image.flaticon.com/icons/png/512/900/900516.png"></img>Tips:
-            Healthy Weight
+            <img
+              id="icon"
+              src="https://image.flaticon.com/icons/png/512/900/900516.png"
+              alt="icon"
+            ></img>
+            Tips: Healthy Weight
           </h1>
           <div id="tipBox">
             <ol>

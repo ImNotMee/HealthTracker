@@ -16,11 +16,19 @@ class LogWater extends Component {
       <div id="LogWaterWrapper">
         <div className="view left">
           <NavLink to="/overview" id="closeButton">
-            <img id="xButton" src="https://image.flaticon.com/icons/svg/565/565313.svg"></img>
+            <img
+              id="xButton"
+              src="https://image.flaticon.com/icons/svg/565/565313.svg"
+              alt="icon"
+            ></img>
           </NavLink>
           <h1 id="waterHeader">
-            <img id="icon" src="https://image.flaticon.com/icons/svg/3039/3039889.svg"></img>Water
-            Consumption
+            <img
+              id="icon"
+              src="https://image.flaticon.com/icons/svg/3039/3039889.svg"
+              alt="icon"
+            ></img>
+            Water Consumption
           </h1>
           <div className="logWaterBox">
             <form>
@@ -30,6 +38,7 @@ class LogWater extends Component {
                   <img
                     id="iconWater"
                     src="https://image.flaticon.com/icons/svg/3100/3100525.svg"
+                    alt="icon"
                   ></img>
                 </h3>
                 <input type="text" id="waterLog" placeholder="Enter Amount" />
@@ -43,8 +52,12 @@ class LogWater extends Component {
 
         <div className="view right">
           <h1 id="tipHead">
-            <img id="icon" src="https://image.flaticon.com/icons/png/512/900/900516.png"></img>Tips:
-            Healthy Weight
+            <img
+              id="icon"
+              src="https://image.flaticon.com/icons/png/512/900/900516.png"
+              alt="icon"
+            ></img>
+            Tips: Healthy Weight
           </h1>
           <div id="tipBox">
             <ol>

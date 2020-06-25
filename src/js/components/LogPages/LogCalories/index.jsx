@@ -16,10 +16,18 @@ class LogCalories extends Component {
       <div id="LogCaloriesWrapper">
         <div className="view left">
           <NavLink to="/overview" id="closeButton">
-            <img id="xButton" src="https://image.flaticon.com/icons/svg/565/565313.svg"></img>
+            <img
+              id="xButton"
+              src="https://image.flaticon.com/icons/svg/565/565313.svg"
+              alt="icon"
+            ></img>
           </NavLink>
           <h1 id="caloriesHeader">
-            <img id="icon" src="https://image.flaticon.com/icons/svg/1599/1599302.svg"></img>
+            <img
+              id="icon"
+              src="https://image.flaticon.com/icons/svg/1599/1599302.svg"
+              alt="icon"
+            ></img>
             Calories
           </h1>
           <div className="logCaloriesBox">
@@ -36,8 +44,12 @@ class LogCalories extends Component {
 
         <div className="view right">
           <h1 id="tipHead">
-            <img id="icon" src="https://image.flaticon.com/icons/png/512/900/900516.png"></img>Tips:
-            Healthy Weight
+            <img
+              id="icon"
+              src="https://image.flaticon.com/icons/png/512/900/900516.png"
+              alt="icon"
+            ></img>
+            Tips: Healthy Weight
           </h1>
           <div id="tipBox">
             <ol>
