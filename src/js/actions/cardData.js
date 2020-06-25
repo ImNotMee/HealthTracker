@@ -1,6 +1,6 @@
 export const fetchCardData = (user) => {
   // it should call an endpoint to fetch user card data
-  user_card = {
+  const user_card = {
     Water: {
       completed: 0.8,
       remaining: 2,
