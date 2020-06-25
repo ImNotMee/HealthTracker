@@ -4,8 +4,8 @@
   align-items: space-between;
   justify-content: space-between;
   position: fixed;
-  height: 100vh;
-  width: 16vw;
+  height: 100%;
+  width: 215px;
 }
 
 #icon {
@@ -32,11 +32,12 @@
   align-items: left;
   justify-content: space-between;
   height: 42vh;
+  min-height: 300px;
   width: 100%;
 }
 
 .home_navlink {
-  padding: 0 25px;
+  padding: 0 20px;
   font-size: 1.3em;
   text-decoration: none;
 }

@@ -9,8 +9,6 @@ import { logoutUser } from './js/actions/logout';
 
 import './App.css';
 
-const log = console.log();
-
 class App extends Component {
   // TODO: fix prop drilling for active user
   state = {
