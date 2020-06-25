@@ -3,7 +3,7 @@ import './styles.css';
 import Appointment from './appointment.js';
 let date;
 
-class Calendar extends Component {
+class CalendarModule extends Component {
   constructor(props) {
     super(props);
     date = 1;
@@ -120,4 +120,4 @@ class Calendar extends Component {
   }
 }
 
-export default Calendar;
+export default CalendarModule;

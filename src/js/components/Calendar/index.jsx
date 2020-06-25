@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import './styles.css';
+import CalendarModule from './calendar.js';
 
 class Calendar extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   state = {
     user: this.props.activeUser,
   };
   render() {
-    return <div id="CalendarWrapper">some calendar text and stuff</div>;
+    return (
+      <div id="CalendarWrapper">
+        <CalendarModule />
+      </div>
+    );
   }
 }
 
