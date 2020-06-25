@@ -4,10 +4,6 @@ import Radio from './Radio';
 import { NavLink } from 'react-router-dom';
 
 class LogMood extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     user: this.props.activeUser,
   };

@@ -4,10 +4,6 @@ import './styles.css';
 import { NavLink } from 'react-router-dom';
 
 class LogStress extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     user: this.props.activeuser,
     value: 7,

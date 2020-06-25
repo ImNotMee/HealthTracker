@@ -108,7 +108,7 @@ class Card extends Component {
     }
     return (
       <div>
-        <img class="cardIcon" src={imageSrc} alt="image"></img>
+        <img class="cardIcon" src={imageSrc} alt="icon"></img>
         <p id="cardValue">{text}</p>
       </div>
     );
@@ -129,7 +129,7 @@ class Card extends Component {
     }
     return (
       <div>
-        <img class="cardIcon" src={imageSrc} alt="image"></img>
+        <img class="cardIcon" src={imageSrc} alt="icon"></img>
         <div>
           <input class="inputSlider" type="range" min={0} max={10} value={stressInt}></input>
           <span id="cardValue">{stress}</span>
@@ -165,7 +165,7 @@ class Card extends Component {
       <div>
         <div>
           <p class={hoursDisplay}>
-            <img class="sleepIcon" src={imageSrc} alt="image"></img>
+            <img class="sleepIcon" src={imageSrc} alt="icon"></img>
             {hours} Hours
           </p>
         </div>
