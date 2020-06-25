@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
 import './styles.css';
-import Calendar from './calendar.js';
 
-class CheckIn extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+class Calendar extends Component {
   state = {
     user: this.props.activeUser,
   };
   render() {
-    return (
-      <div id="CheckInWrapper">
-        <Calendar />
-      </div>
-    );
+    return <div id="CalendarWrapper">some calendar text and stuff</div>;
   }
 }
 
-export default CheckIn;
+export default Calendar;
