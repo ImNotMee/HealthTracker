@@ -4,16 +4,6 @@ import Card from '../Card';
 //import { fetchCardData } from '../../actions/cardData';
 
 class Overview extends Component {
-  constructor(props) {
-    super(props);
-
-    //server call to initialize state
-    //we can also set up state and use componentDidMount to update values
-    //user = {user: this.props.activeUser}
-    //user_data = await fetchCardData(this.props.activeUser)
-    //this.state = Object.assign(user, user_data)
-  }
-
   state = {
     user: this.props.activeUser,
     BMI: {
