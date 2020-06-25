@@ -13,7 +13,7 @@ class Sidebar extends Component {
     return (
       <div id="sideBar">
         <div id="userProfile">
-          <img id="userPicture" src={this.state.profilePic}></img>
+          <img id="userPicture" alt="profile image" src={this.state.profilePic}></img>
           <h2>{this.state.user.firstName}</h2>
         </div>
         <div id="NavOptions">

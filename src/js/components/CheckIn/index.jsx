@@ -4,10 +4,6 @@ import { PARK_LOCATIONS } from '../../constants';
 import './styles.css';
 
 class CheckIn extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     user: this.props.activeUser,
     location: null,

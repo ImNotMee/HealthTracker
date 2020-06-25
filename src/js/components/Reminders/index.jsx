@@ -5,6 +5,7 @@ class Reminders extends Component {
   state = {
     user: this.props.activeUser,
   };
+
   render() {
     return <div id="RemindersWrapper">some reminder text and stuff</div>;
   }
