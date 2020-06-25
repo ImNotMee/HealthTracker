@@ -3,10 +3,6 @@ import React, { Component } from 'react';
 import Tab from './Tab';
 
 class TabList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     activeTab: this.props.children[0].props.label,
   };

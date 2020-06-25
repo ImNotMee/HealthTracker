@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 class Tab extends Component {
-  constructor(props) {
-    super(props);
-  }
   onClick = () => {
     this.props.onClick(this.props.label);
   };

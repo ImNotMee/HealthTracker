@@ -3,10 +3,6 @@ import './styles.css';
 import TabList from './TabList';
 import { NavLink } from 'react-router-dom';
 class LogWeight extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     user: this.props.activeUser,
     weight: 0,
