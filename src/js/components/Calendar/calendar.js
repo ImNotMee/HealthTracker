@@ -4,14 +4,6 @@ import Appointment from './appointment.js';
 let date;
 
 class CalendarModule extends Component {
-  constructor(props) {
-    super(props);
-    date = 1;
-    console.log('Calendar Loaded successfully');
-  }
-
-  state = {};
-
   getFirstDay() {
     let d = new Date();
     const firstDay = new Date(d.getFullYear(), d.getMonth(), 1);
@@ -82,7 +74,7 @@ class CalendarModule extends Component {
     for (let i = 0; i < 7; i++) {
       if (date < 32) {
         // only make it to show that on the 24th, this person has some appointments
-        if (date == 24) {
+        if (date === 24) {
           days.push(
             <div id="dates" key={i}>
               <p>{date}</p>
