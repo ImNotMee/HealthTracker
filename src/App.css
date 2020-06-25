@@ -20,6 +20,14 @@
   font: bold 1em var(--btn-font-family), sans-serif;
 }
 
+.primary-btn:focus {
+  outline: none;
+}
+
+.invalidInput {
+  border: 2px solid var(--error-color);
+}
+
 .windowWrapper {
   padding: 30px;
   box-shadow: 0px 9px 22px -6px rgba(0, 0, 0, 0.75);
