@@ -31,6 +31,8 @@ class TabList extends Component {
           {this.props.children.map((child) => {
             if (child.props.label === this.state.activeTab) {
               return child.props.children;
+            } else {
+              return undefined;
             }
           })}
         </div>
