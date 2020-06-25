@@ -39,6 +39,9 @@ class HomePage extends Component {
             <Route exact path="/overview/logWeight" render={() => <LogWeight />} />
             <Route exact path="/overview/logWater" render={() => <LogWater />} />
             <Route exact path="/overview/logCalories" render={() => <LogCalories />} />
+            <Route exact path="/overview/logMood" render={() => <LogMood />} />
+            <Route exact path="/overview/logSleep" render={() => <LogSleep />} />
+            <Route exact path="/overview/logStress" render={() => <LogStress />} />
           </Switch>
         </div>
       </div>

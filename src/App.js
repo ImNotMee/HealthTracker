@@ -56,6 +56,9 @@ class App extends Component {
                 '/overview/logWeight',
                 '/overview/logWater',
                 '/overview/logCalories',
+                '/overview/logMood',
+                '/overview/logSleep',
+                '/overview/logStress',
               ]}
               render={() => (
                 <div>
