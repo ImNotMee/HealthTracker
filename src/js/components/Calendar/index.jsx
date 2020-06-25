@@ -3,10 +3,6 @@ import './styles.css';
 import CalendarModule from './calendar.js';
 
 class Calendar extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     user: this.props.activeUser,
   };
