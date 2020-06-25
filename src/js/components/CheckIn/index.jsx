@@ -32,13 +32,12 @@ class CheckIn extends Component {
               to date by checking in.
             </p>
             <p>Please select a location to see its occupancy status. </p>
-            <ListSelector id="List" options={PARK_LOCATIONS} onChangeHandler={onSelectHandler()} />
-            <button
-              className="primary-btn"
-              onClick={() => {
-                checkInHandler(this);
-              }}
-            >
+            <ListSelector
+              id="List"
+              options={PARK_LOCATIONS}
+              onChangeHandler={this.onSelectHandler}
+            />
+            <button className="primary-btn" onClick={() => {}}>
               check-in
             </button>
           </div>
