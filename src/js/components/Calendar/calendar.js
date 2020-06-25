@@ -4,6 +4,12 @@ import Appointment from './appointment.js';
 let date;
 
 class CalendarModule extends Component {
+  constructor(props) {
+    super(props);
+    date = 1;
+    console.log('Calendar Loaded successfully');
+  }
+
   getFirstDay() {
     let d = new Date();
     const firstDay = new Date(d.getFullYear(), d.getMonth(), 1);
