@@ -3,11 +3,6 @@ import './styles.css';
 import PieChart from './Chart.js';
 
 class Card extends Component {
-  constructor(props) {
-    super(props);
-    console.log(this.props.activeUser);
-  }
-
   state = {
     user: this.props.activeUser,
     title: this.props.title,
@@ -106,7 +101,7 @@ class Card extends Component {
     }
     return (
       <div>
-        <img class="cardIcon" src={imageSrc}></img>
+        <img className="cardIcon" alt="card" src={imageSrc}></img>
         <p id="cardValue">{text}</p>
       </div>
     );
@@ -127,9 +122,9 @@ class Card extends Component {
     }
     return (
       <div>
-        <img class="cardIcon" src={imageSrc}></img>
+        <img className="cardIcon" alt="card icon" src={imageSrc}></img>
         <div>
-          <input class="inputSlider" type="range" min={0} max={10} value={stressInt}></input>
+          <input className="inputSlider" type="range" min={0} max={10} value={stressInt}></input>
           <span id="cardValue">{stress}</span>
         </div>
       </div>
@@ -162,13 +157,13 @@ class Card extends Component {
     return (
       <div>
         <div>
-          <p class={hoursDisplay}>
-            <img class="sleepIcon" src={imageSrc}></img>
+          <p className={hoursDisplay}>
+            <img className="sleepIcon" alt="card icon" src={imageSrc}></img>
             {hours} Hours
           </p>
         </div>
         <div>
-          <p class={qualityDisplay}>Sleep Quality: {quality}</p>
+          <p className={qualityDisplay}>Sleep Quality: {quality}</p>
         </div>
       </div>
     );
