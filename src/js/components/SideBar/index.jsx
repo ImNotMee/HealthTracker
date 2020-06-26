@@ -5,6 +5,7 @@ import './styles.css';
 class Sidebar extends Component {
   state = {
     user: this.props.activeUser,
+    hasError: false,
     profilePic:
       'https://3.bp.blogspot.com/-qDc5kIFIhb8/UoJEpGN9DmI/AAAAAAABl1s/BfP6FcBY1R8/s1600/BlueHead.jpg',
   };
@@ -14,7 +15,7 @@ class Sidebar extends Component {
       <div id="sideBar">
         <div id="userProfile">
           <img id="userPicture" alt="profile" src={this.state.profilePic}></img>
-          <h2>{this.state.user.firstName}</h2>
+          <h2>{this.state.user?.firstName}</h2>
         </div>
         <div id="NavOptions">
           <NavLink to="/overview" activeClassName="activeLink" className="home_navlink">
