@@ -6,7 +6,8 @@ export const addUser = (ctx, newUser) => {
   const loginUserIdMap = ctx.state.loginUserIdMap;
 
   userList.push(newUser);
-  loginUserIdMap[newUser.getHash()] = newUser;
+  loginUserIdMap[newUser.getHash()] = userList.length - 1;
+  console.log(userList);
   ctx.setState({
     users: userList,
     loginUserIdMap: loginUserIdMap,

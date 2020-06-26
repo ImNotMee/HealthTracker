@@ -19,7 +19,7 @@ class HomePage extends Component {
     return (
       <div id="HomeWrapper">
         <div id="NavBarWrapper">
-          <SideBar logoutHandler={this.props.logoutHandler} activeUser={this.props.activeUser} />
+          <SideBar logoutHandler={this.props.logoutHandler} activeUser={this.state.user} />
         </div>
         <div id="HomeContentWrapper">
           {/* Similar to a switch statement - shows the component depending on the URL path */}
