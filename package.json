@@ -43,7 +43,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": ["buid", "test:nowatch"]
     }
   },
   "lint-staged": {
