@@ -24,7 +24,7 @@
 #CheckInWrapper {
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height: max-content;
   justify-content: space-evenly;
 }
 

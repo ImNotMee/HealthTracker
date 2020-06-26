@@ -44,7 +44,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "lint-staged && CI=true npm run build && CI=true npm test"
     }
   },
   "lint-staged": {

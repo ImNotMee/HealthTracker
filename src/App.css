@@ -17,7 +17,7 @@
   color: var(--contrast-text-color);
   text-align: center;
   border-radius: var(--border-radius-val);
-  font: bold 1em var(--btn-font-family), sans-serif;
+  font: 800 1em var(--btn-font-family), sans-serif;
 }
 
 .primary-btn:focus {

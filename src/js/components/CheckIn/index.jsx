@@ -34,7 +34,7 @@ class CheckIn extends Component {
               onChangeHandler={this.onSelectHandler}
             />
             <button className="primary-btn" onClick={() => {}}>
-              check-in
+              View Place
             </button>
           </div>
         </div>

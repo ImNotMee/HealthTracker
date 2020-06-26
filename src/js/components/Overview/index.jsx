@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './styles.css';
 import Card from '../Card';
-//import { fetchCardData } from '../../actions/cardData';
 
 class Overview extends Component {
   state = {
