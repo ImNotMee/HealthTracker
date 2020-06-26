@@ -32,7 +32,9 @@ class LogCalories extends Component {
                 <input type="text" id="caloriesLog" placeholder="Enter Amount" />
                 <label id="caloriesUnits">Calories</label>
                 <p>Suggested amount of Calories per day: 2000 Calories</p>
-                <input type="submit" id="logButton" value="Save" />
+                <button className="primary-btn" id="logButton">
+                  Save
+                </button>
               </fieldset>
             </form>
           </div>

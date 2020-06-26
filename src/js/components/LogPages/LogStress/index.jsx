@@ -67,7 +67,9 @@ class LogStress extends Component {
                 </div>
                 <div class="resultContainer">
                   <label id="outputValue">Your stress level: {this.state.value}</label>
-                  <input type="submit" id="logButton" value="Save" />
+                  <button className="primary-btn" id="logButton">
+                    Save
+                  </button>
                 </div>
               </fieldset>
             </form>

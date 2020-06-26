@@ -14,7 +14,7 @@ class Sidebar extends Component {
       <div id="sideBar">
         <div id="userProfile">
           <img id="userPicture" alt="profile" src={this.state.profilePic}></img>
-          <h2>{this.state.user.firstName}</h2>
+          <h2>Ben</h2>
         </div>
         <div id="NavOptions">
           <NavLink to="/overview" activeClassName="activeLink" className="home_navlink">
@@ -67,3 +67,4 @@ class Sidebar extends Component {
 }
 
 export default Sidebar;
+/*<h2>{this.state.user.firstName}</h2>*/

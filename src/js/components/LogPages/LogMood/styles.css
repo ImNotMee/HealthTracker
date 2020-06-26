@@ -25,7 +25,7 @@
 #iconContainer {
   margin-top: 15px;
   height: 100px;
-  justify-content: space-between;
+  display: flex;
 }
 #emoticon {
   width: 75%;
@@ -36,7 +36,7 @@
   float: left;
 }
 #carrier input[type='radio'] {
-  margin-left: 6px;
+  margin-left: 30%;
 }
 
 #check {
@@ -98,21 +98,9 @@ li {
   padding: 15px;
 }
 
-.logMoodBox form fieldset input {
-  font-size: 15px;
-  width: 70%;
-  margin: 0;
-  padding: 10px 5%;
-  border: thin solid var(--primary-color);
-}
-
-.logMoodBox input[type='submit'] {
-  width: 50%;
+#logButton {
   float: right;
-  background-color: var(--primary-color);
-  color: white;
-  font-style: var(--btn-font-family);
-  border-radius: var(--border-radius-val);
+  width: 50%;
 }
 
 #tipBox {

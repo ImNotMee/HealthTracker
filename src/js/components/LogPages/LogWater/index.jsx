@@ -40,7 +40,9 @@ class LogWater extends Component {
                 <input type="text" id="waterLog" placeholder="Enter Amount" />
                 <label id="waterUnits">ml</label>
                 <p>Suggested amount of water per day: 2 ~ 2.5L</p>
-                <input type="submit" id="logButton" value="Save" />
+                <button className="primary-btn" id="logButton">
+                  Save
+                </button>
               </fieldset>
             </form>
           </div>

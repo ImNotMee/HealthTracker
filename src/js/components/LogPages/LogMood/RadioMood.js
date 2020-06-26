@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Radio extends Component {
+class RadioMood extends Component {
   constructor(props) {
     super(props);
     this.onChangeValue = this.onChangeValue.bind(this);
@@ -8,10 +8,11 @@ class Radio extends Component {
 
   state = {
     user: this.props.activeuser,
+    mood: '',
   };
   onChangeValue = (event) => {
     this.setState({
-      selectedOption: event.target.value,
+      mood: event.target.value,
     });
   };
 
@@ -27,7 +28,7 @@ class Radio extends Component {
           <input
             type="radio"
             value="angry"
-            checked={this.state.selectedOption === 'angry'}
+            checked={this.state.mood === 'angry'}
             onChange={this.onChangeValue}
           />
         </div>
@@ -40,7 +41,7 @@ class Radio extends Component {
           <input
             type="radio"
             value="sad"
-            checked={this.state.selectedOption === 'sad'}
+            checked={this.state.mood === 'sad'}
             onChange={this.onChangeValue}
           />
         </div>
@@ -53,7 +54,7 @@ class Radio extends Component {
           <input
             type="radio"
             value="thoughtful"
-            checked={this.state.selectedOption === 'thoughtful'}
+            checked={this.state.mood === 'thoughtful'}
             onChange={this.onChangeValue}
           />
         </div>
@@ -66,7 +67,7 @@ class Radio extends Component {
           <input
             type="radio"
             value="soso"
-            checked={this.state.selectedOption === 'soso'}
+            checked={this.state.mood === 'soso'}
             onChange={this.onChangeValue}
           />
         </div>
@@ -79,7 +80,7 @@ class Radio extends Component {
           <input
             type="radio"
             value="happy"
-            checked={this.state.selectedOption === 'happy'}
+            checked={this.state.mood === 'happy'}
             onChange={this.onChangeValue}
           />
         </div>
@@ -92,7 +93,7 @@ class Radio extends Component {
           <input
             type="radio"
             value="lovely"
-            checked={this.state.selectedOption === 'lovely'}
+            checked={this.state.mood === 'lovely'}
             onChange={this.onChangeValue}
           />
         </div>
@@ -100,4 +101,4 @@ class Radio extends Component {
     );
   }
 }
-export default Radio;
+export default RadioMood;

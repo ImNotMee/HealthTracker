@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import './styles.css';
-
+import RadioSleep from './RadioSleep';
 import { NavLink } from 'react-router-dom';
 
 class LogSleep extends Component {
   state = {
     user: this.props.activeuser,
-    sleepHour: 0,
   };
 
   render() {
@@ -43,8 +42,11 @@ class LogSleep extends Component {
 
                 <input type="text" id="sleepLog" placeholder="Enter Hours" />
                 <label id="sleepUnits">Hours</label>
+                <RadioSleep></RadioSleep>
                 <p>Average person needs 7 ~ 8 hours sleep per day</p>
-                <input type="submit" id="logButton" value="Save" />
+                <button className="primary-btn" id="logButton">
+                  Save
+                </button>
               </fieldset>
             </form>
           </div>

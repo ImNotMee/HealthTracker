@@ -92,21 +92,25 @@
   padding: 15px;
 }
 
-.logbox form fieldset input {
+#weightLog {
   font-size: 15px;
   width: 60%;
   margin-bottom: 5px;
   padding: 10px 5%;
-  border: thin solid var(--primary-color);
+  border-radius: 12px;
 }
 
-.logbox input[type='submit'] {
-  width: 50%;
-  float: right;
-  background-color: var(--primary-color);
-  color: white;
-  font-style: var(--btn-font-family);
+#heightLog {
+  font-size: 15px;
+  width: 60%;
+  margin-bottom: 5px;
+  padding: 10px 5%;
   border-radius: 12px;
+}
+
+#logButton {
+  float: right;
+  width: 50%;
 }
 
 /*Tip Box css*/

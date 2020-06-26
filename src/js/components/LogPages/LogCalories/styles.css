@@ -75,12 +75,12 @@ li {
   padding: 15px;
 }
 
-.logCaloriesBox form fieldset #caloriesLog {
+#caloriesLog {
   font-size: 15px;
   width: 70%;
   margin: 0;
   padding: 10px 5%;
-  border: thin solid var(--primary-color);
+  border-radius: 12px;
 }
 
 #caloriesUnits {
@@ -88,15 +88,9 @@ li {
   margin-left: 5px;
 }
 
-.logCaloriesBox input[type='submit'] {
-  width: 50%;
-  height: 40px;
-  border: none;
+#logButton {
   float: right;
-  background-color: var(--primary-color);
-  color: white;
-  font-style: var(--btn-font-family);
-  border-radius: var(--border-radius-val);
+  width: 50%;
 }
 
 #tipBox {

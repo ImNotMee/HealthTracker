@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './styles.css';
-import Radio from './Radio';
+import RadioMood from './RadioMood';
 import { NavLink } from 'react-router-dom';
 
 class LogMood extends Component {
@@ -31,9 +31,11 @@ class LogMood extends Component {
               <fieldset>
                 <h3>How do you feel today?</h3>
                 <div id="iconContainer">
-                  <Radio></Radio>
+                  <RadioMood></RadioMood>
                 </div>
-                <input type="submit" id="logButton" value="Save" />
+                <button className="primary-btn" id="logButton">
+                  Save
+                </button>
               </fieldset>
             </form>
           </div>

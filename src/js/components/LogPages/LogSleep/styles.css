@@ -83,12 +83,12 @@ li {
   padding: 15px;
 }
 
-.logSleepBox form fieldset #sleepLog {
+#sleepLog {
   font-size: 15px;
   width: 70%;
   margin: 0;
   padding: 10px 5%;
-  border: thin solid var(--primary-color);
+  border-radius: 12px;
 }
 
 .logSleepBox #sleepIcon {
@@ -97,15 +97,9 @@ li {
   vertical-align: middle;
 }
 
-.logSleepBox input[type='submit'] {
-  width: 50%;
-  height: 40px;
-  border: none;
+#logButton {
   float: right;
-  background-color: #0bbbeb;
-  color: white;
-  font-style: var(--btn-font-family);
-  border-radius: var(--border-radius-val);
+  width: 50%;
 }
 
 #tipBox {

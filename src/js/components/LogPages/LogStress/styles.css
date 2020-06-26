@@ -94,16 +94,9 @@ li {
 #sliderNum1 {
   float: right;
 }
-
-.logStressBox input[type='submit'] {
-  width: 50%;
+#logButton {
   float: right;
-  height: 40px;
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  font-style: var(--btn-font-family);
-  border-radius: var(--border-radius-val);
+  width: 50%;
 }
 
 label #outputValue {

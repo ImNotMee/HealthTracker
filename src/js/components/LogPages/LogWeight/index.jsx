@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles.css';
 import TabList from './TabList';
 import { NavLink } from 'react-router-dom';
+
 class LogWeight extends Component {
   state = {
     user: this.props.activeUser,
@@ -25,7 +26,9 @@ class LogWeight extends Component {
             <li>Overweight: 25 ~ 29.9</li>
             <li>Obese: 30 ~ 39.9</li>
           </ul>
-          <input type="submit" id="logButton" value="Save" />
+          <button className="primary-btn" id="logButton">
+            Save
+          </button>
         </fieldset>
       </form>
     );
@@ -46,7 +49,9 @@ class LogWeight extends Component {
             <li>Overweight: 25 ~ 29.9</li>
             <li>Obese: 30 ~ 39.9</li>
           </ul>
-          <input type="submit" id="logButton" value="Save" />
+          <button className="primary-btn" id="logButton">
+            Save
+          </button>
         </fieldset>
       </form>
     );
