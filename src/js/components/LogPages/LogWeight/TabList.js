@@ -6,6 +6,7 @@ class TabList extends Component {
   state = {
     activeTab: this.props.children[0].props.label,
   };
+
   onClickTab = (tab) => {
     this.setState({
       activeTab: tab,

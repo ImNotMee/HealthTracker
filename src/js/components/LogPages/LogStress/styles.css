@@ -1,7 +1,6 @@
 #LogStresssWrapper {
   height: 100vh;
   width: 84vw;
-  padding: 10px;
 }
 
 #stressHeader {
@@ -9,11 +8,6 @@
   margin-top: 10%;
   text-align: center;
   font-style: var(--title-font-family);
-}
-
-#tipHead {
-  color: black;
-  margin-top: 23%;
 }
 
 #icon {
@@ -26,12 +20,9 @@ li {
   font-style: var(--text-font-family);
 }
 
-.view {
+.logStressView {
   height: 100%;
   position: fixed;
-  z-index: 1;
-  top: 0;
-  overflow-x: hidden;
 }
 
 #closeButton {
@@ -55,8 +46,7 @@ li {
 .left {
   width: 59vw;
   left: 0;
-  border-left: 1px solid var(--primary-color);
-  margin-left: 16vw;
+  margin-left: 15vw;
 }
 
 .right {
@@ -67,7 +57,7 @@ li {
 
 .logStressBox {
   margin: auto;
-  margin-top: 100px;
+  margin-top: 150px;
   width: 50%;
   box-shadow: 0px 9px 22px -6px rgba(0, 0, 0, 0.75);
   border-radius: var(--border-radius-val);
@@ -97,15 +87,5 @@ li {
 #logButton {
   float: right;
   width: 50%;
-}
-
-label #outputValue {
-}
-#tipBox {
-  margin: auto;
-  width: 80%;
-  box-shadow: 0px 9px 22px -6px rgba(0, 0, 0, 0.75);
-  border-radius: var(--border-radius-val);
-  padding: 5px;
-  vertical-align: middle;
+  font-weight: normal;
 }

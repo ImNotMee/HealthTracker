@@ -5,7 +5,7 @@
   justify-content: space-between;
   position: fixed;
   height: 100%;
-  width: 215px;
+  width: 15vw;
 }
 
 #icon {
@@ -37,17 +37,22 @@
 }
 
 .home_navlink {
-  padding: 0 20px;
+  padding: 5px 20px;
   font-size: 1.3em;
   text-decoration: none;
 }
 .activeLink {
   background-color: var(--primary-color);
   color: var(--contrast-text-color);
+  height: 35px;
+  border-radius: 12px;
 }
 
 #logOut {
   font-size: 16px;
   margin-top: auto;
   height: 35px;
+  background-color: var(--primary-color);
+  color: var(--contrast-text-color);
+  border-radius: 12px;
 }

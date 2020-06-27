@@ -1,7 +1,6 @@
 #LogMoodWrapper {
   height: 100vh;
   width: 84vw;
-  padding: 10px;
 }
 
 #moodHeader {
@@ -9,11 +8,6 @@
   margin-top: 10%;
   text-align: center;
   font-style: var(--title-font-family);
-}
-
-#tipHead {
-  color: black;
-  margin-top: 23%;
 }
 
 #icon {
@@ -30,12 +24,13 @@
 #emoticon {
   width: 75%;
 }
-#carrier {
+
+#carriers {
   width: 80px;
   height: 80px;
   float: left;
 }
-#carrier input[type='radio'] {
+#carriers input[type='radio'] {
   margin-left: 30%;
 }
 
@@ -65,29 +60,26 @@ li {
   height: 20px;
 }
 
-.view {
+.logMoodView {
   height: 100%;
   position: fixed;
-  z-index: 1;
-  top: 0;
-  overflow-x: hidden;
 }
 
 .left {
   width: 59vw;
   left: 0;
-  border-left: 1px solid var(--primary-color);
+  margin-left: 15vw;
 }
 
 .right {
   right: 0;
-  width: 25vw%;
+  width: 25vw;
   border-left: 1px solid var(--primary-color);
 }
 
 .logMoodBox {
   margin: auto;
-  margin-top: 100px;
+  margin-top: 150px;
   width: 50%;
   box-shadow: 0px 9px 22px -6px rgba(0, 0, 0, 0.75);
   border-radius: var(--border-radius-val);
@@ -101,13 +93,5 @@ li {
 #logButton {
   float: right;
   width: 50%;
-}
-
-#tipBox {
-  margin: auto;
-  width: 80%;
-  box-shadow: 0px 9px 22px -6px rgba(0, 0, 0, 0.75);
-  border-radius: var(--border-radius-val);
-  padding: 5px;
-  vertical-align: middle;
+  font-weight: normal;
 }

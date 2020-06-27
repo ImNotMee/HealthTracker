@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles.css';
 import RadioMood from './RadioMood';
 import { NavLink } from 'react-router-dom';
+import TipBox from './../TipBox/TipBox';
 
 class LogMood extends Component {
   state = {
@@ -10,7 +11,7 @@ class LogMood extends Component {
   render() {
     return (
       <div id="LogMoodWrapper">
-        <div className="view left">
+        <div className="logMoodView left">
           <NavLink to="/overview" id="closeButton">
             <img
               id="xButton"
@@ -40,28 +41,8 @@ class LogMood extends Component {
             </form>
           </div>
         </div>
-        <div className="view right">
-          <h1 id="tipHead">
-            <img
-              id="icon"
-              src="https://image.flaticon.com/icons/png/512/900/900516.png"
-              alt="icon"
-            ></img>
-            Tips: Healthy Weight
-          </h1>
-          <div id="tipBox">
-            <ol>
-              <li>Reduce sugar</li>
-              <li>Work out at least 3 times a week</li>
-              <li>Drink water</li>
-              <li>Reduce carbs</li>
-              <li>Exercise protein control and count calories</li>
-              <li>Keep healthy lifestyle</li>
-              <li>Get good Sleep</li>
-              <li>No sugary drinks</li>
-              <li>Chew slowly, Eat slowly</li>
-            </ol>
-          </div>
+        <div className="logMoodView right">
+          <TipBox label="mental"></TipBox>
         </div>
       </div>
     );

@@ -68,4 +68,3 @@ class Sidebar extends Component {
 }
 
 export default Sidebar;
-/*<h2>{this.state.user.firstName}</h2>*/

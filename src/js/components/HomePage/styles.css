@@ -1,16 +1,17 @@
 #HomeWrapper {
   display: flex;
   margin: 0;
-  min-height: 600px;
+  height: 100vh;
 }
 
 #NavBarWrapper {
-  width: 215px;
-  min-height: 600px;
+  width: 15vw;
+  height: 100vh;
+  border-right: 1px solid var(--primary-color);
 }
 
 #HomeContentWrapper {
   margin: 0;
-  width: 83.5vw;
-  min-height: 600px;
+  width: 84vw;
+  height: 100vh;
 }
