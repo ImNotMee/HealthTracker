@@ -7,6 +7,7 @@ import HomePage from './js/components/HomePage';
 import { setActiveUser } from './js/actions/login';
 import { logoutUser } from './js/actions/logout';
 
+import { PAGE_ADDRESS } from './js/constants';
 import './App.css';
 
 class App extends Component {
@@ -47,7 +48,7 @@ class App extends Component {
             />
             <Route
               exact
-              path={['/overview', '/trends', '/reminders', '/calendar', '/check-in']}
+              path={PAGE_ADDRESS}
               render={() => (
                 <div>
                   <HomePage

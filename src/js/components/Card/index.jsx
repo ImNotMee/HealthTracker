@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './styles.css';
 import PieChart from './Chart.js';
+import { NavLink } from 'react-router-dom';
 
 class Card extends Component {
   state = {
@@ -8,6 +9,7 @@ class Card extends Component {
     title: this.props.title,
     value: this.props.value,
     image: this.props.image,
+    address: this.props.address,
     type: this.props.type,
   };
 
@@ -170,11 +172,12 @@ class Card extends Component {
   }
 
   render() {
+    const add = `/overview/${this.state.address}`;
     return (
-      <div id="cardWrapper">
+      <NavLink to={add} id="cardWrapper">
         <h2 id="cardTitle">{this.state.title}</h2>
         {this.CardSwitch(this.state.type)}
-      </div>
+      </NavLink>
     );
   }
 }

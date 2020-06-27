@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import SideBar from '../SideBar';
 import Overview from '../Overview';
+import LogWeight from '../LogPages/LogWeight';
+import LogWater from '../LogPages/LogWater';
+import LogCalories from '../LogPages/LogCalories';
+import LogMood from '../LogPages/LogMood';
+import LogSleep from '../LogPages/LogSleep';
+import LogStress from '../LogPages/LogStress';
 import Trends from '../Trends';
 import Reminders from '../Reminders';
 import Calendar from '../Calendar';
@@ -30,6 +36,12 @@ class HomePage extends Component {
             <Route exact path="/reminders" render={() => <Reminders />} />
             <Route exact path="/calendar" render={() => <Calendar />} />
             <Route exact path="/check-in" render={() => <CheckIn />} />
+            <Route exact path="/overview/logWeight" render={() => <LogWeight />} />
+            <Route exact path="/overview/logWater" render={() => <LogWater />} />
+            <Route exact path="/overview/logCalories" render={() => <LogCalories />} />
+            <Route exact path="/overview/logMood" render={() => <LogMood />} />
+            <Route exact path="/overview/logSleep" render={() => <LogSleep />} />
+            <Route exact path="/overview/logStress" render={() => <LogStress />} />
           </Switch>
         </div>
       </div>

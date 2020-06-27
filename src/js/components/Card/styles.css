@@ -3,6 +3,7 @@
   height: 300px;
   border: #000000 2px solid;
   text-align: center;
+  border-radius: var(--border-radius-val);
 }
 
 .cardIcon {
