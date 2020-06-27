@@ -136,7 +136,7 @@ class Overview extends Component {
             activeUser={this.props.activeUser}
             title="Medication"
             value={this.state.Medication}
-            address="logMedical"
+            address="logCalories"
             image=""
             type="7"
           />
@@ -154,7 +154,7 @@ class Overview extends Component {
             activeUser={this.props.activeUser}
             title="Appointments"
             value={this.state.Appointments}
-            address="logMedical"
+            address="logCalories"
             image=""
             type="9"
           />
