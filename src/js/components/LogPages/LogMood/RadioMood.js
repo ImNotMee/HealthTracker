@@ -3,10 +3,6 @@ import './styles.css';
 import { MOODLIST } from './../../../constants';
 
 class RadioMood extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     user: this.props.activeuser,
     mood: '',

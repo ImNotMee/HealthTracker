@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 class RadioSleep extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     user: this.props.activeuser,
     quality: '',
