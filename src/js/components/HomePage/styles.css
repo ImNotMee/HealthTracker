@@ -6,7 +6,7 @@
 }
 
 #NavBarWrapper {
-  width: 15vw;
+  width: 215px;
   min-height: 600px;
   border-right: 1px solid var(--primary-color);
 }
