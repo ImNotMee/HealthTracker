@@ -1,14 +1,19 @@
 const log = console.log;
 
 export const setActiveUser = (app, user) => {
-  app.setState({
-    activeUser: user,
-  });
+  app.setState(
+    {
+      activeUser: user,
+    },
+    () => {
+      log(`${app.state.activeUser === user ? 'Successfully' : 'Unsuccessfully'} login`);
+    },
+  );
 };
 
-export const onLogin = (landingPage, email, password) => {
+export const onLoginHandler = (landingPage, email, password) => {
   const authKey = _getUserHash(email, password);
-  const user = getUserByAuthKey(landingPage, authKey);
+  const user = landingPage.props.users[authKey];
   // check login attempt
   if (user === null || user === undefined) {
     landingPage.setState({
@@ -22,7 +27,6 @@ export const onLogin = (landingPage, email, password) => {
       invalidLogin: false,
     });
     landingPage.props.setActiveUserHandler(user);
-    log('Successful login');
   }
 };
 

@@ -7,6 +7,11 @@ export const ACCOUNT_TYPES = {
   user: USER_ACCOUNT_TYPE,
 };
 
+export const USERS = {
+  useruser: { firstName: 'Ben', lastName: 'John', hash: 'useruser' },
+  adminadmin: { firstName: 'IAmAdmin', lastName: 'John', hash: 'adminadmin' },
+};
+
 export const PAGE_ADDRESS = [
   '/overview',
   '/trends',
