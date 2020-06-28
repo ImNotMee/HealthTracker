@@ -24,6 +24,21 @@ export const PAGE_ADDRESS = [
 
 export const PARK_LOCATIONS = ['loc 1', 'loc 2', 'loc 3', 'loc 4'];
 
+export const LOCATIONS = {
+  'loc 1': {
+    id: 'loc 1',
+    name: "Queen's Park",
+    isAvaliable: true,
+    address: '111 Wellesley St W, Toronto, ON',
+    country: 'Canada',
+    imageUrl:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Looking_down_University_Avenue_Toronto_August_2012.jpg/1200px-Looking_down_University_Avenue_Toronto_August_2012.jpg',
+    maxOccupancy: 300,
+    currOccupancy: 52,
+    description: 'some information about the park',
+  },
+};
+
 export const WEIGHT_TIP = [
   'Reduce Sugar',
   'Work out at least 3 times a week',
