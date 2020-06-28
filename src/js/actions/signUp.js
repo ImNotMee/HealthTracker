@@ -1,17 +1,14 @@
 const log = console.log;
 
-export const addUser = (ctx, newUser) => {
+export const addUserHandler = (ctx, newUser) => {
   log('Adding user...');
-  const userList = ctx.state.users;
-  const loginUserIdMap = ctx.state.loginUserIdMap;
+  const users = ctx.state.userDB;
 
-  userList.push(newUser);
-  loginUserIdMap[newUser.getHash()] = userList.length - 1;
-  console.log(userList);
+  users[newUser.hash] = newUser;
   ctx.setState({
-    users: userList,
-    loginUserIdMap: loginUserIdMap,
+    userDB: users,
   });
+  log(ctx.state.userDB);
 };
 
 export const signUpUser = (signUpCtx) => {
