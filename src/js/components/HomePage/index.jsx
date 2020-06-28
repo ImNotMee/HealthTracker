@@ -31,11 +31,14 @@ class HomePage extends Component {
           {/* Similar to a switch statement - shows the component depending on the URL path */}
           {/* Each Route below shows a different component depending on the exact path in the URL  */}
           <Switch>
+            {/* Page nav */}
             <Route exact path="/overview" render={() => <Overview />} />
             <Route exact path="/trends" render={() => <Trends />} />
             <Route exact path="/reminders" render={() => <Reminders />} />
             <Route exact path="/calendar" render={() => <Calendar />} />
             <Route exact path="/check-in" render={() => <CheckIn />} />
+
+            {/* Activity logging view nav */}
             <Route exact path="/overview/logWeight" render={() => <LogWeight />} />
             <Route exact path="/overview/logWater" render={() => <LogWater />} />
             <Route exact path="/overview/logCalories" render={() => <LogCalories />} />
