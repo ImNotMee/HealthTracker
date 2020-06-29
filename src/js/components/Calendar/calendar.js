@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import './styles.css';
 import Appointment from './appointment.js';
 import Streaks from './streaks.js';
+import { DAYSOFWEEK } from '../../constants.js';
 let date;
 
 class CalendarModule extends Component {
-
   componentDidMount() {
     this.renderCalendar();
   }
@@ -21,7 +21,7 @@ class CalendarModule extends Component {
   }
 
   renderHeaders() {
-    const headers = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursdsay', 'Friday', 'Saturday'];
+    const headers = DAYSOFWEEK;
     let head = [];
     for (let i = 0; i < 7; i++) {
       head.push(
