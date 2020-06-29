@@ -5,11 +5,6 @@ import Streaks from './streaks.js';
 let date;
 
 class CalendarModule extends Component {
-  constructor(props) {
-    super(props);
-    console.log('Calendar Loaded successfully');
-  }
-
   componentDidMount() {
     this.renderCalendar();
   }
@@ -22,15 +17,6 @@ class CalendarModule extends Component {
     let d = new Date();
     const firstDay = new Date(d.getFullYear(), d.getMonth(), 1);
     return firstDay.getDay();
-  }
-
-  renderTabs() {
-    return (
-      <div id="calendarContainer">
-        <button id="tabs">Calendar</button>
-        <button id="tabs">Streaks</button>
-      </div>
-    );
   }
 
   renderHeaders() {
