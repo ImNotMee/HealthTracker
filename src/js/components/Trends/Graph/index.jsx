@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './styles.css';
 import Chart from 'chart.js';
+import { DAYSOFWEEK } from '../../../constants';
 
 class Graph extends Component {
   chartRef = React.createRef();
@@ -17,7 +18,7 @@ class Graph extends Component {
     new Chart(graphRef, {
       type: this.props.type,
       data: {
-        labels: ['Sunday', 'Monday', 'Tuesday', 'Wedsnesday', 'Thursday', 'Friday', 'Saturday'],
+        labels: DAYSOFWEEK,
         datasets: [
           {
             label: this.props.title,
