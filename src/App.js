@@ -4,15 +4,20 @@ import { Redirect, Route, Switch, BrowserRouter } from 'react-router-dom';
 import LandingPage from './js/components/LandingPage';
 import HomePage from './js/components/HomePage';
 
+import { addUserHandler } from './js/actions/signUp';
 import { setActiveUser } from './js/actions/login';
 import { logoutUser } from './js/actions/logout';
+import { checkInHandler, checkoutHandler } from './js/actions/checkIn';
 
+import { USERS, PAGE_ADDRESS, LOCATIONS } from './js/constants';
 import './App.css';
 
 class App extends Component {
   // TODO: fix prop drilling for active user
   state = {
     activeUser: null,
+    locationsDB: LOCATIONS,
+    userDB: USERS,
   };
 
   checkLoginState = () => {
@@ -38,7 +43,11 @@ class App extends Component {
               path="/signup"
               render={() => (
                 <LandingPage
-                  state={this.state}
+                  activeUser={this.state.activeUser}
+                  users={this.state.userDB}
+                  addUserHandler={(newUser) => {
+                    addUserHandler(this, newUser);
+                  }}
                   setActiveUserHandler={(user) => {
                     setActiveUser(this, user);
                   }}
@@ -47,14 +56,21 @@ class App extends Component {
             />
             <Route
               exact
-              path={['/overview', '/trends', '/reminders', '/calendar', '/check-in']}
+              path={PAGE_ADDRESS}
               render={() => (
                 <div>
                   <HomePage
                     logoutHandler={() => {
                       logoutUser(this);
                     }}
+                    checkInHandler={(location) => {
+                      checkInHandler(this, location);
+                    }}
+                    checkoutHandler={(location) => {
+                      checkoutHandler(this);
+                    }}
                     activeUser={this.state.activeUser}
+                    locations={this.state.locationsDB}
                   />
                 </div>
               )}

@@ -16,12 +16,12 @@ class ListSelector extends Component {
           list="list"
           name="list"
           id="List"
-          autocomplete="on"
-          onchange={onChangeHandler}
+          autoComplete="on"
+          onChange={onChangeHandler}
         />
         <datalist id="list">
           {options.map((value) => (
-            <option className="option" value={value} />
+            <option key={value} className="option" value={value} />
           ))}
         </datalist>
       </div>

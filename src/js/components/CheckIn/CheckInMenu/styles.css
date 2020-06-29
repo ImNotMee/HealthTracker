@@ -1,0 +1,25 @@
+#CheckInWrapper {
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+  justify-content: space-evenly;
+}
+
+#SelectWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#List {
+  display: flex;
+  width: 300px !important;
+  height: 30px;
+  align-self: center;
+  margin: 20px 40px;
+}
+
+#ViewPlaceBtn {
+  margin-left: auto;
+  width: 160px;
+}
