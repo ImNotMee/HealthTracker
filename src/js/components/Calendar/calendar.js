@@ -5,6 +5,7 @@ import Streaks from './streaks.js';
 let date;
 
 class CalendarModule extends Component {
+
   componentDidMount() {
     this.renderCalendar();
   }

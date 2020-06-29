@@ -1,0 +1,38 @@
+#PlaceViewerWrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+}
+
+#PlaceViewrHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 50px;
+}
+
+#PlaceViewrHeader img {
+  width: 30px;
+  height: 30px;
+}
+
+#PlaceContentWrapper {
+  padding: 10px 50px;
+  display: flex;
+  flex-direction: row;
+}
+
+#PlaceDetailsWrapper {
+  justify-content: start;
+  margin-left: 30px;
+}
+
+#PhotoWrapper img {
+  max-width: 300px;
+}
+
+#CheckInBtn {
+  width: 150px;
+  margin-left: auto;
+}

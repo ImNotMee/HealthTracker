@@ -1,37 +1,21 @@
 #PageWrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   height: 100vh;
   width: 82vw;
   padding: 10px;
 }
 
-#LeftWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: space-between;
-  justify-content: center;
-  height: 100%;
-  width: 50%;
-}
-
-#RightWrapper {
-  height: 100%;
-}
-
 #CheckInWrapper {
-  display: flex;
-  flex-direction: column;
-  height: 300px;
-  justify-content: space-evenly;
+  max-width: 800px;
 }
 
-#List {
-  display: flex;
-  width: 90% !important;
-  height: 30px;
-  align-self: center;
-  margin: 20px auto;
+#CheckOutWrapper {
+  width: 850px;
+}
+
+hr {
+  margin: 50px;
 }
