@@ -34,7 +34,11 @@ class HomePage extends Component {
             {/* Page nav */}
             <Route exact path="/overview" render={() => <Overview />} />
             <Route exact path="/trends" render={() => <Trends />} />
-            <Route exact path="/reminders" render={() => <Reminders />} />
+            <Route
+              exact
+              path="/reminders"
+              render={() => <Reminders activeUser={this.state.user} />}
+            />
             <Route exact path="/calendar" render={() => <Calendar />} />
             <Route
               exact
@@ -56,6 +60,9 @@ class HomePage extends Component {
             <Route exact path="/overview/logMood" render={() => <LogMood />} />
             <Route exact path="/overview/logSleep" render={() => <LogSleep />} />
             <Route exact path="/overview/logStress" render={() => <LogStress />} />
+
+            {/* Add Reminder view */}
+            <Route exact path="/reminders/add" render={() => <div>test</div>} />
           </Switch>
         </div>
       </div>
