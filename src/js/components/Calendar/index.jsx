@@ -28,12 +28,12 @@ class Calendar extends Component {
   }
 
   updateType(type) {
-    if (type == 'calendar') {
+    if (type === 'calendar') {
       this.setState({
         user: this.props.activeUser,
         type: 'calendar',
       });
-    } else if (type == 'streaks') {
+    } else if (type === 'streaks') {
       this.setState({
         user: this.props.activeUser,
         type: 'streaks',

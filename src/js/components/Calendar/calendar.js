@@ -55,14 +55,14 @@ class CalendarModule extends Component {
     for (let i = 0; i < 7; i++) {
       if (date < 32) {
         // only make it to show that on the 24th, this person has some appointments
-        if (this.props.type == 'calendar' && date === 24) {
+        if (this.props.type === 'calendar' && date === 24) {
           days.push(
             <div id="dates" key={i}>
               <p>{date}</p>
               <Appointment appointments={['Doctor Appointment', ' Check up Appointment']} />
             </div>,
           );
-        } else if (this.props.type == 'streaks' && date >= 28) {
+        } else if (this.props.type === 'streaks' && date >= 28) {
           days.push(
             <div id="dates" key={i}>
               <p>{date}</p>
