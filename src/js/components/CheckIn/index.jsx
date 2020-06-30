@@ -35,7 +35,7 @@ class CheckIn extends Component {
           />
           {this.state.locationViewed !== undefined ? (
             <div>
-              <hr />
+              <hr id="DetailsDivider" />
               <PlaceViewer
                 activeUser={this.state.user}
                 location={this.state.locationViewed}

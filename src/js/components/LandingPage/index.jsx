@@ -5,21 +5,13 @@ import Header from './Header';
 import SignUpForm from './SignUp';
 
 // Importing actions/required methods
-import { onLogin } from '../../actions/login';
-import { addUser } from '../../actions/signUp';
+import { onLoginHandler } from '../../actions/login';
 
 import './styles.css';
 
 class LandingPage extends Component {
   state = {
-    users: [
-      { firstName: 'Ben', lastName: 'John' },
-      { firstName: 'IAmAdmin', lastName: 'John' },
-    ],
-    loginUserIdMap: {
-      useruser: 0,
-      adminadmin: 1,
-    },
+    users: this.props.users,
     userEmail: 'test',
     userPassword: 'test',
   };
@@ -30,7 +22,7 @@ class LandingPage extends Component {
         <Header
           loginValidityStatus={this.state.invalidLogin}
           loginHandler={(email, password) => {
-            onLogin(this, email, password);
+            onLoginHandler(this, email, password);
           }}
         />
         <div id="LandingContentWrapper">
@@ -38,7 +30,7 @@ class LandingPage extends Component {
             <p>description of app</p>
           </div>
           <div id="signUpWapper">
-            <SignUpForm addUserHandler={(newUser) => addUser(this, newUser)} />
+            <SignUpForm addUserHandler={this.props.addUserHandler} />
           </div>
         </div>
       </div>
