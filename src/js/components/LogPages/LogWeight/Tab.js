@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 class Tab extends Component {
+  constructor(props) {
+    super(props);
+  }
   onClick = () => {
     this.props.onClick(this.props.label);
   };
@@ -11,7 +14,7 @@ class Tab extends Component {
       className += ' active';
     }
     return (
-      <button className={className} onClick={this.onClick}>
+      <button className={className} id={this.props.id} onClick={this.onClick}>
         {this.props.label}
       </button>
     );

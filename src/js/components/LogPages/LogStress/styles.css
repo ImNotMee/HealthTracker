@@ -43,13 +43,13 @@ li {
   height: 20px;
 }
 
-.left {
+.logStressView.left {
   width: 59vw;
   left: 0;
   margin-left: 15vw;
 }
 
-.right {
+.logStressView.right {
   right: 0;
   width: 25vw;
   border-left: 1px solid var(--primary-color);

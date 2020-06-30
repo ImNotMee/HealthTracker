@@ -20,6 +20,7 @@ export const PAGE_ADDRESS = [
   '/overview/logSleep',
   '/overview/logStress',
   '/overview/logMedical',
+  '/overview/logSick',
 ];
 
 export const PARK_LOCATIONS = ['loc 1', 'loc 2', 'loc 3', 'loc 4'];
@@ -38,18 +39,6 @@ export const LOCATIONS = {
     description: 'some information about the park',
   },
 };
-
-export const WEIGHT_TIP = [
-  'Reduce Sugar',
-  'Work out at least 3 times a week',
-  'Drink water',
-  'Reduce carbs',
-  'Exercise protein control and count calories',
-  'Keep healthy lifestyle',
-  'Get good Sleep',
-  'No Sugary drinks',
-  'Chew slowly',
-];
 
 export const PHYSICAL_TIP = [
   'Eat a high protein breakfast',
@@ -85,4 +74,18 @@ export const MOODLIST = [
   { value: 'soso', icon: 'https://image.flaticon.com/icons/svg/3084/3084473.svg' },
   { value: 'happy', icon: 'https://image.flaticon.com/icons/svg/3084/3084424.svg' },
   { value: 'lovely', icon: 'https://image.flaticon.com/icons/svg/3084/3084622.svg' },
+];
+
+export const SYMPTOM_OPTION = [
+  'Fever or chills',
+  'Cough',
+  'Difficulty breathing',
+  'Fatigue',
+  'Muscle or body aches',
+  'Headaches',
+  'Sore throat',
+  'Congestion or runny nose',
+  'Nausea or vomiting',
+  'Diarrhea',
+  'Bluish lips or face',
 ];
