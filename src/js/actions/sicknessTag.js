@@ -2,7 +2,7 @@ export const addTag = (log) => {
   const symptomList = log.state.list;
 
   const symptom = log.state.symptom;
-  if (symptomList.includes(symptom) == false) {
+  if (symptomList.includes(symptom) === false) {
     symptomList.push(symptom);
   }
   log.setState({

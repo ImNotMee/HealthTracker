@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { SYMPTOM_OPTION } from '../../../../constants';
 import './../styles.css';
-import SymptomList from './../SymptomList/SymptomList';
 class SymptomInput extends Component {
   render() {
     const { symptom, handleChange, addTag } = this.props;
