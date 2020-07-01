@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './styles.css';
 import Graph from './Graph/index.jsx';
-import { renderData } from '../../actions/trends';
 
 class Trends extends Component {
   state = {
