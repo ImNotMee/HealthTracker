@@ -101,6 +101,16 @@ export const MOODLIST = [
   { value: 'lovely', icon: 'https://image.flaticon.com/icons/svg/3084/3084622.svg' },
 ];
 
+export const DAYSOFWEEK = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wedsnesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
+
 export const SYMPTOM_OPTION = [
   'Fever or chills',
   'Cough',
