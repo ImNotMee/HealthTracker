@@ -65,13 +65,13 @@ li {
   position: fixed;
 }
 
-.left {
+.logMoodView.left {
   width: 59vw;
   left: 0;
   margin-left: 15vw;
 }
 
-.right {
+.logMoodView.right {
   right: 0;
   width: 25vw;
   border-left: 1px solid var(--primary-color);
