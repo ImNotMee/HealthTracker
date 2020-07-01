@@ -79,7 +79,7 @@ class LogWeight extends Component {
             Body Mass Index
           </h1>
           <div className="logbox">
-            <TabList>
+            <TabList id="weightTab">
               <div label="Metric">{this.metricInput()}</div>
               <div label="Standard">{this.standardInput()}</div>
             </TabList>

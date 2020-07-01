@@ -7,6 +7,32 @@ export const ACCOUNT_TYPES = {
   user: USER_ACCOUNT_TYPE,
 };
 
+export const USERS = {
+  useruser: {
+    firstName: 'Ben',
+    lastName: 'John',
+    hash: 'useruser',
+    reminders: {
+      medicalReminders: [],
+      mentalReminders: [],
+      physicalReminders: [
+        {
+          name: 'Go for 30 minute run',
+          time: 12,
+          note: 'call Jack to check if he wants to come',
+        },
+        {
+          name: 'Go for 30 minute run',
+          time: 12,
+          note: 'call Jack to check if he wants to come',
+        },
+      ],
+      otherReminders: null,
+    },
+  },
+  adminadmin: { firstName: 'IAmAdmin', lastName: 'John', hash: 'adminadmin' },
+};
+
 export const PAGE_ADDRESS = [
   '/overview',
   '/trends',
@@ -20,21 +46,24 @@ export const PAGE_ADDRESS = [
   '/overview/logSleep',
   '/overview/logStress',
   '/overview/logMedical',
+  '/overview/logSick',
+  '/reminders/add',
 ];
 
-export const PARK_LOCATIONS = ['loc 1', 'loc 2', 'loc 3', 'loc 4'];
-
-export const WEIGHT_TIP = [
-  'Reduce Sugar',
-  'Work out at least 3 times a week',
-  'Drink water',
-  'Reduce carbs',
-  'Exercise protein control and count calories',
-  'Keep healthy lifestyle',
-  'Get good Sleep',
-  'No Sugary drinks',
-  'Chew slowly',
-];
+export const LOCATIONS = {
+  'loc 1': {
+    id: 'loc 1',
+    name: "Queen's Park",
+    isAvaliable: true,
+    address: '111 Wellesley St W, Toronto, ON',
+    country: 'Canada',
+    imageUrl:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Looking_down_University_Avenue_Toronto_August_2012.jpg/1200px-Looking_down_University_Avenue_Toronto_August_2012.jpg',
+    maxOccupancy: 53,
+    currOccupancy: 52,
+    description: 'some information about the park',
+  },
+};
 
 export const PHYSICAL_TIP = [
   'Eat a high protein breakfast',
@@ -80,4 +109,18 @@ export const DAYSOFWEEK = [
   'Thursday',
   'Friday',
   'Saturday',
+ };
+  
+export const SYMPTOM_OPTION = [
+  'Fever or chills',
+  'Cough',
+  'Difficulty breathing',
+  'Fatigue',
+  'Muscle or body aches',
+  'Headaches',
+  'Sore throat',
+  'Congestion or runny nose',
+  'Nausea or vomiting',
+  'Diarrhea',
+  'Bluish lips or face',
 ];

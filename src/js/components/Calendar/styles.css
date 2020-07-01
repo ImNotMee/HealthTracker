@@ -2,6 +2,8 @@
   height: 100vh;
   width: 82vw;
   padding: 10px;
+  margin-left: 5%;
+  margin-bottom: 5%;
 }
 
 #calendarContainer {
@@ -31,7 +33,7 @@
   text-align: center;
 }
 
-#appointmentContainer {
+#boxContainer {
   display: flex;
   text-align: center;
   flex-direction: column;
@@ -41,4 +43,11 @@
   background: #91ceff;
   margin: 0;
   border: #000000 1px solid;
+}
+
+#streaksBox {
+  text-align: left;
+  background: #ffffff;
+  margin: 0 0 0 10%;
+  font-size: 25px;
 }

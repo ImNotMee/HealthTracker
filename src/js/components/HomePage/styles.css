@@ -1,18 +1,19 @@
 #HomeWrapper {
-  display: flex;
   margin: 0;
-  min-height: 600px;
-  min-width: 600px;
 }
 
 #NavBarWrapper {
-  width: 215px;
-  min-height: 600px;
-  border-right: 1px solid var(--primary-color);
+  opacity: 1;
+  min-width: 225px;
+  height: 100%;
+  position: fixed;
+  z-index: 99;
 }
 
 #HomeContentWrapper {
   margin: 0;
-  width: 84vw;
-  min-height: 600px;
+  width: calc(100% - 225px);
+  position: absolute;
+  left: 225px;
+  z-index: 1;
 }

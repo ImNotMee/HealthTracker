@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import './styles.css';
 import Appointment from './appointment.js';
+import Streaks from './streaks.js';
+import { DAYSOFWEEK } from '../../constants.js';
 let date;
 
 class CalendarModule extends Component {
-  constructor(props) {
-    super(props);
-    date = 1;
-    console.log('Calendar Loaded successfully');
+  componentDidMount() {
+    this.renderCalendar();
+  }
+
+  componentDidUpdate() {
+    this.renderCalendar();
   }
 
   getFirstDay() {
@@ -16,36 +20,8 @@ class CalendarModule extends Component {
     return firstDay.getDay();
   }
 
-  getMonth() {
-    const months = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
-    let d = new Date();
-    return months[d.getMonth()];
-  }
-
-  renderTabs() {
-    return (
-      <div id="calendarContainer">
-        <button id="tabs">Calendar</button>
-        <button id="tabs">Streaks</button>
-      </div>
-    );
-  }
-
   renderHeaders() {
-    const headers = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursdsay', 'Friday', 'Saturday'];
+    const headers = DAYSOFWEEK;
     let head = [];
     for (let i = 0; i < 7; i++) {
       head.push(
@@ -80,11 +56,18 @@ class CalendarModule extends Component {
     for (let i = 0; i < 7; i++) {
       if (date < 32) {
         // only make it to show that on the 24th, this person has some appointments
-        if (date === 24) {
+        if (this.props.type === 'calendar' && date === 24) {
           days.push(
             <div id="dates" key={i}>
               <p>{date}</p>
               <Appointment appointments={['Doctor Appointment', ' Check up Appointment']} />
+            </div>,
+          );
+        } else if (this.props.type === 'streaks' && date >= 28) {
+          days.push(
+            <div id="dates" key={i}>
+              <p>{date}</p>
+              <Streaks streaks={['💧', '🔥', '🛏️']} />
             </div>,
           );
         } else {
@@ -102,11 +85,10 @@ class CalendarModule extends Component {
     return <div id="calendarContainer">{days}</div>;
   }
 
-  render() {
+  renderCalendar = () => {
+    date = 1;
     return (
       <div>
-        <h1 id="month">{this.getMonth()}</h1>
-        {this.renderTabs()}
         {this.renderHeaders()}
         {this.renderFirstWeek()}
         {this.renderDays()}
@@ -115,6 +97,10 @@ class CalendarModule extends Component {
         {this.renderDays()}
       </div>
     );
+  };
+
+  render() {
+    return <div>{this.renderCalendar()}</div>;
   }
 }
 
