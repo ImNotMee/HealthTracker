@@ -29,6 +29,12 @@ export const USERS = {
       ],
       otherReminders: null,
     },
+    trends: {
+      weight: [120, 119, 119, 120, 122, 119, 117],
+      sleep: [5, 6, 6, 7, 9, 10, 7],
+      stress: [1800, 1899, 2100, 2000, 1789, 1987, 1788],
+      calories: [2, 3, 2, 1, 4, 6, 5],
+    },
   },
   adminadmin: { firstName: 'IAmAdmin', lastName: 'John', hash: 'adminadmin' },
 };

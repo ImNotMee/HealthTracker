@@ -35,7 +35,7 @@ class HomePage extends Component {
           <Switch>
             {/* Page nav */}
             <Route exact path="/overview" render={() => <Overview />} />
-            <Route exact path="/trends" render={() => <Trends />} />
+            <Route exact path="/trends" render={() => <Trends activeUser={this.state.user} />} />
             <Route
               exact
               path="/reminders"

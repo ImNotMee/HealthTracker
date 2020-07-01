@@ -14,3 +14,14 @@ export class Trends {
     this.type = type;
   }
 }
+
+export const avgWeight = () => {
+  let weekAvg = [];
+  for (let i = 0; i < 7; i++) {
+    let sum = 0;
+    for (let j = 0; j < this.state.userDB.length; j++) {
+      sum = sum + this.state.userDB.trends.weight[i];
+    }
+    weekAvg.push(sum / this.state.userDB.length);
+  }
+};

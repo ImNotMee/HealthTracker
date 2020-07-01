@@ -18,7 +18,7 @@ class Trends extends Component {
         this.setState({
           trends: {
             title: 'Body Weight',
-            data: [120, 119, 119, 120, 122, 119, 117],
+            data: this.state.user.trends.weight,
             type: 'line',
           },
         });
@@ -27,7 +27,7 @@ class Trends extends Component {
         this.setState({
           trends: {
             title: 'Hours of Sleep',
-            data: [5, 6, 6, 7, 9, 10, 7],
+            data: this.state.user.trends.sleep,
             type: 'bar',
           },
         });
@@ -36,7 +36,7 @@ class Trends extends Component {
         this.setState({
           trends: {
             title: 'Calorie Intake',
-            data: [1800, 1899, 2100, 2000, 1789, 1987, 1788],
+            data: this.state.user.trends.calories,
             type: 'bar',
           },
         });
@@ -45,7 +45,7 @@ class Trends extends Component {
         this.setState({
           trends: {
             title: 'Stress Level',
-            data: [2, 3, 2, 1, 4, 6, 5],
+            data: this.state.user.trends.stress,
             type: 'line',
           },
         });
@@ -60,7 +60,6 @@ class Trends extends Component {
         });
         break;
     }
-    console.log(this.state.trends);
   }
 
   render() {
