@@ -41,13 +41,13 @@ li {
   position: fixed;
 }
 
-.left {
+.logCaloriesView.left {
   width: 59vw;
   left: 0;
   margin-left: 16vw;
 }
 
-.right {
+.logCaloriesView.right {
   right: 0;
   width: 25vw;
   border-left: 1px solid var(--primary-color);

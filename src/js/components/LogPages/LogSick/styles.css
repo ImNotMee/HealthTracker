@@ -1,0 +1,141 @@
+#LogSickWrapper {
+  height: 100vh;
+  width: 84vw;
+}
+
+#sickHeader {
+  color: black;
+  margin-top: 10%;
+  text-align: center;
+  font-style: var(--title-font-family);
+}
+
+#icon {
+  width: 30px;
+  margin: 0 2px 5px 0;
+  vertical-align: middle;
+}
+
+#sickCloseButton {
+  margin-top: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  background-color: white;
+  float: right;
+  box-shadow: 0px 9px 9px -6px rgba(0, 0, 0, 0.75);
+  text-align: center;
+}
+
+#xButton {
+  margin-top: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.logSickView {
+  height: 100%;
+  position: fixed;
+  width: 83vw;
+  left: 215px;
+}
+
+/*logBox*/
+.logSickBox {
+  margin: auto;
+  margin-top: 150px;
+  width: 50%;
+  box-shadow: 0px 9px 22px -6px rgba(0, 0, 0, 0.75);
+  border-radius: 12px;
+}
+
+.logSickBox form fieldset {
+  border: none;
+  padding: 15px;
+}
+
+.Input {
+  font-size: 20px;
+  display: block;
+}
+
+#SymptomInput {
+  display: flex;
+  align-content: center;
+  margin-bottom: 10px;
+}
+
+#SymptomOption {
+  margin-left: 5px;
+  font-size: 15px;
+  width: 50%;
+  height: 40px;
+  padding: 0px 0px 0px 10px;
+  border-radius: 12px;
+}
+
+#addTagButton {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-top: 5px;
+}
+
+#addIcon {
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+}
+
+#sList {
+  margin-left: 5px;
+  font-size: 15px;
+  border-radius: 12px;
+}
+
+#addTagButton {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-top: 5px;
+}
+
+#addIcon {
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+}
+
+#tagList {
+  width: 90%;
+  height: auto;
+  border: 2px solid var(--primary-color);
+  border-radius: 12px;
+  padding: 10px;
+  margin-left: 2.5%;
+}
+
+#deleteButton {
+  margin-left: 5px;
+  width: 10px;
+  height: 10px;
+}
+
+.SymptomTag {
+  display: inline-block;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: var(--contrast-text-color);
+  margin: 0px 3px 2px 0px;
+  border: 1px solid black;
+  padding: 3px 5px 3px 5px;
+  border-radius: 12px;
+}
+
+#logButton {
+  margin-top: 25px;
+  float: right;
+  width: 50%;
+  font-weight: normal;
+}

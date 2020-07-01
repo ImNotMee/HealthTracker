@@ -8,6 +8,8 @@ import LogCalories from '../LogPages/LogCalories';
 import LogMood from '../LogPages/LogMood';
 import LogSleep from '../LogPages/LogSleep';
 import LogStress from '../LogPages/LogStress';
+import LogMedical from '../LogPages/LogMedical';
+import LogSick from '../LogPages/LogSick';
 import Trends from '../Trends';
 import Reminders from '../Reminders';
 import Calendar from '../Calendar';
@@ -60,7 +62,8 @@ class HomePage extends Component {
             <Route exact path="/overview/logMood" render={() => <LogMood />} />
             <Route exact path="/overview/logSleep" render={() => <LogSleep />} />
             <Route exact path="/overview/logStress" render={() => <LogStress />} />
-
+            <Route exact path="/overview/logMedical" render={() => <LogMedical />} />
+            <Route exact path="/overview/logSick" render={() => <LogSick />} />
             {/* Add Reminder view */}
             <Route exact path="/reminders/add" render={() => <div>test</div>} />
           </Switch>

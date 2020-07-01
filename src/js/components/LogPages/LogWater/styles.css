@@ -23,13 +23,13 @@ li {
   height: 100%;
   position: fixed;
 }
-.left {
+.logWaterView.left {
   width: 59vw;
   left: 0;
   margin-left: 16vw;
 }
 
-.right {
+.logWaterView.right {
   right: 0;
   width: 25vw;
   border-left: 1px solid var(--primary-color);

@@ -11,7 +11,7 @@ class Tab extends Component {
       className += ' active';
     }
     return (
-      <button className={className} onClick={this.onClick}>
+      <button className={className} id={this.props.id} onClick={this.onClick}>
         {this.props.label}
       </button>
     );
