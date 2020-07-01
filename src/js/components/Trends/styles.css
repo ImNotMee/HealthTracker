@@ -3,3 +3,8 @@
   width: 82vw;
   padding: 10px;
 }
+
+#trendsContainer {
+  display: flex;
+  text-align: center;
+}
