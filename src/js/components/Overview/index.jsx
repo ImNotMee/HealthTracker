@@ -73,7 +73,7 @@ class Overview extends Component {
             id="cards"
             activeUser={this.props.activeUser}
             title="Body Mass Index"
-            address="logWeight"
+            address="/overview/logWeight"
             value={this.state.BMI}
             image="https://image.flaticon.com/icons/svg/3023/3023711.svg"
             type="1"
@@ -82,7 +82,7 @@ class Overview extends Component {
             id="cards"
             activeUser={this.props.activeUser}
             title="Water Consumption"
-            address="logWater"
+            address="/overview/logWater"
             value={this.state.Water}
             image=""
             type="2"
@@ -91,7 +91,7 @@ class Overview extends Component {
             id="cards"
             activeUser={this.props.activeUser}
             title="Calories"
-            address="logCalories"
+            address="/overview/logCalories"
             value={this.state.Calories}
             image=""
             type="3"
@@ -105,7 +105,7 @@ class Overview extends Component {
             activeUser={this.props.activeUser}
             title="Mood"
             value={this.state.Mood}
-            address="logMood"
+            address="/overview/logMood"
             image=""
             type="4"
           />
@@ -114,7 +114,7 @@ class Overview extends Component {
             activeUser={this.props.activeUser}
             title="Sleep"
             value={this.state.Sleep}
-            address="logSleep"
+            address="/overview/logSleep"
             image=""
             type="5"
           />
@@ -123,7 +123,7 @@ class Overview extends Component {
             activeUser={this.props.activeUser}
             title="Stress"
             value={this.state.Stress}
-            address="logStress"
+            address="/overview/logStress"
             image=""
             type="6"
           />
@@ -136,7 +136,7 @@ class Overview extends Component {
             activeUser={this.props.activeUser}
             title="Medication"
             value={this.state.Medication}
-            address="logMedical"
+            address="/reminders"
             image=""
             type="7"
           />
@@ -145,7 +145,7 @@ class Overview extends Component {
             activeUser={this.props.activeUser}
             title="Sickness"
             value={this.state.Sickness}
-            address="logSick"
+            address="/overview/logSick"
             image=""
             type="8"
           />
@@ -154,7 +154,7 @@ class Overview extends Component {
             activeUser={this.props.activeUser}
             title="Appointments"
             value={this.state.Appointments}
-            address="logMedical"
+            address="/reminders"
             image=""
             type="9"
           />

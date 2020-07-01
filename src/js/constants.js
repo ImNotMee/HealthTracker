@@ -109,8 +109,8 @@ export const DAYSOFWEEK = [
   'Thursday',
   'Friday',
   'Saturday',
- };
-  
+];
+
 export const SYMPTOM_OPTION = [
   'Fever or chills',
   'Cough',
