@@ -105,12 +105,12 @@ export const DAYSOFWEEK = [
   'Sunday',
   'Monday',
   'Tuesday',
-  'Wedsnesday',
+  'Wednesday',
   'Thursday',
   'Friday',
   'Saturday',
- };
-  
+];
+
 export const SYMPTOM_OPTION = [
   'Fever or chills',
   'Cough',
@@ -123,4 +123,19 @@ export const SYMPTOM_OPTION = [
   'Nausea or vomiting',
   'Diarrhea',
   'Bluish lips or face',
+];
+
+export const MONTHS = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];

@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import './styles.css';
 
 class Appointment extends Component {
-  constructor(props) {
-    super(props);
-    console.log('Calendar Loaded successfully');
-  }
-
   state = {
     appointments: this.props.appointments,
   };

@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import './styles.css';
 
 class Streaks extends Component {
-  constructor(props) {
-    super(props);
-    console.log('Calendar Loaded successfully');
-  }
-
   state = {
     streaks: this.props.streaks,
   };

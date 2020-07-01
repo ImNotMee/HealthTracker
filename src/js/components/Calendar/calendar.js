@@ -3,6 +3,7 @@ import './styles.css';
 import Appointment from './appointment.js';
 import Streaks from './streaks.js';
 import { DAYSOFWEEK } from '../../constants.js';
+import { getFirstDay, setData } from '../../actions/calendarItems';
 let date;
 
 class CalendarModule extends Component {
@@ -12,12 +13,6 @@ class CalendarModule extends Component {
 
   componentDidUpdate() {
     this.renderCalendar();
-  }
-
-  getFirstDay() {
-    let d = new Date();
-    const firstDay = new Date(d.getFullYear(), d.getMonth(), 1);
-    return firstDay.getDay();
   }
 
   renderHeaders() {
@@ -35,7 +30,7 @@ class CalendarModule extends Component {
 
   renderFirstWeek() {
     const days = [];
-    let temp = this.getFirstDay();
+    let temp = getFirstDay();
     for (let i = 0; i < 7; i++) {
       if (i >= temp) {
         days.push(

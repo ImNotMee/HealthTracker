@@ -1,42 +1,27 @@
 import React, { Component } from 'react';
 import './styles.css';
 import CalendarModule from './calendar.js';
+import { getMonth, loadData } from '../../actions/calendarItems';
 
 class Calendar extends Component {
   state = {
     user: this.props.activeUser,
     type: 'calendar',
+    calendarItems: null,
   };
-
-  getMonth() {
-    const months = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
-    let d = new Date();
-    return months[d.getMonth()];
-  }
 
   updateType(type) {
     if (type === 'calendar') {
       this.setState({
         user: this.props.activeUser,
         type: 'calendar',
+        calendarItems: [],
       });
     } else if (type === 'streaks') {
       this.setState({
         user: this.props.activeUser,
         type: 'streaks',
+        calendarItems: [],
       });
     }
   }
@@ -44,16 +29,16 @@ class Calendar extends Component {
   render() {
     return (
       <div id="CalendarWrapper">
-        <h1 id="month">{this.getMonth()}</h1>
+        <h1 id="month">{getMonth()}</h1>
         <div id="calendarContainer">
-          <button id="tabs" onClick={() => this.updateType('calendar')}>
+          <button id="tabs" onClick={this.updateType.bind(this, 'calendar')}>
             Calendar
           </button>
-          <button id="tabs" onClick={() => this.updateType('streaks')}>
+          <button id="tabs" onClick={this.updateType.bind(this, 'streaks')}>
             Streaks
           </button>
         </div>
-        <CalendarModule type={this.state.type} />
+        <CalendarModule type={this.state.type} calendarItems={this.state.calendarItems} />
       </div>
     );
   }
