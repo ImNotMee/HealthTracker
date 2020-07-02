@@ -13,15 +13,29 @@ import { REMINDER_STATUS } from '../../../constants';
 class ReminderItem extends Component {
   state = {
     reminder: this.props.reminder,
+    user: this.props.activeUser,
   };
 
   componentDidMount() {
     const currTime = new Date().getTime();
     const reminderTime = new Date(this.state.reminder.time);
     const time = reminderTime - currTime;
-    this.reminderTimer = setTimeout(() => {
-      this.props.notifyAboutReminder(this.state.reminder);
-    }, time);
+    if (!this.notificationExists()) {
+      this.reminderTimer = setTimeout(() => {
+        this.props.notifyAboutReminder(this.state.reminder);
+      }, time);
+      this.props.addTimerHandler(this.state.reminder.id, this.reminderTimer);
+    }
+  }
+
+  notificationExists() {
+    let i;
+    for (i = 0; i < this.props.activeUser.timers.length; i++) {
+      if (this.props.activeUser.timers[i].id === this.state.reminder.id) {
+        return true;
+      }
+    }
+    return false;
   }
 
   getStatusIcon = (status) => {

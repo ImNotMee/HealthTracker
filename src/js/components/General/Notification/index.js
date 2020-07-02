@@ -25,7 +25,7 @@ class Notification extends Component {
         <span
           className="closeBtn"
           onClick={() => {
-            this.props.removeNotificationHandler();
+            this.props.removeNotificationHandler(this.state.id);
           }}
         >
           &times;

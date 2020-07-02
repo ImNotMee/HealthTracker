@@ -54,8 +54,9 @@ class HomePage extends Component {
               path="/reminders"
               render={() => (
                 <Reminders
-                  activeUser={this.state.user}
+                  activeUser={this.props.activeUser}
                   notifyAboutReminder={this.props.notifyAboutReminder}
+                  addTimerHandler={this.props.addTimerHandler}
                   completeReminderHandler={this.props.completeReminderHandler}
                   deleteReminderHandler={this.props.deleteReminderHandler}
                 />

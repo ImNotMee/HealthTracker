@@ -24,11 +24,19 @@ export const removeNotificationHandler = (ctx, id) => {
 
 const _getNotificationIndex = (list, id) => {
   let i;
-  for (i = 0; i < list.lenght; i++) {
+  for (i = 0; i < list.length; i++) {
     if (list[i].id === id) {
       return i;
     }
   }
+};
+
+export const addTimerHandler = (ctx, id, timer) => {
+  const user = ctx.state.activeUser;
+  user.timers.push({ id: id, timer: timer });
+  ctx.setState({
+    activeUser: user,
+  });
 };
 
 export class Notification {
