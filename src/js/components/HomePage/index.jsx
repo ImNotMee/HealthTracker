@@ -15,12 +15,14 @@ import Reminders from '../Reminders';
 import AddReminder from '../Reminders/AddReminder';
 import Calendar from '../Calendar';
 import CheckIn from '../CheckIn';
+import AdminTrends from '../Trends/adminTrend.js';
 
 import './styles.css';
 
 class HomePage extends Component {
   state = {
     user: this.props.activeUser,
+    userDB: this.props.userDB,
     check: false,
   };
 
@@ -48,7 +50,7 @@ class HomePage extends Component {
           <Switch>
             {/* Page nav */}
             <Route exact path="/overview" render={() => <Overview />} />
-            <Route exact path="/trends" render={() => <Trends />} />
+            <Route exact path="/trends" render={() => <Trends activeUser={this.state.user} />} />
             <Route
               exact
               path="/reminders"
@@ -74,7 +76,12 @@ class HomePage extends Component {
                 />
               )}
             />
-
+            {/*Admin views*/}
+            <Route
+              exact
+              path="/trends/admin"
+              render={() => <AdminTrends activeUser={this.state.user} userDB={this.state.userDB} />}
+            />
             {/* Activity logging view nav */}
             <Route exact path="/overview/logWeight" render={() => <LogWeight />} />
             <Route exact path="/overview/logWater" render={() => <LogWater />} />

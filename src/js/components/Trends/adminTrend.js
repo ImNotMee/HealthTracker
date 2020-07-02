@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './styles.css';
 import Graph from './Graph/index.jsx';
+import { avgStress, avgCalories, avgSleep, avgWeight } from '../../actions/trends';
 
-class Trends extends Component {
+class AdminTrends extends Component {
   state = {
     user: this.props.activeUser,
+    userDB: this.props.userDB,
     trends: {
       title: '',
       data: [],
@@ -13,39 +15,44 @@ class Trends extends Component {
   };
 
   renderGraph(type) {
+    let avg = [];
     switch (type) {
       case 'weight':
+        avg = avgWeight(this.state.userDB);
         this.setState({
           trends: {
-            title: 'Body Weight',
-            data: this.state.user.trends.weight,
+            title: 'Average Body Weight',
+            data: avg,
             type: 'line',
           },
         });
         break;
       case 'sleep':
+        avg = avgSleep(this.state.userDB);
         this.setState({
           trends: {
-            title: 'Hours of Sleep',
-            data: this.state.user.trends.sleep,
+            title: 'Average Hours of Sleep',
+            data: avg,
             type: 'bar',
           },
         });
         break;
       case 'calories':
+        avg = avgCalories(this.state.userDB);
         this.setState({
           trends: {
-            title: 'Calorie Intake',
-            data: this.state.user.trends.calories,
+            title: 'Average Calorie Intake',
+            data: avg,
             type: 'bar',
           },
         });
         break;
       case 'stress':
+        avg = avgStress(this.state.userDB);
         this.setState({
           trends: {
-            title: 'Stress Level',
-            data: this.state.user.trends.stress,
+            title: 'Average Stress Level',
+            data: avg,
             type: 'line',
           },
         });
@@ -54,13 +61,17 @@ class Trends extends Component {
         this.setState({
           trends: {
             title: '',
-            data: [],
+            data: avg,
             type: 'line',
           },
         });
         break;
     }
   }
+
+  // To render admin:
+  // import AdminTrends from './adminTrend';
+  // <AdminTrends activeUser={this.state.user} userDB={this.state.userDB} />
 
   render() {
     const { title, data, type } = this.state.trends;
@@ -86,4 +97,4 @@ class Trends extends Component {
   }
 }
 
-export default Trends;
+export default AdminTrends;
