@@ -4,7 +4,12 @@ import TipBox from './../TipBox/TipBox';
 import { NavLink } from 'react-router-dom';
 class LogCalories extends Component {
   state = {
-    user: this.props.activeUser,
+    calories: 0,
+  };
+
+  caloriesChange = (event) => {
+    const calories = event.target.value;
+    this.setState({ calories: calories });
   };
 
   render() {
@@ -27,15 +32,19 @@ class LogCalories extends Component {
             Calories
           </h1>
           <div className="logCaloriesBox">
-            <form>
+            <form onSubmit={() => this.props.setCalories(this.state.calories)}>
               <fieldset>
                 <h3>How much did you eat?</h3>
-                <input type="text" id="caloriesLog" placeholder="Enter Amount" />
+                <input
+                  type="number"
+                  id="caloriesLog"
+                  placeholder="Enter Amount"
+                  value={this.state.calories}
+                  onChange={this.caloriesChange}
+                />
                 <label id="caloriesUnits">Calories</label>
                 <p>Suggested amount of Calories per day: 2000 Calories</p>
-                <button className="primary-btn" id="logButton">
-                  Save
-                </button>
+                <input type="submit" value="Save" className="primary-btn" id="logButton" />
               </fieldset>
             </form>
           </div>
