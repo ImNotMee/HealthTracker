@@ -6,7 +6,16 @@ import TipBox from './../TipBox/TipBox';
 
 class LogSleep extends Component {
   state = {
-    user: this.props.activeuser,
+    hours: 0,
+    quality: 'bad',
+  };
+
+  changeQuality = (qualtiy) => {
+    this.setState({ quality: qualtiy });
+  };
+
+  changeHours = (event) => {
+    this.setState({ hours: event.target.value });
   };
 
   render() {
@@ -30,7 +39,7 @@ class LogSleep extends Component {
             Hours of Sleep
           </h1>
           <div className="logSleepBox">
-            <form>
+            <form onSubmit={() => this.props.setSleep(this.state.hours, this.state.quality)}>
               <fieldset>
                 <h3>
                   How much did you sleep?
@@ -41,13 +50,17 @@ class LogSleep extends Component {
                   ></img>
                 </h3>
 
-                <input type="text" id="sleepLog" placeholder="Enter Hours" />
+                <input
+                  type="number"
+                  id="sleepLog"
+                  placeholder="Enter Hours"
+                  value={this.state.hours}
+                  onChange={this.changeHours}
+                />
                 <label id="sleepUnits">Hours</label>
-                <RadioSleep></RadioSleep>
+                <RadioSleep changeQuality={(quality) => this.changeQuality(quality)}></RadioSleep>
                 <p>Average person needs 7 ~ 8 hours sleep per day</p>
-                <button className="primary-btn" id="logButton">
-                  Save
-                </button>
+                <input type="submit" value="Save" className="primary-btn" id="logButton" />
               </fieldset>
             </form>
           </div>
