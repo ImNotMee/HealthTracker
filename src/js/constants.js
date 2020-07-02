@@ -25,12 +25,18 @@ export const REMINDER_STATUS = {
   overdue: 'overdue',
 };
 
+export const NOTIFICATION_TYPE = {
+  alert: 'Alert',
+  reminder: 'Reminder',
+};
+
 export const USERS = {
   useruser: {
     firstName: 'Ben',
     lastName: 'John',
     hash: 'useruser',
     type: USER_ACCOUNT_TYPE,
+    checkInHistory: [],
     reminders: {
       [HEALTH_CATEGORIES.medical]: [],
       [HEALTH_CATEGORIES.mental]: [],
@@ -38,7 +44,7 @@ export const USERS = {
         {
           id: 'r0',
           category: HEALTH_CATEGORIES.phsycial,
-          subCategory: 'BMI',
+          subCategory: 'Appointments',
           name: 'Go for 30 minute run',
           time: '2020-07-01T21:15',
           note: 'call Jack to check if he wants to come',
@@ -56,6 +62,14 @@ export const USERS = {
       ],
       otherReminders: null,
     },
+    notifications: [
+      {
+        id: 'unique',
+        type: NOTIFICATION_TYPE.alert,
+        title: 'Welcome =D',
+        message: 'explor our app',
+      },
+    ],
     trends: {
       weight: [120, 119, 119, 120, 122, 119, 117],
       sleep: [5, 6, 6, 7, 9, 10, 7],
@@ -86,6 +100,9 @@ export const PAGE_ADDRESS = [
   '/overview/logMedical',
   '/overview/logSick',
   '/reminders/add/:cat?/:sub?/:name?/:time?/:note?/:id?',
+  '/manage-users',
+  '/trends/admin',
+  '/check-in/admin',
 ];
 
 export const LOCATIONS = {

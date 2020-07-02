@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Notification from '../General/Notification';
 import SideBar from '../SideBar';
 import Overview from '../Overview';
 import LogWeight from '../LogPages/LogWeight';
@@ -31,6 +32,18 @@ class HomePage extends Component {
           <SideBar logoutHandler={this.props.logoutHandler} activeUser={this.state.user} />
         </div>
         <div id="HomeContentWrapper">
+          <div id="NotificationWrapper">
+            {this.state.user?.notifications?.map((notification) => {
+              return (
+                <Notification
+                  key={notification.id}
+                  notification={notification}
+                  removeNotificationHandler={this.props.removeNotificationHandler}
+                />
+              );
+            })}
+          </div>
+
           {/* Similar to a switch statement - shows the component depending on the URL path */}
           {/* Each Route below shows a different component depending on the exact path in the URL  */}
           <Switch>
@@ -47,7 +60,7 @@ class HomePage extends Component {
               render={() => (
                 <Reminders
                   activeUser={this.state.user}
-                  setReminderStatus={this.props.setReminderStatus}
+                  notifyAboutReminder={this.props.notifyAboutReminder}
                   completeReminderHandler={this.props.completeReminderHandler}
                   deleteReminderHandler={this.props.deleteReminderHandler}
                 />

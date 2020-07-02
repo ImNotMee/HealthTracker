@@ -14,6 +14,7 @@ export const checkInHandler = (ctx, location) => {
   locationsDB[location.id].currOccupancy += 1;
   locationsDB[location.id].isAvaliable = _isAvaliable(locationsDB[location.id]);
   activeUser.checkedInLocation = location;
+  activeUser.checkInHistory.push({ location: location, time: new Date() });
   ctx.setState({
     activeUser: activeUser,
     locationsDB: locationsDB,
