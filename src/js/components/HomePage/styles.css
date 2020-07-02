@@ -17,3 +17,13 @@
   left: 225px;
   z-index: 1;
 }
+
+#NotificationWrapper {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 225px);
+  height: max-content;
+}

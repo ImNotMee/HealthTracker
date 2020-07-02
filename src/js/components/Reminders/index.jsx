@@ -35,7 +35,7 @@ class Reminders extends Component {
                 <ReminderItem
                   key={reminder.id}
                   reminder={reminder}
-                  setReminderStatus={this.props.setReminderStatus}
+                  notifyAboutReminder={this.props.notifyAboutReminder}
                   completeReminderHandler={this.props.completeReminderHandler}
                   deleteReminderHandler={this.props.deleteReminderHandler}
                 />
@@ -52,7 +52,7 @@ class Reminders extends Component {
                 <ReminderItem
                   key={reminder.id}
                   reminder={reminder}
-                  setReminderStatus={this.props.setReminderStatus}
+                  notifyAboutReminder={this.props.notifyAboutReminder}
                   completeReminderHandler={this.props.completeReminderHandler}
                   deleteReminderHandler={this.props.deleteReminderHandler}
                 />
@@ -69,7 +69,7 @@ class Reminders extends Component {
                 <ReminderItem
                   key={reminder.id}
                   reminder={reminder}
-                  setReminderStatus={this.props.setReminderStatus}
+                  notifyAboutReminder={this.props.notifyAboutReminder}
                   completeReminderHandler={this.props.completeReminderHandler}
                   deleteReminderHandler={this.props.deleteReminderHandler}
                 />

@@ -1,0 +1,47 @@
+#NotificationItemWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.2em;
+  z-index: 999;
+  padding: 10px;
+  margin-top: 20px;
+  height: max-content;
+  left: 225px;
+  min-width: 90%;
+}
+
+#NotifIcon {
+  padding: 0 20px;
+  width: 30px;
+  height: 30px;
+}
+
+.type {
+  font-weight: bolder;
+}
+
+.Alert {
+  background-color: var(--alert-background-color);
+  border-left: 5px solid var(--error-color);
+}
+
+.Reminder {
+  color: var(--secondary-color);
+  background-color: var(--background-color);
+  border-left: 5px solid var(--primary-color);
+}
+
+.closeBtn {
+  margin-left: auto;
+  font-weight: bold;
+  float: right;
+  font-size: 40px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closeBtn:hover {
+  color: grey;
+}

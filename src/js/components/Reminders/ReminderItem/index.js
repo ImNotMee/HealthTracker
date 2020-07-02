@@ -19,9 +19,8 @@ class ReminderItem extends Component {
     const currTime = new Date().getTime();
     const reminderTime = new Date(this.state.reminder.time);
     const time = reminderTime - currTime;
-    const { category, id } = this.state.reminder;
     this.reminderTimer = setTimeout(() => {
-      this.props.setReminderStatus(category, id, REMINDER_STATUS.overdue);
+      this.props.notifyAboutReminder(this.state.reminder);
     }, time);
   }
 

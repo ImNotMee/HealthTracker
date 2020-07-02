@@ -7,13 +7,14 @@ import HomePage from './js/components/HomePage';
 import { addUserHandler } from './js/actions/signUp';
 import { setActiveUser } from './js/actions/login';
 import { logoutUser } from './js/actions/logout';
+import { removeNotificationHandler } from './js/actions/notification';
 import { checkInHandler, checkoutHandler } from './js/actions/checkIn';
 import {
   addReminderHandler,
   editReminderHandler,
   completeReminderHandler,
   deleteReminderHandler,
-  setReminderStatus,
+  notifyAboutReminder,
 } from './js/actions/reminders';
 import { USERS, PAGE_ADDRESS, LOCATIONS } from './js/constants';
 import './App.css';
@@ -69,6 +70,9 @@ class App extends Component {
                     logoutHandler={() => {
                       logoutUser(this);
                     }}
+                    removeNotificationHandler={(id) => {
+                      removeNotificationHandler(this, id);
+                    }}
                     checkInHandler={(location) => {
                       checkInHandler(this, location);
                     }}
@@ -81,8 +85,8 @@ class App extends Component {
                     editReminderHandler={(reminderCtx, category, id) => {
                       editReminderHandler(this, reminderCtx, category, id);
                     }}
-                    setReminderStatus={(category, id, status) => {
-                      setReminderStatus(this, category, id, status);
+                    notifyAboutReminder={(reminder) => {
+                      notifyAboutReminder(this, reminder);
                     }}
                     completeReminderHandler={(category, id, timeout) => {
                       completeReminderHandler(this, category, id, timeout);
