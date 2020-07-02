@@ -15,12 +15,23 @@ import Reminders from '../Reminders';
 import AddReminder from '../Reminders/AddReminder';
 import Calendar from '../Calendar';
 import CheckIn from '../CheckIn';
-
 import './styles.css';
+
+import { USER_CARD } from '../../constants'; // needs to be changed to server call later
+import {
+  setBMI,
+  setWater,
+  setCalories,
+  setMood,
+  setSleep,
+  setStress,
+  setSickness,
+} from '../../actions/cardData';
 
 class HomePage extends Component {
   state = {
     user: this.props.activeUser,
+    user_card: USER_CARD,
     check: false,
   };
 
@@ -47,7 +58,11 @@ class HomePage extends Component {
           {/* Each Route below shows a different component depending on the exact path in the URL  */}
           <Switch>
             {/* Page nav */}
-            <Route exact path="/overview" render={() => <Overview />} />
+            <Route
+              exact
+              path="/overview"
+              render={() => <Overview user_card={this.state.user_card} />}
+            />
             <Route exact path="/trends" render={() => <Trends />} />
             <Route
               exact
@@ -76,13 +91,50 @@ class HomePage extends Component {
             />
 
             {/* Activity logging view nav */}
-            <Route exact path="/overview/logWeight" render={() => <LogWeight />} />
-            <Route exact path="/overview/logWater" render={() => <LogWater />} />
-            <Route exact path="/overview/logCalories" render={() => <LogCalories />} />
-            <Route exact path="/overview/logMood" render={() => <LogMood />} />
-            <Route exact path="/overview/logSleep" render={() => <LogSleep />} />
-            <Route exact path="/overview/logStress" render={() => <LogStress />} />
-            <Route exact path="/overview/logSick" render={() => <LogSick />} />
+            <Route
+              exact
+              path="/overview/logWeight"
+              render={() => <LogWeight setBMI={(newBMI) => setBMI(this, newBMI)} />}
+            />
+            <Route
+              exact
+              path="/overview/logWater"
+              render={() => <LogWater setWater={(newWater) => setWater(this, newWater)} />}
+            />
+            <Route
+              exact
+              path="/overview/logCalories"
+              render={() => (
+                <LogCalories setCalories={(newCalories) => setCalories(this, newCalories)} />
+              )}
+            />
+            <Route
+              exact
+              path="/overview/logMood"
+              render={() => <LogMood setMood={(newMood) => setMood(this, newMood)} />}
+            />
+            <Route
+              exact
+              path="/overview/logSleep"
+              render={() => (
+                <LogSleep
+                  setSleep={(newSleepHours, newSleepQuality) =>
+                    setSleep(this, newSleepHours, newSleepQuality)
+                  }
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/overview/logStress"
+              render={() => <LogStress setStress={(newStress) => setStress(this, newStress)} />}
+            />
+            <Route
+              exact
+              path="/overview/logSick"
+              render={() => <LogSick setSickness={(newSick) => setSickness(this, newSick)} />}
+            />
+
             {/* Add Reminder view */}
             <Route
               exact

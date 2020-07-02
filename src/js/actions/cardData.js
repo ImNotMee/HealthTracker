@@ -59,3 +59,73 @@ export const fetchCardData = (user) => {
 
   return user_card;
 };
+
+// lists of actions to change user_card state
+
+export const setBMI = (card, newBMI) => {
+  console.log('updating BMI to ');
+  const { user_card } = card.state;
+  user_card['BMI']['value'] = newBMI;
+
+  card.setState({
+    user_card: user_card,
+  });
+  console.log(user_card['BMI']['value']);
+};
+
+export const setWater = (card, newWater) => {
+  console.log('updating Water to ');
+  const { user_card } = card.state;
+  user_card['Water']['completed'] = newWater;
+  user_card['Water']['remaining'] = 2000 - newWater;
+  card.setState({
+    user_card: user_card,
+  });
+  console.log(user_card['Water']['completed']);
+};
+
+export const setCalories = (card, newCalories) => {
+  console.log('updating Calories to ');
+  const { user_card } = card.state;
+  user_card['Calories']['completed'] = newCalories;
+  user_card['Calories']['remaining'] = 2000 - newCalories;
+  card.setState({
+    user_card: user_card,
+  });
+  console.log(user_card['Calories']['completed']);
+};
+
+export const setMood = (card, newMood) => {
+  console.log('updating Mood to ');
+  const { user_card } = card.state;
+  user_card['Mood']['value'] = newMood;
+  card.setState({
+    user_card: user_card,
+  });
+  console.log(user_card['Mood']['value']);
+};
+
+export const setSleep = (card, newSleepHours, newSleepQuality) => {
+  console.log('updating Sleep to ');
+  const { user_card } = card.state;
+  user_card['Sleep']['hours'] = newSleepHours;
+  user_card['Sleep']['quality'] = newSleepQuality;
+  card.setState({
+    user_card: user_card,
+  });
+  console.log(user_card['Sleep']['hours'], 'and ', user_card['Sleep']['quality']);
+};
+
+export const setStress = (card, newStress) => {
+  console.log('updating Stress to ');
+  const { user_card } = card.state;
+  user_card['Stress']['value'] = newStress;
+  card.setState({
+    user_card: user_card,
+  });
+  console.log(user_card['Stress']['value']);
+};
+
+export const setSickness = (card, newSickness) => {
+  return;
+};

@@ -7,19 +7,59 @@ import TipBox from './../TipBox/TipBox';
 
 class LogWeight extends Component {
   state = {
-    user: this.props.activeUser,
     weight: 0,
     height: 0,
     BMI: 0,
   };
 
+  BMICalc = (standard) => {
+    // BMI = kg/m^2
+    // 1kg = 2.2 pounds
+    // 1m = 39.37 inches
+    console.log('hello');
+    var weight = this.state.weight;
+    var height = this.state.height;
+    if (standard === true) {
+      weight = weight / 2.205;
+      height = height / 39.37;
+    }
+    var BMI = 0;
+    if (height !== 0) {
+      BMI = weight / height ** 2;
+    }
+    this.setState({ BMI: BMI });
+    this.props.setBMI(BMI);
+  };
+
+  weightChange = (event) => {
+    const weightInt = event.target.value;
+    this.setState({ weight: weightInt });
+  };
+
+  heightChange = (event) => {
+    const heightInt = event.target.value;
+    this.setState({ height: heightInt });
+  };
+
   metricInput() {
     return (
-      <form>
+      <form onSubmit={() => this.BMICalc(false)}>
         <fieldset>
-          <input type="text" id="weightLog" placeholder="Enter Weight" />
+          <input
+            type="number"
+            id="weightLog"
+            placeholder="Enter Weight"
+            value={this.state.weight}
+            onChange={this.weightChange}
+          />
           <label id="units">kg(kilograms)</label>
-          <input type="text" id="heightLog" placeholder="Enter Height" />
+          <input
+            type="number"
+            id="heightLog"
+            placeholder="Enter Height"
+            value={this.state.height}
+            onChange={this.heightChange}
+          />
           <label id="units">m(meters)</label>
           <p>BMI = Weight(kg) / [height(m)]^2</p>
           <ul>
@@ -28,9 +68,7 @@ class LogWeight extends Component {
             <li>Overweight: 25 ~ 29.9</li>
             <li>Obese: 30 ~ 39.9</li>
           </ul>
-          <button className="primary-btn" id="logButton">
-            Save
-          </button>
+          <input type="submit" value="Save" className="primary-btn" id="logButton" />
         </fieldset>
       </form>
     );
@@ -40,9 +78,21 @@ class LogWeight extends Component {
     return (
       <form>
         <fieldset>
-          <input type="text" id="weightLog" placeholder="Enter Weight" />
+          <input
+            type="number"
+            id="weightLog"
+            placeholder="Enter Weight"
+            value={this.state.weight}
+            onChange={this.weightChange}
+          />
           <label id="units">lbs(pounds)</label>
-          <input type="text" id="heightLog" placeholder="Enter Height" />
+          <input
+            type="number"
+            id="heightLog"
+            placeholder="Enter Height"
+            value={this.state.height}
+            onChange={this.heightChange}
+          />
           <label id="units">in(inches)</label>
           <p>BMI = 703 * Weight(lbs) / [height(in)]^2</p>
           <ul>
@@ -51,7 +101,13 @@ class LogWeight extends Component {
             <li>Overweight: 25 ~ 29.9</li>
             <li>Obese: 30 ~ 39.9</li>
           </ul>
-          <button className="primary-btn" id="logButton">
+          <button
+            className="primary-btn"
+            id="logButton"
+            onClick={() => {
+              this.BMICalc(true);
+            }}
+          >
             Save
           </button>
         </fieldset>
@@ -67,7 +123,6 @@ class LogWeight extends Component {
               id="xButton"
               src="https://image.flaticon.com/icons/svg/565/565313.svg"
               alt="icon"
-              s
             ></img>
           </NavLink>
           <h1 id="weightHeader">
