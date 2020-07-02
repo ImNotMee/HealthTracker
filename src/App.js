@@ -8,7 +8,13 @@ import { addUserHandler } from './js/actions/signUp';
 import { setActiveUser } from './js/actions/login';
 import { logoutUser } from './js/actions/logout';
 import { checkInHandler, checkoutHandler } from './js/actions/checkIn';
-
+import {
+  addReminderHandler,
+  editReminderHandler,
+  completeReminderHandler,
+  deleteReminderHandler,
+  setReminderStatus,
+} from './js/actions/reminders';
 import { USERS, PAGE_ADDRESS, LOCATIONS } from './js/constants';
 import './App.css';
 
@@ -66,8 +72,23 @@ class App extends Component {
                     checkInHandler={(location) => {
                       checkInHandler(this, location);
                     }}
-                    checkoutHandler={(location) => {
+                    checkoutHandler={() => {
                       checkoutHandler(this);
+                    }}
+                    addReminderHandler={(reminderCtx) => {
+                      addReminderHandler(this, reminderCtx);
+                    }}
+                    editReminderHandler={(reminderCtx, category, id) => {
+                      editReminderHandler(this, reminderCtx, category, id);
+                    }}
+                    setReminderStatus={(category, id, status) => {
+                      setReminderStatus(this, category, id, status);
+                    }}
+                    completeReminderHandler={(category, id, timeout) => {
+                      completeReminderHandler(this, category, id, timeout);
+                    }}
+                    deleteReminderHandler={(category, id, timeout) => {
+                      deleteReminderHandler(this, category, id, timeout);
                     }}
                     activeUser={this.state.activeUser}
                     locations={this.state.locationsDB}

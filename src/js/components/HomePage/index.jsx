@@ -11,6 +11,7 @@ import LogStress from '../LogPages/LogStress';
 import LogSick from '../LogPages/LogSick';
 import Trends from '../Trends';
 import Reminders from '../Reminders';
+import AddReminder from '../Reminders/AddReminder';
 import Calendar from '../Calendar';
 import CheckIn from '../CheckIn';
 
@@ -38,7 +39,14 @@ class HomePage extends Component {
             <Route
               exact
               path="/reminders"
-              render={() => <Reminders activeUser={this.state.user} />}
+              render={() => (
+                <Reminders
+                  activeUser={this.state.user}
+                  setReminderStatus={this.props.setReminderStatus}
+                  completeReminderHandler={this.props.completeReminderHandler}
+                  deleteReminderHandler={this.props.deleteReminderHandler}
+                />
+              )}
             />
             <Route exact path="/calendar" render={() => <Calendar />} />
             <Route
@@ -63,7 +71,17 @@ class HomePage extends Component {
             <Route exact path="/overview/logStress" render={() => <LogStress />} />
             <Route exact path="/overview/logSick" render={() => <LogSick />} />
             {/* Add Reminder view */}
-            <Route exact path="/reminders/add" render={() => <div>test</div>} />
+            <Route
+              exact
+              path="/reminders/add/:cat?/:sub?/:name?/:time?/:note?/:id?"
+              render={(props) => (
+                <AddReminder
+                  addReminderHandler={this.props.addReminderHandler}
+                  editReminderHandler={this.props.editReminderHandler}
+                  {...props}
+                />
+              )}
+            />
           </Switch>
         </div>
       </div>
