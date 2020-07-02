@@ -3,8 +3,9 @@
   --secondary-color: #203b71;
   --accent-color: pink;
   --error-color: red;
+  --fadded-color: grey;
   --contrast-text-color: white;
-  --border-radius-val: 12px;
+  --border-radius-val: 6px;
   --title-font-family: arial;
   --sub-title-font-family: arial;
   --btn-font-family: arial;
@@ -24,8 +25,27 @@
   outline: none;
 }
 
+.input {
+  border: 3px solid var(--secondary-color);
+  border-radius: var(--border-radius-val);
+  font-size: 1.15em;
+  margin: auto;
+  height: 30px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  border: 3px solid var(--primary-color);
+}
+
 .invalidInput {
-  border: 2px solid var(--error-color);
+  border: 3px solid var(--error-color);
+}
+.errorMsg {
+  font-weight: 800;
+  font-size: 1.1em;
+  color: var(--error-color);
 }
 
 .windowWrapper {

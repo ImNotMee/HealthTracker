@@ -1,17 +1,18 @@
-#List {
-  border: 3px solid black;
-  border-radius: 6px;
+#ListInput {
   margin: auto;
+  width: 100%;
 }
 
-#List:hover {
+#ListInput:hover {
   border-color: var(--primary-color);
   border: 3px solid var(--primary-color);
   box-shadow: 0px 9px 22px -6px rgba(0, 0, 0, 0.75);
 }
 
-#List:focus {
+#ListInput:focus {
   outline: none;
+  border-color: var(--primary-color);
+  border: 3px solid var(--primary-color);
 }
 
 .option {

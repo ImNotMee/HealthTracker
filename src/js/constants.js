@@ -7,24 +7,51 @@ export const ACCOUNT_TYPES = {
   user: USER_ACCOUNT_TYPE,
 };
 
+export const HEALTH_CATEGORIES = {
+  phsycial: 'Physical Health',
+  mental: 'Mental Health',
+  medical: 'Medical Health',
+};
+
+export const HEALTH_SUB_CATEGORIES = {
+  [HEALTH_CATEGORIES.phsycial]: ['BMI', 'Hydration', 'Calories'],
+  [HEALTH_CATEGORIES.mental]: ['Mood', 'Sleep', 'Stress'],
+  [HEALTH_CATEGORIES.medical]: ['Medication', 'Symptoms', 'Appointments'],
+};
+
+export const REMINDER_STATUS = {
+  active: 'active',
+  completed: 'completed',
+  overdue: 'overdue',
+};
+
 export const USERS = {
   useruser: {
     firstName: 'Ben',
     lastName: 'John',
     hash: 'useruser',
+    type: USER_ACCOUNT_TYPE,
     reminders: {
-      medicalReminders: [],
-      mentalReminders: [],
-      physicalReminders: [
+      [HEALTH_CATEGORIES.medical]: [],
+      [HEALTH_CATEGORIES.mental]: [],
+      [HEALTH_CATEGORIES.phsycial]: [
         {
+          id: 'r0',
+          category: HEALTH_CATEGORIES.phsycial,
+          subCategory: 'BMI',
           name: 'Go for 30 minute run',
-          time: 12,
+          time: '2020-07-01T21:15',
           note: 'call Jack to check if he wants to come',
+          status: REMINDER_STATUS.active,
         },
         {
+          id: 'r1',
+          category: HEALTH_CATEGORIES.phsycial,
+          subCategory: 'BMI',
           name: 'Go for 30 minute run',
-          time: 12,
+          time: 1598996595261,
           note: 'call Jack to check if he wants to come',
+          status: REMINDER_STATUS.active,
         },
       ],
       otherReminders: null,
@@ -36,7 +63,12 @@ export const USERS = {
       stress: [2, 3, 2, 1, 4, 6, 5],
     },
   },
-  adminadmin: { firstName: 'IAmAdmin', lastName: 'John', hash: 'adminadmin' },
+  adminadmin: {
+    firstName: 'IAmAdmin',
+    lastName: 'John',
+    hash: 'adminadmin',
+    type: ADMIN_ACCOUNT_TYPE,
+  },
 };
 
 export const PAGE_ADDRESS = [
@@ -53,7 +85,7 @@ export const PAGE_ADDRESS = [
   '/overview/logStress',
   '/overview/logMedical',
   '/overview/logSick',
-  '/reminders/add',
+  '/reminders/add/:cat?/:sub?/:name?/:time?/:note?/:id?',
 ];
 
 export const LOCATIONS = {
