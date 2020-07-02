@@ -5,7 +5,12 @@ import TipBox from './../TipBox/TipBox';
 import { NavLink } from 'react-router-dom';
 class LogWater extends Component {
   state = {
-    user: this.props.activeUser,
+    water: 0,
+  };
+
+  waterChange = (event) => {
+    const waterDrank = event.target.value;
+    this.setState({ water: waterDrank });
   };
 
   render() {
@@ -28,7 +33,7 @@ class LogWater extends Component {
             Water Consumption
           </h1>
           <div className="logWaterBox">
-            <form>
+            <form onSubmit={() => this.props.setWater(this.state.water)}>
               <fieldset>
                 <h3>
                   How much water did you drink?
@@ -38,12 +43,16 @@ class LogWater extends Component {
                     alt="icon"
                   ></img>
                 </h3>
-                <input type="text" id="waterLog" placeholder="Enter Amount" />
+                <input
+                  type="number"
+                  id="waterLog"
+                  placeholder="Enter Amount"
+                  value={this.state.water}
+                  onChange={this.waterChange}
+                />
                 <label id="waterUnits">ml</label>
                 <p>Suggested amount of water per day: 2 ~ 2.5L</p>
-                <button className="primary-btn" id="logButton">
-                  Save
-                </button>
+                <input type="submit" value="Save" className="primary-btn" id="logButton" />
               </fieldset>
             </form>
           </div>
