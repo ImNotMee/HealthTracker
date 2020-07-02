@@ -6,7 +6,6 @@ import TipBox from './../TipBox/TipBox';
 
 class LogStress extends Component {
   state = {
-    user: this.props.activeuser,
     value: 5,
   };
 
@@ -37,11 +36,11 @@ class LogStress extends Component {
             Stress Level
           </h1>
           <div className="logStressBox">
-            <form>
+            <form onSubmit={() => this.props.setStress(this.state.value)}>
               <fieldset>
                 <h3>Are you stressed?</h3>
 
-                <div class="sliderContainer">
+                <div className="sliderContainer">
                   <input
                     type="range"
                     min={0}
@@ -67,11 +66,9 @@ class LogStress extends Component {
                     10
                   </label>
                 </div>
-                <div class="resultContainer">
+                <div className="resultContainer">
                   <label id="outputValue">Your stress level: {this.state.value}</label>
-                  <button className="primary-btn" id="logButton">
-                    Save
-                  </button>
+                  <input type="submit" value="Save" className="primary-btn" id="logButton" />
                 </div>
               </fieldset>
             </form>
