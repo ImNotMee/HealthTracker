@@ -6,8 +6,15 @@ import TipBox from './../TipBox/TipBox';
 
 class LogMood extends Component {
   state = {
-    user: this.props.activeUser,
+    mood: '',
   };
+
+  changeMood = (mood) => {
+    this.setState({
+      mood: mood,
+    });
+  };
+
   render() {
     return (
       <div id="LogMoodWrapper">
@@ -32,7 +39,7 @@ class LogMood extends Component {
               <fieldset>
                 <h3>How do you feel today?</h3>
                 <div id="iconContainer">
-                  <RadioMood></RadioMood>
+                  <RadioMood changeMood={(mood) => this.changeMood(mood)}></RadioMood>
                 </div>
                 <button className="primary-btn" id="logButton">
                   Save
