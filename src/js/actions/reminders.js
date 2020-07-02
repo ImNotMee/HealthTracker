@@ -1,4 +1,5 @@
-import { REMINDER_STATUS } from '../constants';
+import { REMINDER_STATUS, NOTIFICATION_TYPE } from '../constants';
+import { addNotificationHandler } from './notification';
 
 const log = console.log;
 
@@ -106,6 +107,11 @@ export const setReminderStatus = (ctx, category, id, status) => {
   ctx.setState({
     activeUser: user,
   });
+};
+
+export const notifyAboutReminder = (ctx, reminder) => {
+  setReminderStatus(ctx, reminder.category, reminder.id, REMINDER_STATUS.overdue);
+  addNotificationHandler(ctx, NOTIFICATION_TYPE.reminder, reminder.name, reminder.note);
 };
 
 const _getReminderIndex = (list, id) => {

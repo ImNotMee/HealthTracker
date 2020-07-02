@@ -25,6 +25,11 @@ export const REMINDER_STATUS = {
   overdue: 'overdue',
 };
 
+export const NOTIFICATION_TYPE = {
+  alert: 'Alert',
+  reminder: 'Reminder',
+};
+
 export const USERS = {
   useruser: {
     firstName: 'Ben',
@@ -38,7 +43,7 @@ export const USERS = {
         {
           id: 'r0',
           category: HEALTH_CATEGORIES.phsycial,
-          subCategory: 'BMI',
+          subCategory: 'Appointments',
           name: 'Go for 30 minute run',
           time: '2020-07-01T21:15',
           note: 'call Jack to check if he wants to come',
@@ -56,6 +61,14 @@ export const USERS = {
       ],
       otherReminders: null,
     },
+    notifications: [
+      {
+        id: 'unique',
+        type: NOTIFICATION_TYPE.alert,
+        title: 'Welcome =D',
+        message: 'explor our app',
+      },
+    ],
   },
   adminadmin: {
     firstName: 'IAmAdmin',
