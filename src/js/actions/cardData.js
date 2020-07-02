@@ -66,7 +66,6 @@ export const setBMI = (card, newBMI) => {
   console.log('updating BMI to ');
   const { user_card } = card.state;
   user_card['BMI']['value'] = newBMI;
-
   card.setState({
     user_card: user_card,
   });
@@ -77,7 +76,11 @@ export const setWater = (card, newWater) => {
   console.log('updating Water to ');
   const { user_card } = card.state;
   user_card['Water']['completed'] = newWater;
-  user_card['Water']['remaining'] = 2000 - newWater;
+  let remainging = 2000 - newWater;
+  if (remainging < 0) {
+    remainging = 0;
+  }
+  user_card['Water']['remaining'] = remainging;
   card.setState({
     user_card: user_card,
   });
@@ -88,7 +91,12 @@ export const setCalories = (card, newCalories) => {
   console.log('updating Calories to ');
   const { user_card } = card.state;
   user_card['Calories']['completed'] = newCalories;
-  user_card['Calories']['remaining'] = 2000 - newCalories;
+  let remainging = 2000 - newCalories;
+  if (remainging < 0) {
+    remainging = 0;
+  }
+  user_card['Calories']['remaining'] = remainging;
+
   card.setState({
     user_card: user_card,
   });

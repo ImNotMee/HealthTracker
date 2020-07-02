@@ -29,7 +29,6 @@ class LogSick extends Component {
               id="xButton"
               src="https://image.flaticon.com/icons/svg/565/565313.svg"
               alt="icon"
-              s
             ></img>
           </NavLink>
           <h1 id="sickHeader">

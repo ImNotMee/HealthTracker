@@ -90,7 +90,7 @@ export const USERS = {
 
 export const USER_CARD = {
   BMI: {
-    value: 22,
+    value: 22.0,
   },
   Water: {
     completed: 800,

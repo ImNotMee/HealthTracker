@@ -4,7 +4,7 @@ import { MOODLIST } from './../../../constants';
 
 class RadioMood extends Component {
   state = {
-    mood: '',
+    mood: 'happy',
     moodList: MOODLIST,
   };
 
@@ -20,12 +20,7 @@ class RadioMood extends Component {
       return (
         <div id="carriers" key={index}>
           <img id="emoticon" src={mood.icon} alt="icon" />
-          <input
-            type="radio"
-            value={mood.value}
-            checked={this.state.mood === mood.value}
-            onClick={this.onChangeMood}
-          />
+          <input type="radio" value={mood.value} onClick={this.onChangeMood} />
         </div>
       );
     });
