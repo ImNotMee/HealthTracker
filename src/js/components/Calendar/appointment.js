@@ -7,12 +7,11 @@ class Appointment extends Component {
   };
 
   getAppointments() {
-    console.log(this.props.appointments);
     let appoint = [];
     for (let i = 0; i < this.state.appointments.length; i++) {
       appoint.push(
         <p id="appointmentBox" key={i}>
-          {this.state.appointments[i]}
+          {this.state.appointments[i][1]} <strong>{this.state.appointments[i][0]}</strong>
         </p>,
       );
     }

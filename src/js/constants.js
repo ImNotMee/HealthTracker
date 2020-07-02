@@ -32,7 +32,17 @@ export const USERS = {
     hash: 'useruser',
     type: USER_ACCOUNT_TYPE,
     reminders: {
-      [HEALTH_CATEGORIES.medical]: [],
+      [HEALTH_CATEGORIES.medical]: [
+        {
+          id: 'r01',
+          category: HEALTH_CATEGORIES.medical,
+          subCategory: 'Appointments',
+          name: 'Annual Check Up',
+          time: '2020-07-06T10:15',
+          note: 'Call Dr.Jones 1hr before',
+          status: REMINDER_STATUS.active,
+        },
+      ],
       [HEALTH_CATEGORIES.mental]: [],
       [HEALTH_CATEGORIES.phsycial]: [
         {
@@ -55,28 +65,6 @@ export const USERS = {
         },
       ],
       otherReminders: null,
-    },
-    calendar: {
-      appointmentList: [
-        {
-          date: 24,
-          appointments: ['Doctor Appointment', ' Check up Appointment'],
-        },
-        {
-          date: 22,
-          appointments: ['Eye check up'],
-        },
-      ],
-      streaksList: [
-        {
-          date: 3,
-          streaks: ['💧', '🔥', '🛏️'],
-        },
-        {
-          date: 4,
-          streaks: ['💧', '🔥', '🛏️'],
-        },
-      ],
     },
   },
   adminadmin: {
