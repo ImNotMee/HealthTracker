@@ -32,7 +32,7 @@ class HomePage extends Component {
         </div>
         <div id="HomeContentWrapper">
           <div id="NotificationWrapper">
-            {this.state.user?.notifications.map((notification) => {
+            {this.state.user?.notifications?.map((notification) => {
               return (
                 <Notification
                   key={notification.id}

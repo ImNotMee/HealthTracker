@@ -16,7 +16,13 @@ import {
   deleteReminderHandler,
   notifyAboutReminder,
 } from './js/actions/reminders';
-import { USERS, PAGE_ADDRESS, LOCATIONS } from './js/constants';
+import {
+  USERS,
+  PAGE_ADDRESS,
+  LOCATIONS,
+  USER_ACCOUNT_TYPE,
+  ADMIN_ACCOUNT_TYPE,
+} from './js/constants';
 import './App.css';
 
 class App extends Component {
@@ -31,8 +37,19 @@ class App extends Component {
     if (this.state.activeUser === null) {
       return <Redirect to="/signup" />;
     }
-    if (window.location.pathname === '/signup') {
+
+    if (
+      window.location.pathname === '/signup' &&
+      this.state.activeUser.type === USER_ACCOUNT_TYPE
+    ) {
       return <Redirect to="/overview" />;
+    }
+
+    if (
+      window.location.pathname === '/signup' &&
+      this.state.activeUser.type === ADMIN_ACCOUNT_TYPE
+    ) {
+      return <Redirect to="/manage-users" />;
     }
   };
 
