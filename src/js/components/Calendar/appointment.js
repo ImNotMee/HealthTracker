@@ -20,7 +20,7 @@ class Appointment extends Component {
         </p>,
       );
     }
-    return <div id="appointmentContainer">{appoint}</div>;
+    return <div id="boxContainer">{appoint}</div>;
   }
 
   render() {

@@ -43,12 +43,12 @@
   position: fixed;
 }
 
-.left {
+.logWeightView.left {
   left: 0;
-  width: 15%;
+  width: 59vw;
   margin-left: 16vw;
 }
-.right {
+.logWeightView.right {
   right: 0;
   width: 25vw;
   border-left: 1px solid var(--primary-color);
@@ -62,7 +62,7 @@
 }
 
 /* Tab.js*/
-.tabButton {
+.tabButton#weightTab {
   width: 50%;
   font-size: 15px;
   background-color: inherit;
@@ -73,11 +73,11 @@
   color: white;
   border-radius: 12px;
 }
-.tabButton:hover {
+.tabButton#weightTab:hover {
   background-color: dodgerblue;
 }
 
-.tabButton.active {
+.tabButton.active#weightTab {
   background-color: white;
   color: black;
 }

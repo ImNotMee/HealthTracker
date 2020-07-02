@@ -16,13 +16,14 @@ class TabList extends Component {
   render() {
     return (
       <div className="tabList">
-        <div className="tab">
+        <div className="tab" id={this.props.id}>
           {this.props.children.map((child) => {
             return (
               <Tab
                 activeTab={this.state.activeTab}
                 key={child.props.label}
                 label={child.props.label}
+                id={this.props.id}
                 onClick={this.onClickTab}
               />
             );
