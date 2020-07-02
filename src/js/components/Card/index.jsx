@@ -172,7 +172,7 @@ class Card extends Component {
   }
 
   render() {
-    const add = `/overview/${this.state.address}`;
+    const add = this.state.address;
     return (
       <NavLink to={add} id="cardWrapper">
         <h2 id="cardTitle">{this.state.title}</h2>

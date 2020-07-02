@@ -10,20 +10,45 @@ class ListSelector extends Component {
     const { options, onChangeHandler } = this.props;
 
     return (
-      <div>
-        <input
-          type="text"
-          list="list"
-          name="list"
-          id="List"
-          autoComplete="on"
-          onChange={onChangeHandler}
-        />
-        <datalist id="list">
-          {options.map((value) => (
-            <option key={value} className="option" value={value} />
-          ))}
-        </datalist>
+      <div id={this.props.id}>
+        {this.props.autoComplete !== 'false' ? (
+          <div>
+            <input
+              className={`input ${this.props.className}`}
+              type="text"
+              list={`${this.props.name}`}
+              name={`${this.props.name}`}
+              id="ListInput"
+              autoComplete={this.props.autoComplete}
+              onChange={onChangeHandler}
+              value={this.props.defaultValue}
+            />
+            <datalist id={`${this.props.name}`}>
+              {options !== undefined
+                ? options.map((value) => <option key={value} className="option" value={value} />)
+                : ''}
+            </datalist>
+          </div>
+        ) : (
+          <select
+            className={`input ${this.props.className}`}
+            type="text"
+            list={`${this.props.name}`}
+            name={`${this.props.name}`}
+            id="ListInput"
+            onChange={onChangeHandler}
+            value={this.props.defaultValue}
+          >
+            <option value=""> select </option>
+            {options !== undefined
+              ? options.map((value) => (
+                  <option key={value} className="option" value={value}>
+                    {value}
+                  </option>
+                ))
+              : ''}
+          </select>
+        )}
       </div>
     );
   }

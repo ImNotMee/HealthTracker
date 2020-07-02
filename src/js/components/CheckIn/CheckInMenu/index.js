@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ListSelector from '../../General/ListSelector';
+import { onSelectHandler } from '../../../actions/utils';
 import './styles.css';
 
 class CheckInMenu extends Component {
@@ -26,9 +27,13 @@ class CheckInMenu extends Component {
         <div id="SelectWrapper">
           <h3>Please select a location: </h3>
           <ListSelector
-            id="List"
+            id="LocList"
+            name="locations"
+            autoComplete="on"
             options={this.props.options}
-            onChangeHandler={this.onSelectHandler}
+            onChangeHandler={(event) => {
+              onSelectHandler(this, event, 'selectedLocation');
+            }}
           />
         </div>
         <button
