@@ -84,13 +84,13 @@ class Sidebar extends Component {
           ></img>
           Reminders
         </NavLink>
-        <NavLink to="/check-in/admin" activeClassName="activeLink" className="home_navlink">
+        <NavLink to="/alert-system" activeClassName="activeLink" className="home_navlink">
           <img
             id="icon"
             alt="check-in icon"
             src="https://image.flaticon.com/icons/svg/684/684809.svg"
           ></img>
-          Check-In
+          Alert Sys
         </NavLink>
       </div>
     );

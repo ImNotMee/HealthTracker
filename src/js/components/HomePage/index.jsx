@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Notification from '../General/Notification';
+// User Components
 import SideBar from '../SideBar';
 import Overview from '../Overview';
 import LogWeight from '../LogPages/LogWeight';
@@ -15,8 +16,9 @@ import Reminders from '../Reminders';
 import AddReminder from '../Reminders/AddReminder';
 import Calendar from '../Calendar';
 import CheckIn from '../CheckIn';
+// Admin Components 
+import AdminCheckIn from '../AdminCheckIn';
 import AdminTrends from '../Trends/adminTrend.js';
-
 import './styles.css';
 
 class HomePage extends Component {
@@ -99,6 +101,17 @@ class HomePage extends Component {
                   addReminderHandler={this.props.addReminderHandler}
                   editReminderHandler={this.props.editReminderHandler}
                   {...props}
+                />
+              )}
+            />
+            {/* Admin views */}
+            <Route
+              exact
+              path="/alert-system"
+              render={() => (
+                <AdminCheckIn
+                  sendAlertHandler={this.props.sendAlertHandler}
+                  locations={this.props.locations}
                 />
               )}
             />
