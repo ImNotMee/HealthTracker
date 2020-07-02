@@ -37,7 +37,17 @@ export const USERS = {
     hash: 'useruser',
     type: USER_ACCOUNT_TYPE,
     reminders: {
-      [HEALTH_CATEGORIES.medical]: [],
+      [HEALTH_CATEGORIES.medical]: [
+        {
+          id: 'r2',
+          category: HEALTH_CATEGORIES.medical,
+          subCategory: 'Appointments',
+          name: 'Doctors Appointment',
+          time: 1598996595261,
+          note: 'Go to the doctor',
+          status: REMINDER_STATUS.active,
+        },
+      ],
       [HEALTH_CATEGORIES.mental]: [],
       [HEALTH_CATEGORIES.phsycial]: [
         {
@@ -76,6 +86,66 @@ export const USERS = {
     hash: 'adminadmin',
     type: ADMIN_ACCOUNT_TYPE,
   },
+};
+
+export const USER_CARD = {
+  BMI: {
+    value: 22,
+  },
+  Water: {
+    completed: 800,
+    remaining: 1200,
+    unit: 'ml',
+  },
+  Calories: {
+    completed: 300,
+    remaining: 1700,
+    unit: 'Calories',
+  },
+  Mood: {
+    value: 'happy',
+  },
+  Sleep: {
+    hours: 8,
+    quality: 'Good', // 3 levels bad, okay, good
+  },
+  Stress: {
+    value: 1,
+  },
+  Medication: [
+    {
+      drug: 'Cold Medicine',
+      completed: 1,
+      remainging: 2,
+    },
+    {
+      drug: 'Allergy Medicine',
+      completed: 2,
+      remainging: 4,
+    },
+  ],
+  Sickness: {
+    //
+    sick: true,
+  },
+  Appointments: [
+    // shows all appointments today
+    {
+      event: 'Annual Checkup',
+      doctor: 'Dr. Zoudas',
+      time: '16:00:00',
+    },
+    {
+      event: 'Blood Donation',
+      doctor: 'Dr. Dre',
+      time: '10:00:00',
+    },
+    {
+      event: 'Dentist',
+      doctor: 'Dr. Teth',
+      time: '12:00:00',
+    },
+  ],
 };
 
 export const PAGE_ADDRESS = [
