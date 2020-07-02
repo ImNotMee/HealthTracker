@@ -116,6 +116,7 @@ class App extends Component {
                       sendAlertHandler(this, location);
                     }}
                     activeUser={this.state.activeUser}
+                    userDB={this.state.userDB}
                     locations={this.state.locationsDB}
                   />
                 </div>
