@@ -63,7 +63,7 @@ class CalendarModule extends Component {
           days.push(
             <div id="dates" key={i}>
               <p>{date}</p>
-              <Appointment appointments={lists} />
+              <Appointment appointments={[]} />
             </div>,
           );
         } else if (this.props.type === 'streaks') {
@@ -73,7 +73,7 @@ class CalendarModule extends Component {
           days.push(
             <div id="dates" key={i}>
               <p>{date}</p>
-              <Streaks streaks={lists} />
+              <Streaks streaks={[]} />
             </div>,
           );
         } else {
