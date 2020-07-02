@@ -94,7 +94,7 @@ export const PAGE_ADDRESS = [
   '/overview/logMedical',
   '/overview/logSick',
   '/reminders/add/:cat?/:sub?/:name?/:time?/:note?/:id?',
-  '/mange-users',
+  '/manage-users',
   '/trends/admin',
   '/check-in/admin',
 ];
