@@ -36,6 +36,7 @@ export const USERS = {
     lastName: 'John',
     hash: 'useruser',
     type: USER_ACCOUNT_TYPE,
+    checkInHistory: [],
     reminders: {
       [HEALTH_CATEGORIES.medical]: [],
       [HEALTH_CATEGORIES.mental]: [],
