@@ -1,5 +1,5 @@
 import { MONTHS, USERS } from '../constants.js';
-const log = console.log;
+//const log = console.log;
 
 export const getFirstDay = () => {
   let d = new Date();

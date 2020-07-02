@@ -3,7 +3,7 @@ import './styles.css';
 import Appointment from './appointment.js';
 import Streaks from './streaks.js';
 import { DAYSOFWEEK } from '../../constants.js';
-import { getFirstDay, getMonth, findApps } from '../../actions/calendarItems';
+import { getFirstDay, findApps } from '../../actions/calendarItems';
 let date;
 
 class CalendarModule extends Component {
