@@ -52,13 +52,13 @@ class CalendarModule extends Component {
 
   renderDays() {
     const days = [];
-    const lists = [];
+    //const lists = [];
     for (let i = 0; i < 7; i++) {
       if (date < 32) {
         let a = this.props.items;
         if (this.props.type === 'calendar') {
           if (a[0] != null) {
-            const lists = findApps(a, date);
+            //const lists = findApps(a, date);
           }
           days.push(
             <div id="dates" key={i}>
@@ -68,7 +68,7 @@ class CalendarModule extends Component {
           );
         } else if (this.props.type === 'streaks') {
           if (a[0] != null) {
-            const lists = findStreaks(a, date);
+            //const lists = findStreaks(a, date);
           }
           days.push(
             <div id="dates" key={i}>
