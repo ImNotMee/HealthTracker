@@ -1,66 +1,81 @@
-import { USERS } from '../constants.js';
 const log = console.log;
 
-export const avgWeight = () => {
+export const avgWeight = (allUser) => {
   let weekAvg = [];
-  //Object.keys(USERS).length to get the length
+  let count = 0;
   for (let i = 0; i < 7; i++) {
     let sum = 0;
-    for (let j = 0; j < 1; j++) {
-      sum = sum + USERS['useruser'].trends.weight[i];
+    for (let x in allUser) {
+      if (allUser[x].type === 'user') {
+        sum = sum + allUser[x].trends.weight[i];
+        count = count + 1;
+      }
     }
-    weekAvg.push(sum / 1);
+    if (count !== 0) {
+      weekAvg.push(sum / count);
+    }
+    count = 0;
   }
-  console.log(weekAvg);
+  log('average weight loaded');
   return weekAvg;
 };
 
-export const avgStress = () => {
+export const avgStress = (allUser) => {
   let weekAvg = [];
-  //Object.keys(USERS).length to get the length
+  let count = 0;
   for (let i = 0; i < 7; i++) {
     let sum = 0;
-    for (let j = 0; j < 1; j++) {
-      sum = sum + USERS['useruser'].trends.stress[i];
+    for (let x in allUser) {
+      if (allUser[x].type === 'user') {
+        sum = sum + allUser[x].trends.stress[i];
+        count = count + 1;
+      }
     }
-    weekAvg.push(sum / 1);
+    if (count !== 0) {
+      weekAvg.push(sum / count);
+    }
+    count = 0;
   }
-  console.log(weekAvg);
+  log('average stress  loaded');
   return weekAvg;
 };
 
-export const avgSleep = () => {
+export const avgSleep = (allUser) => {
   let weekAvg = [];
-  //Object.keys(USERS).length to get the length
+  let count = 0;
   for (let i = 0; i < 7; i++) {
     let sum = 0;
-    for (let j = 0; j < 1; j++) {
-      sum = sum + USERS['useruser'].trends.sleep[i];
+    for (let x in allUser) {
+      if (allUser[x].type === 'user') {
+        sum = sum + allUser[x].trends.sleep[i];
+        count = count + 1;
+      }
     }
-    weekAvg.push(sum / 1);
+    if (count !== 0) {
+      weekAvg.push(sum / count);
+    }
+    count = 0;
   }
-  console.log(weekAvg);
+  log('average sleep loaded');
   return weekAvg;
 };
 
-export const avgCalories = () => {
+export const avgCalories = (allUser) => {
   let weekAvg = [];
-  //Object.keys(USERS).length to get the length
+  let count = 0;
   for (let i = 0; i < 7; i++) {
     let sum = 0;
-    for (let j = 0; j < 1; j++) {
-      sum = sum + USERS['useruser'].trends.calories[i];
+    for (let x in allUser) {
+      if (allUser[x].type === 'user') {
+        sum = sum + allUser[x].trends.calories[i];
+        count = count + 1;
+      }
     }
-    weekAvg.push(sum / 1);
+    if (count !== 0) {
+      weekAvg.push(sum / count);
+    }
+    count = 0;
   }
-  console.log(weekAvg);
+  log('average calories loaded');
   return weekAvg;
 };
-
-export class Trends {
-  constructor(title, data, type) {
-    this.title = title;
-    this.data = data;
-    this.type = type;
-  }
-}

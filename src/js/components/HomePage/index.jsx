@@ -20,6 +20,7 @@ import './styles.css';
 class HomePage extends Component {
   state = {
     user: this.props.activeUser,
+    userDB: this.props.userDB,
     check: false,
   };
 
@@ -35,7 +36,11 @@ class HomePage extends Component {
           <Switch>
             {/* Page nav */}
             <Route exact path="/overview" render={() => <Overview />} />
-            <Route exact path="/trends" render={() => <Trends activeUser={this.state.user} />} />
+            <Route
+              exact
+              path="/trends"
+              render={() => <Trends activeUser={this.state.user} userDB={this.state.userDB} />}
+            />
             <Route
               exact
               path="/reminders"

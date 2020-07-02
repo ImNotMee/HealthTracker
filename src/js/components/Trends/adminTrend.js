@@ -6,6 +6,7 @@ import { avgStress, avgCalories, avgSleep, avgWeight } from '../../actions/trend
 class AdminTrends extends Component {
   state = {
     user: this.props.activeUser,
+    userDB: this.props.userDB,
     trends: {
       title: '',
       data: [],
@@ -14,9 +15,10 @@ class AdminTrends extends Component {
   };
 
   renderGraph(type) {
+    let avg = [];
     switch (type) {
       case 'weight':
-        const avg = avgWeight(this.state.user);
+        avg = avgWeight(this.state.userDB);
         this.setState({
           trends: {
             title: 'Average Body Weight',
@@ -26,7 +28,7 @@ class AdminTrends extends Component {
         });
         break;
       case 'sleep':
-        const avg = avgSleep(this.state.user);
+        avg = avgSleep(this.state.userDB);
         this.setState({
           trends: {
             title: 'Average Hours of Sleep',
@@ -36,7 +38,7 @@ class AdminTrends extends Component {
         });
         break;
       case 'calories':
-        const avg = avgCalories(this.state.user);
+        avg = avgCalories(this.state.userDB);
         this.setState({
           trends: {
             title: 'Average Calorie Intake',
@@ -46,7 +48,7 @@ class AdminTrends extends Component {
         });
         break;
       case 'stress':
-        const avg = avgStress(this.state.user);
+        avg = avgStress(this.state.userDB);
         this.setState({
           trends: {
             title: 'Average Stress Level',
@@ -59,13 +61,17 @@ class AdminTrends extends Component {
         this.setState({
           trends: {
             title: '',
-            data: [],
+            data: avg,
             type: 'line',
           },
         });
         break;
     }
   }
+
+  // To render admin:
+  // import AdminTrends from './adminTrend';
+  // <AdminTrends activeUser={this.state.user} userDB={this.state.userDB} />
 
   render() {
     const { title, data, type } = this.state.trends;

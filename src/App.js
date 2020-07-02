@@ -91,6 +91,7 @@ class App extends Component {
                       deleteReminderHandler(this, category, id, timeout);
                     }}
                     activeUser={this.state.activeUser}
+                    userDB={this.state.userDB}
                     locations={this.state.locationsDB}
                   />
                 </div>

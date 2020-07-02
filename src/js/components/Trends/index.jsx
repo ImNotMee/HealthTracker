@@ -5,6 +5,7 @@ import Graph from './Graph/index.jsx';
 class Trends extends Component {
   state = {
     user: this.props.activeUser,
+    userDB: this.props.userDB,
     trends: {
       title: '',
       data: [],
