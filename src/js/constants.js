@@ -96,7 +96,7 @@ export const PAGE_ADDRESS = [
   '/reminders/add/:cat?/:sub?/:name?/:time?/:note?/:id?',
   '/manage-users',
   '/trends/admin',
-  '/check-in/admin',
+  '/alert-system',
 ];
 
 export const LOCATIONS = {

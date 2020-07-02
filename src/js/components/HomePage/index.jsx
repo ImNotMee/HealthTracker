@@ -15,6 +15,7 @@ import Reminders from '../Reminders';
 import AddReminder from '../Reminders/AddReminder';
 import Calendar from '../Calendar';
 import CheckIn from '../CheckIn';
+import AdminCheckIn from '../AdminCheckIn';
 
 import './styles.css';
 
@@ -92,6 +93,17 @@ class HomePage extends Component {
                   addReminderHandler={this.props.addReminderHandler}
                   editReminderHandler={this.props.editReminderHandler}
                   {...props}
+                />
+              )}
+            />
+            {/* Admin views */}
+            <Route
+              exact
+              path="/alert-system"
+              render={() => (
+                <AdminCheckIn
+                  sendAlertHandler={this.props.sendAlertHandler}
+                  locations={this.props.locations}
                 />
               )}
             />

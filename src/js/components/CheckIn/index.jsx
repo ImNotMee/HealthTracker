@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CheckInMenu from './CheckInMenu';
+import LocationSelector from '../General/LocationSelector';
 import { viewPlace } from '../../actions/checkIn';
 import PlaceViewer from './PlaceViewer';
 import './styles.css';
@@ -27,7 +27,12 @@ class CheckIn extends Component {
           ''
         )}
         <div id="CheckInWrapper" className="windowWrapper">
-          <CheckInMenu
+          <LocationSelector
+            header="Check-In Menu"
+            message="Help prevent the spead of COVID by practiciing social ditancing. 
+            By using our check-in system you can see the copacity of parks you want 
+            to exercise at and help keep it up to date by checking in."
+            action="View Place"
             options={Object.keys(this.props.locations)}
             onSubmitHandler={(location) => {
               viewPlace(this, this.props.locations, location);

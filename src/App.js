@@ -4,6 +4,7 @@ import { Redirect, Route, Switch, BrowserRouter } from 'react-router-dom';
 import LandingPage from './js/components/LandingPage';
 import HomePage from './js/components/HomePage';
 
+import { sendAlertHandler } from './js/actions/adminCheckIn';
 import { addUserHandler } from './js/actions/signUp';
 import { setActiveUser } from './js/actions/login';
 import { logoutUser } from './js/actions/logout';
@@ -110,6 +111,9 @@ class App extends Component {
                     }}
                     deleteReminderHandler={(category, id, timeout) => {
                       deleteReminderHandler(this, category, id, timeout);
+                    }}
+                    sendAlertHandler={(location) => {
+                      sendAlertHandler(this, location);
                     }}
                     activeUser={this.state.activeUser}
                     locations={this.state.locationsDB}
