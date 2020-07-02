@@ -7,6 +7,7 @@ class Appointment extends Component {
   };
 
   getAppointments() {
+    console.log(this.props.appointments);
     let appoint = [];
     for (let i = 0; i < this.state.appointments.length; i++) {
       appoint.push(

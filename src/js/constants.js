@@ -29,6 +29,28 @@ export const USERS = {
       ],
       otherReminders: null,
     },
+    calendar: {
+      appointmentList: [
+        {
+          date: 24,
+          appointments: ['Doctor Appointment', ' Check up Appointment'],
+        },
+        {
+          date: 22,
+          appointments: ['Eye check up'],
+        },
+      ],
+      streaksList: [
+        {
+          date: 3,
+          streaks: ['💧', '🔥', '🛏️'],
+        },
+        {
+          date: 4,
+          streaks: ['💧', '🔥', '🛏️'],
+        },
+      ],
+    },
   },
   adminadmin: { firstName: 'IAmAdmin', lastName: 'John', hash: 'adminadmin' },
 };

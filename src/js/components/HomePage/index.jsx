@@ -41,7 +41,11 @@ class HomePage extends Component {
               path="/reminders"
               render={() => <Reminders activeUser={this.state.user} />}
             />
-            <Route exact path="/calendar" render={() => <Calendar />} />
+            <Route
+              exact
+              path="/calendar"
+              render={() => <Calendar activeUser={this.state.user} />}
+            />
             <Route
               exact
               path="/check-in"

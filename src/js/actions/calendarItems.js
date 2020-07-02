@@ -1,13 +1,5 @@
-import { MONTHS } from '../constants.js';
+import { MONTHS, USERS } from '../constants.js';
 const log = console.log;
-
-export class CalendarItems {
-  constructor(appointments, streaks, date) {
-    this.appointments = appointments;
-    this.streaks = streaks;
-    this.date = date;
-  }
-}
 
 export const getFirstDay = () => {
   let d = new Date();
@@ -21,12 +13,38 @@ export const getMonth = () => {
   return months[d.getMonth()];
 };
 
-export const loadData = (date) => {
-  const apps = ['Doctor Appointment', ' Checkup Appointment'];
-  const strs = ['💧', '🔥', '🛏️'];
+export const loadAppointments = (user) => {
+  const appointments = [];
+  for (let i = 0; i < USERS[user].calendar.appointmentList.length; i++) {
+    appointments.push(USERS[user].calendar.appointmentList[i]);
+  }
+  return appointments;
 };
 
-export const setData = () => {
-  let calItems = new CalendarItems([], [], 1);
-  return calItems;
+export const loadStreaks = (user) => {
+  const streaks = [];
+  for (let i = 0; i < USERS[user].calendar.streaksList.length; i++) {
+    streaks.push(USERS[user].calendar.streaksList[i]);
+  }
+  return streaks;
+};
+
+export const findApps = (lists, date) => {
+  const app = [];
+  for (let i = 0; i < lists.length; i++) {
+    if (lists[i].date === date) {
+      app.push(lists[i].appointments);
+    }
+  }
+  return app;
+};
+
+export const findStreaks = (lists, date) => {
+  const streaks = [];
+  for (let i = 0; i < lists.length; i++) {
+    if (lists[i].date === date) {
+      streaks.push(lists[i].streaks);
+    }
+  }
+  return streaks;
 };
