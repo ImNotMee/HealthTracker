@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import IconButton from '@material-ui/core/IconButton';
+import SettingsIcon from '@material-ui/icons/Settings';
 import './styles.css';
 import { USER_ACCOUNT_TYPE } from '../../constants';
 
@@ -99,6 +101,11 @@ class Sidebar extends Component {
   render() {
     return (
       <div id="sideBar">
+        <NavLink className="settings" to={'/settings'}>
+          <IconButton aria-label="edit">
+            <SettingsIcon />
+          </IconButton>
+        </NavLink>
         <div id="userProfile">
           <img id="userPicture" alt="profile" src={this.state.profilePic}></img>
           <h2>{this.state.user?.firstName}</h2>

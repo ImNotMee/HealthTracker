@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Notification from '../General/Notification';
+import UserSettings from '../UserSettings';
 // User Components
 import SideBar from '../SideBar';
 import Overview from '../Overview';
@@ -54,6 +55,16 @@ class HomePage extends Component {
           {/* Each Route below shows a different component depending on the exact path in the URL  */}
           <Switch>
             {/* Page nav */}
+            <Route
+              exact
+              path="/settings"
+              render={() => (
+                <UserSettings
+                  activeUser={this.props.activeUser}
+                  saveUserInfoHandler={this.props.saveUserInfoHandler}
+                />
+              )}
+            />
             <Route exact path="/overview" render={() => <Overview />} />
             <Route exact path="/trends" render={() => <Trends activeUser={this.state.user} />} />
             <Route
@@ -105,6 +116,7 @@ class HomePage extends Component {
               path="/reminders/add/:cat?/:sub?/:name?/:time?/:note?/:id?"
               render={(props) => (
                 <AddReminder
+                  activeUser={this.props.activeUser}
                   addReminderHandler={this.props.addReminderHandler}
                   editReminderHandler={this.props.editReminderHandler}
                   {...props}
@@ -113,15 +125,22 @@ class HomePage extends Component {
             />
             {/* Admin views */}
             <Route
-              exact
-              path="/locations/add"
-              render={() => <AddLocation addLocationHandler={this.props.addLocationHandler} />}
+              path="/alert-system/add/:name?/:addr?/:img?/:maxOcc?/:desc?"
+              render={(props) => (
+                <AddLocation
+                  editLocationHandler={this.props.editLocationHandler}
+                  addLocationHandler={this.props.addLocationHandler}
+                  {...props}
+                />
+              )}
             />
             <Route
               exact
               path="/alert-system"
               render={() => (
                 <AdminCheckIn
+                  activeUser={this.props.activeUser}
+                  deleteLocationHandler={this.props.deleteLocationHandler}
                   sendAlertHandler={this.props.sendAlertHandler}
                   locations={this.props.locations}
                 />

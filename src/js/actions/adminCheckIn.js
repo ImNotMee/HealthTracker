@@ -1,3 +1,4 @@
+'use-strict';
 import { NOTIFICATION_TYPE, USER_ACCOUNT_TYPE } from '../constants';
 import { Notification } from './notification';
 import { AppLocation } from './checkIn';
@@ -25,7 +26,7 @@ export const sendAlertHandler = (ctx, location) => {
       userDB: users,
     },
     () => {
-      log('Successfully alerted users ' + JSON.stringify(ctx.state.userDB));
+      log('Successfully alerted users ', ctx.state.userDB);
     },
   );
 };
@@ -40,6 +41,25 @@ const _wasUserCheckedIn = (user, location) => {
   return false;
 };
 
+export const deleteLocationHandler = (ctx, adCtx, location) => {
+  log('Deleting location...');
+  const locs = ctx.state.locationsDB;
+  const key = location.id;
+  delete locs[key];
+  ctx.setState(
+    {
+      locationsDB: locs,
+    },
+    () => {
+      log('Successfully deleted location', ctx.state.locationsDB);
+    },
+  );
+
+  adCtx.setState({
+    locationViewed: undefined,
+  });
+};
+
 export const addLocationHandler = (ctx, addLocCtx) => {
   log('Adding new location...');
   if (_locationInputValidate(addLocCtx)) {
@@ -52,7 +72,7 @@ export const addLocationHandler = (ctx, addLocCtx) => {
         locationsDB: locDB,
       },
       () => {
-        log('Successfully added new location to DB' + JSON.stringify(ctx.state.locationsDB));
+        log('Successfully added new location to DB', ctx.state.locationsDB);
       },
     );
     addLocCtx.setState({
@@ -61,6 +81,37 @@ export const addLocationHandler = (ctx, addLocCtx) => {
   } else {
     log('Unuccessful in adding new location to DB');
   }
+};
+
+export const editLocationHandler = (ctx, locCtx) => {
+  log('Editing location...');
+  if (_locationInputValidate(locCtx)) {
+    _editLocation(ctx, locCtx);
+    locCtx.setState(
+      {
+        newLocationAdded: true,
+      },
+      () => {
+        log('Successfully editted location', ctx.state.locationsDB);
+      },
+    );
+  } else {
+    log('Unsuccessful in editing location');
+  }
+};
+
+const _editLocation = (appCtx, locCtx) => {
+  const locs = appCtx.state.locationsDB;
+  const loc = locs[locCtx.state.locationName];
+  loc.name = locCtx.state.locationName;
+  loc.address = locCtx.state.address;
+  loc.imageUrl = locCtx.state.imageUrl;
+  loc.maxOccupancy = locCtx.state.maxOccupancy;
+  loc.description = locCtx.state.description;
+  locs[loc.name] = loc;
+  appCtx.setState({
+    locationsDB: locs,
+  });
 };
 
 const _locationInputValidate = (locCtx) => {
@@ -83,5 +134,11 @@ const _locationInputValidate = (locCtx) => {
 };
 
 const _isInvalid = (value) => {
-  return value !== null && value !== undefined && value !== '' && value !== 'select';
+  return (
+    value !== null &&
+    value !== undefined &&
+    value !== '' &&
+    value !== 'select' &&
+    value !== 'undefined'
+  );
 };

@@ -60,3 +60,7 @@
   background-color: var(--accent-color);
   color: var(--contrast-text-color);
 }
+
+.settings {
+  margin-left: auto;
+}

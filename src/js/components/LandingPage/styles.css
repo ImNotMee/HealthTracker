@@ -11,3 +11,26 @@
   justify-content: center;
   height: 60%;
 }
+
+#AboutAppWrapper {
+  width: 50%;
+  position: relative;
+}
+
+#landingPageIcon {
+  width: 110%;
+  height: 300px;
+}
+
+#description {
+  position: absolute;
+  top: 50px;
+  left: 80px;
+}
+
+#appDescription {
+  color: white;
+  width: auto;
+  height: auto;
+  font-size: 20px;
+}

@@ -5,11 +5,11 @@ import './styles.css';
 
 class AddLocation extends Component {
   state = {
-    locationName: undefined,
-    address: undefined,
-    imageUrl: undefined,
-    maxOccupancy: undefined,
-    description: undefined,
+    locationName: this.props.match?.params.name,
+    address: this.props.match?.params.addr,
+    imageUrl: decodeURIComponent(this.props.match?.params.img),
+    maxOccupancy: this.props.match?.params.maxOcc,
+    description: this.props.match?.params.desc,
     isNameValid: true,
     isAddressValid: true,
     isImageUrlValid: true,
@@ -38,7 +38,7 @@ class AddLocation extends Component {
       <div id="AddLocationWrapper">
         {this.goToAlertSystem()}
         <div id="AddLocationWindow" className="windowWrapper">
-          <h1> Add Location </h1>
+          <h1> {this.props.match?.params.name !== undefined ? 'Edit' : 'Add'} Location </h1>
           {this.displayErrorMsg()}
           <div className="locationInputWrapper">
             <span className="inputLabel"> Location Name: </span>
@@ -47,6 +47,8 @@ class AddLocation extends Component {
               type="text"
               id="LocationName"
               name="locationName"
+              placeholder="Location name"
+              value={this.state.locationName === undefined ? '' : this.state.locationName}
               onChange={(event) => {
                 onInputChangeHandler(this, event);
               }}
@@ -59,6 +61,8 @@ class AddLocation extends Component {
               type="text"
               id="LocationAddress"
               name="address"
+              placeholder="Address"
+              value={this.state.address === undefined ? '' : this.state.address}
               onChange={(event) => {
                 onInputChangeHandler(this, event);
               }}
@@ -71,6 +75,12 @@ class AddLocation extends Component {
               type="url"
               id="LocationImgUrl"
               name="imageUrl"
+              placeholder="Image Url"
+              value={
+                this.state.imageUrl === undefined || this.state.imageUrl === 'undefined'
+                  ? ''
+                  : this.state.imageUrl
+              }
               onChange={(event) => {
                 onInputChangeHandler(this, event);
               }}
@@ -85,6 +95,8 @@ class AddLocation extends Component {
               name="maxOccupancy"
               min="1"
               max="5000"
+              placeholder="Max occupancy"
+              value={this.state.maxOccupancy === undefined ? '' : this.state.maxOccupancy}
               onChange={(event) => {
                 onInputChangeHandler(this, event);
               }}
@@ -98,6 +110,7 @@ class AddLocation extends Component {
               name="description"
               maxLength="400"
               placeholder="Location description"
+              value={this.state.description === undefined ? '' : this.state.description}
               onChange={(event) => {
                 onInputChangeHandler(this, event);
               }}
@@ -107,15 +120,25 @@ class AddLocation extends Component {
               {this.state.description !== undefined ? this.state['description'].length : '0'}/400
             </span>
           </div>
-
-          <button
-            className="primary-btn"
-            onClick={() => {
-              this.props.addLocationHandler(this);
-            }}
-          >
-            Add
-          </button>
+          {this.props.match?.params.name !== undefined ? (
+            <button
+              className="primary-btn"
+              onClick={() => {
+                this.props.editLocationHandler(this);
+              }}
+            >
+              Edit
+            </button>
+          ) : (
+            <button
+              className="primary-btn"
+              onClick={() => {
+                this.props.addLocationHandler(this);
+              }}
+            >
+              Add
+            </button>
+          )}
         </div>
       </div>
     );

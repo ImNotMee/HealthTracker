@@ -30,6 +30,10 @@ export const NOTIFICATION_TYPE = {
   reminder: 'Reminder',
 };
 
+export const ADMIN_REMINDER_TYPES = {
+  task: 'Tasks',
+};
+
 export const USERS = {
   useruser: {
     firstName: 'Ben',
@@ -92,12 +96,28 @@ export const USERS = {
   adminadmin: {
     firstName: 'IAmAdmin',
     lastName: 'John',
+    email: 'admin',
     hash: 'adminadmin',
     type: ADMIN_ACCOUNT_TYPE,
+    reminders: {
+      [ADMIN_REMINDER_TYPES.task]: [
+        {
+          id: 'r0',
+          category: ADMIN_REMINDER_TYPES.task,
+          subCategory: undefined,
+          name: 'Complete important admin work',
+          time: '2020-07-12T21:15',
+          note: 'call Jack to check if he wants to come help',
+          status: REMINDER_STATUS.active,
+        },
+      ],
+    },
+    notifications: [],
   },
 };
 
 export const PAGE_ADDRESS = [
+  '/settings',
   '/overview',
   '/trends',
   '/reminders',
@@ -117,11 +137,12 @@ export const PAGE_ADDRESS = [
   '/alert-system',
   '/locations/add',
   '/user-profile/:id?',
+  '/alert-system/add/:name?/:addr?/:img?/:maxOcc?/:desc?',
 ];
 
 export const LOCATIONS = {
-  'loc 1': {
-    id: 'loc 1',
+  "Queen's Park": {
+    id: "Queen's Park",
     name: "Queen's Park",
     isAvaliable: true,
     address: '111 Wellesley St W, Toronto, ON',
