@@ -118,6 +118,47 @@ export const USERS = {
   },
 };
 
+export const USER_CARD = {
+  BMI: {
+    value: 22.0,
+  },
+  Water: {
+    completed: 800,
+    remaining: 1200,
+    unit: 'ml',
+  },
+  Calories: {
+    completed: 300,
+    remaining: 1700,
+    unit: 'Calories',
+  },
+  Mood: {
+    value: 'happy',
+  },
+  Sleep: {
+    hours: 8,
+    quality: 'Good', // 3 levels bad, okay, good
+  },
+  Stress: {
+    value: 1,
+  },
+  Medication: [
+    {
+      drug: 'Cold Medicine',
+      completed: 1,
+      remainging: 2,
+    },
+    {
+      drug: 'Allergy Medicine',
+      completed: 2,
+      remainging: 4,
+    },
+  ],
+  Sickness: [
+    //
+  ],
+};
+
 export const PAGE_ADDRESS = [
   '/settings',
   '/overview',

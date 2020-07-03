@@ -2,12 +2,34 @@ import React, { Component } from 'react';
 import './styles.css';
 import TipBox from './../TipBox/TipBox';
 import { NavLink } from 'react-router-dom';
+import SavedBox from './../SavedBox/SavedBox';
+
 class LogCalories extends Component {
   state = {
-    user: this.props.activeUser,
+    calories: 0,
+    saved: false,
   };
 
+  caloriesChange = (event) => {
+    const calories = event.target.value;
+    this.setState({ calories: calories });
+  };
+
+  handleSubmit = () => {
+    this.setState({ saved: true });
+    this.props.setCalories(this.state.calories);
+    this.savedTimeout = setTimeout(() => this.setState({ saved: false }), 3000);
+  };
+
+  componentWillUnmount() {
+    clearTimeout(this.savedTimeout);
+  }
+
   render() {
+    let saved = null;
+    if (this.state.saved === true) {
+      saved = <SavedBox />;
+    }
     return (
       <div id="LogCaloriesWrapper">
         <div className="logCaloriesView left">
@@ -27,18 +49,22 @@ class LogCalories extends Component {
             Calories
           </h1>
           <div className="logCaloriesBox">
-            <form>
-              <fieldset>
-                <h3>How much did you eat?</h3>
-                <input type="text" id="caloriesLog" placeholder="Enter Amount" />
-                <label id="caloriesUnits">Calories</label>
-                <p>Suggested amount of Calories per day: 2000 Calories</p>
-                <button className="primary-btn" id="logButton">
-                  Save
-                </button>
-              </fieldset>
-            </form>
+            <h3>How much did you eat?</h3>
+            <input
+              type="number"
+              id="caloriesLog"
+              placeholder="Enter Amount"
+              value={this.state.calories}
+              onChange={this.caloriesChange}
+            />
+            <label id="caloriesUnits">Calories</label>
+            <p>Suggested amount of Calories per day: 2000 Calories</p>
+            <button className="primary-btn" id="logButton" onClick={this.handleSubmit}>
+              Save
+            </button>
           </div>
+          {/*saved dialog box*/}
+          {saved}
         </div>
 
         <div className="logCaloriesView right">

@@ -7,8 +7,8 @@ class SymptomList extends Component {
 
     return (
       <div id={this.props.id}>
-        {symptoms.map((symptom) => (
-          <SymptomTag symptom={symptom} logComponent={logComponent} />
+        {symptoms.map((symptom, index) => (
+          <SymptomTag key={index} symptom={symptom} logComponent={logComponent} />
         ))}
       </div>
     );

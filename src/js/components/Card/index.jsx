@@ -28,12 +28,11 @@ class Card extends Component {
       case '6': // stress
         return this.ShowStress(this.state.value['value']);
       case '7': // medication
-        return;
+        return this.ShowMedications(this.state.value);
       case '8': // sickness
-        if (this.state.value['sick'] === true) return this.ShowImage('sick');
-        else return this.ShowImage('healthy');
+        return this.ShowSickness(this.state.value);
       case '9': // appointments
-        return;
+        return this.ShowAppointments(this.state.value);
       default:
         return;
     }
@@ -126,7 +125,14 @@ class Card extends Component {
       <div>
         <img className="cardIcon" alt="card icon" src={imageSrc}></img>
         <div>
-          <input className="inputSlider" type="range" min={0} max={10} value={stressInt}></input>
+          <input
+            className="inputSlider"
+            type="range"
+            min={0}
+            max={10}
+            value={stressInt}
+            readOnly
+          ></input>
           <span id="cardValue">{stress}</span>
         </div>
       </div>
@@ -148,9 +154,9 @@ class Card extends Component {
       hoursDisplay = 'sleepGood';
     }
 
-    if (quality === 'bad') {
+    if (quality === 'Bad') {
       qualityDisplay = 'sleepBad';
-    } else if (quality === 'okay') {
+    } else if (quality === 'Normal') {
       qualityDisplay = 'sleepOkay';
     } else {
       qualityDisplay = 'sleepGood';
@@ -167,6 +173,46 @@ class Card extends Component {
         <div>
           <p className={qualityDisplay}>Sleep Quality: {quality}</p>
         </div>
+      </div>
+    );
+  }
+
+  ShowAppointments(appointments) {
+    return (
+      <div className="appointmentList">
+        {appointments.map((apmt, index) => (
+          <div key={index} className="appointment">
+            <span>{apmt['name']} - </span>
+            <span>{apmt['time']} Note: </span>
+            <span>{apmt['note']} </span>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  ShowMedications(medication) {
+    return (
+      <div className="medicationList">
+        {medication.map((med, index) => (
+          <div key={index} className="medication">
+            <span>{med['name']} - </span>
+            <span>{med['time']} Note:</span>
+            <span>{med['note']}</span>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  ShowSickness(sickness) {
+    return (
+      <div className="sicknessList">
+        {sickness.map((sick, index) => (
+          <div key={index} className="sickness">
+            {sick}
+          </div>
+        ))}
       </div>
     );
   }

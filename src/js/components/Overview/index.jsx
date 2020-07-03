@@ -1,68 +1,32 @@
 import React, { Component } from 'react';
 import './styles.css';
 import Card from '../Card';
+import { HEALTH_CATEGORIES, REMINDER_STATUS } from '../../constants';
 
 class Overview extends Component {
-  state = {
-    user: this.props.activeUser,
-    BMI: {
-      value: 22,
-    },
-    Water: {
-      completed: 0.8,
-      remaining: 2,
-      unit: 'L',
-    },
-    Calories: {
-      completed: 300,
-      remaining: 1700,
-      unit: 'Calories',
-    },
-    Mood: {
-      value: 'happy',
-    },
-    Sleep: {
-      hours: 8,
-      quality: 'Good', // 3 levels bad, okay, good
-    },
-    Stress: {
-      value: 1,
-    },
-    Medication: [
-      {
-        drug: 'Cold Medicine',
-        completed: 1,
-        remainging: 2,
-      },
-      {
-        drug: 'Allergy Medicine',
-        completed: 2,
-        remainging: 4,
-      },
-    ],
-    Sickness: {
-      //
-      sick: true,
-    },
-    Appointments: [
-      // shows all appointments today
-      {
-        event: 'Annual Checkup',
-        doctor: 'Dr. Zoudas',
-        time: '16:00:00',
-      },
-      {
-        event: 'Blood Donation',
-        doctor: 'Dr. Dre',
-        time: '10:00:00',
-      },
-      {
-        event: 'Dentist',
-        doctor: 'Dr. Teth',
-        time: '12:00:00',
-      },
-    ],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeUser: this.props.activeUser,
+      user_card: this.props.user_card,
+      medication: [],
+      appointments: [],
+    };
+    const medical_reminder = this.state.activeUser.reminders[HEALTH_CATEGORIES.medical];
+    let medication = [];
+    let appointments = [];
+    for (var i = 0; i < medical_reminder.length; i++) {
+      if (medical_reminder[i]['status'] === REMINDER_STATUS.active) {
+        if (medical_reminder[i]['subCategory'] === 'Appointments') {
+          appointments.push(medical_reminder[i]);
+        } else if (medical_reminder[i]['subCategory'] === 'Medication') {
+          medication.push(medical_reminder[i]);
+        }
+      }
+    }
+    this.state.medication = medication;
+    this.state.appointments = appointments;
+  }
 
   render() {
     return (
@@ -76,8 +40,8 @@ class Overview extends Component {
             activeUser={this.props.activeUser}
             title="Body Mass Index"
             address="/overview/logWeight"
-            value={this.state.BMI}
-            image="https://image.flaticon.com/icons/svg/3023/3023711.svg"
+            value={this.state.user_card['BMI']}
+            image=""
             type="1"
           />
           <Card
@@ -85,7 +49,7 @@ class Overview extends Component {
             activeUser={this.props.activeUser}
             title="Water Consumption"
             address="/overview/logWater"
-            value={this.state.Water}
+            value={this.state.user_card['Water']}
             image=""
             type="2"
           />
@@ -94,7 +58,7 @@ class Overview extends Component {
             activeUser={this.props.activeUser}
             title="Calories"
             address="/overview/logCalories"
-            value={this.state.Calories}
+            value={this.state.user_card['Calories']}
             image=""
             type="3"
           />
@@ -107,7 +71,7 @@ class Overview extends Component {
             id="cards"
             activeUser={this.props.activeUser}
             title="Mood"
-            value={this.state.Mood}
+            value={this.state.user_card['Mood']}
             address="/overview/logMood"
             image=""
             type="4"
@@ -116,7 +80,7 @@ class Overview extends Component {
             id="cards"
             activeUser={this.props.activeUser}
             title="Sleep"
-            value={this.state.Sleep}
+            value={this.state.user_card['Sleep']}
             address="/overview/logSleep"
             image=""
             type="5"
@@ -125,7 +89,7 @@ class Overview extends Component {
             id="cards"
             activeUser={this.props.activeUser}
             title="Stress"
-            value={this.state.Stress}
+            value={this.state.user_card['Stress']}
             address="/overview/logStress"
             image=""
             type="6"
@@ -139,7 +103,7 @@ class Overview extends Component {
             id="cards"
             activeUser={this.props.activeUser}
             title="Medication"
-            value={this.state.Medication}
+            value={this.state.medication}
             address="/reminders"
             image=""
             type="7"
@@ -148,7 +112,7 @@ class Overview extends Component {
             id="cards"
             activeUser={this.props.activeUser}
             title="Sickness"
-            value={this.state.Sickness}
+            value={this.state.user_card['Sickness']}
             address="/overview/logSick"
             image=""
             type="8"
@@ -157,7 +121,7 @@ class Overview extends Component {
             id="cards"
             activeUser={this.props.activeUser}
             title="Appointments"
-            value={this.state.Appointments}
+            value={this.state.appointments}
             address="/reminders"
             image=""
             type="9"
