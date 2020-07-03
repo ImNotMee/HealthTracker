@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 import goodIcon from '../../../../assets/good_status.png';
 import badIcon from '../../../../assets/bad_status.png';
 import { isCheckInValid } from '../../../actions/checkIn';
+import { ADMIN_ACCOUNT_TYPE } from '../../../constants';
 import './styles.css';
 
 class PlaceViewer extends Component {
@@ -10,7 +13,7 @@ class PlaceViewer extends Component {
   };
 
   render() {
-    const { location } = this.props;
+    const { location, activeUser } = this.props;
     return (
       <div id="PlaceViewerWrapper">
         <div id="PlaceViewrHeader">
@@ -31,7 +34,18 @@ class PlaceViewer extends Component {
             </div>
           </div>
         </div>
-        {isCheckInValid(this, location) ? (
+        {activeUser.type === ADMIN_ACCOUNT_TYPE ? (
+          <div id="AdminActions">
+            <IconButton
+              onClick={() => {
+                this.props.deleteLocationHandler(location);
+              }}
+              aria-label="delete"
+            >
+              <DeleteIcon />
+            </IconButton>
+          </div>
+        ) : isCheckInValid(this, location) ? (
           <button id="CheckInBtn" className="primary-btn" onClick={this.props.onCheckInHandler}>
             Check In
           </button>

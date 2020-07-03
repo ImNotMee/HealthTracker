@@ -40,6 +40,26 @@ const _wasUserCheckedIn = (user, location) => {
   return false;
 };
 
+export const deleteLocationHandler = (ctx, adCtx, location) => {
+  log('Deleting location...');
+  const locs = ctx.state.locationsDB;
+  const key = location.id;
+  delete locs[key];
+  ctx.setState(
+    {
+      locationsDB: locs,
+    },
+    () => {
+      log('Successfully deleted location');
+      log(ctx.state.locationsDB);
+    },
+  );
+
+  adCtx.setState({
+    locationViewed: undefined,
+  });
+};
+
 export const addLocationHandler = (ctx, addLocCtx) => {
   log('Adding new location...');
   if (_locationInputValidate(addLocCtx)) {

@@ -71,6 +71,10 @@
   display: none;
 }
 
+.detailsDivider {
+  margin: 40px;
+}
+
 .App-logo {
   pointer-events: none;
 }

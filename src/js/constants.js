@@ -131,12 +131,12 @@ export const PAGE_ADDRESS = [
   '/manage-users',
   '/trends/admin',
   '/alert-system',
-  '/locations/add',
+  '/alert-system/add',
 ];
 
 export const LOCATIONS = {
-  'loc 1': {
-    id: 'loc 1',
+  "Queen's Park": {
+    id: "Queen's Park",
     name: "Queen's Park",
     isAvaliable: true,
     address: '111 Wellesley St W, Toronto, ON',
