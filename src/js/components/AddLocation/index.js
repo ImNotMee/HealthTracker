@@ -38,7 +38,7 @@ class AddLocation extends Component {
       <div id="AddLocationWrapper">
         {this.goToAlertSystem()}
         <div id="AddLocationWindow" className="windowWrapper">
-          <h1> Add Location </h1>
+          <h1> {this.props.match?.params.name !== undefined ? 'Edit' : 'Add'} Location </h1>
           {this.displayErrorMsg()}
           <div className="locationInputWrapper">
             <span className="inputLabel"> Location Name: </span>
