@@ -2,7 +2,7 @@ const log = console.log;
 
 export const viewPlace = (ctx, locations, location) => {
   log(`Viewing ${location}...`);
-  log(`Displaying place details ${JSON.stringify(locations[location])}...`);
+  log('Displaying place details', locations[location], '...');
   ctx.setState({
     locationViewed: locations[location],
   });

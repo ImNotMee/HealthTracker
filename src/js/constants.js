@@ -131,7 +131,7 @@ export const PAGE_ADDRESS = [
   '/manage-users',
   '/trends/admin',
   '/alert-system',
-  '/alert-system/add',
+  '/alert-system/add/:name?/:addr?/:img?/:maxOcc?/:desc?',
 ];
 
 export const LOCATIONS = {

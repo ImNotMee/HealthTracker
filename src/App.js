@@ -8,6 +8,7 @@ import {
   sendAlertHandler,
   addLocationHandler,
   deleteLocationHandler,
+  editLocationHandler,
 } from './js/actions/adminCheckIn';
 import { addUserHandler } from './js/actions/signUp';
 import { setActiveUser } from './js/actions/login';
@@ -124,6 +125,9 @@ class App extends Component {
                     }}
                     deleteLocationHandler={(adCtx, location) => {
                       deleteLocationHandler(this, adCtx, location);
+                    }}
+                    editLocationHandler={(locCtx) => {
+                      editLocationHandler(this, locCtx);
                     }}
                     activeUser={this.state.activeUser}
                     userDB={this.state.userDB}
