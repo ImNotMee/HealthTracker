@@ -39,7 +39,7 @@ export const USERS = {
     firstName: 'Ben',
     lastName: 'John',
     hash: 'useruser',
-    sex: 'Male',
+    sex: 'male',
     email: 'useruser@health.com',
     type: USER_ACCOUNT_TYPE,
     checkInHistory: [],
