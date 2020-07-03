@@ -30,6 +30,10 @@ export const NOTIFICATION_TYPE = {
   reminder: 'Reminder',
 };
 
+export const ADMIN_REMINDER_TYPES = {
+  task: 'Tasks',
+};
+
 export const USERS = {
   useruser: {
     firstName: 'Ben',
@@ -92,6 +96,20 @@ export const USERS = {
     lastName: 'John',
     hash: 'adminadmin',
     type: ADMIN_ACCOUNT_TYPE,
+    reminders: {
+      [ADMIN_REMINDER_TYPES.task]: [
+        {
+          id: 'r0',
+          category: ADMIN_REMINDER_TYPES.task,
+          subCategory: undefined,
+          name: 'Complete important admin work',
+          time: '2020-07-12T21:15',
+          note: 'call Jack to check if he wants to come help',
+          status: REMINDER_STATUS.active,
+        },
+      ],
+    },
+    notifications: [],
   },
 };
 

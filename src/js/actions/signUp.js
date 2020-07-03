@@ -1,3 +1,5 @@
+import { HEALTH_CATEGORIES } from '../constants';
+
 const log = console.log;
 
 export const addUserHandler = (ctx, newUser) => {
@@ -36,6 +38,12 @@ export class User {
     this.accountType = accountType;
     this.sex = sex;
     this.hash = this.email + this.password;
+    this.reminders = {
+      [HEALTH_CATEGORIES.medical]: [],
+      [HEALTH_CATEGORIES.mental]: [],
+      [HEALTH_CATEGORIES.phsycial]: [],
+    };
+    this.notifications = [];
   }
 
   getHash = () => {

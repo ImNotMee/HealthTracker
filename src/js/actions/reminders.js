@@ -100,6 +100,9 @@ export const deleteReminderHandler = (ctx, category, id, timeout) => {
 
 export const setReminderStatus = (ctx, category, id, status) => {
   const user = ctx.state.activeUser;
+  console.log(user);
+  console.log(user.reminders[category]);
+  console.log(category);
   const index = _getReminderIndex(user.reminders[category], id);
   const reminder = user.reminders[category][index];
   reminder.status = status;
@@ -116,7 +119,7 @@ export const notifyAboutReminder = (ctx, reminder) => {
 
 const _getReminderIndex = (list, id) => {
   let i;
-  for (i = 0; i < list.length; i++) {
+  for (i = 0; i < list?.length; i++) {
     if (list[i].id === id) {
       return i;
     }
