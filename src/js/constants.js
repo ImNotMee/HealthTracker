@@ -103,11 +103,11 @@ export const PAGE_ADDRESS = [
   '/manage-users',
   '/trends/admin',
   '/alert-system',
-  '/locations/add',
+  '/alert-system/add',
 ];
 
 export const LOCATIONS = {
-  'loc 1': {
+  "Queen's Park": {
     id: 'loc 1',
     name: "Queen's Park",
     isAvaliable: true,

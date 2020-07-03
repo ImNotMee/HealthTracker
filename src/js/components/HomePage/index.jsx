@@ -109,7 +109,7 @@ class HomePage extends Component {
             {/* Admin views */}
             <Route
               exact
-              path="/locations/add"
+              path="/alert-system/add"
               render={() => <AddLocation addLocationHandler={this.props.addLocationHandler} />}
             />
             <Route

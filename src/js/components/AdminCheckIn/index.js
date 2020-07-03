@@ -22,7 +22,7 @@ class AdminCheckIn extends Component {
             onSubmitHandler={this.props.sendAlertHandler}
           />
         </div>
-        <NavLink className="fabNavLink" to="/locations/add">
+        <NavLink className="fabNavLink" to="/alert-system/add">
           <Fab variant="extended" id="Fab" color="primary" aria-label="add">
             <AddIcon />
             Add Location
