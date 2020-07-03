@@ -1,11 +1,18 @@
-#LoginFrom {
-    margin-left: auto;
-    height: 100%;
-    padding: 20px 40px;
+#LoginFromWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: auto;
+  height: 100%;
+  padding: 20px 40px;
 }
 
-.text-input {
-    height: 20px;
-    margin: 10px;
-    border-radius: 12px;
+#LoginFrom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.space {
+  margin: 0px 12px 0px 0px !important;
 }

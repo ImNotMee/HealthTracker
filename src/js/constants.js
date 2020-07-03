@@ -38,6 +38,7 @@ export const USERS = {
   useruser: {
     firstName: 'Ben',
     lastName: 'John',
+    email: 'user',
     hash: 'useruser',
     type: USER_ACCOUNT_TYPE,
     checkInHistory: [],
@@ -94,6 +95,7 @@ export const USERS = {
   adminadmin: {
     firstName: 'IAmAdmin',
     lastName: 'John',
+    email: 'admin',
     hash: 'adminadmin',
     type: ADMIN_ACCOUNT_TYPE,
     reminders: {
