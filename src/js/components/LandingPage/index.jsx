@@ -26,9 +26,7 @@ class LandingPage extends Component {
           }}
         />
         <div id="LandingContentWrapper">
-          <div id="AboutAppWrapper">
-            <p>description of app</p>
-          </div>
+          <div id="AboutAppWrapper"></div>
           <div id="signUpWapper">
             <SignUpForm addUserHandler={this.props.addUserHandler} />
           </div>

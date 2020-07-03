@@ -9,10 +9,7 @@
 #RemindersView {
   width: 80%;
   min-width: 550px;
-  height: 70%;
-}
-
-#EmptyReminderList {
+  min-height: max-content;
 }
 
 #EmptyReminderList p {
@@ -28,12 +25,7 @@
   margin-right: 75px;
   margin-left: auto;
   background-color: var(--accent-color);
-}
-
-#FabNavLink {
-  text-decoration: none;
-  color: var(--contrast-text-color);
-  font-weight: bolder;
+  height: 50px;
 }
 
 .catTitle {

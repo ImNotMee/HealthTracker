@@ -1,0 +1,88 @@
+#ProfileWrapper {
+  /*display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;*/
+  height: 100vh;
+}
+
+#ProfileHeader {
+  color: black;
+  margin-top: 10%;
+  text-align: center;
+  font-style: var(--title-font-family);
+}
+#ProfileIcon {
+  width: 30px;
+  margin: 0 2px 5px 0;
+  vertical-align: middle;
+}
+
+#ProfileBox {
+  margin: auto;
+  margin-top: 150px;
+  width: 50%;
+  box-shadow: 0px 9px 22px -6px rgba(0, 0, 0, 0.75);
+  border-radius: 12px;
+  height: 500px;
+  padding: 5px;
+  height: auto;
+}
+
+#ProfileBox fieldset {
+  margin: auto;
+  border: none;
+  /*border: 1px solid var(--primary-color);
+    border-radius: 12px;*/
+}
+
+.ProfilePic {
+  border-radius: 50%;
+  width: 90%;
+}
+
+#userProfileLeft {
+  width: 30%;
+  height: auto;
+  float: left;
+  display: inline;
+}
+
+#userProfileRight {
+  width: 60%;
+  float: left;
+  margin-left: 3%;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0px 0px 2px 0px rgb(128, 128, 128);
+}
+
+#infolabel {
+  font: bold 20px arial;
+  display: flex;
+  height: 30px;
+  margin-bottom: 5%;
+}
+
+#userProfileTitle {
+  border-bottom: 1px solid skyblue;
+}
+
+.infodisplay {
+  border: 1px solid black;
+  width: 40%;
+  margin-left: 4px;
+  height: 25px;
+  font-size: 20px;
+  padding: 8px;
+  border-radius: 12px;
+}
+.Email {
+  width: 70%;
+}
+
+#goBackButton {
+  margin-top: 20px;
+  width: 30%;
+  float: right;
+}

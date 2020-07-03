@@ -1,0 +1,96 @@
+#ManageUserWrapper {
+  /*display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;*/
+  height: 100vh;
+}
+
+#ManagementHeader {
+  color: black;
+  margin-top: 10%;
+  text-align: center;
+  font-style: var(--title-font-family);
+}
+
+#userManageicon {
+  width: 30px;
+  margin: 0 2px 5px 0;
+  vertical-align: middle;
+}
+#userManageBox {
+  margin: auto;
+  margin-top: 150px;
+  width: 50%;
+  box-shadow: 0px 9px 22px -6px rgba(0, 0, 0, 0.75);
+  border-radius: 12px;
+  height: 500px;
+  padding: 5px;
+  height: auto;
+}
+
+#userManageBox fieldset {
+  margin: auto;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: auto;
+}
+
+#userListTitle {
+  border-bottom: 1px solid powderblue;
+}
+#userRow {
+  background-color: ghostwhite;
+  margin-bottom: 5px;
+  box-shadow: 0px 5px 15px -6px rgba(0, 0, 0, 0.75);
+  border-radius: 12px;
+}
+#userInfoList {
+  list-style-type: none;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#userManageButton .MuiButton-label {
+  width: 100%;
+  display: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+  font-weight: bold;
+}
+
+#userDeleteButton .MuiButton-label {
+  width: 100%;
+  display: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+  font-weight: bold;
+}
+.clickable {
+  box-shadow: 0px 2px 2px 1px rgb(128, 128, 128);
+}
+
+.clickable.Delete {
+  background-color: indianred;
+}
+.clickable.Delete:hover {
+  background-color: pink;
+}
+
+.clickable.View {
+  background-color: darkseagreen;
+}
+
+.clickable.View:hover {
+  background-color: lightgreen;
+}
+
+#userInfoCell {
+  width: 100%;
+}
+
+#linkView {
+  text-decoration: none;
+}

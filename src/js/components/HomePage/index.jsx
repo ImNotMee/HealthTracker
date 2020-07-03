@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Notification from '../General/Notification';
+// User Components
 import SideBar from '../SideBar';
 import Overview from '../Overview';
 import LogWeight from '../LogPages/LogWeight';
@@ -9,17 +11,23 @@ import LogMood from '../LogPages/LogMood';
 import LogSleep from '../LogPages/LogSleep';
 import LogStress from '../LogPages/LogStress';
 import LogSick from '../LogPages/LogSick';
-import UserManagement from '../UserManagement';
 import Trends from '../Trends';
 import Reminders from '../Reminders';
+import AddReminder from '../Reminders/AddReminder';
 import Calendar from '../Calendar';
 import CheckIn from '../CheckIn';
-
+// Admin Components
+import AdminCheckIn from '../AdminCheckIn';
+import AddLocation from '../AddLocation';
+import AdminTrends from '../Trends/adminTrend.js';
+import ManageUser from '../ManageUser';
+import UserProfile from '../UserProfile';
 import './styles.css';
 
 class HomePage extends Component {
   state = {
     user: this.props.activeUser,
+    userDB: this.props.userDB,
     check: false,
   };
 
@@ -30,18 +38,41 @@ class HomePage extends Component {
           <SideBar logoutHandler={this.props.logoutHandler} activeUser={this.state.user} />
         </div>
         <div id="HomeContentWrapper">
+          <div id="NotificationWrapper">
+            {this.state.user?.notifications?.map((notification) => {
+              return (
+                <Notification
+                  key={notification.id}
+                  notification={notification}
+                  removeNotificationHandler={this.props.removeNotificationHandler}
+                />
+              );
+            })}
+          </div>
+
           {/* Similar to a switch statement - shows the component depending on the URL path */}
           {/* Each Route below shows a different component depending on the exact path in the URL  */}
           <Switch>
             {/* Page nav */}
             <Route exact path="/overview" render={() => <Overview />} />
-            <Route exact path="/trends" render={() => <Trends />} />
+            <Route exact path="/trends" render={() => <Trends activeUser={this.state.user} />} />
             <Route
               exact
               path="/reminders"
-              render={() => <Reminders activeUser={this.state.user} />}
+              render={() => (
+                <Reminders
+                  activeUser={this.state.user}
+                  notifyAboutReminder={this.props.notifyAboutReminder}
+                  completeReminderHandler={this.props.completeReminderHandler}
+                  deleteReminderHandler={this.props.deleteReminderHandler}
+                />
+              )}
             />
-            <Route exact path="/calendar" render={() => <Calendar />} />
+            <Route
+              exact
+              path="/calendar"
+              render={() => <Calendar activeUser={this.state.user} />}
+            />
             <Route
               exact
               path="/check-in"
@@ -54,7 +85,12 @@ class HomePage extends Component {
                 />
               )}
             />
-
+            {/*Admin views*/}
+            <Route
+              exact
+              path="/trends/admin"
+              render={() => <AdminTrends activeUser={this.state.user} userDB={this.state.userDB} />}
+            />
             {/* Activity logging view nav */}
             <Route exact path="/overview/logWeight" render={() => <LogWeight />} />
             <Route exact path="/overview/logWater" render={() => <LogWater />} />
@@ -64,7 +100,35 @@ class HomePage extends Component {
             <Route exact path="/overview/logStress" render={() => <LogStress />} />
             <Route exact path="/overview/logSick" render={() => <LogSick />} />
             {/* Add Reminder view */}
-            <Route exact path="/reminders/add" render={() => <div>test</div>} />
+            <Route
+              exact
+              path="/reminders/add/:cat?/:sub?/:name?/:time?/:note?/:id?"
+              render={(props) => (
+                <AddReminder
+                  addReminderHandler={this.props.addReminderHandler}
+                  editReminderHandler={this.props.editReminderHandler}
+                  {...props}
+                />
+              )}
+            />
+            {/* Admin views */}
+            <Route
+              exact
+              path="/locations/add"
+              render={() => <AddLocation addLocationHandler={this.props.addLocationHandler} />}
+            />
+            <Route
+              exact
+              path="/alert-system"
+              render={() => (
+                <AdminCheckIn
+                  sendAlertHandler={this.props.sendAlertHandler}
+                  locations={this.props.locations}
+                />
+              )}
+            />
+            <Route exact path="/manage-users" render={() => <ManageUser />} />
+            <Route exact path="/user-profile/:id?" render={(props) => <UserProfile {...props} />} />
           </Switch>
         </div>
       </div>

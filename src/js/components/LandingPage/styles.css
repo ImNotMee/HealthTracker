@@ -1,13 +1,13 @@
 #LandingContentWrapper {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    align-content: stretch;
-    height: 73vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: stretch;
+  height: 73vh;
 }
 
 #signUpWapper {
-    display: flex;
-    justify-content: center;
-    height: 60%;
+  display: flex;
+  justify-content: center;
+  height: 60%;
 }

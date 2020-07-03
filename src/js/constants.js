@@ -7,72 +7,87 @@ export const ACCOUNT_TYPES = {
   user: USER_ACCOUNT_TYPE,
 };
 
+export const HEALTH_CATEGORIES = {
+  phsycial: 'Physical Health',
+  mental: 'Mental Health',
+  medical: 'Medical Health',
+};
+
+export const HEALTH_SUB_CATEGORIES = {
+  [HEALTH_CATEGORIES.phsycial]: ['BMI', 'Hydration', 'Calories'],
+  [HEALTH_CATEGORIES.mental]: ['Mood', 'Sleep', 'Stress'],
+  [HEALTH_CATEGORIES.medical]: ['Medication', 'Symptoms', 'Appointments'],
+};
+
+export const REMINDER_STATUS = {
+  active: 'active',
+  completed: 'completed',
+  overdue: 'overdue',
+};
+
+export const NOTIFICATION_TYPE = {
+  alert: 'Alert',
+  reminder: 'Reminder',
+};
+
 export const USERS = {
   useruser: {
     firstName: 'Ben',
     lastName: 'John',
     hash: 'useruser',
+    sex: 'Male',
+    email: 'useruser@health.com',
     type: USER_ACCOUNT_TYPE,
+    checkInHistory: [],
     reminders: {
-      medicalReminders: [],
-      mentalReminders: [],
-      physicalReminders: [
+      [HEALTH_CATEGORIES.medical]: [
         {
+          id: 'r01',
+          category: HEALTH_CATEGORIES.medical,
+          subCategory: 'Appointments',
+          name: 'Annual Check Up',
+          time: '2020-07-06T10:15',
+          note: 'Call Dr.Jones 1hr before',
+          status: REMINDER_STATUS.active,
+        },
+      ],
+      [HEALTH_CATEGORIES.mental]: [],
+      [HEALTH_CATEGORIES.phsycial]: [
+        {
+          id: 'r0',
+          category: HEALTH_CATEGORIES.phsycial,
+          subCategory: 'Appointments',
           name: 'Go for 30 minute run',
-          time: 12,
+          time: '2020-07-01T21:15',
           note: 'call Jack to check if he wants to come',
+          status: REMINDER_STATUS.active,
         },
         {
+          id: 'r1',
+          category: HEALTH_CATEGORIES.phsycial,
+          subCategory: 'BMI',
           name: 'Go for 30 minute run',
-          time: 12,
+          time: 1598996595261,
           note: 'call Jack to check if he wants to come',
+          status: REMINDER_STATUS.active,
         },
       ],
       otherReminders: null,
     },
-    sex: 'male',
-  },
-  user2: {
-    firstName: 'Kevin',
-    lastName: 'Lee',
-    hash: 'user2',
-    type: USER_ACCOUNT_TYPE,
-    sex: 'male',
-  },
-  user3: {
-    firstName: 'Kevin',
-    lastName: 'Lee',
-    hash: 'user3',
-    type: USER_ACCOUNT_TYPE,
-    sex: 'male',
-  },
-  user4: {
-    firstName: 'Kevin',
-    lastName: 'Lee',
-    hash: 'user4',
-    type: USER_ACCOUNT_TYPE,
-    sex: 'male',
-  },
-  user5: {
-    firstName: 'Kevin',
-    lastName: 'Lee',
-    hash: 'user5',
-    type: USER_ACCOUNT_TYPE,
-    sex: 'male',
-  },
-  user6: {
-    firstName: 'Kevin',
-    lastName: 'Lee',
-    hash: 'user6',
-    type: USER_ACCOUNT_TYPE,
-    sex: 'male',
-  },
-  user7: {
-    firstName: 'Kevin',
-    lastName: 'Lee',
-    hash: 'user7',
-    type: USER_ACCOUNT_TYPE,
-    sex: 'male',
+    notifications: [
+      {
+        id: 'unique',
+        type: NOTIFICATION_TYPE.alert,
+        title: 'Welcome =D',
+        message: 'explor our app',
+      },
+    ],
+    trends: {
+      weight: [120, 119, 119, 120, 122, 119, 117],
+      sleep: [5, 6, 6, 7, 9, 10, 7],
+      calories: [1800, 1899, 2100, 2000, 1789, 1987, 1788],
+      stress: [2, 3, 2, 1, 4, 6, 5],
+    },
   },
   adminadmin: {
     firstName: 'IAmAdmin',
@@ -96,7 +111,12 @@ export const PAGE_ADDRESS = [
   '/overview/logStress',
   '/overview/logMedical',
   '/overview/logSick',
-  '/reminders/add',
+  '/reminders/add/:cat?/:sub?/:name?/:time?/:note?/:id?',
+  '/manage-users',
+  '/trends/admin',
+  '/alert-system',
+  '/locations/add',
+  '/user-profile/:id?',
 ];
 
 export const LOCATIONS = {
@@ -154,7 +174,7 @@ export const DAYSOFWEEK = [
   'Sunday',
   'Monday',
   'Tuesday',
-  'Wedsnesday',
+  'Wednesday',
   'Thursday',
   'Friday',
   'Saturday',
@@ -172,4 +192,19 @@ export const SYMPTOM_OPTION = [
   'Nausea or vomiting',
   'Diarrhea',
   'Bluish lips or face',
+];
+
+export const MONTHS = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];

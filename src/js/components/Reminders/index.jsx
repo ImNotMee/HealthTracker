@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import ReminderItem from './ReminderItem';
+import { HEALTH_CATEGORIES } from '../../constants';
 import './styles.css';
-import { NavLink } from 'react-router-dom';
 
 const EmptyReminderList = () => {
   return (
@@ -26,35 +27,63 @@ class Reminders extends Component {
         <div id="RemindersView" className="windowWrapper">
           <span className="catTitle"> Medical Health </span>
           <div className="titleLine" />
-          {this.state.user?.reminders.medicalReminders.length === 0 ? (
+          {this.state.user?.reminders[HEALTH_CATEGORIES.medical].length === 0 ? (
             <EmptyReminderList />
           ) : (
-            this.state.user?.reminders.medicalReminders.map((reminder) => {
-              return <ReminderItem reminder={reminder} />;
+            this.state.user?.reminders[HEALTH_CATEGORIES.medical].map((reminder) => {
+              return (
+                <ReminderItem
+                  key={reminder.id}
+                  reminder={reminder}
+                  notifyAboutReminder={this.props.notifyAboutReminder}
+                  completeReminderHandler={this.props.completeReminderHandler}
+                  deleteReminderHandler={this.props.deleteReminderHandler}
+                />
+              );
             })
           )}
           <span className="catTitle"> Mental Health </span>
           <div className="titleLine" />
-          {this.state.user?.reminders.medicalReminders.length === 0 ? (
+          {this.state.user?.reminders[HEALTH_CATEGORIES.mental].length === 0 ? (
             <EmptyReminderList />
           ) : (
-            this.state.user?.reminders.mentalReminders.map((reminder) => {
-              return <ReminderItem reminder={reminder} />;
+            this.state.user?.reminders[HEALTH_CATEGORIES.mental].map((reminder) => {
+              return (
+                <ReminderItem
+                  key={reminder.id}
+                  reminder={reminder}
+                  notifyAboutReminder={this.props.notifyAboutReminder}
+                  completeReminderHandler={this.props.completeReminderHandler}
+                  deleteReminderHandler={this.props.deleteReminderHandler}
+                />
+              );
             })
           )}
           <span className="catTitle"> Physical Health </span>
           <div className="titleLine" />
-          {this.state.user?.reminders.physicalReminders.map((reminder) => {
-            return <ReminderItem reminder={reminder} />;
-          })}
+          {this.state.user?.reminders[HEALTH_CATEGORIES.phsycial].length === 0 ? (
+            <EmptyReminderList />
+          ) : (
+            this.state.user?.reminders[HEALTH_CATEGORIES.phsycial].map((reminder) => {
+              return (
+                <ReminderItem
+                  key={reminder.id}
+                  reminder={reminder}
+                  notifyAboutReminder={this.props.notifyAboutReminder}
+                  completeReminderHandler={this.props.completeReminderHandler}
+                  deleteReminderHandler={this.props.deleteReminderHandler}
+                />
+              );
+            })
+          )}
         </div>
 
-        <Fab variant="extended" id="Fab" color="primary" aria-label="add">
-          <AddIcon />
-          <NavLink id="FabNavLink" to="/reminders/add">
+        <NavLink className="fabNavLink" to="/reminders/add">
+          <Fab variant="extended" id="Fab" color="primary" aria-label="add">
+            <AddIcon />
             Add Reminder
-          </NavLink>
-        </Fab>
+          </Fab>
+        </NavLink>
       </div>
     );
   }
