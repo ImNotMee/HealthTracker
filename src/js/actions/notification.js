@@ -1,5 +1,6 @@
 'use-strict';
 import reminderSound from '../../assets/light.mp3';
+import { NOTIFICATION_TYPE } from '../constants';
 
 const log = console.log;
 
@@ -11,7 +12,7 @@ export const addNotificationHandler = (ctx, type, title, message) => {
   ctx.setState({
     activeUser: user,
   });
-  log('Successfully created notification' + ctx.state.activeUser.notifications);
+  log('Successfully created notification', ctx.state.activeUser.notifications);
 };
 
 export const removeNotificationHandler = (ctx, id) => {
@@ -58,4 +59,15 @@ export class Notification {
 export const playSound = () => {
   let rAudio = new Audio(reminderSound);
   rAudio.play();
+};
+
+export const getNumNotifs = (notifications, type) => {
+  let count = 0;
+  let i;
+  for (i = 0; i < notifications?.length; i++) {
+    if (notifications[i].type === type) {
+      count += 1;
+    }
+  }
+  return count;
 };
