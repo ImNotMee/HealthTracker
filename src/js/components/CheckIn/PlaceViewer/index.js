@@ -12,9 +12,19 @@ import './styles.css';
 class PlaceViewer extends Component {
   state = {
     user: this.props.activeUser,
+    open: false,
+  };
+
+  handleClick = () => {
+    this.setState({ open: true }, () => {
+      setTimeout(() => {
+        this.setState({ open: false });
+      }, 2980);
+    });
   };
 
   render() {
+    const { open } = this.state;
     const { location, activeUser } = this.props;
     return (
       <div id="PlaceViewerWrapper">
@@ -38,6 +48,17 @@ class PlaceViewer extends Component {
         </div>
         {activeUser.type === ADMIN_ACCOUNT_TYPE ? (
           <div id="AdminActions">
+            <button
+              id="SendAlertBtn"
+              className="primary-btn"
+              onClick={() => {
+                this.props.sendAlertHandler(location);
+                return !this.state.open ? this.handleClick() : '';
+              }}
+            >
+              {' '}
+              Send Alert{' '}
+            </button>
             <Link
               to={`/alert-system/add/${location?.name}/${location?.address}/${encodeURIComponent(
                 location?.imageUrl,
@@ -63,6 +84,7 @@ class PlaceViewer extends Component {
         ) : (
           ''
         )}
+        <div className={`snackbar ${open ? 'show' : ''}`}>Alert Has Been Sent!</div>
       </div>
     );
   }
