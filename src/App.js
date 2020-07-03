@@ -1,4 +1,3 @@
-'use strict';
 import React, { Component } from 'react';
 import { Redirect, Route, Switch, BrowserRouter } from 'react-router-dom';
 
