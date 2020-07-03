@@ -1,3 +1,6 @@
+'use-strict';
+import reminderSound from '../../assets/light.mp3';
+
 const log = console.log;
 
 export const addNotificationHandler = (ctx, type, title, message) => {
@@ -51,3 +54,8 @@ export class Notification {
     return 'n' + Math.random().toString(36).substr(3, 8);
   };
 }
+
+export const playSound = () => {
+  let rAudio = new Audio(reminderSound);
+  rAudio.play();
+};

@@ -7,8 +7,9 @@ import EditIcon from '@material-ui/icons/Edit';
 import goodIcon from '../../../../assets/good_status.png';
 import badIcon from '../../../../assets/bad_status.png';
 import hourglassIcon from '../../../../assets/hourglass.png';
-import './styles.css';
+import { playSound } from '../../../actions/notification';
 import { REMINDER_STATUS } from '../../../constants';
+import './styles.css';
 
 class ReminderItem extends Component {
   state = {
@@ -22,6 +23,7 @@ class ReminderItem extends Component {
     const time = reminderTime - currTime;
     if (!this.notificationExists()) {
       this.reminderTimer = setTimeout(() => {
+        playSound();
         this.props.notifyAboutReminder(this.state.reminder);
       }, time);
       this.props.addTimerHandler(this.state.reminder.id, this.reminderTimer);
