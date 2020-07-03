@@ -36,7 +36,7 @@ class Overview extends Component {
         <div id="cardsContainer">
           {/* physical tracking */}
           <Card
-            id="cards"
+            className="cards"
             activeUser={this.props.activeUser}
             title="Body Mass Index"
             address="/overview/logWeight"
@@ -45,7 +45,7 @@ class Overview extends Component {
             type="1"
           />
           <Card
-            id="cards"
+            className="cards"
             activeUser={this.props.activeUser}
             title="Water Consumption"
             address="/overview/logWater"
@@ -54,7 +54,7 @@ class Overview extends Component {
             type="2"
           />
           <Card
-            id="cards"
+            className="cards"
             activeUser={this.props.activeUser}
             title="Calories"
             address="/overview/logCalories"
@@ -68,7 +68,7 @@ class Overview extends Component {
         <div id="cardsContainer">
           {/* mental tracking */}
           <Card
-            id="cards"
+            className="cards"
             activeUser={this.props.activeUser}
             title="Mood"
             value={this.state.user_card['Mood']}
@@ -77,7 +77,7 @@ class Overview extends Component {
             type="4"
           />
           <Card
-            id="cards"
+            className="cards"
             activeUser={this.props.activeUser}
             title="Sleep"
             value={this.state.user_card['Sleep']}
@@ -86,7 +86,7 @@ class Overview extends Component {
             type="5"
           />
           <Card
-            id="cards"
+            className="cards"
             activeUser={this.props.activeUser}
             title="Stress"
             value={this.state.user_card['Stress']}
@@ -100,7 +100,7 @@ class Overview extends Component {
         <div id="cardsContainer">
           {/* medical tracking */}
           <Card
-            id="cards"
+            className="cards"
             activeUser={this.props.activeUser}
             title="Medication"
             value={this.state.medication}
@@ -109,7 +109,7 @@ class Overview extends Component {
             type="7"
           />
           <Card
-            id="cards"
+            className="cards"
             activeUser={this.props.activeUser}
             title="Sickness"
             value={this.state.user_card['Sickness']}
@@ -118,7 +118,7 @@ class Overview extends Component {
             type="8"
           />
           <Card
-            id="cards"
+            className="cards"
             activeUser={this.props.activeUser}
             title="Appointments"
             value={this.state.appointments}
