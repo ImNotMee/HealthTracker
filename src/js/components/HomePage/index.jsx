@@ -67,7 +67,11 @@ class HomePage extends Component {
                 />
               )}
             />
-            <Route exact path="/calendar" render={() => <Calendar />} />
+            <Route
+              exact
+              path="/calendar"
+              render={() => <Calendar activeUser={this.state.user} />}
+            />
             <Route
               exact
               path="/check-in"

@@ -38,7 +38,17 @@ export const USERS = {
     type: USER_ACCOUNT_TYPE,
     checkInHistory: [],
     reminders: {
-      [HEALTH_CATEGORIES.medical]: [],
+      [HEALTH_CATEGORIES.medical]: [
+        {
+          id: 'r01',
+          category: HEALTH_CATEGORIES.medical,
+          subCategory: 'Appointments',
+          name: 'Annual Check Up',
+          time: '2020-07-06T10:15',
+          note: 'Call Dr.Jones 1hr before',
+          status: REMINDER_STATUS.active,
+        },
+      ],
       [HEALTH_CATEGORIES.mental]: [],
       [HEALTH_CATEGORIES.phsycial]: [
         {
@@ -179,4 +189,19 @@ export const SYMPTOM_OPTION = [
   'Nausea or vomiting',
   'Diarrhea',
   'Bluish lips or face',
+];
+
+export const MONTHS = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];

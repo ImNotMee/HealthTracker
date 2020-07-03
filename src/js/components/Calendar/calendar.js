@@ -3,22 +3,15 @@ import './styles.css';
 import Appointment from './appointment.js';
 import Streaks from './streaks.js';
 import { DAYSOFWEEK } from '../../constants.js';
+import { getFirstDay, findApps } from '../../actions/calendarItems';
 let date;
 
 class CalendarModule extends Component {
-  componentDidMount() {
-    this.renderCalendar();
-  }
-
-  componentDidUpdate() {
-    this.renderCalendar();
-  }
-
-  getFirstDay() {
-    let d = new Date();
-    const firstDay = new Date(d.getFullYear(), d.getMonth(), 1);
-    return firstDay.getDay();
-  }
+  state = {
+    user: this.props.user,
+    items: [],
+    type: 'calendar',
+  };
 
   renderHeaders() {
     const headers = DAYSOFWEEK;
@@ -35,14 +28,32 @@ class CalendarModule extends Component {
 
   renderFirstWeek() {
     const days = [];
-    let temp = this.getFirstDay();
+    let lists = [];
+    let temp = getFirstDay();
     for (let i = 0; i < 7; i++) {
       if (i >= temp) {
-        days.push(
-          <div id="dates" key={i}>
-            <p>{date}</p>
-          </div>,
-        );
+        if (this.props.type === 'calendar' && this.props.items != null) {
+          lists = findApps(this.props.items, date);
+          days.push(
+            <div id="dates" key={i}>
+              <p>{date}</p>
+              <Appointment appointments={lists} />
+            </div>,
+          );
+        } else if (this.props.type === 'streaks') {
+          days.push(
+            <div id="dates" key={i}>
+              <p>{date}</p>
+              <Streaks streaks={[]} />
+            </div>,
+          );
+        } else {
+          days.push(
+            <div id="dates" key={i}>
+              <p>{date}</p>
+            </div>,
+          );
+        }
         date = date + 1;
       } else {
         days.push(<div id="dates" key={i}></div>);
@@ -53,17 +64,18 @@ class CalendarModule extends Component {
 
   renderDays() {
     const days = [];
+    let lists = [];
     for (let i = 0; i < 7; i++) {
       if (date < 32) {
-        // only make it to show that on the 24th, this person has some appointments
-        if (this.props.type === 'calendar' && date === 24) {
+        if (this.props.type === 'calendar' && this.props.items != null) {
+          lists = findApps(this.props.items, date);
           days.push(
             <div id="dates" key={i}>
               <p>{date}</p>
-              <Appointment appointments={['Doctor Appointment', ' Check up Appointment']} />
+              <Appointment appointments={lists} />
             </div>,
           );
-        } else if (this.props.type === 'streaks' && date >= 28) {
+        } else if (this.props.type === 'streaks' && date >= 27) {
           days.push(
             <div id="dates" key={i}>
               <p>{date}</p>
