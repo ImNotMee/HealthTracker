@@ -1,4 +1,3 @@
-'use-strict';
 import { HEALTH_CATEGORIES, USER_ACCOUNT_TYPE } from '../constants';
 
 const log = console.log;

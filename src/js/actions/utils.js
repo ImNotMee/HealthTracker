@@ -1,5 +1,3 @@
-'use-strict';
-
 export const onSelectHandler = (ctx, event, key) => {
   const TARGET = event.target;
   ctx.setState({

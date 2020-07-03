@@ -1,4 +1,3 @@
-'use strict';
 import React, { Component } from 'react';
 import './styles.css';
 import { PHYSICAL_TIP, MENTAL_TIP } from './../../../constants';

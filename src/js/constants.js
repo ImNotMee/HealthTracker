@@ -1,4 +1,3 @@
-'use strict';
 export const APP_NAME = 'Health Tracker';
 
 export const ADMIN_ACCOUNT_TYPE = 'admin';

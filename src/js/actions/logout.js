@@ -1,4 +1,3 @@
-'use strict';
 const log = console.log;
 export const logoutUser = (ctx) => {
   log('Logging out user and saving details...');

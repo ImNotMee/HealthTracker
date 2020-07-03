@@ -1,4 +1,3 @@
-'use strict';
 export const addTag = (log) => {
   const symptomList = log.state.list;
 
