@@ -16,11 +16,49 @@ export const addUserHandler = (ctx, newUser) => {
 
 export const signUpUser = (signUpCtx) => {
   log('Creating user...');
-  const inputs = signUpCtx.state;
-  const newUser = new User(inputs.first, inputs.last, inputs.email, inputs.password, inputs.sex);
-  signUpCtx.props.addUserHandler(newUser);
-  log('User successfully added');
+  if (_signUpInputValidate(signUpCtx)) {
+    const inputs = signUpCtx.state;
+    const newUser = new User(inputs.first, inputs.last, inputs.email, inputs.password, inputs.sex);
+    signUpCtx.props.addUserHandler(newUser);
+    log('User successfully added');
+  } else {
+    log('Unsuccessful in adding user');
+  }
   _clearSignUpInputs(signUpCtx);
+};
+
+const _signUpInputValidate = (signUpCtx) => {
+  log('Validating sign-up inputs...');
+  const isFirstValid = _isInvalid(signUpCtx.state.first);
+  const isLastValid = _isInvalid(signUpCtx.state.last);
+  const isEmailValid =
+    _isInvalid(signUpCtx.state.email) &&
+    _isEmailValid(signUpCtx.props.users, signUpCtx.state.email);
+  const isPassValid = _isInvalid(signUpCtx.state.password);
+  const isSexValid = _isInvalid(signUpCtx.state.sex);
+
+  signUpCtx.setState({
+    isFirstValid: isFirstValid,
+    isLastValid: isLastValid,
+    isEmailValid: isEmailValid,
+    isPassValid: isPassValid,
+    isSexValid: isSexValid,
+  });
+
+  return isFirstValid && isLastValid && isEmailValid && isPassValid && isSexValid;
+};
+
+const _isEmailValid = (users, email) => {
+  for (let key in users) {
+    if (users[key].email === email) {
+      return false;
+    }
+  }
+  return true;
+};
+
+const _isInvalid = (value) => {
+  return value !== null && value !== undefined && value !== '' && value !== 'select';
 };
 
 export class User {

@@ -30,7 +30,7 @@ class LandingPage extends Component {
             <p>description of app</p>
           </div>
           <div id="signUpWapper">
-            <SignUpForm addUserHandler={this.props.addUserHandler} />
+            <SignUpForm users={this.props.users} addUserHandler={this.props.addUserHandler} />
           </div>
         </div>
       </div>
