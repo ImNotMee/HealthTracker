@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import goodIcon from '../../../../assets/good_status.png';
 import badIcon from '../../../../assets/bad_status.png';
 import { isCheckInValid } from '../../../actions/checkIn';
@@ -36,6 +38,15 @@ class PlaceViewer extends Component {
         </div>
         {activeUser.type === ADMIN_ACCOUNT_TYPE ? (
           <div id="AdminActions">
+            <Link
+              to={`/alert-system/add/${location?.name}/${location?.address}/${encodeURIComponent(
+                location?.imageUrl,
+              )}/${location?.maxOccupancy}/${location?.description}`}
+            >
+              <IconButton aria-label="edit">
+                <EditIcon />
+              </IconButton>
+            </Link>
             <IconButton
               onClick={() => {
                 this.props.deleteLocationHandler(location);
