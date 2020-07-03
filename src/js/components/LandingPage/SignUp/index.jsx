@@ -1,8 +1,6 @@
+'use-strict';
 import React, { Component } from 'react';
-
 import { signUpUser } from '../../../actions/signUp';
-import { ADMIN_ACCOUNT_TYPE, USER_ACCOUNT_TYPE } from '../../../constants';
-
 import './styles.css';
 
 class SignUpForm extends Component {
@@ -12,7 +10,6 @@ class SignUpForm extends Component {
     email: '',
     password: '',
     sex: '',
-    accountType: '',
   };
 
   onInputChangeHandler = (event) => {
@@ -75,28 +72,6 @@ class SignUpForm extends Component {
               id="female"
               name="sex"
               value="female"
-              onChange={this.onInputChangeHandler}
-            />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="admin">
-            Admin
-            <input
-              type="radio"
-              id="admin"
-              name="accountType"
-              value={ADMIN_ACCOUNT_TYPE}
-              onChange={this.onInputChangeHandler}
-            />
-          </label>
-          <label htmlFor="user">
-            User
-            <input
-              type="radio"
-              id="user"
-              name="accountType"
-              value={USER_ACCOUNT_TYPE}
               onChange={this.onInputChangeHandler}
             />
           </label>

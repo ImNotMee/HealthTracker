@@ -1,4 +1,5 @@
-import { HEALTH_CATEGORIES } from '../constants';
+'use-strict';
+import { HEALTH_CATEGORIES, USER_ACCOUNT_TYPE } from '../constants';
 
 const log = console.log;
 
@@ -16,26 +17,19 @@ export const addUserHandler = (ctx, newUser) => {
 export const signUpUser = (signUpCtx) => {
   log('Creating user...');
   const inputs = signUpCtx.state;
-  const newUser = new User(
-    inputs.first,
-    inputs.last,
-    inputs.email,
-    inputs.password,
-    inputs.accountType,
-    inputs.sex,
-  );
+  const newUser = new User(inputs.first, inputs.last, inputs.email, inputs.password, inputs.sex);
   signUpCtx.props.addUserHandler(newUser);
   log('User successfully added');
   _clearSignUpInputs(signUpCtx);
 };
 
 export class User {
-  constructor(firstName, lastName, email, password, accountType, sex) {
+  constructor(firstName, lastName, email, password, sex) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
     this.password = password;
-    this.accountType = accountType;
+    this.type = USER_ACCOUNT_TYPE;
     this.sex = sex;
     this.hash = this.email + this.password;
     this.reminders = {
@@ -58,6 +52,5 @@ const _clearSignUpInputs = (ctx) => {
     email: '',
     password: '',
     sex: '',
-    accountType: '',
   });
 };
