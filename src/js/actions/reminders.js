@@ -53,7 +53,7 @@ const _isInvalid = (value) => {
 
 export const editReminderHandler = (appCtx, reminderCtx, category, id) => {
   log('Editing reminder...');
-  const isInputValid = _reminderInputValidate(reminderCtx);
+  const isInputValid = _reminderInputValidate(appCtx, reminderCtx);
   if (isInputValid) {
     _editReminder(appCtx, reminderCtx, category, id);
     reminderCtx.setState({
