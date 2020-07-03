@@ -51,13 +51,15 @@ export const checkoutHandler = (ctx) => {
   );
 };
 
-export class Location {
-  constructor(name, maxOccupancy, currOccupancy, address, description, image) {
+export class AppLocation {
+  constructor(name, maxOccupancy, address, description, image) {
+    this.id = name;
     this.name = name;
+    this.isAvaliable = true;
     this.address = address;
     this.country = 'Canada';
     this.maxOccupancy = maxOccupancy;
-    this.currOccupancy = currOccupancy;
+    this.currOccupancy = 0;
     this.description = description;
     this.imageUrl = image;
   }

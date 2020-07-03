@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 import LocationSelector from '../General/LocationSelector';
 import './styles.css';
 
@@ -19,6 +22,12 @@ class AdminCheckIn extends Component {
             onSubmitHandler={this.props.sendAlertHandler}
           />
         </div>
+        <NavLink className="fabNavLink" to="/locations/add">
+          <Fab variant="extended" id="Fab" color="primary" aria-label="add">
+            <AddIcon />
+            Add Location
+          </Fab>
+        </NavLink>
       </div>
     );
   }
