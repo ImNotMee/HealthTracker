@@ -136,7 +136,7 @@ export const PAGE_ADDRESS = [
 
 export const LOCATIONS = {
   "Queen's Park": {
-    id: 'loc 1',
+    id: "Queen's Park",
     name: "Queen's Park",
     isAvaliable: true,
     address: '111 Wellesley St W, Toronto, ON',

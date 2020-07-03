@@ -122,6 +122,8 @@ class HomePage extends Component {
               path="/alert-system"
               render={() => (
                 <AdminCheckIn
+                  activeUser={this.props.activeUser}
+                  deleteLocationHandler={this.props.deleteLocationHandler}
                   sendAlertHandler={this.props.sendAlertHandler}
                   locations={this.props.locations}
                 />

@@ -4,7 +4,11 @@ import { Redirect, Route, Switch, BrowserRouter } from 'react-router-dom';
 import LandingPage from './js/components/LandingPage';
 import HomePage from './js/components/HomePage';
 
-import { sendAlertHandler, addLocationHandler } from './js/actions/adminCheckIn';
+import {
+  sendAlertHandler,
+  addLocationHandler,
+  deleteLocationHandler,
+} from './js/actions/adminCheckIn';
 import { addUserHandler } from './js/actions/signUp';
 import { setActiveUser } from './js/actions/login';
 import { logoutUser } from './js/actions/logout';
@@ -117,6 +121,9 @@ class App extends Component {
                     }}
                     addLocationHandler={(location) => {
                       addLocationHandler(this, location);
+                    }}
+                    deleteLocationHandler={(adCtx, location) => {
+                      deleteLocationHandler(this, adCtx, location);
                     }}
                     activeUser={this.state.activeUser}
                     userDB={this.state.userDB}
