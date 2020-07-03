@@ -1,11 +1,11 @@
-import { REMINDER_STATUS, NOTIFICATION_TYPE } from '../constants';
+import { REMINDER_STATUS, NOTIFICATION_TYPE, ADMIN_ACCOUNT_TYPE } from '../constants';
 import { addNotificationHandler } from './notification';
 
 const log = console.log;
 
 export const addReminderHandler = (appCtx, reminderCtx) => {
   log('Adding new reminder...');
-  const isInputValid = _reminderInputValidate(reminderCtx);
+  const isInputValid = _reminderInputValidate(appCtx, reminderCtx);
   log('Input validity status: ' + isInputValid);
   if (isInputValid) {
     _addReminder(appCtx, reminderCtx);
@@ -28,10 +28,13 @@ const _addReminder = (appCtx, reminderCtx) => {
   });
 };
 
-const _reminderInputValidate = (reminderCtx) => {
+const _reminderInputValidate = (appCtx, reminderCtx) => {
   log('Validating reminder inputs...');
   const isCategoryValid = _isInvalid(reminderCtx.state.category);
-  const isSubCategoryValid = _isInvalid(reminderCtx.state.subCategory);
+  const isSubCategoryValid =
+    appCtx.state.activeUser.type === ADMIN_ACCOUNT_TYPE
+      ? true
+      : _isInvalid(reminderCtx.state.subCategory);
   const isNameValid = _isInvalid(reminderCtx.state.reminderName);
   const isDateTimeValid = _isInvalid(reminderCtx.state.reminderTime);
   reminderCtx.setState({
@@ -100,9 +103,6 @@ export const deleteReminderHandler = (ctx, category, id, timeout) => {
 
 export const setReminderStatus = (ctx, category, id, status) => {
   const user = ctx.state.activeUser;
-  console.log(user);
-  console.log(user.reminders[category]);
-  console.log(category);
   const index = _getReminderIndex(user.reminders[category], id);
   const reminder = user.reminders[category][index];
   reminder.status = status;

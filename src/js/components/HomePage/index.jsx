@@ -104,6 +104,7 @@ class HomePage extends Component {
               path="/reminders/add/:cat?/:sub?/:name?/:time?/:note?/:id?"
               render={(props) => (
                 <AddReminder
+                  activeUser={this.props.activeUser}
                   addReminderHandler={this.props.addReminderHandler}
                   editReminderHandler={this.props.editReminderHandler}
                   {...props}
