@@ -51,7 +51,7 @@ export const USERS = {
           category: HEALTH_CATEGORIES.medical,
           subCategory: 'Appointments',
           name: 'Annual Check Up',
-          time: '2020-07-06T10:15',
+          time: '2020-07-27T10:15',
           note: 'Call Dr.Jones 1hr before',
           status: REMINDER_STATUS.active,
         },
