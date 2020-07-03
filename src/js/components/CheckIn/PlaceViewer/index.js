@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
-import Snackbar from '@material-ui/core/Snackbar';
-import Alert from '@material-ui/lab/Alert';
 import EditIcon from '@material-ui/icons/Edit';
 import goodIcon from '../../../../assets/good_status.png';
 import badIcon from '../../../../assets/bad_status.png';
@@ -18,15 +16,15 @@ class PlaceViewer extends Component {
   };
 
   handleClick = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
+    this.setState({ open: true }, () => {
+      setTimeout(() => {
+        this.setState({ open: false });
+      }, 2980);
+    });
   };
 
   render() {
-    const { vertical, horizontal } = { vertical: 'bottom', horizontal: 'center' };
+    const { open } = this.state;
     const { location, activeUser } = this.props;
     return (
       <div id="PlaceViewerWrapper">
@@ -54,8 +52,8 @@ class PlaceViewer extends Component {
               id="SendAlertBtn"
               className="primary-btn"
               onClick={() => {
-                this.handleClick();
                 this.props.sendAlertHandler(location);
+                return !this.state.open ? this.handleClick() : '';
               }}
             >
               {' '}
@@ -86,17 +84,7 @@ class PlaceViewer extends Component {
         ) : (
           ''
         )}
-        <Snackbar
-          anchorOrigin={{ vertical, horizontal }}
-          open={this.state.open}
-          autoHideDuration={4000}
-          onClose={this.handleClose}
-          key={vertical + horizontal}
-        >
-          <Alert elevation={6} variant="filled" onClose={this.handleClose} severity="success">
-            Alert has be sent!
-          </Alert>
-        </Snackbar>
+        <div className={`snackbar ${open ? 'show' : ''}`}>Alert Has Been Sent!</div>
       </div>
     );
   }
