@@ -4,6 +4,7 @@ import { Redirect, Route, Switch, BrowserRouter } from 'react-router-dom';
 import LandingPage from './js/components/LandingPage';
 import HomePage from './js/components/HomePage';
 
+import { saveUserInfoHandler } from './js/actions/settings';
 import {
   sendAlertHandler,
   addLocationHandler,
@@ -92,6 +93,9 @@ class App extends Component {
                   <HomePage
                     logoutHandler={() => {
                       logoutUser(this);
+                    }}
+                    saveUserInfoHandler={(setCtx) => {
+                      saveUserInfoHandler(this, setCtx);
                     }}
                     removeNotificationHandler={(id) => {
                       removeNotificationHandler(this, id);

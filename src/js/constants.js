@@ -114,6 +114,7 @@ export const USERS = {
 };
 
 export const PAGE_ADDRESS = [
+  '/settings',
   '/overview',
   '/trends',
   '/reminders',
