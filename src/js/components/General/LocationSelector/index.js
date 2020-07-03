@@ -1,3 +1,4 @@
+'use strict';
 import React, { Component } from 'react';
 import ListSelector from '../ListSelector';
 import { onSelectHandler } from '../../../actions/utils';

@@ -1,3 +1,4 @@
+'use strict';
 export const fetchCardData = (user) => {
   // it should call an endpoint to fetch user card data
   const user_card = {

@@ -1,3 +1,4 @@
+'use strict';
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { onInputChangeHandler } from '../../actions/utils';

@@ -1,3 +1,4 @@
+'use strict';
 const log = console.log;
 
 export const setActiveUser = (app, user) => {

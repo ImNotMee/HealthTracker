@@ -1,3 +1,4 @@
+'use strict';
 import React, { Component } from 'react';
 import SymptomTag from './../SymptomTag/SymptomTag';
 import './../styles.css';

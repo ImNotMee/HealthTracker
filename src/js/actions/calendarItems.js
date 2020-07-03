@@ -1,3 +1,4 @@
+'use strict';
 import { MONTHS, USERS } from '../constants.js';
 //const log = console.log;
 

@@ -1,3 +1,4 @@
+'use strict';
 import React, { Component } from 'react';
 import alertIcon from '../../../../assets/alert.png';
 import bellIcon from '../../../../assets/bell.png';

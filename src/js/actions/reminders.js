@@ -1,3 +1,4 @@
+'use strict';
 import { REMINDER_STATUS, NOTIFICATION_TYPE, ADMIN_ACCOUNT_TYPE } from '../constants';
 import { addNotificationHandler } from './notification';
 
