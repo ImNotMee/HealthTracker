@@ -1,6 +1,5 @@
 'use-strict';
 import reminderSound from '../../assets/light.mp3';
-import { NOTIFICATION_TYPE } from '../constants';
 
 const log = console.log;
 
