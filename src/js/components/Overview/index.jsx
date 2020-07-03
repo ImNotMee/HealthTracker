@@ -11,6 +11,8 @@ class Overview extends Component {
   render() {
     return (
       <div id="OverviewWrapper">
+        <h1 id="h1-headers">Physical Health</h1>
+        <hr id="line"></hr>
         <div id="cardsContainer">
           {/* physical tracking */}
           <Card
@@ -41,7 +43,8 @@ class Overview extends Component {
             type="3"
           />
         </div>
-
+        <h1 id="h1-headers">Mental Health</h1>
+        <hr id="line"></hr>
         <div id="cardsContainer">
           {/* mental tracking */}
           <Card
@@ -72,7 +75,8 @@ class Overview extends Component {
             type="6"
           />
         </div>
-
+        <h1 id="h1-headers">Medical Health</h1>
+        <hr id="line"></hr>
         <div id="cardsContainer">
           {/* medical tracking */}
           <Card

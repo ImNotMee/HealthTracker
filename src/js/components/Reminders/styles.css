@@ -28,17 +28,6 @@
   height: 50px;
 }
 
-#FabNavLink {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: var(--contrast-text-color);
-  font-weight: bolder;
-  margin-left: auto;
-}
-
 .catTitle {
   font-size: 1.5em;
   font-weight: bolder;

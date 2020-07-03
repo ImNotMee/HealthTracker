@@ -27,6 +27,17 @@
   outline: none;
 }
 
+.fabNavLink {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--contrast-text-color);
+  font-weight: bolder;
+  margin-left: auto;
+}
+
 .input {
   border: 3px solid var(--secondary-color);
   border-radius: var(--border-radius-val);
@@ -58,6 +69,10 @@
 
 .hidden {
   display: none;
+}
+
+.detailsDivider {
+  margin: 40px;
 }
 
 .App-logo {
