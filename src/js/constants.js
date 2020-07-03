@@ -30,6 +30,10 @@ export const NOTIFICATION_TYPE = {
   reminder: 'Reminder',
 };
 
+export const ADMIN_REMINDER_TYPES = {
+  task: 'Tasks',
+};
+
 export const USERS = {
   useruser: {
     firstName: 'Ben',
@@ -37,8 +41,19 @@ export const USERS = {
     hash: 'useruser',
     type: USER_ACCOUNT_TYPE,
     timers: [],
+    checkInHistory: [],
     reminders: {
-      [HEALTH_CATEGORIES.medical]: [],
+      [HEALTH_CATEGORIES.medical]: [
+        {
+          id: 'r01',
+          category: HEALTH_CATEGORIES.medical,
+          subCategory: 'Appointments',
+          name: 'Annual Check Up',
+          time: '2020-07-06T10:15',
+          note: 'Call Dr.Jones 1hr before',
+          status: REMINDER_STATUS.active,
+        },
+      ],
       [HEALTH_CATEGORIES.mental]: [],
       [HEALTH_CATEGORIES.phsycial]: [
         {
@@ -70,16 +85,37 @@ export const USERS = {
         message: 'explor our app',
       },
     ],
+    trends: {
+      weight: [120, 119, 119, 120, 122, 119, 117],
+      sleep: [5, 6, 6, 7, 9, 10, 7],
+      calories: [1800, 1899, 2100, 2000, 1789, 1987, 1788],
+      stress: [2, 3, 2, 1, 4, 6, 5],
+    },
   },
   adminadmin: {
     firstName: 'IAmAdmin',
     lastName: 'John',
     hash: 'adminadmin',
     type: ADMIN_ACCOUNT_TYPE,
+    reminders: {
+      [ADMIN_REMINDER_TYPES.task]: [
+        {
+          id: 'r0',
+          category: ADMIN_REMINDER_TYPES.task,
+          subCategory: undefined,
+          name: 'Complete important admin work',
+          time: '2020-07-12T21:15',
+          note: 'call Jack to check if he wants to come help',
+          status: REMINDER_STATUS.active,
+        },
+      ],
+    },
+    notifications: [],
   },
 };
 
 export const PAGE_ADDRESS = [
+  '/settings',
   '/overview',
   '/trends',
   '/reminders',
@@ -94,11 +130,15 @@ export const PAGE_ADDRESS = [
   '/overview/logMedical',
   '/overview/logSick',
   '/reminders/add/:cat?/:sub?/:name?/:time?/:note?/:id?',
+  '/manage-users',
+  '/trends/admin',
+  '/alert-system',
+  '/alert-system/add/:name?/:addr?/:img?/:maxOcc?/:desc?',
 ];
 
 export const LOCATIONS = {
-  'loc 1': {
-    id: 'loc 1',
+  "Queen's Park": {
+    id: "Queen's Park",
     name: "Queen's Park",
     isAvaliable: true,
     address: '111 Wellesley St W, Toronto, ON',
@@ -151,7 +191,7 @@ export const DAYSOFWEEK = [
   'Sunday',
   'Monday',
   'Tuesday',
-  'Wedsnesday',
+  'Wednesday',
   'Thursday',
   'Friday',
   'Saturday',
@@ -169,4 +209,19 @@ export const SYMPTOM_OPTION = [
   'Nausea or vomiting',
   'Diarrhea',
   'Bluish lips or face',
+];
+
+export const MONTHS = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];

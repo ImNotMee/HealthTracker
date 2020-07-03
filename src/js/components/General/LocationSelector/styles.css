@@ -1,4 +1,4 @@
-#CheckInWrapper {
+#LocationSelectorWrapper {
   display: flex;
   flex-direction: column;
   height: max-content;
@@ -19,7 +19,7 @@
   margin: 20px 40px;
 }
 
-#ViewPlaceBtn {
+#ActionBtn {
   margin-left: auto;
   width: 160px;
 }

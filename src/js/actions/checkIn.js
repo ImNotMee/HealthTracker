@@ -2,7 +2,7 @@ const log = console.log;
 
 export const viewPlace = (ctx, locations, location) => {
   log(`Viewing ${location}...`);
-  log(`Displaying place details ${JSON.stringify(locations[location])}...`);
+  log('Displaying place details', locations[location], '...');
   ctx.setState({
     locationViewed: locations[location],
   });
@@ -14,6 +14,7 @@ export const checkInHandler = (ctx, location) => {
   locationsDB[location.id].currOccupancy += 1;
   locationsDB[location.id].isAvaliable = _isAvaliable(locationsDB[location.id]);
   activeUser.checkedInLocation = location;
+  activeUser.checkInHistory.push({ location: location, time: new Date() });
   ctx.setState({
     activeUser: activeUser,
     locationsDB: locationsDB,
@@ -50,13 +51,15 @@ export const checkoutHandler = (ctx) => {
   );
 };
 
-export class Location {
-  constructor(name, maxOccupancy, currOccupancy, address, description, image) {
+export class AppLocation {
+  constructor(name, maxOccupancy, address, description, image) {
+    this.id = name;
     this.name = name;
+    this.isAvaliable = true;
     this.address = address;
     this.country = 'Canada';
     this.maxOccupancy = maxOccupancy;
-    this.currOccupancy = currOccupancy;
+    this.currOccupancy = 0;
     this.description = description;
     this.imageUrl = image;
   }

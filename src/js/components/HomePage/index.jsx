@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Notification from '../General/Notification';
+import UserSettings from '../UserSettings';
+// User Components
 import SideBar from '../SideBar';
 import Overview from '../Overview';
 import LogWeight from '../LogPages/LogWeight';
@@ -15,12 +17,17 @@ import Reminders from '../Reminders';
 import AddReminder from '../Reminders/AddReminder';
 import Calendar from '../Calendar';
 import CheckIn from '../CheckIn';
+// Admin Components
+import AdminCheckIn from '../AdminCheckIn';
+import AddLocation from '../AddLocation';
+import AdminTrends from '../Trends/adminTrend.js';
 
 import './styles.css';
 
 class HomePage extends Component {
   state = {
     user: this.props.activeUser,
+    userDB: this.props.userDB,
     check: false,
   };
 
@@ -32,7 +39,7 @@ class HomePage extends Component {
         </div>
         <div id="HomeContentWrapper">
           <div id="NotificationWrapper">
-            {this.state.user?.notifications.map((notification) => {
+            {this.state.user?.notifications?.map((notification) => {
               return (
                 <Notification
                   key={notification.id}
@@ -47,8 +54,18 @@ class HomePage extends Component {
           {/* Each Route below shows a different component depending on the exact path in the URL  */}
           <Switch>
             {/* Page nav */}
+            <Route
+              exact
+              path="/settings"
+              render={() => (
+                <UserSettings
+                  activeUser={this.props.activeUser}
+                  saveUserInfoHandler={this.props.saveUserInfoHandler}
+                />
+              )}
+            />
             <Route exact path="/overview" render={() => <Overview />} />
-            <Route exact path="/trends" render={() => <Trends />} />
+            <Route exact path="/trends" render={() => <Trends activeUser={this.state.user} />} />
             <Route
               exact
               path="/reminders"
@@ -62,7 +79,11 @@ class HomePage extends Component {
                 />
               )}
             />
-            <Route exact path="/calendar" render={() => <Calendar />} />
+            <Route
+              exact
+              path="/calendar"
+              render={() => <Calendar activeUser={this.state.user} />}
+            />
             <Route
               exact
               path="/check-in"
@@ -75,7 +96,12 @@ class HomePage extends Component {
                 />
               )}
             />
-
+            {/*Admin views*/}
+            <Route
+              exact
+              path="/trends/admin"
+              render={() => <AdminTrends activeUser={this.state.user} userDB={this.state.userDB} />}
+            />
             {/* Activity logging view nav */}
             <Route exact path="/overview/logWeight" render={() => <LogWeight />} />
             <Route exact path="/overview/logWater" render={() => <LogWater />} />
@@ -90,9 +116,33 @@ class HomePage extends Component {
               path="/reminders/add/:cat?/:sub?/:name?/:time?/:note?/:id?"
               render={(props) => (
                 <AddReminder
+                  activeUser={this.props.activeUser}
                   addReminderHandler={this.props.addReminderHandler}
                   editReminderHandler={this.props.editReminderHandler}
                   {...props}
+                />
+              )}
+            />
+            {/* Admin views */}
+            <Route
+              path="/alert-system/add/:name?/:addr?/:img?/:maxOcc?/:desc?"
+              render={(props) => (
+                <AddLocation
+                  editLocationHandler={this.props.editLocationHandler}
+                  addLocationHandler={this.props.addLocationHandler}
+                  {...props}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/alert-system"
+              render={() => (
+                <AdminCheckIn
+                  activeUser={this.props.activeUser}
+                  deleteLocationHandler={this.props.deleteLocationHandler}
+                  sendAlertHandler={this.props.sendAlertHandler}
+                  locations={this.props.locations}
                 />
               )}
             />

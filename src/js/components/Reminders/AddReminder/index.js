@@ -3,7 +3,12 @@ import { Redirect } from 'react-router-dom';
 import ListSelector from '../../General/ListSelector';
 import { onSelectHandler, onInputChangeHandler } from '../../../actions/utils';
 import './styles.css';
-import { HEALTH_CATEGORIES, HEALTH_SUB_CATEGORIES } from '../../../constants';
+import {
+  HEALTH_CATEGORIES,
+  HEALTH_SUB_CATEGORIES,
+  ADMIN_ACCOUNT_TYPE,
+  ADMIN_REMINDER_TYPES,
+} from '../../../constants';
 
 class AddReminder extends Component {
   state = {
@@ -36,6 +41,7 @@ class AddReminder extends Component {
   };
 
   render() {
+    const { activeUser } = this.props;
     return (
       <div id="AddReminderWrapper">
         {this.goToReminders()}
@@ -51,13 +57,17 @@ class AddReminder extends Component {
               name="categories"
               autoComplete="false"
               defaultValue={this.state.category === undefined ? '' : this.state.category}
-              options={Object.values(HEALTH_CATEGORIES)}
+              options={
+                activeUser.type === ADMIN_ACCOUNT_TYPE
+                  ? Object.values(ADMIN_REMINDER_TYPES)
+                  : Object.values(HEALTH_CATEGORIES)
+              }
               onChangeHandler={(event) => {
                 onSelectHandler(this, event, 'category');
               }}
             />
           </div>
-          {this.state.category !== undefined ? (
+          {this.state.category !== undefined && activeUser.type !== ADMIN_ACCOUNT_TYPE ? (
             <div className="reminderInputWrapper">
               <span className="inputLabel"> Sub-Category: </span>
               <ListSelector
@@ -111,12 +121,11 @@ class AddReminder extends Component {
               name="reminderNote"
               maxLength="225"
               placeholder="Notes"
+              value={this.state.reminderNote === undefined ? '' : this.state.reminderNote}
               onChange={(event) => {
                 onInputChangeHandler(this, event);
               }}
-            >
-              {this.state.reminderNote === undefined ? '' : this.state.reminderNote}
-            </textarea>
+            />
             <br />
             <span className="charCount">
               {this.state.reminderNote !== undefined ? this.state['reminderNote'].length : '0'}/225

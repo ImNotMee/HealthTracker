@@ -4,6 +4,13 @@ import { Redirect, Route, Switch, BrowserRouter } from 'react-router-dom';
 import LandingPage from './js/components/LandingPage';
 import HomePage from './js/components/HomePage';
 
+import { saveUserInfoHandler } from './js/actions/settings';
+import {
+  sendAlertHandler,
+  addLocationHandler,
+  deleteLocationHandler,
+  editLocationHandler,
+} from './js/actions/adminCheckIn';
 import { addUserHandler } from './js/actions/signUp';
 import { setActiveUser } from './js/actions/login';
 import { logoutUser } from './js/actions/logout';
@@ -16,7 +23,13 @@ import {
   deleteReminderHandler,
   notifyAboutReminder,
 } from './js/actions/reminders';
-import { USERS, PAGE_ADDRESS, LOCATIONS } from './js/constants';
+import {
+  USERS,
+  PAGE_ADDRESS,
+  LOCATIONS,
+  USER_ACCOUNT_TYPE,
+  ADMIN_ACCOUNT_TYPE,
+} from './js/constants';
 import './App.css';
 
 class App extends Component {
@@ -31,8 +44,19 @@ class App extends Component {
     if (this.state.activeUser === null) {
       return <Redirect to="/signup" />;
     }
-    if (window.location.pathname === '/signup') {
+
+    if (
+      window.location.pathname === '/signup' &&
+      this.state.activeUser.type === USER_ACCOUNT_TYPE
+    ) {
       return <Redirect to="/overview" />;
+    }
+
+    if (
+      window.location.pathname === '/signup' &&
+      this.state.activeUser.type === ADMIN_ACCOUNT_TYPE
+    ) {
+      return <Redirect to="/manage-users" />;
     }
   };
 
@@ -70,6 +94,9 @@ class App extends Component {
                     logoutHandler={() => {
                       logoutUser(this);
                     }}
+                    saveUserInfoHandler={(setCtx) => {
+                      saveUserInfoHandler(this, setCtx);
+                    }}
                     removeNotificationHandler={(id) => {
                       removeNotificationHandler(this, id);
                     }}
@@ -97,7 +124,20 @@ class App extends Component {
                     deleteReminderHandler={(category, id, timeout) => {
                       deleteReminderHandler(this, category, id, timeout);
                     }}
+                    sendAlertHandler={(location) => {
+                      sendAlertHandler(this, location);
+                    }}
+                    addLocationHandler={(location) => {
+                      addLocationHandler(this, location);
+                    }}
+                    deleteLocationHandler={(adCtx, location) => {
+                      deleteLocationHandler(this, adCtx, location);
+                    }}
+                    editLocationHandler={(locCtx) => {
+                      editLocationHandler(this, locCtx);
+                    }}
                     activeUser={this.state.activeUser}
+                    userDB={this.state.userDB}
                     locations={this.state.locationsDB}
                   />
                 </div>
