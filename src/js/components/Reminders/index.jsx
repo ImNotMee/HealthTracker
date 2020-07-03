@@ -78,7 +78,7 @@ class Reminders extends Component {
           )}
         </div>
 
-        <NavLink id="FabNavLink" to="/reminders/add">
+        <NavLink className="fabNavLink" to="/reminders/add">
           <Fab variant="extended" id="Fab" color="primary" aria-label="add">
             <AddIcon />
             Add Reminder

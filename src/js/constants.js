@@ -97,6 +97,7 @@ export const PAGE_ADDRESS = [
   '/manage-users',
   '/trends/admin',
   '/alert-system',
+  '/locations/add',
 ];
 
 export const LOCATIONS = {

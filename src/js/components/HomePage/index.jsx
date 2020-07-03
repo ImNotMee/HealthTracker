@@ -16,6 +16,7 @@ import AddReminder from '../Reminders/AddReminder';
 import Calendar from '../Calendar';
 import CheckIn from '../CheckIn';
 import AdminCheckIn from '../AdminCheckIn';
+import AddLocation from '../AddLocation';
 
 import './styles.css';
 
@@ -97,6 +98,11 @@ class HomePage extends Component {
               )}
             />
             {/* Admin views */}
+            <Route
+              exact
+              path="/locations/add"
+              render={() => <AddLocation addLocationHandler={this.props.addLocationHandler} />}
+            />
             <Route
               exact
               path="/alert-system"
