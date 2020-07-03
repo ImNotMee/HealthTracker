@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import ReminderItem from './ReminderItem';
-import { HEALTH_CATEGORIES } from '../../constants';
+import { HEALTH_CATEGORIES, USER_ACCOUNT_TYPE, ADMIN_REMINDER_TYPES } from '../../constants';
 import './styles.css';
 
 const EmptyReminderList = () => {
@@ -19,65 +19,62 @@ class Reminders extends Component {
     user: this.props.activeUser,
   };
 
-  loadReminders;
+  getReminderCatView = (type) => {
+    return (
+      <div>
+        <span className="catTitle"> {type} </span>
+        <div className="titleLine" />
+        {this.state.user?.reminders[type].length === 0 ? (
+          <EmptyReminderList />
+        ) : (
+          this.state.user?.reminders[type].map((reminder) => {
+            return (
+              <ReminderItem
+                key={reminder.id}
+                reminder={reminder}
+                notifyAboutReminder={this.props.notifyAboutReminder}
+                completeReminderHandler={this.props.completeReminderHandler}
+                deleteReminderHandler={this.props.deleteReminderHandler}
+              />
+            );
+          })
+        )}
+      </div>
+    );
+  };
+
+  getUserReminderView = () => {
+    const userReminderTypes = [
+      HEALTH_CATEGORIES.medical,
+      HEALTH_CATEGORIES.mental,
+      HEALTH_CATEGORIES.phsycial,
+    ];
+    return (
+      <div id="RemindersView" className="windowWrapper">
+        {userReminderTypes.map((type) => {
+          return this.getReminderCatView(type);
+        })}
+      </div>
+    );
+  };
+
+  getAdminReminderView = () => {
+    const adminReminderTypes = [ADMIN_REMINDER_TYPES.task];
+    return (
+      <div id="RemindersView" className="windowWrapper">
+        {adminReminderTypes.map((type) => {
+          return this.getReminderCatView(type);
+        })}
+      </div>
+    );
+  };
 
   render() {
     return (
       <div id="RemindersWrapper">
-        <div id="RemindersView" className="windowWrapper">
-          <span className="catTitle"> Medical Health </span>
-          <div className="titleLine" />
-          {this.state.user?.reminders[HEALTH_CATEGORIES.medical].length === 0 ? (
-            <EmptyReminderList />
-          ) : (
-            this.state.user?.reminders[HEALTH_CATEGORIES.medical].map((reminder) => {
-              return (
-                <ReminderItem
-                  key={reminder.id}
-                  reminder={reminder}
-                  notifyAboutReminder={this.props.notifyAboutReminder}
-                  completeReminderHandler={this.props.completeReminderHandler}
-                  deleteReminderHandler={this.props.deleteReminderHandler}
-                />
-              );
-            })
-          )}
-          <span className="catTitle"> Mental Health </span>
-          <div className="titleLine" />
-          {this.state.user?.reminders[HEALTH_CATEGORIES.mental].length === 0 ? (
-            <EmptyReminderList />
-          ) : (
-            this.state.user?.reminders[HEALTH_CATEGORIES.mental].map((reminder) => {
-              return (
-                <ReminderItem
-                  key={reminder.id}
-                  reminder={reminder}
-                  notifyAboutReminder={this.props.notifyAboutReminder}
-                  completeReminderHandler={this.props.completeReminderHandler}
-                  deleteReminderHandler={this.props.deleteReminderHandler}
-                />
-              );
-            })
-          )}
-          <span className="catTitle"> Physical Health </span>
-          <div className="titleLine" />
-          {this.state.user?.reminders[HEALTH_CATEGORIES.phsycial].length === 0 ? (
-            <EmptyReminderList />
-          ) : (
-            this.state.user?.reminders[HEALTH_CATEGORIES.phsycial].map((reminder) => {
-              return (
-                <ReminderItem
-                  key={reminder.id}
-                  reminder={reminder}
-                  notifyAboutReminder={this.props.notifyAboutReminder}
-                  completeReminderHandler={this.props.completeReminderHandler}
-                  deleteReminderHandler={this.props.deleteReminderHandler}
-                />
-              );
-            })
-          )}
-        </div>
-
+        {this.state.user?.type === USER_ACCOUNT_TYPE
+          ? this.getUserReminderView()
+          : this.getAdminReminderView()}
         <NavLink className="fabNavLink" to="/reminders/add">
           <Fab variant="extended" id="Fab" color="primary" aria-label="add">
             <AddIcon />
