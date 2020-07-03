@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Notification from '../General/Notification';
+import UserSettings from '../UserSettings';
 // User Components
 import SideBar from '../SideBar';
 import Overview from '../Overview';
@@ -53,6 +54,16 @@ class HomePage extends Component {
           {/* Each Route below shows a different component depending on the exact path in the URL  */}
           <Switch>
             {/* Page nav */}
+            <Route
+              exact
+              path="/settings"
+              render={() => (
+                <UserSettings
+                  activeUser={this.props.activeUser}
+                  saveUserInfoHandler={this.props.saveUserInfoHandler}
+                />
+              )}
+            />
             <Route exact path="/overview" render={() => <Overview />} />
             <Route exact path="/trends" render={() => <Trends activeUser={this.state.user} />} />
             <Route
