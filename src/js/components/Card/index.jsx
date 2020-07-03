@@ -30,8 +30,7 @@ class Card extends Component {
       case '7': // medication
         return this.ShowMedications(this.state.value);
       case '8': // sickness
-        if (this.state.value['sick'] === true) return this.ShowImage('sick');
-        else return this.ShowImage('healthy');
+        return this.ShowSickness(this.state.value);
       case '9': // appointments
         return this.ShowAppointments(this.state.value);
       default:
@@ -200,6 +199,18 @@ class Card extends Component {
             <span>{med['name']} - </span>
             <span>{med['time']} Note:</span>
             <span>{med['note']}</span>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  ShowSickness(sickness) {
+    return (
+      <div className="sicknessList">
+        {sickness.map((sick, index) => (
+          <div key={index} className="sickness">
+            {sick}
           </div>
         ))}
       </div>

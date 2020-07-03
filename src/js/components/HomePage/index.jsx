@@ -161,7 +161,12 @@ class HomePage extends Component {
             <Route
               exact
               path="/overview/logSick"
-              render={() => <LogSick setSickness={(newSick) => setSickness(this, newSick)} />}
+              render={() => (
+                <LogSick
+                  listSickness={this.state.user_card['Sickness']}
+                  setSickness={(newSick) => setSickness(this, newSick)}
+                />
+              )}
             />
 
             {/* Add Reminder view */}

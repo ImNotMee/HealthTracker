@@ -12,11 +12,6 @@ class Overview extends Component {
       medication: [],
       appointments: [],
     };
-
-    this.split_reminders();
-  }
-
-  split_reminders() {
     const medical_reminder = this.state.activeUser.reminders[HEALTH_CATEGORIES.medical];
     let medication = [];
     let appointments = [];

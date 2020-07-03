@@ -135,5 +135,11 @@ export const setStress = (card, newStress) => {
 };
 
 export const setSickness = (card, newSickness) => {
-  return;
+  console.log('updating Stress to ');
+  const { user_card } = card.state;
+  user_card['Sickness'] = newSickness;
+  card.setState({
+    user_card: user_card,
+  });
+  console.log(user_card['Sickness']);
 };

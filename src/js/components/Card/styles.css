@@ -4,6 +4,8 @@
   border: #000000 2px solid;
   text-align: center;
   border-radius: var(--border-radius-val);
+  text-decoration: none;
+  color: black;
 }
 
 .cardIcon {
@@ -93,4 +95,15 @@
   margin-bottom: 20px;
   margin-left: 20px;
   margin-right: 20px;
+}
+
+.sickness {
+  display: inline-block;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: var(--contrast-text-color);
+  margin: 0px 3px 2px 0px;
+  border: 1px solid black;
+  padding: 3px 5px 3px 5px;
+  border-radius: 12px;
 }

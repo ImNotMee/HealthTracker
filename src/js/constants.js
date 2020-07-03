@@ -151,27 +151,8 @@ export const USER_CARD = {
       remainging: 4,
     },
   ],
-  Sickness: {
+  Sickness: [
     //
-    sick: true,
-  },
-  Appointments: [
-    // shows all appointments today
-    {
-      event: 'Annual Checkup',
-      doctor: 'Dr. Zoudas',
-      time: '16:00:00',
-    },
-    {
-      event: 'Blood Donation',
-      doctor: 'Dr. Dre',
-      time: '10:00:00',
-    },
-    {
-      event: 'Dentist',
-      doctor: 'Dr. Teth',
-      time: '12:00:00',
-    },
   ],
 };
 
