@@ -27,7 +27,10 @@ class LandingPage extends Component {
         />
         <div id="LandingContentWrapper">
           <div id="AboutAppWrapper">
-            <img src="http://www.pngmart.com/files/9/Text-Banner-Transparent-Background.png"></img>
+            <img
+              src="http://www.pngmart.com/files/9/Text-Banner-Transparent-Background.png"
+              alt=""
+            ></img>
             <p>
               Health Tracker is here to help improve our overall communities' lifestyles to be more
               healthier by allowing them to track, analyze and stay motivated about specific health
