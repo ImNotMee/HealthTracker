@@ -7,7 +7,10 @@ class Trends extends Component {
     user: this.props.activeUser,
     trends: {
       title: '',
-      data: [],
+      sleep: [],
+      weight: [],
+      calories: [],
+      stress: [],
       type: 'line',
     },
   };

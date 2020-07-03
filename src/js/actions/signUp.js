@@ -76,6 +76,7 @@ export class User {
       [HEALTH_CATEGORIES.phsycial]: [],
     };
     this.notifications = [];
+    this.trends = [];
   }
 
   getHash = () => {
