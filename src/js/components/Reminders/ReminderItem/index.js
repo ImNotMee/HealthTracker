@@ -30,8 +30,8 @@ class ReminderItem extends Component {
 
   notificationExists() {
     let i;
-    for (i = 0; i < this.props.activeUser.timers.length; i++) {
-      if (this.props.activeUser.timers[i].id === this.state.reminder.id) {
+    for (i = 0; i < this.props.activeUser?.timers.length; i++) {
+      if (this.props.activeUser?.timers[i].id === this.state.reminder.id) {
         return true;
       }
     }

@@ -98,6 +98,7 @@ export const USERS = {
     lastName: 'John',
     email: 'admin',
     hash: 'adminadmin',
+    timers: [],
     type: ADMIN_ACCOUNT_TYPE,
     reminders: {
       [ADMIN_REMINDER_TYPES.task]: [
