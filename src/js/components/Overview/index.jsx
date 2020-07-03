@@ -1,12 +1,37 @@
 import React, { Component } from 'react';
 import './styles.css';
 import Card from '../Card';
+import { HEALTH_CATEGORIES, REMINDER_STATUS } from '../../constants';
 
 class Overview extends Component {
-  state = {
-    user: this.props.activeUser,
-    user_card: this.props.user_card,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeUser: this.props.activeUser,
+      user_card: this.props.user_card,
+      medication: [],
+      appointments: [],
+    };
+
+    this.split_reminders();
+  }
+
+  split_reminders() {
+    const medical_reminder = this.state.activeUser.reminders[HEALTH_CATEGORIES.medical];
+    let medication = [];
+    let appointments = [];
+    for (var i = 0; i < medical_reminder.length; i++) {
+      if (medical_reminder[i]['status'] === REMINDER_STATUS.active) {
+        if (medical_reminder[i]['subCategory'] === 'Appointments') {
+          appointments.push(medical_reminder[i]);
+        } else if (medical_reminder[i]['subCategory'] === 'Medication') {
+          medication.push(medical_reminder[i]);
+        }
+      }
+    }
+    this.state.medication = medication;
+    this.state.appointments = appointments;
+  }
 
   render() {
     return (
@@ -83,7 +108,7 @@ class Overview extends Component {
             id="cards"
             activeUser={this.props.activeUser}
             title="Medication"
-            value={this.state.user_card['Medication']}
+            value={this.state.medication}
             address="/reminders"
             image=""
             type="7"
@@ -101,7 +126,7 @@ class Overview extends Component {
             id="cards"
             activeUser={this.props.activeUser}
             title="Appointments"
-            value={this.state.user_card['Appointments']}
+            value={this.state.appointments}
             address="/reminders"
             image=""
             type="9"

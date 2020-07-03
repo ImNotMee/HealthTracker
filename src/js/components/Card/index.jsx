@@ -183,9 +183,9 @@ class Card extends Component {
       <div className="appointmentList">
         {appointments.map((apmt, index) => (
           <div key={index} className="appointment">
-            <span>{apmt['event']} - </span>
-            <span>{apmt['doctor']} At </span>
-            <span>{apmt['time']} </span>
+            <span>{apmt['name']} - </span>
+            <span>{apmt['time']} Note: </span>
+            <span>{apmt['note']} </span>
           </div>
         ))}
       </div>
@@ -197,9 +197,9 @@ class Card extends Component {
       <div className="medicationList">
         {medication.map((med, index) => (
           <div key={index} className="medication">
-            <span>{med['drug']} - </span>
-            <span>{med['completed']}/</span>
-            <span>{med['remainging']}</span>
+            <span>{med['name']} - </span>
+            <span>{med['time']} Note:</span>
+            <span>{med['note']}</span>
           </div>
         ))}
       </div>

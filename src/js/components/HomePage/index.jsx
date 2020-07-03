@@ -79,7 +79,9 @@ class HomePage extends Component {
             <Route
               exact
               path="/overview"
-              render={() => <Overview user_card={this.state.user_card} />}
+              render={() => (
+                <Overview user_card={this.state.user_card} activeUser={this.state.user} />
+              )}
             />
             <Route exact path="/trends" render={() => <Trends activeUser={this.state.user} />} />
             <Route
