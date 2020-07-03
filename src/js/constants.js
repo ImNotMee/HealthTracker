@@ -70,6 +70,12 @@ export const USERS = {
         message: 'explor our app',
       },
     ],
+    trends: {
+      weight: [120, 119, 119, 120, 122, 119, 117],
+      sleep: [5, 6, 6, 7, 9, 10, 7],
+      calories: [1800, 1899, 2100, 2000, 1789, 1987, 1788],
+      stress: [2, 3, 2, 1, 4, 6, 5],
+    },
   },
   adminadmin: {
     firstName: 'IAmAdmin',
@@ -155,7 +161,7 @@ export const DAYSOFWEEK = [
   'Sunday',
   'Monday',
   'Tuesday',
-  'Wedsnesday',
+  'Wednesday',
   'Thursday',
   'Friday',
   'Saturday',

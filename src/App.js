@@ -119,6 +119,7 @@ class App extends Component {
                       addLocationHandler(this, location);
                     }}
                     activeUser={this.state.activeUser}
+                    userDB={this.state.userDB}
                     locations={this.state.locationsDB}
                   />
                 </div>
