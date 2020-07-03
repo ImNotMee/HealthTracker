@@ -1,4 +1,3 @@
-'use-strict';
 import reminderSound from '../../assets/light.mp3';
 
 const log = console.log;
