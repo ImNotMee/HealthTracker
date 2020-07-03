@@ -12,6 +12,7 @@ export const USERS = {
     firstName: 'Ben',
     lastName: 'John',
     hash: 'useruser',
+    type: USER_ACCOUNT_TYPE,
     reminders: {
       medicalReminders: [],
       mentalReminders: [],
@@ -29,8 +30,56 @@ export const USERS = {
       ],
       otherReminders: null,
     },
+    sex: 'male',
   },
-  adminadmin: { firstName: 'IAmAdmin', lastName: 'John', hash: 'adminadmin' },
+  user2: {
+    firstName: 'Kevin',
+    lastName: 'Lee',
+    hash: 'user2',
+    type: USER_ACCOUNT_TYPE,
+    sex: 'male',
+  },
+  user3: {
+    firstName: 'Kevin',
+    lastName: 'Lee',
+    hash: 'user3',
+    type: USER_ACCOUNT_TYPE,
+    sex: 'male',
+  },
+  user4: {
+    firstName: 'Kevin',
+    lastName: 'Lee',
+    hash: 'user4',
+    type: USER_ACCOUNT_TYPE,
+    sex: 'male',
+  },
+  user5: {
+    firstName: 'Kevin',
+    lastName: 'Lee',
+    hash: 'user5',
+    type: USER_ACCOUNT_TYPE,
+    sex: 'male',
+  },
+  user6: {
+    firstName: 'Kevin',
+    lastName: 'Lee',
+    hash: 'user6',
+    type: USER_ACCOUNT_TYPE,
+    sex: 'male',
+  },
+  user7: {
+    firstName: 'Kevin',
+    lastName: 'Lee',
+    hash: 'user7',
+    type: USER_ACCOUNT_TYPE,
+    sex: 'male',
+  },
+  adminadmin: {
+    firstName: 'IAmAdmin',
+    lastName: 'John',
+    hash: 'adminadmin',
+    type: ADMIN_ACCOUNT_TYPE,
+  },
 };
 
 export const PAGE_ADDRESS = [

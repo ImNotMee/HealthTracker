@@ -9,6 +9,7 @@ import LogMood from '../LogPages/LogMood';
 import LogSleep from '../LogPages/LogSleep';
 import LogStress from '../LogPages/LogStress';
 import LogSick from '../LogPages/LogSick';
+import UserManagement from '../UserManagement';
 import Trends from '../Trends';
 import Reminders from '../Reminders';
 import Calendar from '../Calendar';
