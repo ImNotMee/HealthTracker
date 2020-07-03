@@ -21,7 +21,8 @@ import CheckIn from '../CheckIn';
 import AdminCheckIn from '../AdminCheckIn';
 import AddLocation from '../AddLocation';
 import AdminTrends from '../Trends/adminTrend.js';
-
+import ManageUser from '../ManageUser';
+import UserProfile from '../UserProfile';
 import './styles.css';
 import { getNumNotifs } from '../../actions/notification';
 import { NOTIFICATION_TYPE } from '../../constants';
@@ -157,6 +158,8 @@ class HomePage extends Component {
                 />
               )}
             />
+            <Route exact path="/manage-users" render={() => <ManageUser />} />
+            <Route exact path="/user-profile/:id?" render={(props) => <UserProfile {...props} />} />
           </Switch>
         </div>
       </div>

@@ -38,8 +38,9 @@ export const USERS = {
   useruser: {
     firstName: 'Ben',
     lastName: 'John',
-    email: 'user',
     hash: 'useruser',
+    sex: 'male',
+    email: 'useruser@health.com',
     type: USER_ACCOUNT_TYPE,
     timers: [],
     checkInHistory: [],
@@ -136,6 +137,8 @@ export const PAGE_ADDRESS = [
   '/manage-users',
   '/trends/admin',
   '/alert-system',
+  '/locations/add',
+  '/user-profile/:id?',
   '/alert-system/add/:name?/:addr?/:img?/:maxOcc?/:desc?',
 ];
 
