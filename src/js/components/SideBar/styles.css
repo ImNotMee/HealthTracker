@@ -64,3 +64,14 @@
 .settings {
   margin-left: auto;
 }
+
+.notifBadge {
+  height: max-content;
+  width: max-content;
+  padding: 3px 11px;
+  position: absolute;
+  right: 5px;
+  border-radius: 50%;
+  color: var(--contrast-text-color);
+  background-color: var(--error-color);
+}

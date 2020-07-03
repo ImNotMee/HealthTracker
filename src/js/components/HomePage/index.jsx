@@ -23,19 +23,30 @@ import AddLocation from '../AddLocation';
 import AdminTrends from '../Trends/adminTrend.js';
 
 import './styles.css';
+import { getNumNotifs } from '../../actions/notification';
+import { NOTIFICATION_TYPE } from '../../constants';
 
 class HomePage extends Component {
   state = {
     user: this.props.activeUser,
     userDB: this.props.userDB,
     check: false,
+    count: getNumNotifs(this.props.activeUser?.notifications),
   };
 
   render() {
     return (
       <div id="HomeWrapper">
         <div id="NavBarWrapper">
-          <SideBar logoutHandler={this.props.logoutHandler} activeUser={this.state.user} />
+          <SideBar
+            reminderCount={getNumNotifs(
+              this.props.activeUser?.notifications,
+              NOTIFICATION_TYPE.reminder,
+            )}
+            alertCount={getNumNotifs(this.props.activeUser?.notifications, NOTIFICATION_TYPE.alert)}
+            logoutHandler={this.props.logoutHandler}
+            activeUser={this.state.user}
+          />
         </div>
         <div id="HomeContentWrapper">
           <div id="NotificationWrapper">
@@ -71,8 +82,9 @@ class HomePage extends Component {
               path="/reminders"
               render={() => (
                 <Reminders
-                  activeUser={this.state.user}
+                  activeUser={this.props.activeUser}
                   notifyAboutReminder={this.props.notifyAboutReminder}
+                  addTimerHandler={this.props.addTimerHandler}
                   completeReminderHandler={this.props.completeReminderHandler}
                   deleteReminderHandler={this.props.deleteReminderHandler}
                 />

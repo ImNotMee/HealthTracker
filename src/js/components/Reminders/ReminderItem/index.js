@@ -7,21 +7,37 @@ import EditIcon from '@material-ui/icons/Edit';
 import goodIcon from '../../../../assets/good_status.png';
 import badIcon from '../../../../assets/bad_status.png';
 import hourglassIcon from '../../../../assets/hourglass.png';
-import './styles.css';
+import { playSound } from '../../../actions/notification';
 import { REMINDER_STATUS } from '../../../constants';
+import './styles.css';
 
 class ReminderItem extends Component {
   state = {
     reminder: this.props.reminder,
+    user: this.props.activeUser,
   };
 
   componentDidMount() {
     const currTime = new Date().getTime();
     const reminderTime = new Date(this.state.reminder.time);
     const time = reminderTime - currTime;
-    this.reminderTimer = setTimeout(() => {
-      this.props.notifyAboutReminder(this.state.reminder);
-    }, time);
+    if (!this.notificationExists()) {
+      this.reminderTimer = setTimeout(() => {
+        playSound();
+        this.props.notifyAboutReminder(this.state.reminder);
+      }, time);
+      this.props.addTimerHandler(this.state.reminder.id, this.reminderTimer);
+    }
+  }
+
+  notificationExists() {
+    let i;
+    for (i = 0; i < this.props.activeUser?.timers.length; i++) {
+      if (this.props.activeUser?.timers[i].id === this.state.reminder.id) {
+        return true;
+      }
+    }
+    return false;
   }
 
   getStatusIcon = (status) => {

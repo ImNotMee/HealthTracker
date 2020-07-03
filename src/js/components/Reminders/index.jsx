@@ -21,7 +21,7 @@ class Reminders extends Component {
 
   getReminderCatView = (type) => {
     return (
-      <div>
+      <div key={type}>
         <span className="catTitle"> {type} </span>
         <div className="titleLine" />
         {this.state.user?.reminders[type].length === 0 ? (
@@ -32,6 +32,8 @@ class Reminders extends Component {
               <ReminderItem
                 key={reminder.id}
                 reminder={reminder}
+                activeUser={this.props.activeUser}
+                addTimerHandler={this.props.addTimerHandler}
                 notifyAboutReminder={this.props.notifyAboutReminder}
                 completeReminderHandler={this.props.completeReminderHandler}
                 deleteReminderHandler={this.props.deleteReminderHandler}

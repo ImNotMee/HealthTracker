@@ -1,3 +1,4 @@
+'use-strict';
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
@@ -10,6 +11,13 @@ class Sidebar extends Component {
     user: this.props.activeUser,
     profilePic:
       'https://3.bp.blogspot.com/-qDc5kIFIhb8/UoJEpGN9DmI/AAAAAAABl1s/BfP6FcBY1R8/s1600/BlueHead.jpg',
+  };
+
+  notifCount = (count) => {
+    if (count > 0) {
+      return <span className="notifBadge"> {count} </span>;
+    }
+    return '';
   };
 
   getUserNavOptions = () => {
@@ -32,6 +40,7 @@ class Sidebar extends Component {
           Trends
         </NavLink>
         <NavLink to="/reminders" activeClassName="activeLink" className="home_navlink">
+          {this.notifCount(this.props.reminderCount)}
           <img
             id="icon"
             alt="reminders icon"
@@ -48,6 +57,7 @@ class Sidebar extends Component {
           Calendar
         </NavLink>
         <NavLink to="/check-in" activeClassName="activeLink" className="home_navlink">
+          {this.notifCount(this.props.alertCount)}
           <img
             id="icon"
             alt="check-in icon"
@@ -79,6 +89,7 @@ class Sidebar extends Component {
           Trends
         </NavLink>
         <NavLink to="/reminders" activeClassName="activeLink" className="home_navlink">
+          {this.notifCount(this.props.reminderCount)}
           <img
             id="icon"
             alt="reminders icon"

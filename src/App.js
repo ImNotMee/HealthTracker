@@ -14,7 +14,7 @@ import {
 import { addUserHandler } from './js/actions/signUp';
 import { setActiveUser } from './js/actions/login';
 import { logoutUser } from './js/actions/logout';
-import { removeNotificationHandler } from './js/actions/notification';
+import { removeNotificationHandler, addTimerHandler } from './js/actions/notification';
 import { checkInHandler, checkoutHandler } from './js/actions/checkIn';
 import {
   addReminderHandler,
@@ -99,6 +99,9 @@ class App extends Component {
                     }}
                     removeNotificationHandler={(id) => {
                       removeNotificationHandler(this, id);
+                    }}
+                    addTimerHandler={(id, timer) => {
+                      addTimerHandler(this, id, timer);
                     }}
                     checkInHandler={(location) => {
                       checkInHandler(this, location);

@@ -1,3 +1,6 @@
+'use-strict';
+import reminderSound from '../../assets/light.mp3';
+
 const log = console.log;
 
 export const addNotificationHandler = (ctx, type, title, message) => {
@@ -8,7 +11,7 @@ export const addNotificationHandler = (ctx, type, title, message) => {
   ctx.setState({
     activeUser: user,
   });
-  log('Successfully created notification' + ctx.state.activeUser.notifications);
+  log('Successfully created notification', ctx.state.activeUser.notifications);
 };
 
 export const removeNotificationHandler = (ctx, id) => {
@@ -24,11 +27,19 @@ export const removeNotificationHandler = (ctx, id) => {
 
 const _getNotificationIndex = (list, id) => {
   let i;
-  for (i = 0; i < list.lenght; i++) {
+  for (i = 0; i < list.length; i++) {
     if (list[i].id === id) {
       return i;
     }
   }
+};
+
+export const addTimerHandler = (ctx, id, timer) => {
+  const user = ctx.state.activeUser;
+  user.timers.push({ id: id, timer: timer });
+  ctx.setState({
+    activeUser: user,
+  });
 };
 
 export class Notification {
@@ -43,3 +54,19 @@ export class Notification {
     return 'n' + Math.random().toString(36).substr(3, 8);
   };
 }
+
+export const playSound = () => {
+  let rAudio = new Audio(reminderSound);
+  rAudio.play();
+};
+
+export const getNumNotifs = (notifications, type) => {
+  let count = 0;
+  let i;
+  for (i = 0; i < notifications?.length; i++) {
+    if (notifications[i].type === type) {
+      count += 1;
+    }
+  }
+  return count;
+};
