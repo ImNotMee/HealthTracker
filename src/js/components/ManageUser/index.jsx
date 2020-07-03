@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import './styles.css';
-import { USERS, USER_ACCOUNT_TYPE, ADMIN_ACCOUNT_TYPE } from './../../constants';
+import {
+  USERS,
+  USER_ACCOUNT_TYPE,
+  ADMIN_ACCOUNT_TYPE,
+  ADMIN_REMINDER_TYPES,
+} from './../../constants';
 import Button from '@material-ui/core/Button';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
@@ -15,6 +20,7 @@ class ManageUser extends Component {
   onClickAssignAdmin = (user) => {
     if (user in USERS && USERS[user].type === USER_ACCOUNT_TYPE) {
       USERS[user].type = ADMIN_ACCOUNT_TYPE;
+      USERS[user].reminders = { [ADMIN_REMINDER_TYPES.task]: [] };
       this.forceUpdate();
     }
   };

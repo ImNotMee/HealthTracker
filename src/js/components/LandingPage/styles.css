@@ -14,17 +14,19 @@
 
 #AboutAppWrapper {
   width: 50%;
-  position: relative;
 }
-
-#landingPageIcon {
+#textDContainer {
+  position: relative;
+  height: auto;
+}
+#landingPageText {
   width: 110%;
   height: 300px;
 }
 
 #description {
   position: absolute;
-  top: 50px;
+  top: 60px;
   left: 80px;
 }
 
@@ -33,4 +35,10 @@
   width: auto;
   height: auto;
   font-size: 20px;
+}
+
+#landingPic {
+  width: 40%;
+  margin-top: 2%;
+  margin-left: 40%;
 }
