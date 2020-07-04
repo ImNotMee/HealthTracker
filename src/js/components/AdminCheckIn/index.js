@@ -19,9 +19,7 @@ class AdminCheckIn extends Component {
         <div id="AlertWrapper" className="windowWrapper">
           <LocationSelector
             header="Check-In Alert System"
-            message="Help prevent the spead of COVID by alerting
-            our users if they have checked into a place that has
-            had a COVID case within the past 14 days."
+            message="Help prevent the spead of COVID by alerting our users if they have checked into a place that has had a COVID case within the past 14 days."
             action="View Place"
             options={Object.keys(this.props.locations)}
             onSubmitHandler={(location) => {
