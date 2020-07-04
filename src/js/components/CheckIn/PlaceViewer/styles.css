@@ -49,6 +49,11 @@
   margin-right: auto;
 }
 
+#Map img {
+  height: 200px;
+  width: 100%;
+}
+
 .snackbar {
   visibility: hidden;
   min-width: 250px;
