@@ -1,7 +1,7 @@
 # team27
 ## The landing page of the app is also where users can sign up an account (regular user) and sign in access for both admin and user.
 
-### Our app consists of a 5 main features for a regular user:
+### Our app consists of 5 main features for a regular user:
   1. They are able to log and see their physical, mental, and medical goals within the app. This is located in the overview page.
   2. They are able to see their progress of some of their goals in the trends page. By switching tabs of each type of tracking activity, the user will be able to see this current week’s progress.
   3. They can set up reminders for appointments or complete a certain goal on this day.  And there will be alerts for these remainders while the user is on the app and it gets near the time of the remainder.
@@ -13,6 +13,12 @@
   2. Under the trends page, admins can view the average data of all users on their progress within this week.
   3. Under the alert sys page, admins can not only check in to location, they are able to add new locations for users to check in with.
   4. Under the reminder page, admins can set up reminders for important tasks that they need to work on.
+  
+# After cloning the github repo and before starting the app
+
+Make sure to run ```npm install``` for all the dependencies and the correct versions.
+
+To start the app, run ```npm start```
  
 # Instructions for regular user:
 
@@ -281,8 +287,7 @@ Click the **Add** button to finish, and this **new location will display on the 
 
 
 
-
-
+**Note: this part onwards is meant for our group**
 ## Getting Started
 
 ### First Time Setup
