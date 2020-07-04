@@ -313,6 +313,16 @@ Description: **Campus** (could leave it blank).
 Click the **Add** button to finish, and this **new location will display on the selection menu** for check in.
 
 
+### Edit Location
+
+In Alert System view select **queens park** and click **view plac** then
+
+Click on the **edit location icon** ![img](https://lh6.googleusercontent.com/gRNuWXtFmZ1tf7Sr9u3_cwKcza2Ao4UJ_R6AcHySyp51nLCm2l3GQmUBYriof0joKUYW8tfyan4L7FzYLcjBdICDsIiVXjTehL3ibq0g8Pk51zBpVOnbunRr_z9Wdrlaag) to change the informaiton about the selected location
+
+ For example change **Max Occupancy** to **1000**
+
+To save the changes made click **edit** button on the bottom left conner
+
 
 
 
