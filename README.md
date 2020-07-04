@@ -11,7 +11,7 @@
 ### As an admin user:
   1. Under users, the admins can create, modify, or delete users.
   2. Under the trends page, admins can view the average data of all users on their progress within this week.
-  3. Under the alert sys page, admins can not only check in to location, they are able to add new locations for users to check in with.
+  3. Under the alert sys page, admins can alert users who have recently visited a location that has had a new covid case. Also, they are able to add new locations for users to check in with, and edit information of existing locations or delete them
   4. Under the reminder page, admins can set up reminders for important tasks that they need to work on.
   
 # After cloning the github repo and before starting the app
