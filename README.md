@@ -288,7 +288,9 @@ Enter **Hope all the projects are nice** for notes (could leave it blank if you 
 
 Editing an existing reminder will be the same as creating a new one. But you click on the **edit icon** on the reminder you would like to edit.
 
-## Check in:
+## Check in/ Alert Sys:
+
+### Add Location
 
 Same as regular users check in pages when trying to check in.
 
