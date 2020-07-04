@@ -178,11 +178,11 @@ Click the **Streak** tab at the top of the page to see all the streaks of their 
 
 
 1. After editting your reminder time to be within 2-5 mins of the current time. If you move to anohter view, logout and log back in or stay on the same view you will see a notification banner at the top of the view along with a notification badge on the reminder button on the side menu bar with the number of notifications recived. 
-2. You can dismiss the notification but clicking the ![image-20200703190540311](/Users/cd/Library/Application Support/typora-user-images/image-20200703190540311.png) on the right of the notification banner. This will remove the banner and the badge
+2. You can dismiss the notification but clicking the  ![img](https://lh4.googleusercontent.com/wSL2J5TS9WzByNODmrX6-g5iwMjZUL0eyfp5rgxWzUUdrtlRfTg7rGAC3ja2ebvb1NG6xhMBSgPjuVVOULbl7Axrb5V10Ork2Q5-5PRCCD_fvO17Nz1t-DvMxAvrghwgvg) on the right of the notification banner. This will remove the banner and the badge
 
 
 
-### Complete reminder  ![img](https://lh4.googleusercontent.com/wSL2J5TS9WzByNODmrX6-g5iwMjZUL0eyfp5rgxWzUUdrtlRfTg7rGAC3ja2ebvb1NG6xhMBSgPjuVVOULbl7Axrb5V10Ork2Q5-5PRCCD_fvO17Nz1t-DvMxAvrghwgvg)
+### Complete reminder  ![img](https://lh4.googleusercontent.com/fNfOy-ksDDtujdPxdanXyccaqNnvS41BmuPMf2aIGz_J81TTJilJmxiFG8ooII408RBSe7UD0_n-SfGMccaIDIc9hJJJjgczzTklTSE8UTu4Xs7CnS86fWVjrVB3wYzb2w)
 
 1. Once a reminder has been triggered and a notification is sent, the status of the reminder will be changed to "overdue" and this is indication by the change of the status icon to an ![img](https://lh6.googleusercontent.com/mFvlbfLGwONulKKGoxfkg9IgiFI9B13RZkEMAiRAysLK6uZdi8Q57bqLUBm5MQOpE-YDRv_-C7Hd602FZOVEN9vgVILahKAXwkeknQf653XX8GijpFDI1m6VEkwn9MchFg)
 2. Then after you have compeleted the reminder you can change the status to complete by clicking the ![img](https://lh4.googleusercontent.com/fNfOy-ksDDtujdPxdanXyccaqNnvS41BmuPMf2aIGz_J81TTJilJmxiFG8ooII408RBSe7UD0_n-SfGMccaIDIc9hJJJjgczzTklTSE8UTu4Xs7CnS86fWVjrVB3wYzb2w) on the right side of the reminder item
@@ -196,16 +196,52 @@ Click the **Streak** tab at the top of the page to see all the streaks of their 
 1. If you no longer need the reminder you can remove the reminder(s) you created by clicking the delete (trash can ![img](https://lh5.googleusercontent.com/yeoYJ82pe5M0zhxGFT80bNHLPNQo2dsX7th-HO32WHGd9CBSzfoB_1eCH0vXJyUzlS4fmwNZNMjQYqpjfmSg-sxiqciiwN03W0eQMAlnt_lHDvvboa_dfVmpYyC2Q4xLZw) icon on the right of a reminder item.
 2. 
 
-## Check in:
 
-To access the check in page, use the side bar and select Check-in. 
+## Check In View
 
-Then under the **drop-down menu**, select the location that the use wants to check in, in our case, Queen’s Park. 
+![img](https://lh6.googleusercontent.com/KTjx_ctCWBfdatmw-q_xx_JbfEzZqmZ4nfvgbX_1xHUzYjKp1nYCygT5MGCKFpK8sAMPh7C4T6nQg78NtRTNWo-PomuCitLwACugLtzFcP7zG9929p5dlZXmmzqPfWaAug)
 
-Click **view place** and the details of the location will be displayed. 
+As a regular user you can volenterly check-in to be notified if a place you have recently visited has had a coved case.
 
-Then click **check-in** to indicate that the user will be going to this location and the occupancy limit will increase by 1.
 
+### View Place  ![img](https://lh3.googleusercontent.com/HXWCF1l0TeG8dGaGt5gqT7BHM9LgKyxV5_4euoV6Qp1UBoDt2wpDLm8BWqdDQPZq2shTfKZWdQ3qWHAcWwA3f9gW9VWsPuSLNYqhMMq0rpysX2YWuQIqcYht0CnaEHQHQA)
+
+1. you can enter a select a place by typing a name to search of it within the dropdown list or selecting a place from the dropdown list.
+
+2. Once you can selected a place clicke the view place button![img](https://lh4.googleusercontent.com/yc4QDGV9vB_pa-l6bO2p-RNzte4AA0Y7kcZgDL1ZZLmCJ46ojxFbC366QNgdv4TF21wxJ8dCjvBZ4FSL9gkk27rVN-h8K-hyNH6H79qynZ_6xKLyUty6HxpZl7oueI4lnA)
+
+3. Then details about the place will be shown 
+
+   ![img](https://lh4.googleusercontent.com/AZ-29WB4DNZL6wVYR3mRI5UCDKTJUc8YpWK4L1ZFhCUWXSK28p28mNohmyoRKpXE5rwE4bgmjRv5TliLM3E99BWNpIAegFN07ClrgKWZYPZANmAbqKR6f8ESQtmbC3peZA)-	the *Occupancy Limit* is the max number of people allowed in the selected location
+
+   - the *Current Occupancy* is the current number of people at the selected location
+   - When the current occupancy is less than the limit a green status will be indicated by ![img](https://lh6.googleusercontent.com/cC-zfg5K-K4uouFwvoPxT7zOS_B32hrOcq0TYkU3JqCxLmjQMQwLGih76qebxalAalO-N_S7GDlT55UiYKP0p19MduiHNcirGjWMNDjlM63UrzHkyo4wcJ761PtMo1yO5Q)and the check-in button will appear![img](https://lh3.googleusercontent.com/A8Nv4-9HuLJlJdvqW21aM-eqEAlSY3RX1L1dXsTBFFvnM1IsifizG0PqG9Se2dyQ3il2n02sg8i7cMGFVRE2sdeLwbG2xGA4LXA0_vSjtBxW9bj5hPWRhg1zoSruTblPgQ)
+   - When the curren occupancy is is greater or equal too the limit a bad status will be indicated by![img](https://lh6.googleusercontent.com/mFvlbfLGwONulKKGoxfkg9IgiFI9B13RZkEMAiRAysLK6uZdi8Q57bqLUBm5MQOpE-YDRv_-C7Hd602FZOVEN9vgVILahKAXwkeknQf653XX8GijpFDI1m6VEkwn9MchFg) and there will be no check in button
+   - A call will be made to a map API to display the location on a map so the user can know how to get to the selected location 
+
+   
+
+### Check In Button![img](https://lh6.googleusercontent.com/UX4W9qqHn3rWMOR2a9aAVothp-uZWwGHoXwPQDV2jzwABR_gpFBCjU8wQfX5tzFrajE504T1cZABlsELEEqpHpao5S_BBt70PJtLxqOFbrC6P06O7c3eRCzekIUpsPzdHQ)
+
+
+
+1. Click the check-in button ![img](https://lh3.googleusercontent.com/A8Nv4-9HuLJlJdvqW21aM-eqEAlSY3RX1L1dXsTBFFvnM1IsifizG0PqG9Se2dyQ3il2n02sg8i7cMGFVRE2sdeLwbG2xGA4LXA0_vSjtBxW9bj5hPWRhg1zoSruTblPgQ) and  the user will 'checked into' the selected place
+
+   - this will be indicated by the top status bar![img](https://lh5.googleusercontent.com/86WyeJ2TkOjEcwL0A6iRvrCXcYfmQHpJoQA3JhvAUk2SN7g0gOcCtvUCqoHqNb-XtaIB1NLO6OKPP637I_58Wp7Uq-iWromIFqCSNzt9AL8Ds4GPh99ht-lVgQEtIf-k7g)
+
+   - Users are only allowed to be checked into one place at a time, Hwoever users can still view other places
+
+###Check Out
+
+![img](https://lh5.googleusercontent.com/86WyeJ2TkOjEcwL0A6iRvrCXcYfmQHpJoQA3JhvAUk2SN7g0gOcCtvUCqoHqNb-XtaIB1NLO6OKPP637I_58Wp7Uq-iWromIFqCSNzt9AL8Ds4GPh99ht-lVgQEtIf-k7g)
+
+1. When the users is checked in click the checkout button ![img](https://lh3.googleusercontent.com/lIYfdFC22dE5ndmbw5nPZfvzDW-L3095M1qC4ffo2Cw7kwoDHXGAnHKivFkgept65vYM1zYw9dsmf86obC8SCTW8xq93zPmgRPy6ZVN-jeBvBU1Ke9ZAXCl05jEzY6kw9A)to remove the user's check-in status from the current location
+   - the message will change to "you are currently not check in anywhere"
+   - You will regain the ability to check into other places
+
+
+
+**Note:**  Please make sure you, the user, is check-in to one location to see how the COVID alert system works before moving on to the admin instructions
 # Instructions for admin:
 
 To login as an admin: 
@@ -250,7 +286,9 @@ Enter **Hope all the projects are nice** for notes (could leave it blank if you 
 
 Editing an existing reminder will be the same as creating a new one. But you click on the **edit icon** on the reminder you would like to edit.
 
-## Check in:
+## Check in/ Alert Sys:
+
+### Add Location
 
 Same as regular users check in pages when trying to check in.
 
@@ -272,6 +310,16 @@ Description: **Campus** (could leave it blank).
 
 Click the **Add** button to finish, and this **new location will display on the selection menu** for check in.
 
+
+### Edit Location
+![img](https://cdn.discordapp.com/attachments/713491226577469551/728778692863590440/unknown.png)
+In Alert System view select **queens park** and click **view plac** then
+
+Click on the **edit location icon** ![img](https://lh6.googleusercontent.com/gRNuWXtFmZ1tf7Sr9u3_cwKcza2Ao4UJ_R6AcHySyp51nLCm2l3GQmUBYriof0joKUYW8tfyan4L7FzYLcjBdICDsIiVXjTehL3ibq0g8Pk51zBpVOnbunRr_z9Wdrlaag) to change the informaiton about the selected location
+
+ For example change **Max Occupancy** to **1000**
+
+To save the changes made click **edit** button on the bottom left conner
 
 
 

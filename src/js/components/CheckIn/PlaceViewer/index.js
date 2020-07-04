@@ -7,6 +7,7 @@ import goodIcon from '../../../../assets/good_status.png';
 import badIcon from '../../../../assets/bad_status.png';
 import { isCheckInValid } from '../../../actions/checkIn';
 import { ADMIN_ACCOUNT_TYPE } from '../../../constants';
+import map from '../../../../assets/map.png';
 import './styles.css';
 
 class PlaceViewer extends Component {
@@ -46,6 +47,13 @@ class PlaceViewer extends Component {
             </div>
           </div>
         </div>
+        {activeUser.type === ADMIN_ACCOUNT_TYPE ? (
+          ''
+        ) : (
+          <div id="Map">
+            <img src={map} alt="map"></img>
+          </div>
+        )}
         {activeUser.type === ADMIN_ACCOUNT_TYPE ? (
           <div id="AdminActions">
             <button
