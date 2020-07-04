@@ -321,8 +321,16 @@ Click on the **edit location icon** ![img](https://lh6.googleusercontent.com/gRN
 
 To save the changes made click **edit** button on the bottom left conner
 
+You will be taken back to the alert system view where you can search for **queens park** and varify the Max Occupancy has changed
 
 
+### Delete Location
+
+Select **UTSG** location from the dropdown list and then click **view place**
+
+Then to delete this location click the delete icon ![img](https://lh5.googleusercontent.com/yeoYJ82pe5M0zhxGFT80bNHLPNQo2dsX7th-HO32WHGd9CBSzfoB_1eCH0vXJyUzlS4fmwNZNMjQYqpjfmSg-sxiqciiwN03W0eQMAlnt_lHDvvboa_dfVmpYyC2Q4xLZw)
+
+The location will be deleted for both admin and users in the alery sys and checkin views, respectively
 
 
 
