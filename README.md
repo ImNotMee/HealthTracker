@@ -272,16 +272,16 @@ Click on the **remove** button to remove the user.
 
 To access the **trends** page, use the side bar and select **Trends**.(Very similar to user trends page)
 
-Click the Weight tab at the top of the page, it will render a line graph displaying the current week of the user's weight.
+Click the Weight tab at the top of the page, it will render a line graph displaying the current week's of all user's average weight.
 When you input your weight in the **BMI card** in the overview page, the data of the corresponding day will be updated (i.e. if today is Monday, the Monday data will be updated).
 
-Click the Sleep tab at the top of the page, it will render a bar graph displaying the current week of the user’s hours of sleep.
+Click the Sleep tab at the top of the page, it will render a bar graph displaying the current week of all user's average hours of sleep.
 When you input your sleep hours in the **Sleep card** in the overview page, the data of the corresponding day will be updated (i.e. if today is Monday, the Monday data will be updated).
 
-Click the Stress tab at the top of the page, it will render a bar graph displaying the current week of the user’s stress level.
+Click the Stress tab at the top of the page, it will render a bar graph displaying the current week of all user's average stress level.
 When you input your stress level in the **Stress card** in the overview page, the data of the corresponding day will be updated (i.e. if today is Monday, the Monday data will be updated).
 
-Click the Calories tab at the top of the page, it will render a line graph displaying the current week of the user’s calories count.
+Click the Calories tab at the top of the page, it will render a line graph displaying the current week of all user's average calories count.
 When you input your calories in the **Calories card** in the overview page, the data of the corresponding day will be updated (i.e. if today is Monday, the Monday data will be updated).
 
 ## Reminders:
