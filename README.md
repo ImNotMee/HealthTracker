@@ -221,7 +221,9 @@ As a regular user you can volenterly check-in to be notified if a place you have
 
    
 
-### Check In Button![img](https://lh6.googleusercontent.com/UX4W9qqHn3rWMOR2a9aAVothp-uZWwGHoXwPQDV2jzwABR_gpFBCjU8wQfX5tzFrajE504T1cZABlsELEEqpHpao5S_BBt70PJtLxqOFbrC6P06O7c3eRCzekIUpsPzdHQ)
+### Check In Button
+
+![img](https://lh6.googleusercontent.com/UX4W9qqHn3rWMOR2a9aAVothp-uZWwGHoXwPQDV2jzwABR_gpFBCjU8wQfX5tzFrajE504T1cZABlsELEEqpHpao5S_BBt70PJtLxqOFbrC6P06O7c3eRCzekIUpsPzdHQ)
 
 
 
