@@ -288,6 +288,12 @@ Editing an existing reminder will be the same as creating a new one. But you cli
 
 ## Check in/ Alert Sys:
 
+### COVID Cases - Geo Locator
+
+A call will be made to google maps API and to a backend database of covid cases which will grab thee cases and populate the map in this section
+
+This will provide the admin with information to select locations which regular users should be alerted about
+
 ### Add Location
 
 Same as regular users check in pages when trying to check in.
