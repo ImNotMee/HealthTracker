@@ -62,12 +62,26 @@ export const fetchCardData = (user) => {
 
 // lists of actions to change user_card state
 
-export const setBMI = (card, newBMI) => {
+export const setBMI = (card, newBMI, newHeight, newWeight, newUnit) => {
   console.log('updating BMI to ');
-  const { user_card } = card.state;
+  const { user_card, user } = card.state;
   user_card['BMI']['value'] = newBMI;
+  user_card['BMI']['height'] = newHeight;
+  user_card['BMI']['weight'] = newWeight;
+  user_card['BMI']['unit'] = newUnit;
+
+  const today = new Date();
+  const day = today.getDay();
+  // conversion from standard to metric
+  let trendWeight = newWeight;
+  if (newUnit === 'metric') {
+    trendWeight = newWeight * 2.205;
+  }
+  user.trends.weight[day] = trendWeight;
+
   card.setState({
     user_card: user_card,
+    user: user,
   });
   console.log(user_card['BMI']['value']);
 };
@@ -89,7 +103,7 @@ export const setWater = (card, newWater) => {
 
 export const setCalories = (card, newCalories) => {
   console.log('updating Calories to ');
-  const { user_card } = card.state;
+  const { user_card, user } = card.state;
   user_card['Calories']['completed'] = newCalories;
   let remainging = 2000 - newCalories;
   if (remainging < 0) {
@@ -97,8 +111,13 @@ export const setCalories = (card, newCalories) => {
   }
   user_card['Calories']['remaining'] = remainging;
 
+  const today = new Date();
+  const day = today.getDay();
+  user.trends.calories[day] = newCalories;
+
   card.setState({
     user_card: user_card,
+    user: user,
   });
   console.log(user_card['Calories']['completed']);
 };
@@ -115,21 +134,33 @@ export const setMood = (card, newMood) => {
 
 export const setSleep = (card, newSleepHours, newSleepQuality) => {
   console.log('updating Sleep to ');
-  const { user_card } = card.state;
+  const { user_card, user } = card.state;
   user_card['Sleep']['hours'] = newSleepHours;
   user_card['Sleep']['quality'] = newSleepQuality;
+
+  const today = new Date();
+  const day = today.getDay();
+  user.trends.sleep[day] = newSleepHours;
+
   card.setState({
     user_card: user_card,
+    user: user,
   });
   console.log(user_card['Sleep']['hours'], 'and ', user_card['Sleep']['quality']);
 };
 
 export const setStress = (card, newStress) => {
   console.log('updating Stress to ');
-  const { user_card } = card.state;
+  const { user_card, user } = card.state;
   user_card['Stress']['value'] = newStress;
+
+  const today = new Date();
+  const day = today.getDay();
+  user.trends.stress[day] = newStress;
+
   card.setState({
     user_card: user_card,
+    user: user,
   });
   console.log(user_card['Stress']['value']);
 };

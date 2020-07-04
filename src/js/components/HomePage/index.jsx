@@ -136,7 +136,13 @@ class HomePage extends Component {
             <Route
               exact
               path="/overview/logWeight"
-              render={() => <LogWeight setBMI={(newBMI) => setBMI(this, newBMI)} />}
+              render={() => (
+                <LogWeight
+                  setBMI={(newBMI, newHeight, newWeight, newUnit) =>
+                    setBMI(this, newBMI, newHeight, newWeight, newUnit)
+                  }
+                />
+              )}
             />
             <Route
               exact
