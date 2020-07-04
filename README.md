@@ -130,7 +130,7 @@ Afterwards, the user can input the location and other relevant information in th
 
 To access the **trends** page, use the side bar and select **Trends**.
 
-**(These data are all hard coded and will require database call) **
+**(These data will be updated through cards in overview) **
 
 Click the **Weight** tab at the top of the page, it will render a line graph displaying the current week of the user's weight. 
 
