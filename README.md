@@ -196,14 +196,12 @@ Click the **Streak** tab at the top of the page to see all the streaks of their 
 1. If you no longer need the reminder you can remove the reminder(s) you created by clicking the delete (trash can ![img](https://lh5.googleusercontent.com/yeoYJ82pe5M0zhxGFT80bNHLPNQo2dsX7th-HO32WHGd9CBSzfoB_1eCH0vXJyUzlS4fmwNZNMjQYqpjfmSg-sxiqciiwN03W0eQMAlnt_lHDvvboa_dfVmpYyC2Q4xLZw) icon on the right of a reminder item.
 2. 
 
-## Check in:
 
 ## Check In View
 
 ![img](https://lh6.googleusercontent.com/KTjx_ctCWBfdatmw-q_xx_JbfEzZqmZ4nfvgbX_1xHUzYjKp1nYCygT5MGCKFpK8sAMPh7C4T6nQg78NtRTNWo-PomuCitLwACugLtzFcP7zG9929p5dlZXmmzqPfWaAug)
 
 As a regular user you can volenterly check-in to be notified if a place you have recently visited has had a coved case.
-
 
 
 ### View Place  ![img](https://lh3.googleusercontent.com/HXWCF1l0TeG8dGaGt5gqT7BHM9LgKyxV5_4euoV6Qp1UBoDt2wpDLm8BWqdDQPZq2shTfKZWdQ3qWHAcWwA3f9gW9VWsPuSLNYqhMMq0rpysX2YWuQIqcYht0CnaEHQHQA)
@@ -314,7 +312,7 @@ Click the **Add** button to finish, and this **new location will display on the 
 
 
 ### Edit Location
-
+![img](https://cdn.discordapp.com/attachments/713491226577469551/728778692863590440/unknown.png)
 In Alert System view select **queens park** and click **view plac** then
 
 Click on the **edit location icon** ![img](https://lh6.googleusercontent.com/gRNuWXtFmZ1tf7Sr9u3_cwKcza2Ao4UJ_R6AcHySyp51nLCm2l3GQmUBYriof0joKUYW8tfyan4L7FzYLcjBdICDsIiVXjTehL3ibq0g8Pk51zBpVOnbunRr_z9Wdrlaag) to change the informaiton about the selected location
