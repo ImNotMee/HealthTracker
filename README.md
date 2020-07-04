@@ -279,15 +279,15 @@ Click the **Add** button to finish, and this **new location will display on the 
 
 
 
-
-
-
-
-
-
-
+    
+<br>
+<br>
+<br>
+<br>
+<br>
 
 **Note: this part onwards is meant for our group**
+
 ## Getting Started
 
 ### First Time Setup
