@@ -28,11 +28,11 @@ class Card extends Component {
       case '6': // stress
         return this.ShowStress(this.state.value['value']);
       case '7': // medication
-        return this.ShowMedications(this.state.value);
+        return this.ShowList(this.state.value);
       case '8': // sickness
         return this.ShowSickness(this.state.value);
       case '9': // appointments
-        return this.ShowAppointments(this.state.value);
+        return this.ShowList(this.state.value);
       default:
         return;
     }
@@ -177,32 +177,32 @@ class Card extends Component {
     );
   }
 
-  ShowAppointments(appointments) {
+  ShowList(list) {
     return (
-      <div className="appointmentList">
-        {appointments.map((apmt, index) => (
-          <div key={index} className="appointment">
-            <span>{apmt['name']} - </span>
-            <span>{apmt['time']} Note: </span>
-            <span>{apmt['note']} </span>
+      <div className="itemList">
+        {list.map((item, index) => (
+          <div key={index} className="item">
+            <span className="eventName">{item['name']} </span>
+            <span className="eventTime">{this.fixTime(item['time'])}</span>
+            <span className="eventNote">Note: {item['note']}</span>
           </div>
         ))}
       </div>
     );
   }
 
-  ShowMedications(medication) {
-    return (
-      <div className="medicationList">
-        {medication.map((med, index) => (
-          <div key={index} className="medication">
-            <span>{med['name']} - </span>
-            <span>{med['time']} Note:</span>
-            <span>{med['note']}</span>
-          </div>
-        ))}
-      </div>
-    );
+  fixTime(time) {
+    const options = {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+    };
+    const dateTimeValue = new Date(time);
+    const dateTimeStr = new Intl.DateTimeFormat('en-US', options).format(dateTimeValue);
+    return dateTimeStr;
   }
 
   ShowSickness(sickness) {

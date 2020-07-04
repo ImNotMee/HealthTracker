@@ -10,6 +10,7 @@ class LogWeight extends Component {
     weight: 0,
     height: 0,
     BMI: 0.0,
+    unit: 'metric',
     saved: false,
   };
 
@@ -26,20 +27,22 @@ class LogWeight extends Component {
     // 1kg = 2.2 pounds
     // 1m = 39.37 inches
     console.log('hello');
-    var weight = this.state.weight;
-    var height = this.state.height;
+    let height = this.state.height;
+    let weight = this.state.weight;
+    let unit = 'metric';
+    this.setState({ unit: 'metric' });
     if (standard === true) {
       weight = weight / 2.205;
       height = height / 39.37;
     }
-    var BMI = 0;
+    let BMI = 0;
     if (height !== 0) {
       BMI = weight / height ** 2;
     }
     this.setState({ BMI: BMI });
-
     this.setState({ saved: true });
-    this.props.setBMI(BMI);
+    this.setState({ unit: unit });
+    this.props.setBMI(BMI, height, weight, unit);
     this.savedTimeout = setTimeout(() => this.setState({ saved: false }), 3000);
   };
 

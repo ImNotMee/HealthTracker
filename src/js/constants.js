@@ -121,6 +121,9 @@ export const USERS = {
 export const USER_CARD = {
   BMI: {
     value: 22.0,
+    height: 160,
+    weight: 60,
+    unit: 'metric', // metric and standard
   },
   Water: {
     completed: 800,
