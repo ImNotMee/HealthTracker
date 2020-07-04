@@ -1,4 +1,3 @@
-'use-strict';
 import React, { Component } from 'react';
 import ListSelector from '../../General/ListSelector';
 import { signUpUser } from '../../../actions/signUp';

@@ -19,11 +19,19 @@ class TipBox extends Component {
     const tips = () => {
       if (this.state.label === 'physical') {
         return PHYSICAL_TIP.map((tip) => {
-          return <li id="tipContent">{tip}</li>;
+          return (
+            <li key={tip} id="tipContent">
+              {tip}
+            </li>
+          );
         });
       } else if (this.state.label === 'mental') {
         return MENTAL_TIP.map((tip) => {
-          return <li id="tipContent">{tip}</li>;
+          return (
+            <li key={tip} id="tipContent">
+              {tip}
+            </li>
+          );
         });
       }
     };

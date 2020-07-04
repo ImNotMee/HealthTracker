@@ -3,12 +3,35 @@ import './styles.css';
 import RadioMood from './RadioMood';
 import { NavLink } from 'react-router-dom';
 import TipBox from './../TipBox/TipBox';
+import SavedBox from './../SavedBox/SavedBox';
 
 class LogMood extends Component {
   state = {
-    user: this.props.activeUser,
+    mood: 'happy',
+    saved: false,
   };
+
+  changeMood = (mood) => {
+    this.setState({
+      mood: mood,
+    });
+  };
+
+  handleSubmit = () => {
+    this.setState({ saved: true });
+    this.props.setMood(this.state.mood);
+    this.savedTimeout = setTimeout(() => this.setState({ saved: false }), 3000);
+  };
+
+  componentWillUnmount() {
+    clearTimeout(this.savedTimeout);
+  }
+
   render() {
+    let saved = null;
+    if (this.state.saved === true) {
+      saved = <SavedBox />;
+    }
     return (
       <div id="LogMoodWrapper">
         <div className="logMoodView left">
@@ -28,18 +51,16 @@ class LogMood extends Component {
             Mood of the day
           </h1>
           <div className="logMoodBox">
-            <form>
-              <fieldset>
-                <h3>How do you feel today?</h3>
-                <div id="iconContainer">
-                  <RadioMood></RadioMood>
-                </div>
-                <button className="primary-btn" id="logButton">
-                  Save
-                </button>
-              </fieldset>
-            </form>
+            <h3>How do you feel today?</h3>
+            <div id="iconContainer">
+              <RadioMood changeMood={(mood) => this.changeMood(mood)}></RadioMood>
+            </div>
+            <button className="primary-btn" id="logButton" onClick={this.handleSubmit}>
+              Save
+            </button>
           </div>
+          {/*saved dialog box*/}
+          {saved}
         </div>
         <div className="logMoodView right">
           <TipBox label="mental"></TipBox>

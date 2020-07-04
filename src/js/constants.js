@@ -40,7 +40,7 @@ export const USERS = {
     lastName: 'John',
     hash: 'useruser',
     sex: 'male',
-    email: 'useruser@health.com',
+    email: 'user',
     type: USER_ACCOUNT_TYPE,
     timers: [],
     checkInHistory: [],
@@ -51,7 +51,7 @@ export const USERS = {
           category: HEALTH_CATEGORIES.medical,
           subCategory: 'Appointments',
           name: 'Annual Check Up',
-          time: '2020-07-26T10:15',
+          time: '2020-07-27T10:15',
           note: 'Call Dr.Jones 1hr before',
           status: REMINDER_STATUS.active,
         },
@@ -97,6 +97,50 @@ export const USERS = {
     },
     notifications: [],
   },
+};
+
+export const USER_CARD = {
+  BMI: {
+    value: 22.0,
+    height: 160,
+    weight: 60,
+    unit: 'metric', // metric and standard
+  },
+  Water: {
+    completed: 800,
+    remaining: 1200,
+    unit: 'ml',
+  },
+  Calories: {
+    completed: 300,
+    remaining: 1700,
+    unit: 'Calories',
+  },
+  Mood: {
+    value: 'happy',
+  },
+  Sleep: {
+    hours: 8,
+    quality: 'Good', // 3 levels bad, okay, good
+  },
+  Stress: {
+    value: 1,
+  },
+  Medication: [
+    {
+      drug: 'Cold Medicine',
+      completed: 1,
+      remainging: 2,
+    },
+    {
+      drug: 'Allergy Medicine',
+      completed: 2,
+      remainging: 4,
+    },
+  ],
+  Sickness: [
+    //
+  ],
 };
 
 export const PAGE_ADDRESS = [

@@ -26,4 +26,5 @@
   justify-content: center;
   width: calc(100% - 225px);
   height: max-content;
+  z-index: 999;
 }

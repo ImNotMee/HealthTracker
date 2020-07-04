@@ -1,4 +1,3 @@
-'use-strict';
 import React, { Component } from 'react';
 import { onInputChangeHandler } from '../../../actions/utils';
 import './styles.css';

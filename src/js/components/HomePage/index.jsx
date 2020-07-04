@@ -27,9 +27,21 @@ import './styles.css';
 import { getNumNotifs } from '../../actions/notification';
 import { NOTIFICATION_TYPE } from '../../constants';
 
+import { USER_CARD } from '../../constants'; // needs to be changed to server call later
+import {
+  setBMI,
+  setWater,
+  setCalories,
+  setMood,
+  setSleep,
+  setStress,
+  setSickness,
+} from '../../actions/cardData';
+
 class HomePage extends Component {
   state = {
     user: this.props.activeUser,
+    user_card: USER_CARD,
     userDB: this.props.userDB,
     check: false,
     count: getNumNotifs(this.props.activeUser?.notifications),
@@ -76,7 +88,13 @@ class HomePage extends Component {
                 />
               )}
             />
-            <Route exact path="/overview" render={() => <Overview />} />
+            <Route
+              exact
+              path="/overview"
+              render={() => (
+                <Overview user_card={this.state.user_card} activeUser={this.state.user} />
+              )}
+            />
             <Route exact path="/trends" render={() => <Trends activeUser={this.state.user} />} />
             <Route
               exact
@@ -115,13 +133,61 @@ class HomePage extends Component {
               render={() => <AdminTrends activeUser={this.state.user} userDB={this.state.userDB} />}
             />
             {/* Activity logging view nav */}
-            <Route exact path="/overview/logWeight" render={() => <LogWeight />} />
-            <Route exact path="/overview/logWater" render={() => <LogWater />} />
-            <Route exact path="/overview/logCalories" render={() => <LogCalories />} />
-            <Route exact path="/overview/logMood" render={() => <LogMood />} />
-            <Route exact path="/overview/logSleep" render={() => <LogSleep />} />
-            <Route exact path="/overview/logStress" render={() => <LogStress />} />
-            <Route exact path="/overview/logSick" render={() => <LogSick />} />
+            <Route
+              exact
+              path="/overview/logWeight"
+              render={() => (
+                <LogWeight
+                  setBMI={(newBMI, newHeight, newWeight, newUnit) =>
+                    setBMI(this, newBMI, newHeight, newWeight, newUnit)
+                  }
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/overview/logWater"
+              render={() => <LogWater setWater={(newWater) => setWater(this, newWater)} />}
+            />
+            <Route
+              exact
+              path="/overview/logCalories"
+              render={() => (
+                <LogCalories setCalories={(newCalories) => setCalories(this, newCalories)} />
+              )}
+            />
+            <Route
+              exact
+              path="/overview/logMood"
+              render={() => <LogMood setMood={(newMood) => setMood(this, newMood)} />}
+            />
+            <Route
+              exact
+              path="/overview/logSleep"
+              render={() => (
+                <LogSleep
+                  setSleep={(newSleepHours, newSleepQuality) =>
+                    setSleep(this, newSleepHours, newSleepQuality)
+                  }
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/overview/logStress"
+              render={() => <LogStress setStress={(newStress) => setStress(this, newStress)} />}
+            />
+            <Route
+              exact
+              path="/overview/logSick"
+              render={() => (
+                <LogSick
+                  listSickness={this.state.user_card['Sickness']}
+                  setSickness={(newSick) => setSickness(this, newSick)}
+                />
+              )}
+            />
+
             {/* Add Reminder view */}
             <Route
               exact

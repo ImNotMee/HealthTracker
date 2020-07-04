@@ -1,4 +1,3 @@
-'use-strict';
 import { NOTIFICATION_TYPE, USER_ACCOUNT_TYPE } from '../constants';
 import { Notification } from './notification';
 import { AppLocation } from './checkIn';
