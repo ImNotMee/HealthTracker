@@ -265,17 +265,21 @@ Click on the **remove** button to remove the user.
 
 ## Trends:
 
+**(Some data are hard coded and will require database call)**
+
 To access the **trends** page, use the side bar and select **Trends**.(Very similar to user trends page)
 
-**(These data are all hard coded and will require database call)**
+Click the Weight tab at the top of the page, it will render a line graph displaying the current week of the user's weight.
+When you input your weight in the **BMI card** in the overview page, the data of the corresponding day will be updated (i.e. if today is Monday, the Monday data will be updated).
 
-Click the Weight tab at the top of the page, it will render a line graph displaying the current week of the average weight of all users. 
+Click the Sleep tab at the top of the page, it will render a bar graph displaying the current week of the user’s hours of sleep.
+When you input your sleep hours in the **Sleep card** in the overview page, the data of the corresponding day will be updated (i.e. if today is Monday, the Monday data will be updated).
 
-Click the Sleep tab at the top of the page, it will render a bar graph displaying the current week of the average hours of sleep for all users.
+Click the Stress tab at the top of the page, it will render a bar graph displaying the current week of the user’s stress level.
+When you input your stress level in the **Stress card** in the overview page, the data of the corresponding day will be updated (i.e. if today is Monday, the Monday data will be updated).
 
-Click the Stress tab at the top of the page, it will render a bar graph displaying the current week of the average stress level for all users.
-
-Click the Calories tab at the top of the page, it will render a line graph displaying the current week of the average calorie intake for all users.
+Click the Calories tab at the top of the page, it will render a line graph displaying the current week of the user’s calories count.
+When you input your calories in the **Calories card** in the overview page, the data of the corresponding day will be updated (i.e. if today is Monday, the Monday data will be updated).
 
 ## Reminders:
 
