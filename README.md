@@ -130,7 +130,7 @@ Afterwards, the user can input the location and other relevant information in th
 
 To access the **trends** page, use the side bar and select **Trends**.
 
-**(These data will be updated through cards in overview) **
+**These data will be updated through cards in overview**
 
 Click the **Weight** tab at the top of the page, it will render a line graph displaying the current week of the user's weight. 
 
@@ -231,7 +231,7 @@ As a regular user you can volenterly check-in to be notified if a place you have
 
    - Users are only allowed to be checked into one place at a time, Hwoever users can still view other places
 
-###Check Out
+### Check Out
 
 ![img](https://lh5.googleusercontent.com/86WyeJ2TkOjEcwL0A6iRvrCXcYfmQHpJoQA3JhvAUk2SN7g0gOcCtvUCqoHqNb-XtaIB1NLO6OKPP637I_58Wp7Uq-iWromIFqCSNzt9AL8Ds4GPh99ht-lVgQEtIf-k7g)
 
@@ -257,7 +257,7 @@ Click on **Users** tab on the side bar upon login, and to see all the users.
 
 Click on **the view profile** button to see the details of the user, and click **the back** button to exit the viewing page.
 
-**(Note: doing either of this will remove this user from the UI, require refreshing the page and a relog to do the other feature)**
+**Note: doing either of this will remove this user from the UI, require refreshing the page and a relog to do the other feature**
 
 Click on the **assign admin** button to make this user an admin.
 
@@ -268,6 +268,7 @@ Click on the **remove** button to remove the user.
 To access the **trends** page, use the side bar and select **Trends**.(Very similar to user trends page)
 
 **(These data are all hard coded and will require database call)**
+
 Click the Weight tab at the top of the page, it will render a line graph displaying the current week of the average weight of all users. 
 
 Click the Sleep tab at the top of the page, it will render a bar graph displaying the current week of the average hours of sleep for all users.
