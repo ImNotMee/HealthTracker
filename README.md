@@ -338,7 +338,7 @@ Then to delete this location click the delete icon ![img](https://lh5.googleuser
 
 The location will be deleted for both admin and users in the alery sys and checkin views, respectively
 
-## Sending a COVID Case Alert
+### Sending a COVID Case Alert
 To send a COVID case alert, go to the **Alert Sys** tab on the side bar and under the section menu, select **Queen’s Park** as the location. 
 
 Click **view place** button, and at the button left, click on the **Send Alert** button and a pop up message will display at the bottom where it says “Alert has been sent!”.
