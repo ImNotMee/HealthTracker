@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles.css';
+import './../styles.css';
 
 import TipBox from './../TipBox/TipBox';
 import { NavLink } from 'react-router-dom';
@@ -32,8 +32,8 @@ class LogWater extends Component {
       saved = <SavedBox />;
     }
     return (
-      <div id="LogWaterWrapper">
-        <div className="logWaterView left">
+      <div id="logWrapper">
+        <div className="logView left">
           <NavLink to="/overview" id="closeButton">
             <img
               id="xButton"
@@ -41,7 +41,7 @@ class LogWater extends Component {
               alt="icon"
             ></img>
           </NavLink>
-          <h1 id="waterHeader">
+          <h1 id="logHeader">
             <img
               id="icon"
               src="https://image.flaticon.com/icons/svg/3039/3039889.svg"
@@ -49,7 +49,7 @@ class LogWater extends Component {
             ></img>
             Water Consumption
           </h1>
-          <div className="logWaterBox">
+          <div className="logBox">
             <h3>
               How much water did you drink?
               <img
@@ -60,12 +60,12 @@ class LogWater extends Component {
             </h3>
             <input
               type="number"
-              id="waterLog"
+              id="inputLog"
               placeholder="Enter Amount"
               value={this.state.water}
               onChange={this.waterChange}
             />
-            <label id="waterUnits">ml</label>
+            <label id="physicalUnits">ml</label>
             <p>Suggested amount of water per day: 2 ~ 2.5L</p>
             <button className="primary-btn" id="logButton" onClick={this.handleSubmit}>
               Save
@@ -75,7 +75,7 @@ class LogWater extends Component {
           {saved}
         </div>
 
-        <div className="logWaterView right">
+        <div className="logView right">
           <TipBox label="physical"></TipBox>
         </div>
       </div>

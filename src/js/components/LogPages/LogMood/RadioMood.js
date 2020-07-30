@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './styles.css';
+import './../styles.css';
 import { MOODLIST } from './../../../constants';
 
 class RadioMood extends Component {
   state = {
-    mood: 'happy',
+    mood: null,
     moodList: MOODLIST,
   };
 
@@ -15,11 +15,18 @@ class RadioMood extends Component {
     this.props.changeMood(event.target.value);
   };
 
+  onClickImg = (event) => {
+    this.setState({
+      mood: event.target.alt,
+    });
+    this.props.changeMood(event.target.alt);
+  };
+
   render() {
     const carriers = this.state.moodList.map((mood, index) => {
       return (
         <div id="carriers" key={index}>
-          <img id="emoticon" src={mood.icon} alt="icon" />
+          <img id="emoticon" src={mood.icon} onClick={this.onClickImg} alt={mood.value} />
           <input
             type="radio"
             value={mood.value}

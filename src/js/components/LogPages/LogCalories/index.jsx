@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles.css';
+import './../styles.css';
 import TipBox from './../TipBox/TipBox';
 import { NavLink } from 'react-router-dom';
 import SavedBox from './../SavedBox/SavedBox';
@@ -31,8 +31,8 @@ class LogCalories extends Component {
       saved = <SavedBox />;
     }
     return (
-      <div id="LogCaloriesWrapper">
-        <div className="logCaloriesView left">
+      <div id="LogWrapper">
+        <div className="logView left">
           <NavLink to="/overview" id="closeButton">
             <img
               id="xButton"
@@ -40,7 +40,7 @@ class LogCalories extends Component {
               alt="icon"
             ></img>
           </NavLink>
-          <h1 id="caloriesHeader">
+          <h1 id="logHeader">
             <img
               id="icon"
               src="https://image.flaticon.com/icons/svg/1599/1599302.svg"
@@ -48,16 +48,16 @@ class LogCalories extends Component {
             ></img>
             Calories
           </h1>
-          <div className="logCaloriesBox">
+          <div className="logBox">
             <h3>How much did you eat?</h3>
             <input
               type="number"
-              id="caloriesLog"
+              id="inputLog"
               placeholder="Enter Amount"
               value={this.state.calories}
               onChange={this.caloriesChange}
             />
-            <label id="caloriesUnits">Calories</label>
+            <label id="physicalUnits">Calories</label>
             <p>Suggested amount of Calories per day: 2000 Calories</p>
             <button className="primary-btn" id="logButton" onClick={this.handleSubmit}>
               Save
@@ -67,7 +67,7 @@ class LogCalories extends Component {
           {saved}
         </div>
 
-        <div className="logCaloriesView right">
+        <div className="logView right">
           <TipBox label="physical"></TipBox>
         </div>
       </div>

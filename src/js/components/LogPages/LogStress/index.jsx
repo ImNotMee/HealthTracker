@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles.css';
+import './../styles.css';
 
 import { NavLink } from 'react-router-dom';
 import TipBox from './../TipBox/TipBox';
@@ -33,8 +33,8 @@ class LogStress extends Component {
       saved = <SavedBox />;
     }
     return (
-      <div id="logStressWrapper">
-        <div className="logStressView left">
+      <div id="logWrapper">
+        <div className="logView left">
           <NavLink to="/overview" id="closeButton">
             <img
               id="xButton"
@@ -43,7 +43,7 @@ class LogStress extends Component {
             ></img>
           </NavLink>
 
-          <h1 id="stressHeader">
+          <h1 id="logHeader">
             <img
               id="icon"
               src="https://image.flaticon.com/icons/svg/2534/2534673.svg"
@@ -51,7 +51,7 @@ class LogStress extends Component {
             ></img>
             Stress Level
           </h1>
-          <div className="logStressBox">
+          <div className="logBox">
             <h3>Are you stressed?</h3>
 
             <div className="sliderContainer">
@@ -90,7 +90,7 @@ class LogStress extends Component {
           {/*saved dialog box*/}
           {saved}
         </div>
-        <div className="logStressView right">
+        <div className="logView right">
           <TipBox label="mental"></TipBox>
         </div>
       </div>

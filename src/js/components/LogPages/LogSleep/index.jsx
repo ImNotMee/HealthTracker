@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles.css';
+import './../styles.css';
 import RadioSleep from './RadioSleep';
 import { NavLink } from 'react-router-dom';
 import TipBox from './../TipBox/TipBox';
@@ -36,8 +36,8 @@ class LogSleep extends Component {
       saved = <SavedBox />;
     }
     return (
-      <div id="logSleepWrapper">
-        <div className="logSleepView left">
+      <div id="logWrapper">
+        <div className="logView left">
           <NavLink to="/overview" id="closeButton">
             <img
               id="xButton"
@@ -46,7 +46,7 @@ class LogSleep extends Component {
             ></img>
           </NavLink>
 
-          <h1 id="sleepHeader">
+          <h1 id="logHeader">
             <img
               id="icon"
               src="https://image.flaticon.com/icons/png/512/865/865813.png"
@@ -54,7 +54,7 @@ class LogSleep extends Component {
             ></img>
             Hours of Sleep
           </h1>
-          <div className="logSleepBox">
+          <div className="logBox">
             <h3>
               How much did you sleep?
               <img
@@ -66,12 +66,12 @@ class LogSleep extends Component {
 
             <input
               type="number"
-              id="sleepLog"
+              id="inputLog"
               placeholder="Enter Hours"
               value={this.state.hours}
               onChange={this.changeHours}
             />
-            <label id="sleepUnits">Hours</label>
+            <label id="physicalUnits">Hours</label>
             <RadioSleep changeQuality={(quality) => this.changeQuality(quality)}></RadioSleep>
             <p>Average person needs 7 ~ 8 hours sleep per day</p>
             <button className="primary-btn" id="logButton" onClick={this.handleSubmit}>
@@ -82,7 +82,7 @@ class LogSleep extends Component {
           {/*saved dialog box*/}
           {saved}
         </div>
-        <div className="logMoodView right">
+        <div className="logView right">
           <TipBox label="mental"></TipBox>
         </div>
       </div>

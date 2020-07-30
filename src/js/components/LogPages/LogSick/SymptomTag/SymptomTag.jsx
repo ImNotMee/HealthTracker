@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { removeTag } from '../../../../actions/sicknessTag';
-import './../styles.css';
+import './../../styles.css';
 class SymptomTag extends Component {
   render() {
     const { symptom, logComponent } = this.props;

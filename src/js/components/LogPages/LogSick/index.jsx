@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles.css';
+import './../styles.css';
 import { NavLink } from 'react-router-dom';
 
 import SymptomInput from './SymptomInput/SymptomInput';
@@ -43,16 +43,16 @@ class LogSick extends Component {
       saved = <SavedBox />;
     }
     return (
-      <div id="LogSickWrapper">
+      <div id="logWrapper">
         <div className="logSickView">
-          <NavLink to="/overview" id="sickCloseButton">
+          <NavLink to="/overview" id="closeButton">
             <img
               id="xButton"
               src="https://image.flaticon.com/icons/svg/565/565313.svg"
               alt="icon"
             ></img>
           </NavLink>
-          <h1 id="sickHeader">
+          <h1 id="logHeader">
             <img
               id="icon"
               src="https://image.flaticon.com/icons/svg/3140/3140337.svg"
@@ -60,7 +60,7 @@ class LogSick extends Component {
             ></img>
             Sickness Log
           </h1>
-          <div className="logSickBox">
+          <div className="logBox">
             <div id="sList">
               <h3 id="SymptomQ">How do you feel? Enter your symptoms</h3>
               <SymptomInput

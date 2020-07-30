@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles.css';
+import './../styles.css';
 import TabList from './TabList';
 import { NavLink } from 'react-router-dom';
 import SavedBox from './../SavedBox/SavedBox';
@@ -65,20 +65,20 @@ class LogWeight extends Component {
       <div>
         <input
           type="number"
-          id="weightLog"
+          id="inputLog"
           placeholder="Enter Weight"
           value={this.state.weight}
           onChange={this.weightChange}
         />
-        <label id="units">kg(kilograms)</label>
+        <label id="physicalUnits">kg(kilograms)</label>
         <input
           type="number"
-          id="heightLog"
+          id="inputLog"
           placeholder="Enter Height"
           value={this.state.height}
           onChange={this.heightChange}
         />
-        <label id="units">m(meters)</label>
+        <label id="physicalUnits">m(meters)</label>
         <p>BMI = Weight(kg) / [height(m)]^2</p>
         <ul>
           <li>Underweight: ~18.5</li>
@@ -103,7 +103,7 @@ class LogWeight extends Component {
           value={this.state.weight}
           onChange={this.weightChange}
         />
-        <label id="units">lbs(pounds)</label>
+        <label id="physicalUnits">lbs(pounds)</label>
         <input
           type="number"
           id="heightLog"
@@ -111,7 +111,7 @@ class LogWeight extends Component {
           value={this.state.height}
           onChange={this.heightChange}
         />
-        <label id="units">in(inches)</label>
+        <label id="physicalUnits">in(inches)</label>
         <p>BMI = 703 * Weight(lbs) / [height(in)]^2</p>
         <ul>
           <li>Underweight: ~18.5</li>
@@ -131,8 +131,8 @@ class LogWeight extends Component {
       saved = <SavedBox />;
     }
     return (
-      <div id="LogWeightWrapper">
-        <div className="logWeightView left">
+      <div id="LogWrapper">
+        <div className="logView left">
           <NavLink to="/overview" id="closeButton">
             <img
               id="xButton"
@@ -140,7 +140,7 @@ class LogWeight extends Component {
               alt="icon"
             ></img>
           </NavLink>
-          <h1 id="weightHeader">
+          <h1 id="logHeader">
             <img
               id="icon"
               src="https://image.flaticon.com/icons/svg/3023/3023711.svg"
@@ -148,7 +148,7 @@ class LogWeight extends Component {
             ></img>
             Body Mass Index
           </h1>
-          <div className="logbox">
+          <div className="logBox">
             <TabList id="weightTab">
               <div label="Metric">{this.metricInput()}</div>
               <div label="Standard">{this.standardInput()}</div>
@@ -158,7 +158,7 @@ class LogWeight extends Component {
           {saved}
         </div>
 
-        <div className="logWeightView right">
+        <div className="logView right">
           <TipBox label="physical"></TipBox>
         </div>
       </div>

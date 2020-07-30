@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles.css';
+import './../styles.css';
 import RadioMood from './RadioMood';
 import { NavLink } from 'react-router-dom';
 import TipBox from './../TipBox/TipBox';
@@ -7,7 +7,7 @@ import SavedBox from './../SavedBox/SavedBox';
 
 class LogMood extends Component {
   state = {
-    mood: 'happy',
+    mood: null,
     saved: false,
   };
 
@@ -33,8 +33,8 @@ class LogMood extends Component {
       saved = <SavedBox />;
     }
     return (
-      <div id="LogMoodWrapper">
-        <div className="logMoodView left">
+      <div id="logWrapper">
+        <div className="logView left">
           <NavLink to="/overview" id="closeButton">
             <img
               id="xButton"
@@ -42,7 +42,7 @@ class LogMood extends Component {
               alt="icon"
             ></img>
           </NavLink>
-          <h1 id="moodHeader">
+          <h1 id="logHeader">
             <img
               id="icon"
               src="https://image.flaticon.com/icons/svg/3010/3010884.svg"
@@ -50,7 +50,7 @@ class LogMood extends Component {
             ></img>
             Mood of the day
           </h1>
-          <div className="logMoodBox">
+          <div className="logBox">
             <h3>How do you feel today?</h3>
             <div id="iconContainer">
               <RadioMood changeMood={(mood) => this.changeMood(mood)}></RadioMood>
@@ -62,7 +62,7 @@ class LogMood extends Component {
           {/*saved dialog box*/}
           {saved}
         </div>
-        <div className="logMoodView right">
+        <div className="logView right">
           <TipBox label="mental"></TipBox>
         </div>
       </div>

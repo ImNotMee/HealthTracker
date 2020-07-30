@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SymptomTag from './../SymptomTag/SymptomTag';
-import './../styles.css';
+import './../../styles.css';
 class SymptomList extends Component {
   render() {
     const { symptoms, logComponent } = this.props;
