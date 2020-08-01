@@ -1,0 +1,88 @@
+#LogStresssWrapper {
+  height: 100vh;
+  width: 84vw;
+}
+
+#stressHeader {
+  color: black;
+  margin-top: 10%;
+  text-align: center;
+  font-style: var(--title-font-family);
+}
+
+#icon {
+  width: 30px;
+  margin: 0 2px 5px 0;
+  vertical-align: middle;
+}
+
+li {
+  font-style: var(--text-font-family);
+}
+
+.logStressView {
+  height: 100%;
+  position: fixed;
+}
+
+#closeButton {
+  margin-top: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  background-color: white;
+  float: right;
+  box-shadow: 0px 9px 9px -6px rgba(0, 0, 0, 0.75);
+  margin-right: 3%;
+}
+
+#xButton {
+  margin-top: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.logStressView.left {
+  width: 59vw;
+  left: 0;
+  margin-left: 15vw;
+}
+
+.logStressView.right {
+  right: 0;
+  width: 25vw;
+  border-left: 1px solid var(--primary-color);
+}
+
+.logStressBox {
+  margin: auto;
+  margin-top: 150px;
+  width: 50%;
+  box-shadow: 0px 9px 22px -6px rgba(0, 0, 0, 0.75);
+  border-radius: var(--border-radius-val);
+  padding: 30px;
+  padding-bottom: 100px;
+}
+
+.sliderContainer {
+  margin-bottom: 8%;
+}
+
+.sliderContainer #stressIcon {
+  width: 30px;
+  margin-bottom: 3px;
+  vertical-align: middle;
+}
+.logStressBox input[type='range'] {
+  width: 100%;
+}
+
+#sliderNum1 {
+  float: right;
+}
+#logButton {
+  float: right;
+  width: 50%;
+  font-weight: normal;
+}

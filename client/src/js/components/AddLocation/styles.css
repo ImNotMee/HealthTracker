@@ -1,0 +1,51 @@
+#AddLocationWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#AddLocationWindow {
+  width: max-content;
+}
+
+#LocationName {
+  width: 300px;
+}
+
+#LocationAddress {
+  width: 300px;
+}
+
+#LocationImgUrl {
+  width: 300px;
+}
+
+#LocationDesc {
+  width: 300px;
+  height: 125px;
+}
+
+#LocationMaxOcc {
+  width: 200px;
+  height: 30px;
+}
+
+.inputLabel {
+  font-weight: bolder;
+  font-size: 1.4em;
+}
+
+.charCount {
+  margin-left: auto;
+  color: var(--fadded-color);
+}
+
+.locationInputWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: max-content;
+  margin: 15px 0;
+}

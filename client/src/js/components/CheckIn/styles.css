@@ -1,0 +1,17 @@
+#PageWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+#CheckInWrapper {
+  width: 800px;
+  margin: 15px 0;
+}
+
+#CheckOutWrapper {
+  width: 860px;
+  margin: 15px 0;
+}

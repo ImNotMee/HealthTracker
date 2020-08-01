@@ -1,0 +1,44 @@
+#LandingContentWrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: stretch;
+  height: 73vh;
+}
+
+#signUpWapper {
+  display: flex;
+  justify-content: center;
+  height: 60%;
+}
+
+#AboutAppWrapper {
+  width: 50%;
+}
+#textDContainer {
+  position: relative;
+  height: auto;
+}
+#landingPageText {
+  width: 110%;
+  height: 300px;
+}
+
+#description {
+  position: absolute;
+  top: 60px;
+  left: 80px;
+}
+
+#appDescription {
+  color: white;
+  width: auto;
+  height: auto;
+  font-size: 20px;
+}
+
+#landingPic {
+  width: 40%;
+  margin-top: 2%;
+  margin-left: 40%;
+}

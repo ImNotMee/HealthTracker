@@ -1,0 +1,54 @@
+#CalendarWrapper {
+  height: 100vh;
+  width: 82vw;
+  padding: 10px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#calendarContainer {
+  display: flex;
+  text-align: center;
+}
+
+#tabs {
+  width: 250px;
+  height: 50px;
+  border-radius: 10px 10px 0 0;
+}
+
+#header {
+  width: 250px;
+  height: 50px;
+  border: #000000 1px solid;
+}
+
+#dates {
+  width: 250px;
+  height: 175px;
+  border: #000000 1px solid;
+}
+
+#month {
+  text-align: center;
+}
+
+#boxContainer {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+
+#appointmentBox {
+  background: #91ceff;
+  margin: 0;
+  border: #000000 1px solid;
+}
+
+#streaksBox {
+  text-align: left;
+  background: #ffffff;
+  margin: 0 0 0 10%;
+  font-size: 25px;
+}

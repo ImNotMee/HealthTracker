@@ -1,0 +1,12 @@
+#AdminCheckIn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+#GeoLoc {
+  margin-top: 100px;
+  max-width: 76%;
+}

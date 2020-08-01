@@ -1,0 +1,95 @@
+:root {
+  --primary-color: #0bbbeb;
+  --secondary-color: #203b71;
+  --accent-color: pink;
+  --error-color: red;
+  --fadded-color: grey;
+  --contrast-text-color: white;
+  --alert-background-color: #f5b3b3;
+  --background-color: aliceblue;
+  --border-radius-val: 6px;
+  --title-font-family: arial;
+  --sub-title-font-family: arial;
+  --btn-font-family: arial;
+  --text-font-family: arial;
+}
+
+.primary-btn {
+  padding: 10px;
+  background: var(--primary-color);
+  color: var(--contrast-text-color);
+  text-align: center;
+  border-radius: var(--border-radius-val);
+  font: 800 1em var(--btn-font-family), sans-serif;
+}
+
+.primary-btn:focus {
+  outline: none;
+}
+
+.fabNavLink {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--contrast-text-color);
+  font-weight: bolder;
+  margin-left: auto;
+}
+
+.input {
+  border: 3px solid var(--secondary-color);
+  border-radius: var(--border-radius-val);
+  font-size: 1.15em;
+  margin: auto;
+  height: 30px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  border: 3px solid var(--primary-color);
+}
+
+.invalidInput {
+  border: 3px solid var(--error-color);
+}
+.errorMsg {
+  font-weight: 800;
+  font-size: 1.1em;
+  color: var(--error-color);
+}
+
+.windowWrapper {
+  padding: 30px;
+  box-shadow: 0px 9px 22px -6px rgba(0, 0, 0, 0.75);
+  border-radius: var(--border-radius-val);
+}
+
+.hidden {
+  display: none;
+}
+
+.detailsDivider {
+  margin: 40px;
+}
+
+.App-logo {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
