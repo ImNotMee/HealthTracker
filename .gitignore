@@ -1,7 +1,12 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+#data
+mongo-data/*
+server/node_modules/*
+client/node_modules/*
+
 # dependencies
-/node_modules
+*/node_modules*
 /.pnp
 .pnp.js
 
