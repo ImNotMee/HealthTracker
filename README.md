@@ -385,8 +385,12 @@ Now log on to a **user account**, and it will display the alert that the admin h
 - For a guide on using npm click [here](https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/)
 
 ### Start Web App
-- To start web app in browser run: `npm start` (make sure you're in the repo dir when you run this cmd)
-  - Make sure you've installed all app dependencies with `npm install`
+- Go to the server dir: `cd ./server` (make sure you're in the repo dir when you run this cmd)
+- Make sure you've installed all app dependencies with `npm install`
+- To start the database run: `npm run db`
+  - I you're using Windows 10 then open powershell and run: `mkdir ../mongo-data; mongod --dbpath ../mongo-data`
+- To start web app in browser run: `npm start` (then open browser and go to `http://localhost:5000/`)
+  
 
 ## Working On App
 
