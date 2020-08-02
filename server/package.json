@@ -7,7 +7,7 @@
     "db": "mkdir ../mongo-data; mongod --dbpath ../mongo-data",
     "start": "npm run client && npm run init-data && npm run serve",
     "serve": "nodemon ./server.js",
-    "client": "cd ../client; npm ci; npm run build cd ../server",
+    "client": "cd ../client && npm ci && npm run build && cd ../server",
     "init-data": "node ./db/insert-default-users.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
