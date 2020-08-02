@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "db": "mkdir ../mongo-data; mongod --dbpath ../mongo-data",
+    "db": "cd ..; mkdir mongo-data; cd server; mongod --dbpath ../mongo-data",
     "start": "node ./db/insert-default-users.js; node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
