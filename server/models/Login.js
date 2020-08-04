@@ -12,6 +12,10 @@ const LoginSchema = new mongoose.Schema({
     minlength: 1,
     trim: true,
     unique: true,
+    validate: {
+      validator: validator.isEmail, // custom validator
+      message: 'Not valid email',
+    },
   },
   password: {
     type: String,
