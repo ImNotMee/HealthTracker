@@ -3,7 +3,8 @@ const DB_URI = 'mongodb://localhost:27017/HealthTrackerApp';
 const DB_NAME = 'HealthTrackerApp';
 
 const DB_COLLECTIONS = {
-  users: 'Users',
+  users: 'users',
+  login: 'logins',
 };
 
 const DEFAULT_DB_CONNECT_OPS = {

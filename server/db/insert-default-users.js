@@ -1,4 +1,7 @@
 'use strict';
+
+const bcrypt = require('bcryptjs');
+const { MongoClient } = require('mongodb');
 const {
   DB_URI,
   DB_NAME,
@@ -8,7 +11,17 @@ const {
 } = require('./constants');
 const log = console.log;
 
-const { MongoClient } = require('mongodb');
+let salt = bcrypt.genSaltSync(10, this.saltRounds);
+const userLogin = {
+  email: 'user',
+  password: bcrypt.hashSync('user', salt),
+};
+
+salt = bcrypt.genSaltSync(10, this.saltRounds);
+const adminLogin = {
+  email: 'admin',
+  password: bcrypt.hashSync('admin', salt),
+};
 
 MongoClient.connect(DB_URI, DEFAULT_DB_CONNECT_OPS, (error, client) => {
   if (error) {
@@ -18,6 +31,17 @@ MongoClient.connect(DB_URI, DEFAULT_DB_CONNECT_OPS, (error, client) => {
   log('Connected to mongo server');
 
   const db = client.db(DB_NAME);
+
+  db.collection(DB_COLLECTIONS.login).insertMany([userLogin, adminLogin], (error, result) => {
+    if (error) {
+      log("Can't insert deafult users", error);
+    } else {
+      log(result.ops);
+      log(result.ops[0]._id.getTimestamp());
+    }
+    // close connection
+    client.close();
+  });
 
   db.collection(DB_COLLECTIONS.users).insertMany(
     [

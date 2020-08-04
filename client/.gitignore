@@ -4,6 +4,7 @@
 mongo-data/*
 server/node_modules/*
 client/node_modules/*
+/build/*
 
 # dependencies
 */node_modules*

@@ -12,7 +12,7 @@ import {
   editLocationHandler,
 } from './js/actions/adminCheckIn';
 import { addUserHandler } from './js/actions/signUp';
-import { setActiveUser } from './js/actions/login';
+import { setActiveUser, readCookie } from './js/actions/login';
 import { logoutUser } from './js/actions/logout';
 import { removeNotificationHandler, addTimerHandler } from './js/actions/notification';
 import { checkInHandler, checkoutHandler } from './js/actions/checkIn';
@@ -34,6 +34,11 @@ import './App.css';
 
 class App extends Component {
   // TODO: fix prop drilling for active user
+  constructor(props) {
+    super(props);
+    readCookie(this); // sees if a user is logged in.
+  }
+
   state = {
     activeUser: null,
     locationsDB: LOCATIONS,
