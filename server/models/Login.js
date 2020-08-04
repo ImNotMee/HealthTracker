@@ -54,14 +54,11 @@ LoginSchema.pre('save', function (next) {
 LoginSchema.statics.findByEmailPassword = function (email, password) {
   // bind this to Login document instance
   const LoginInst = this;
-  console.log('CHECK', LoginInst.findOne, email, password);
 
   // find login doc by unquie email
-  return LoginInst.findOne({ email: 'user' }).then((login) => {
+  return LoginInst.findOne({ email: email }).then((login) => {
     // check if login is found else reject
-    console.log('CHECK', login);
     if (!login) {
-      console.log('CHECK');
       return Promise.reject('login doc not found');
     }
     // if the login exists, validate the passsword
