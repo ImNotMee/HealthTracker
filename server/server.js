@@ -11,16 +11,6 @@ const app = express();
 const { mongoose } = require('./db/mongoose');
 mongoose.set('bufferCommands', false);
 
-// import all mongoose models
-const { CheckInItem } = require('./models/CheckInItem');
-const { Notification } = require('./models/Notification');
-const { ReminderItem } = require('./models/ReminderItem');
-const { Reminders } = require('./models/Reminders');
-const { Trends } = require('./models/Trends');
-const { User } = require('./models/User');
-
-// to validate object IDs
-const { ObjectID } = require('mongodb');
 
 // body-parser: middleware for parsing HTTP JSON body into a usable object
 const bodyParser = require('body-parser');
