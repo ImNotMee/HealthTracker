@@ -1,4 +1,5 @@
 //Routes
+'use strict';
 const auth = require('./auth');
 
 /**
