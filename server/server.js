@@ -17,7 +17,7 @@ const { Notification } = require('./models/Notification');
 const { ReminderItem } = require('./models/ReminderItem');
 const { Reminders } = require('./models/Reminders');
 const { Trends } = require('./models/Trends');
-const { User } = require('./models/user');
+const { User } = require('./models/User');
 
 // to validate object IDs
 const { ObjectID } = require('mongodb');
@@ -26,10 +26,25 @@ const { ObjectID } = require('mongodb');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-function isMongoError(error) {
-  // checks for first error returned by promise rejection if Mongo database suddently disconnects
-  return typeof error === 'object' && error !== null && error.name === 'MongoNetworkError';
-}
+// express-session for managing user sessions
+const session = require('express-session');
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(
+  session({
+    secret: 'Shh, its a secret B!',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: 60000,
+      httpOnly: true,
+    },
+  }),
+);
+
+// initlaize api routes
+const RoutesUtil = require('./routes/index');
+RoutesUtil.initRoutes(app);
 
 //static public directory for the files in /public
 app.use(express.static(__dirname + '../public'));
