@@ -1,6 +1,7 @@
 //Routes
 'use strict';
 const auth = require('./auth');
+const trends =  require('./trends');
 
 /**
  * Add routes to given express app object
@@ -24,6 +25,7 @@ const initRoutes = (app) => {
   });
 
   app.use('/auth', auth);
+  app.use('/trends', trends);
 };
 
 module.exports = {
