@@ -14,9 +14,6 @@ router.post('/login', (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  console.log(req.body, email, password);
-  console.log(Login);
-
   Login.findByEmailPassword(email, password)
     .then((login) => {
       req.session.login_id = login._id;
