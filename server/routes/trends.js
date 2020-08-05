@@ -48,6 +48,24 @@ router.get('/stress', (req, res) => {
   });
 });
 
+router.get('/getAll', (req, res) => {
+  let weight = [];
+  let stress = [];
+  let sleep = [];
+  let calories = [];
+  User.find({type: "user"}).then((data) => {
+    data.forEach(user => {
+      weight.push(user.trends.weight);
+      stress.push(user.trends.stress);
+      sleep.push(user.trends.sleep);
+      calories.push(user.trends.calories);
+    })
+  }).then((d) => {
+      res.send({weight: weight, stress: stress, sleep: sleep, calories: calories});
+  }).catch((e) => {
+    res.status(404).send('Cannot find data');
+  });
+});
 
 // Setting data to trends
 router.post('/updateWeight', (req, res) => {
