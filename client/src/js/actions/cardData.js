@@ -64,7 +64,7 @@ export const fetchCardData = (user) => {
 
 export const setBMI = (card, newBMI, newHeight, newWeight, newUnit) => {
   console.log('updating BMI to ');
-  const { user_card, userDB } = card.state;
+  const { user_card, user } = card.state;
   user_card['BMI']['value'] = newBMI;
   user_card['BMI']['height'] = newHeight;
   user_card['BMI']['weight'] = newWeight;
@@ -77,11 +77,11 @@ export const setBMI = (card, newBMI, newHeight, newWeight, newUnit) => {
   if (newUnit === 'metric') {
     trendWeight = newWeight * 2.205;
   }
-  userDB.useruser.trends.weight[day] = trendWeight;
+  user.trends.weight[day] = trendWeight;
 
   card.setState({
     user_card: user_card,
-    userDB: userDB,
+    user: user,
   });
   console.log(user_card['BMI']['value']);
 };
@@ -133,11 +133,11 @@ export const setCalories = (card, newCalories) => {
 
   const today = new Date();
   const day = today.getDay();
-  userDB.useruser.trends.calories[day] = newCalories;
+  user.trends.calories[day] = newCalories;
 
   card.setState({
     user_card: user_card,
-    userDB: userDB,
+    user: user,
   });
   console.log(user_card['Calories']['completed']);
 };
@@ -154,33 +154,33 @@ export const setMood = (card, newMood) => {
 
 export const setSleep = (card, newSleepHours, newSleepQuality) => {
   console.log('updating Sleep to ');
-  const { user_card, userDB } = card.state;
+  const { user_card, user } = card.state;
   user_card['Sleep']['hours'] = newSleepHours;
   user_card['Sleep']['quality'] = newSleepQuality;
 
   const today = new Date();
   const day = today.getDay();
-  userDB.useruser.trends.sleep[day] = newSleepHours;
+  user.trends.sleep[day] = newSleepHours;
 
   card.setState({
     user_card: user_card,
-    userDB: userDB,
+    user: user,
   });
   console.log(user_card['Sleep']['hours'], 'and ', user_card['Sleep']['quality']);
 };
 
 export const setStress = (card, newStress) => {
   console.log('updating Stress to ');
-  const { user_card, userDB } = card.state;
+  const { user_card, user } = card.state;
   user_card['Stress']['value'] = newStress;
 
   const today = new Date();
   const day = today.getDay();
-  userDB.useruser.trends.stress[day] = newStress;
+  user.trends.stress[day] = newStress;
 
   card.setState({
     user_card: user_card,
-    userDB: userDB,
+    user: user,
   });
   console.log(user_card['Stress']['value']);
 };

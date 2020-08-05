@@ -7,12 +7,12 @@ class Overview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userDB: this.props.userDB,
+      activeUser: this.props.activeUser,
       user_card: this.props.user_card,
       medication: [],
       appointments: [],
     };
-    const medical_reminder = this.state.userDB.useruser.reminders[HEALTH_CATEGORIES.medical];
+    const medical_reminder = this.state.activeUser.reminders[HEALTH_CATEGORIES.medical];
     let medication = [];
     let appointments = [];
     for (var i = 0; i < medical_reminder.length; i++) {
@@ -37,7 +37,7 @@ class Overview extends Component {
           {/* physical tracking */}
           <Card
             className="cards"
-            userDB={this.props.userDB}
+            activeUser={this.props.activeUser}
             title="Body Mass Index"
             address="/overview/logWeight"
             value={this.state.user_card['BMI']}
@@ -46,7 +46,7 @@ class Overview extends Component {
           />
           <Card
             className="cards"
-            userDB={this.props.userDB}
+            activeUser={this.props.activeUser}
             title="Water Consumption"
             address="/overview/logWater"
             value={this.state.user_card['Water']}
@@ -55,7 +55,7 @@ class Overview extends Component {
           />
           <Card
             className="cards"
-            userDB={this.props.userDB}
+            activeUser={this.props.activeUser}
             title="Calories"
             address="/overview/logCalories"
             value={this.state.user_card['Calories']}
@@ -69,7 +69,7 @@ class Overview extends Component {
           {/* mental tracking */}
           <Card
             className="cards"
-            userDB={this.props.userDB}
+            activeUser={this.props.activeUser}
             title="Mood"
             value={this.state.user_card['Mood']}
             address="/overview/logMood"
@@ -78,7 +78,7 @@ class Overview extends Component {
           />
           <Card
             className="cards"
-            userDB={this.props.userDB}
+            activeUser={this.props.activeUser}
             title="Sleep"
             value={this.state.user_card['Sleep']}
             address="/overview/logSleep"
@@ -87,7 +87,7 @@ class Overview extends Component {
           />
           <Card
             className="cards"
-            userDB={this.props.userDB}
+            activeUser={this.props.activeUser}
             title="Stress"
             value={this.state.user_card['Stress']}
             address="/overview/logStress"
@@ -101,7 +101,7 @@ class Overview extends Component {
           {/* medical tracking */}
           <Card
             className="cards"
-            userDB={this.props.userDB}
+            activeUser={this.props.activeUser}
             title="Medication"
             value={this.state.medication}
             address="/reminders"
@@ -110,7 +110,7 @@ class Overview extends Component {
           />
           <Card
             className="cards"
-            userDB={this.props.userDB}
+            activeUser={this.props.activeUser}
             title="Sickness"
             value={this.state.user_card['Sickness']}
             address="/overview/logSick"
@@ -119,7 +119,7 @@ class Overview extends Component {
           />
           <Card
             className="cards"
-            userDB={this.props.userDB}
+            activeUser={this.props.activeUser}
             title="Appointments"
             value={this.state.appointments}
             address="/reminders"
