@@ -11,7 +11,6 @@ import {
   deleteLocationHandler,
   editLocationHandler,
 } from './js/actions/adminCheckIn';
-import { addUserHandler } from './js/actions/signUp';
 import { setActiveUser, readCookie } from './js/actions/login';
 import { logoutUser } from './js/actions/logout';
 import { removeNotificationHandler, addTimerHandler } from './js/actions/notification';
@@ -81,9 +80,6 @@ class App extends Component {
                 <LandingPage
                   activeUser={this.state.activeUser}
                   users={this.state.userDB}
-                  addUserHandler={(newUser) => {
-                    addUserHandler(this, newUser);
-                  }}
                   setActiveUserHandler={(user) => {
                     setActiveUser(this, user);
                   }}

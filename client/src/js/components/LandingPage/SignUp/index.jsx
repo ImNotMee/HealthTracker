@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ListSelector from '../../General/ListSelector';
-import { signUpUser } from '../../../actions/signUp';
 import { onInputChangeHandler } from '../../../actions/utils';
 import './styles.css';
 
@@ -95,7 +94,10 @@ class SignUpForm extends Component {
             }}
           />
         </div>
-        <button className="signupInputSpace primary-btn" onClick={() => signUpUser(this)}>
+        <button
+          className="signupInputSpace primary-btn"
+          onClick={() => this.props.signUpUser(this)}
+        >
           {' '}
           Create Account{' '}
         </button>

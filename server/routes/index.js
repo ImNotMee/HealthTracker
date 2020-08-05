@@ -1,5 +1,7 @@
 //Routes
+'use strict';
 const auth = require('./auth');
+const signup = require('./signup');
 
 /**
  * Add routes to given express app object
@@ -9,6 +11,7 @@ const initRoutes = (app) => {
   // set all the server things
   app.use(function (req, res, next) {
     // Website you wish to allow to connect
+    // TODO change header to 5000
     res.setHeader('Access-Control-Allow-Origin', '*');
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
@@ -22,6 +25,7 @@ const initRoutes = (app) => {
   });
 
   app.use('/auth', auth);
+  app.use('/account', signup);
 };
 
 module.exports = {

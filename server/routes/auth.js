@@ -5,7 +5,6 @@ const { Login } = require('../models/Login');
 const { User } = require('../models/User');
 const express = require('express');
 const router = express.Router();
-const log = console.log;
 
 /**
  * Login user
@@ -25,7 +24,6 @@ router.post('/login', (req, res) => {
           const activeUser = { email: login.email, type: user.type };
           req.session.activeUser = activeUser;
           req.session.user_id = user._id;
-          console.log(activeUser);
           res.send({ activeUser: activeUser });
         })
         .catch((e) => {

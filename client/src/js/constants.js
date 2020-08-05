@@ -256,3 +256,8 @@ export const MONTHS = [
   'November',
   'December',
 ];
+
+export const API = {
+  login: 'http://localhost:5000/auth/login',
+  siginup: 'http://localhost:5000/account/signup',
+};

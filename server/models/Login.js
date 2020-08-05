@@ -36,7 +36,7 @@ LoginSchema.pre('save', function (next) {
   if (Login.isModified('password')) {
     // generate salt and hash the password
     bcrypt.genSalt(10, (err, salt) => {
-      bcrypt.hash(login.password, salt, (err, hash) => {
+      bcrypt.hash(Login.password, salt, (err, hash) => {
         Login.password = hash;
         next();
       });
