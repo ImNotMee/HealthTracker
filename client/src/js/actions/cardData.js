@@ -123,13 +123,13 @@ export const setWater = (card, newWater) => {
 
 export const setCalories = (card, newCalories) => {
   console.log('updating Calories to ');
-  const { user_card, userDB } = card.state;
+  const { user_card, user } = card.state;
   user_card['Calories']['completed'] += parseInt(newCalories, 10);
-  let remaining = 2000 - user_card['Calories']['completed'];
-  if (remaining < 0) {
-    remaining = 0;
+  let remainging = 2000 - user_card['Calories']['completed'];
+  if (remainging < 0) {
+    remainging = 0;
   }
-  user_card['Calories']['remaining'] = remaining;
+  user_card['Calories']['remaining'] = remainging;
 
   const today = new Date();
   const day = today.getDay();
@@ -137,7 +137,7 @@ export const setCalories = (card, newCalories) => {
 
   card.setState({
     user_card: user_card,
-    user: user,
+    activeUser: user,
   });
   console.log(user_card['Calories']['completed']);
 };
