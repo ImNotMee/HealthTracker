@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 class Card extends Component {
   state = {
-    user: this.props.activeUser,
+    user: this.props.userDB,
     title: this.props.title,
     value: this.props.value,
     image: this.props.image,
