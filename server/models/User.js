@@ -1,5 +1,6 @@
 /* User mongoose model */
 const mongoose = require('mongoose');
+const validator = require('validator');
 
 const { Reminders } = require('./Reminders');
 const { CheckInItem } = require('./CheckInItem');
@@ -27,13 +28,17 @@ const User = mongoose.model('User', {
   email: {
     type: String,
     required: true,
-    match: '/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/',
     minlegth: 1,
     trim: true,
+    unique: true,
+    validate: {
+      validator: validator.isEmail, // custom validator
+      message: 'Not valid email',
+    },
   },
   type: {
     type: String,
-    enum: ['male', 'female'],
+    enum: ['user', 'admin'],
     required: true,
     trim: true,
   },
@@ -43,8 +48,7 @@ const User = mongoose.model('User', {
   },
   checkedInLocation: {
     type: String,
-    required: true,
-    minlegth: 1,
+    required: false,
     trim: true,
   },
   checkInHistory: {
