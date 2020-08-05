@@ -2,6 +2,7 @@
 const { mongoose } = require('../db/mongoose');
 mongoose.set('bufferCommands', false);
 const { CardData } = require('../models/CardData');
+const { User } = require('../models/User');
 const express = require('express');
 const router = express.Router();
 const log = console.log;
@@ -12,16 +13,12 @@ router.post('/logWater', (req, res) => {
 	const completed = req.body.completed;
 	const remaining = req.body.remaining;
 	const unit = req.body.unit;
-	log(unit)
-	CardData.findOne({ unit: unit }).then((card) => {
-		card.completed = completed;
-		card.remaining = remaining;
-		req.session.activeUser = activeUser;
-		console.log(activeUser);
-		res.send(card)
-	}).catch((e) => {
-		res.status(500).send('Cannot find card');
-	});
-
+	log(req.session.activeUser.email)
+	User.findOne({ email: req.session.activeUser.email }).then((user) => {
+		log(user)
+		res.send(user)
+	})
 
 })
+
+module.exports = router;

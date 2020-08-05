@@ -5,6 +5,7 @@ const validator = require('validator');
 const { Reminders } = require('./Reminders');
 const { CheckInItem } = require('./CheckInItem');
 const { Trends } = require('./Trends');
+const { CardData } = require('./CardData');
 
 const User = mongoose.model('User', {
   firstName: {
@@ -63,6 +64,10 @@ const User = mongoose.model('User', {
     type: Trends.schema,
     required: false,
   },
+    card: {
+        type: CardData.schema,
+        required: false,
+    },
 });
 
 module.exports = { User };

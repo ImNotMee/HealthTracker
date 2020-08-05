@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 const CardData = mongoose.model('CardData', {
-  
+    Water: {
         completed: {
             type: Number,
             required: true,
@@ -18,6 +18,7 @@ const CardData = mongoose.model('CardData', {
             required: false,
             trim: true
         }
+    }
 })
 
 
