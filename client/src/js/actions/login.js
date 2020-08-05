@@ -1,3 +1,4 @@
+import { API } from '../constants';
 const log = console.log;
 
 export const readCookie = (app) => {
@@ -35,7 +36,7 @@ export const setActiveUser = (app, user) => {
 export const onLoginHandler = (landingPage, email, password) => {
   log(email, password);
   const loginCred = { email: email, password: password };
-  const request = new Request('http://localhost:5000/auth/login', {
+  const request = new Request(API.login, {
     method: 'post',
     body: JSON.stringify(loginCred),
     headers: {
