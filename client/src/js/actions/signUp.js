@@ -1,4 +1,4 @@
-import { API, HEALTH_CATEGORIES, USER_ACCOUNT_TYPE } from '../constants';
+import { API } from '../constants';
 const log = console.log;
 
 export const signUpUser = (landingPage, signUpCtx) => {

@@ -27,6 +27,7 @@ class Reminders extends Component {
         {this.state.user?.reminders[type].length === 0 ? (
           <EmptyReminderList />
         ) : (
+          // Todo: make a get reqest that send the type and gets a list of all reminders
           this.state.user?.reminders[type].map((reminder) => {
             return (
               <ReminderItem
