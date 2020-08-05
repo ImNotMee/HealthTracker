@@ -23,9 +23,9 @@ import {
   notifyAboutReminder,
 } from './js/actions/reminders';
 import {
-  USERS,
+  //USERS,
   PAGE_ADDRESS,
-  LOCATIONS,
+  //LOCATIONS,
   USER_ACCOUNT_TYPE,
   ADMIN_ACCOUNT_TYPE,
 } from './js/constants';
@@ -40,8 +40,8 @@ class App extends Component {
 
   state = {
     activeUser: null,
-    locationsDB: LOCATIONS,
-    userDB: USERS,
+    // locationsDB: LOCATIONS,
+    // userDB: USERS,
   };
 
   checkLoginState = () => {

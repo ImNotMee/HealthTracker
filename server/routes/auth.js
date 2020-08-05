@@ -21,10 +21,12 @@ router.post('/login', (req, res) => {
     .then((login) => {
       User.findOne({ email: login.email })
         .then((user) => {
-          const activeUser = { email: login.email, type: user.type };
-          req.session.activeUser = activeUser;
           req.session.user_id = user._id;
-          res.send({ activeUser: activeUser });
+          // TODO: ask ta if we can pull all user data once
+          // const activeUser = { email: login.email, type: user.type };
+          // req.session.activeUser = activeUser;
+          // res.send({ activeUser: activeUser });
+          res.send({ activeUser: user });
         })
         .catch((e) => {
           res.status(500).send('Cannot find user');
