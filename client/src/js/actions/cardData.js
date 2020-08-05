@@ -90,15 +90,35 @@ export const setWater = (card, newWater) => {
   console.log('updating Water to ');
   const { user_card } = card.state;
   user_card['Water']['completed'] = newWater;
-  let remainging = 2000 - newWater;
-  if (remainging < 0) {
-    remainging = 0;
+  let remaining = 2000 - newWater;
+  if (remaining < 0) {
+    remaining = 0;
   }
-  user_card['Water']['remaining'] = remainging;
+  user_card['Water']['remaining'] = remaining;
   card.setState({
     user_card: user_card,
   });
   console.log(user_card['Water']['completed']);
+
+  const waterInfo = { completed: newWater, remaining: remaining, unit: 'ml' };
+  const request = new Request('http://localhost:5000/logPhysical/logWater', {
+    method: 'post',
+    body: JSON.stringify(waterInfo),
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+    },
+  });
+
+  fetch(request)
+    .then((res) => {
+      if (res.status === 200) {
+        return res.json();
+      }
+    })
+    .catch((error) => {
+      console.log('logging failed', error);
+    });
 };
 
 export const setCalories = (card, newCalories) => {
