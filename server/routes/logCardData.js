@@ -91,14 +91,25 @@ router.post('/logStress', (req, res) => {
 });
 
 router.post('/logSickness', (req, res) => {
-	const completed = req.body.completed;
-	const remaining = req.body.remaining;
-	const unit = req.body.unit;
-	log(req.session.activeUser.email)
-	User.findOne({ email: req.session.activeUser.email }).then((user) => {
-		log(user)
-		res.send(user)
-	})
+	const sickness = req.body.sickness;
+
+	log(req.session.user_id)
+	User.findById(req.session.user_id).then((user) => {
+		if (!user) {
+			res.status(404).send("User not found")
+		} else {
+			user.user_card.Sickness = sickness;
+			user.save().then((updatedUser) => {
+				console.log(updatedUser)
+				res.status(200).send(updatedUser)
+			}).catch((error) => {
+				console.log(error)
+				res.status(400).send('Bad Request') 
+			})
+		}
+	}).catch((error) => {
+		res.status(500).send('Internal Server Error')  // server error
+	});
 
 });
 
