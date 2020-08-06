@@ -166,7 +166,7 @@ export const setCalories = (card, newCalories) => {
 
   card.setState({
     user_card: user_card,
-    activeUser: user,
+    user: user,
   });
   console.log(user_card['Calories']);
 
