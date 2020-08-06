@@ -27,7 +27,6 @@ class Trends extends Component {
     })
       .then((response) => response.json())
       .then((responseJson) => {
-        const d = getData(responseJson);
         this.setState({ weight: responseJson.weight });
       });
     fetch('http://localhost:5000/trends/sleep', {
@@ -36,7 +35,6 @@ class Trends extends Component {
     })
       .then((response) => response.json())
       .then((responseJson) => {
-        const d = getData(responseJson);
         this.setState({ sleep: responseJson.sleep });
       });
     fetch('http://localhost:5000/trends/stress', {
@@ -45,7 +43,6 @@ class Trends extends Component {
     })
       .then((response) => response.json())
       .then((responseJson) => {
-        const d = getData(responseJson);
         this.setState({ stress: responseJson.stress });
       });
     fetch('http://localhost:5000/trends/calories', {
@@ -54,7 +51,6 @@ class Trends extends Component {
     })
       .then((response) => response.json())
       .then((responseJson) => {
-        const d = getData(responseJson);
         this.setState({ calories: responseJson.calories });
       });
     console.log(this.state);
