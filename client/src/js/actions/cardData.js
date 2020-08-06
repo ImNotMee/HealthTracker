@@ -190,7 +190,7 @@ export const setStress = (card, newStress) => {
   card.setState({
     user: user,
   });
-  console.log(user_card['Stress']);
+  console.log(user.user_card['Stress']);
 
   sendSleep(newStress, today.now());
 };
@@ -202,7 +202,7 @@ export const setSickness = (card, newSickness) => {
   card.setState({
     user: user,
   });
-  console.log(user_card['Sickness']);
+  console.log(user.user_card['Sickness']);
 
   sendSickness(newSickness);
 };
