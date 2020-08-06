@@ -27,7 +27,7 @@ import './styles.css';
 import { getNumNotifs } from '../../actions/notification';
 import { NOTIFICATION_TYPE } from '../../constants';
 
-import { USER_CARD } from '../../constants'; // needs to be changed to server call later
+//import { USER_CARD } from '../../constants'; // needs to be changed to server call later
 import {
   setBMI,
   setWater,
