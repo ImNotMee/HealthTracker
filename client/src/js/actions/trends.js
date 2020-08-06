@@ -1,14 +1,13 @@
 const log = console.log;
 
-export const getAllUserTrends = () => {
-  const url = 'http://localhost:5000/trends/getAll';
-};
+// export const getAllUserTrends = () => {
+//   const url = 'http://localhost:5000/trends/getAll';
+// };
 
 // admin trend functions
 export const avgWeight = (allUser) => {
   let weekAvg = [];
   let count = 0;
-  const a = getAllUserTrends(allUser);
   log('getting all users data');
   for (let i = 0; i < 7; i++) {
     let sum = 0;
