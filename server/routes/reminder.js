@@ -33,7 +33,7 @@ router.post('/add', mongoChecker, (req, res) => {
       user
         .save()
         .then((result) => {
-          log('New user reminder created\n', result);
+          log('New reminder created\n', result);
           res.status(200).send({ user: result });
         })
         .catch((error) => {
@@ -49,6 +49,47 @@ router.post('/add', mongoChecker, (req, res) => {
     .catch((e) => {
       log('Cannot find user\n', e);
       res.status(500).send('Cannot find user');
+    });
+});
+
+/**
+ * Remove a reminder of a category for user of current session
+ * using the reminder's id
+ */
+router.delete('/:cat/:r_id', mongoChecker, (req, res) => {
+  const cat = decodeURI(req.params.cat);
+  const rid = req.params.r_id;
+  User.findById(req.session.user_id)
+    .then(async (user) => {
+      console.log(user.reminders[cat].id('c5017fb2df371c60ae4baf68'));
+      const reminder = await user.reminders[cat].filter((rem) => {
+        if (rem.id === rid) {
+          return true;
+        }
+      })[0];
+      await reminder.remove();
+      return user;
+    })
+    .then((user) => {
+      user
+        .save()
+        .then((result) => {
+          log('Old reminder deleted\n', result);
+          res.status(200).send({ user: result });
+        })
+        .catch((error) => {
+          if (isMongoError(error)) {
+            log('Internal server error saving new resturant:\n', error);
+            res.status(500).send('Internal server error');
+          } else {
+            log('Bad request:\n', error);
+            res.status(400).send('Bad Request');
+          }
+        });
+    })
+    .catch((error) => {
+      log(error);
+      res.status(500).send('Internal Server Error');
     });
 });
 
