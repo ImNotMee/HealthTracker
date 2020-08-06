@@ -1,31 +1,72 @@
 import { REMINDER_STATUS, NOTIFICATION_TYPE, ADMIN_ACCOUNT_TYPE } from '../constants';
 import { addNotificationHandler } from './notification';
+import { API } from '../constants';
 
 const log = console.log;
 
 export const addReminderHandler = (appCtx, reminderCtx) => {
-  log('Adding new reminder...');
+  log('Adding new reminder...check');
   const isInputValid = _reminderInputValidate(appCtx, reminderCtx);
   log('Input validity status: ' + isInputValid);
   if (isInputValid) {
-    _addReminder(appCtx, reminderCtx);
-    reminderCtx.setState({
-      newReminderAdded: true,
-    });
-    log(`Successfully added new reminder '${reminderCtx.state.reminderName}'`);
+    const newReminder = _createNewReminder(reminderCtx);
+    _addReminderRequest(appCtx, reminderCtx, newReminder);
   } else {
-    log('Unsuccessfully in adding reminder');
+    log('Unsuccessfully in adding reminder - Invalid input');
   }
 };
 
-const _addReminder = (appCtx, reminderCtx) => {
-  const user = appCtx.state.activeUser;
+const _createNewReminder = (reminderCtx) => {
+  //const user = appCtx.state.activeUser;
   const { category, subCategory, reminderName, reminderTime, reminderNote } = reminderCtx.state;
   const newReminder = new Reminder(category, subCategory, reminderName, reminderTime, reminderNote);
-  user.reminders[reminderCtx.state.category].push(newReminder);
-  appCtx.setState({
-    activeUser: user,
+  //user.reminders[reminderCtx.state.category].push(newReminder);
+  return newReminder;
+};
+
+const _addReminderRequest = (appCtx, reminderCtx, reminder) => {
+  const request = new Request(API.addReminder, {
+    method: 'post',
+    body: JSON.stringify(reminder),
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+    },
   });
+
+  fetch(request)
+    .then((res) => {
+      if (res.status === 200) {
+        return res.json();
+      }
+    })
+    .then((res) => {
+      if (res === undefined || res.user === null || res.user === undefined) {
+        log('Add reminder request failed to get response');
+        return false;
+      } else {
+        log(appCtx, reminderCtx);
+        appCtx.setState(
+          {
+            activeUser: res.user,
+          },
+          () => {
+            reminderCtx.setState(
+              {
+                newReminderAdded: true,
+              },
+              () => {
+                log(`Successfully added new reminder '${reminderCtx.state.reminderName}'`);
+              },
+            );
+          },
+        );
+      }
+      return true;
+    })
+    .catch((error) => {
+      log('Add reminder request failed with error\n', error);
+    });
 };
 
 const _reminderInputValidate = (appCtx, reminderCtx) => {
@@ -138,6 +179,10 @@ export class Reminder {
   }
 
   _generateId = () => {
-    return 'r' + Math.random().toString(36).substr(3, 8);
+    return (
+      Math.random().toString(16).substr(3, 8) +
+      Math.random().toString(16).substr(3, 8) +
+      Math.random().toString(16).substr(3, 8)
+    );
   };
 }
