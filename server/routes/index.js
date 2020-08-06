@@ -2,6 +2,7 @@
 'use strict';
 const auth = require('./auth');
 const signup = require('./signup');
+const reminder = require('./reminder');
 
 /**
  * Add routes to given express app object
@@ -26,6 +27,7 @@ const initRoutes = (app) => {
 
   app.use('/auth', auth);
   app.use('/account', signup);
+  app.use('/reminder', reminder);
 };
 
 module.exports = {
