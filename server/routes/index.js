@@ -3,6 +3,7 @@
 const auth = require('./auth');
 const signup = require('./signup');
 const logPhysical = require('./logPhysical');
+const logCardData = require('./logCardData')
 
 /**
  * Add routes to given express app object
@@ -28,6 +29,7 @@ const initRoutes = (app) => {
   app.use('/auth', auth);
   app.use('/account', signup);
   app.use('/logPhysical', logPhysical)
+  app.use('/logCardData', logCardData)
 };
 
 module.exports = {

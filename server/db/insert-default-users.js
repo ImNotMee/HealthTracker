@@ -84,6 +84,41 @@ MongoClient.connect(DB_URI, DEFAULT_DB_CONNECT_OPS, (error, client) => {
           calories: [1800, 1899, 2100, 2000, 1789, 1987, 1788],
           stress: [2, 3, 2, 1, 4, 6, 5],
         },
+        user_card: {
+          BMI: {
+            value: 22.0,
+            height: 160,
+            weight: 60,
+            unit: 'metric', // metric and standard
+            date: '2020-07-27T10:15',
+          },
+          Water: {
+            completed: 800,
+            remaining: 1200,
+            unit: 'ml',
+            date: '2020-07-27T10:15',
+          },
+          Calories: {
+            completed: 300,
+            remaining: 1700,
+            unit: 'Calories',
+            date: '2020-07-27T10:15',
+          },
+          Mood: {
+            value: 'happy',
+          },
+          Sleep: {
+            hours: 8,
+            quality: 'Good', // 3 levels bad, okay, good
+            date: '2020-07-27T10:15',
+          },
+          Stress: {
+            value: 1,
+            date: '2020-07-27T10:15',
+          },
+          Sickness: [
+          ],
+        }        
       },
       {
         firstName: 'IAmAdmin',
