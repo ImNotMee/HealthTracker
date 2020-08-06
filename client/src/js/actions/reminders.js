@@ -43,9 +43,7 @@ const _addReminderRequest = (appCtx, reminderCtx, reminder) => {
     .then((res) => {
       if (res === undefined || res.user === null || res.user === undefined) {
         log('Add reminder request failed to get response');
-        return false;
       } else {
-        log(appCtx, reminderCtx);
         appCtx.setState(
           {
             activeUser: res.user,
@@ -62,7 +60,6 @@ const _addReminderRequest = (appCtx, reminderCtx, reminder) => {
           },
         );
       }
-      return true;
     })
     .catch((error) => {
       log('Add reminder request failed with error\n', error);
@@ -96,11 +93,42 @@ export const editReminderHandler = (appCtx, reminderCtx, category, id) => {
   log('Editing reminder...');
   const isInputValid = _reminderInputValidate(appCtx, reminderCtx);
   if (isInputValid) {
-    _editReminder(appCtx, reminderCtx, category, id);
-    reminderCtx.setState({
-      newReminderAdded: true,
+    const edittedReminder = _editReminder(appCtx, reminderCtx, category, id);
+    const request = new Request(API.updateReminder(category, id), {
+      method: 'PATCH',
+      body: JSON.stringify({ newReminder: edittedReminder }),
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
     });
-    log('Successfully editted reminder');
+
+    fetch(request)
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        }
+      })
+      .then((res) => {
+        if (res === undefined || res.user === null || res.user === undefined) {
+          log('Update reminder request failed to get response');
+        } else {
+          appCtx.setState(
+            {
+              activeUser: res.user,
+            },
+            () => {
+              reminderCtx.setState({
+                newReminderAdded: true,
+              });
+              log('Successfully editted reminder');
+            },
+          );
+        }
+      })
+      .catch((error) => {
+        log('Update reminder request failed with error\n', error);
+      });
   } else {
     log('Unsuccessfully editing reminder');
   }
@@ -115,10 +143,11 @@ const _editReminder = (appCtx, reminderCtx, category, id) => {
   reminder.name = reminderCtx.state.reminderName;
   reminder.time = reminderCtx.state.reminderTime;
   reminder.note = reminderCtx.state.reminderNote;
-  user.reminders[category][index] = reminder;
-  appCtx.setState({
-    activeUser: user,
-  });
+  return reminder;
+  // user.reminders[category][index] = reminder;
+  // appCtx.setState({
+  //   activeUser: user,
+  // });
 };
 
 export const completeReminderHandler = (ctx, category, id, timeout) => {
@@ -130,16 +159,38 @@ export const completeReminderHandler = (ctx, category, id, timeout) => {
 
 export const deleteReminderHandler = (ctx, category, id, timeout) => {
   log('Removing reminder...');
-  const user = ctx.state.activeUser;
-  const index = _getReminderIndex(user.reminders[category], id);
-  const reminders = user.reminders[category];
-  reminders.splice(index, 1);
-  user.reminders[category] = reminders;
-  ctx.setState({
-    activeUser: user,
+  const request = new Request(API.deleteReminder(category, id), {
+    method: 'delete',
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+    },
   });
-  clearTimeout(timeout);
-  log('Successfully removed reminder');
+
+  fetch(request)
+    .then((res) => {
+      if (res.status === 200) {
+        return res.json();
+      }
+    })
+    .then((res) => {
+      if (res === undefined || res.user === null || res.user === undefined) {
+        log('Delete reminder request failed to get response');
+      } else {
+        ctx.setState(
+          {
+            activeUser: res.user,
+          },
+          () => {
+            clearTimeout(timeout);
+            log('Successfully removed reminder');
+          },
+        );
+      }
+    })
+    .catch((error) => {
+      log('Delete reminder request failed with error\n', error);
+    });
 };
 
 export const setReminderStatus = (ctx, category, id, status) => {
@@ -147,10 +198,42 @@ export const setReminderStatus = (ctx, category, id, status) => {
   const index = _getReminderIndex(user.reminders[category], id);
   const reminder = user.reminders[category][index];
   reminder.status = status;
-  user.reminders[category][id] = reminder;
-  ctx.setState({
-    activeUser: user,
+  _makeUpdateRequest(ctx, reminder, category, id);
+};
+
+const _makeUpdateRequest = (ctx, reminder, category, id) => {
+  const request = new Request(API.updateReminder(category, id), {
+    method: 'PATCH',
+    body: JSON.stringify({ newReminder: reminder }),
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+    },
   });
+
+  fetch(request)
+    .then((res) => {
+      if (res.status === 200) {
+        return res.json();
+      }
+    })
+    .then((res) => {
+      if (res === undefined || res.user === null || res.user === undefined) {
+        log('Update reminder request failed to get response');
+      } else {
+        ctx.setState(
+          {
+            activeUser: res.user,
+          },
+          () => {
+            log('Successfully updated reminder');
+          },
+        );
+      }
+    })
+    .catch((error) => {
+      log('Update reminder request failed with error\n', error);
+    });
 };
 
 export const notifyAboutReminder = (ctx, reminder) => {

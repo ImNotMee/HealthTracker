@@ -261,4 +261,10 @@ export const API = {
   login: 'http://localhost:5000/auth/login',
   siginup: 'http://localhost:5000/account/signup',
   addReminder: 'http://localhost:5000/reminder/add',
+  deleteReminder: (cat, id) => {
+    return `http://localhost:5000/reminder/${cat}/${id}`;
+  },
+  updateReminder: (cat, id) => {
+    return `http://localhost:5000/reminder/update/${cat}/${id}`;
+  },
 };
