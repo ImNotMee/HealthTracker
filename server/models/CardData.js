@@ -1,34 +1,6 @@
 
 const mongoose = require('mongoose');
 
-const CardData = mongoose.model('CardData', {
-    BMI: {
-        type: BMISchema,
-        required: true,
-    }, Water: {
-        type: WaterSchema,
-        required: true,
-    }, Calories: {
-        type: CalroiesSchema,
-        required: true,
-    }, Mood: {
-        type: MoodSchema,
-        required: true,
-    }, Sleep: {
-        type: SleepSchema,
-        required: true,
-    }, Stress: {
-        type: StreeSchema,
-        required: true,
-    }, Sickness: {
-        type: [SicknessSchema],
-        required: true,
-    }, date: {
-        type: Date, 
-        default: Date.now,
-    }   
-})
-
 const BMISchema = new mongoose.Schema({
     value: {
         type: Number,
@@ -134,22 +106,46 @@ const StreeSchema = new mongoose.Schema({
     }
 });
 
-const SicknessSchema = new mongoose.Schema({
-    type: String,
-    enum: [
-        'Fever or chills',
-        'Cough',
-        'Difficulty breathing',
-        'Fatigue',
-        'Muscle or body aches',
-        'Headaches',
-        'Sore throat',
-        'Congestion or runny nose',
-        'Nausea or vomiting',
-        'Diarrhea',
-        'Bluish lips or face',
-      ],
-    trim: true,
+
+const CardData = mongoose.model('CardData', {
+    BMI: {
+        type: BMISchema,
+        required: true,
+    }, Water: {
+        type: WaterSchema,
+        required: true,
+    }, Calories: {
+        type: CalroiesSchema,
+        required: true,
+    }, Mood: {
+        type: MoodSchema,
+        required: true,
+    }, Sleep: {
+        type: SleepSchema,
+        required: true,
+    }, Stress: {
+        type: StreeSchema,
+        required: true,
+    }, Sickness: [{
+        type: String,
+        enum: [
+            'Fever or chills',
+            'Cough',
+            'Difficulty breathing',
+            'Fatigue',
+            'Muscle or body aches',
+            'Headaches',
+            'Sore throat',
+            'Congestion or runny nose',
+            'Nausea or vomiting',
+            'Diarrhea',
+            'Bluish lips or face',
+        ],
+        trim: true,
+    }], date: {
+        type: Date, 
+        default: Date.now,
+    }   
 });
 
 module.exports = { CardData };
