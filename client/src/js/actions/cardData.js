@@ -84,6 +84,31 @@ export const setBMI = (card, newBMI, newHeight, newWeight, newUnit) => {
     user: user,
   });
   console.log(user_card['BMI']['value']);
+
+  const BMIInfo = {
+    value: user_card['BMI']['value'],
+    height: user_card['BMI']['height'],
+    weight: user_card['BMI']['weight'],
+    unit: user_card['BMI']['unit'],
+  };
+  const request = new Request('http://localhost:5000/logPhysical/logBMI', {
+    method: 'patch',
+    body: JSON.stringify(BMIInfo),
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+    },
+  });
+
+  fetch(request)
+    .then((res) => {
+      if (res.status === 200) {
+        return res.json();
+      }
+    })
+    .catch((error) => {
+      console.log('logging failed', error);
+    });
 };
 
 export const setWater = (card, newWater) => {
@@ -100,9 +125,13 @@ export const setWater = (card, newWater) => {
   });
   console.log(user_card['Water']);
 
-  const waterInfo = { completed: newWater, remaining: remaining, unit: 'ml' };
+  const waterInfo = {
+    completed: user_card['Water']['completed'],
+    remaining: user_card['Water']['remaining'],
+    unit: 'ml',
+  };
   const request = new Request('http://localhost:5000/logPhysical/logWater', {
-    method: 'post',
+    method: 'patch',
     body: JSON.stringify(waterInfo),
     headers: {
       Accept: 'application/json, text/plain, */*',
@@ -125,11 +154,11 @@ export const setCalories = (card, newCalories) => {
   console.log('updating Calories to ');
   const { user_card, user } = card.state;
   user_card['Calories']['completed'] += parseInt(newCalories, 10);
-  let remainging = 2000 - user_card['Calories']['completed'];
-  if (remainging < 0) {
-    remainging = 0;
+  let remaining = 2000 - user_card['Calories']['completed'];
+  if (remaining < 0) {
+    remaining = 0;
   }
-  user_card['Calories']['remaining'] = remainging;
+  user_card['Calories']['remaining'] = remaining;
 
   const today = new Date();
   const day = today.getDay();
@@ -139,7 +168,31 @@ export const setCalories = (card, newCalories) => {
     user_card: user_card,
     activeUser: user,
   });
-  console.log(user_card['Calories']['completed']);
+  console.log(user_card['Calories']);
+
+  const caloriesInfo = {
+    completed: user_card['Calories']['completed'],
+    remaining: user_card['Calories']['remaining'],
+    unit: 'Calories',
+  };
+  const request = new Request('http://localhost:5000/logPhysical/logCalories', {
+    method: 'patch',
+    body: JSON.stringify(caloriesInfo),
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+    },
+  });
+
+  fetch(request)
+    .then((res) => {
+      if (res.status === 200) {
+        return res.json();
+      }
+    })
+    .catch((error) => {
+      console.log('logging failed', error);
+    });
 };
 
 export const setMood = (card, newMood) => {

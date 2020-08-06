@@ -64,7 +64,7 @@ const User = mongoose.model('User', {
     type: Trends.schema,
     required: false,
   },
-    card: {
+    userCard: {
         type: CardData.schema,
         required: false,
     },
