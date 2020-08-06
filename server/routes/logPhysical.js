@@ -9,12 +9,11 @@ const log = console.log;
 
 /*logWater*/
 
-router.patch('/logWater', (req, res) => {
+router.post('/logWater', (req, res) => {
 	const complete = req.body.completed;
 	const remain = req.body.remaining;
 	const unit = req.body.unit;
 	const waterInfo = { completed: complete, remaining: remain, unit: unit }
-
 	User.findById(req.session.user_id).then((user) => {
 		if (!user) {
 			res.status(404).send('Resource not found')
@@ -22,11 +21,13 @@ router.patch('/logWater', (req, res) => {
 		else {
 			log(user.userCard)
 			user.userCard.Water = waterInfo
+			user.save()
 			log(user.userCard)
 			res.send(user)
         }
 	}).catch((e) => {
 		log('cant find user', e)
+		res.status(500).send('Internal Server Error')
     })
 
 
@@ -44,12 +45,35 @@ router.post('/logCalories', (req, res) => {
 		else {
 			log(user.userCard)
 			user.userCard.Calories = calInfo
+			user.save()
 			log(user.userCard)
 			res.send(user)
 		}
 	}).catch((e) => {
 		log('cant find user', e)
+		res.status(500).send('Internal Server Error')
 	})
+})
+
+
+router.post('/logBMI', (req, res) => {
+	const BMI = { value: req.body.value, height: req.body.height, weight: req.body.weight, unit: req.body.unit }
+	User.findById(req.session.user_id).then((user) => {
+		if (!user) {
+			res.status(404).send('Resource not found')
+		}
+		else {
+			log(user.userCard)
+			user.userCard.BMI = BMI
+			user.save()
+			log(user.userCard)
+			res.send(user)
+		}
+	}).catch((e) => {
+		log('cant find user', e)
+		res.status(500).send('Internal Server Error')
+	})
+
 })
 
 

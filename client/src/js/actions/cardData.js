@@ -92,7 +92,7 @@ export const setBMI = (card, newBMI, newHeight, newWeight, newUnit) => {
     unit: user_card['BMI']['unit'],
   };
   const request = new Request('http://localhost:5000/logPhysical/logBMI', {
-    method: 'patch',
+    method: 'post',
     body: JSON.stringify(BMIInfo),
     headers: {
       Accept: 'application/json, text/plain, */*',
@@ -131,7 +131,7 @@ export const setWater = (card, newWater) => {
     unit: 'ml',
   };
   const request = new Request('http://localhost:5000/logPhysical/logWater', {
-    method: 'patch',
+    method: 'post',
     body: JSON.stringify(waterInfo),
     headers: {
       Accept: 'application/json, text/plain, */*',
@@ -176,7 +176,7 @@ export const setCalories = (card, newCalories) => {
     unit: 'Calories',
   };
   const request = new Request('http://localhost:5000/logPhysical/logCalories', {
-    method: 'patch',
+    method: 'post',
     body: JSON.stringify(caloriesInfo),
     headers: {
       Accept: 'application/json, text/plain, */*',

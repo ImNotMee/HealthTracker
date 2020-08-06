@@ -54,10 +54,11 @@ const CardData = mongoose.model('CardData', {
         },
         unit: {
             type: String,
+            enum: ['metric', 'standard'],
             required: false,
             trim: true
         }
-    }
+    },
 })
 
 
