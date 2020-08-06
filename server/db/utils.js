@@ -3,6 +3,21 @@ function isMongoError(error) {
   return typeof error === 'object' && error !== null && error.name === 'MongoNetworkError';
 }
 
+const mongoChecker = (req, res, next) => {
+  // check mongoose connection established.
+  const { mongoose } = require('../db/mongoose');
+  mongoose.set('bufferCommands', false);
+
+  if (mongoose.connection.readyState != 1) {
+    log('Issue with mongoose connection');
+    res.status(500).send('Internal server error');
+    return;
+  } else {
+    next();
+  }
+};
+
 module.exports = {
   isMongoError,
+  mongoChecker,
 };
