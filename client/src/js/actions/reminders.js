@@ -94,41 +94,12 @@ export const editReminderHandler = (appCtx, reminderCtx, category, id) => {
   const isInputValid = _reminderInputValidate(appCtx, reminderCtx);
   if (isInputValid) {
     const edittedReminder = _editReminder(appCtx, reminderCtx, category, id);
-    const request = new Request(API.updateReminder(category, id), {
-      method: 'PATCH',
-      body: JSON.stringify({ newReminder: edittedReminder }),
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json',
-      },
-    });
-
-    fetch(request)
-      .then((res) => {
-        if (res.status === 200) {
-          return res.json();
-        }
-      })
-      .then((res) => {
-        if (res === undefined || res.user === null || res.user === undefined) {
-          log('Update reminder request failed to get response');
-        } else {
-          appCtx.setState(
-            {
-              activeUser: res.user,
-            },
-            () => {
-              reminderCtx.setState({
-                newReminderAdded: true,
-              });
-              log('Successfully editted reminder');
-            },
-          );
-        }
-      })
-      .catch((error) => {
-        log('Update reminder request failed with error\n', error);
+    _makeUpdateRequest(appCtx, edittedReminder, category, id, () => {
+      reminderCtx.setState({
+        newReminderAdded: true,
       });
+      log('Successfully editted reminder');
+    });
   } else {
     log('Unsuccessfully editing reminder');
   }
@@ -144,10 +115,6 @@ const _editReminder = (appCtx, reminderCtx, category, id) => {
   reminder.time = reminderCtx.state.reminderTime;
   reminder.note = reminderCtx.state.reminderNote;
   return reminder;
-  // user.reminders[category][index] = reminder;
-  // appCtx.setState({
-  //   activeUser: user,
-  // });
 };
 
 export const completeReminderHandler = (ctx, category, id, timeout) => {
@@ -198,10 +165,12 @@ export const setReminderStatus = (ctx, category, id, status) => {
   const index = _getReminderIndex(user.reminders[category], id);
   const reminder = user.reminders[category][index];
   reminder.status = status;
-  _makeUpdateRequest(ctx, reminder, category, id);
+  _makeUpdateRequest(ctx, reminder, category, id, () => {
+    log('Successfully updated reminder');
+  });
 };
 
-const _makeUpdateRequest = (ctx, reminder, category, id) => {
+const _makeUpdateRequest = (ctx, reminder, category, id, callback) => {
   const request = new Request(API.updateReminder(category, id), {
     method: 'PATCH',
     body: JSON.stringify({ newReminder: reminder }),
@@ -225,9 +194,7 @@ const _makeUpdateRequest = (ctx, reminder, category, id) => {
           {
             activeUser: res.user,
           },
-          () => {
-            log('Successfully updated reminder');
-          },
+          callback,
         );
       }
     })
