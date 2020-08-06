@@ -38,7 +38,7 @@ router.post('/add', mongoChecker, (req, res) => {
         })
         .catch((error) => {
           if (isMongoError(error)) {
-            log('Internal server error saving new resturant:\n', error);
+            log('Internal server error saving new reminder:\n', error);
             res.status(500).send('Internal server error');
           } else {
             log('Bad request:\n', error);
@@ -61,7 +61,6 @@ router.delete('/:cat/:r_id', mongoChecker, (req, res) => {
   const rid = req.params.r_id;
   User.findById(req.session.user_id)
     .then(async (user) => {
-      console.log(user.reminders[cat].id('c5017fb2df371c60ae4baf68'));
       const reminder = await user.reminders[cat].filter((rem) => {
         if (rem.id === rid) {
           return true;
@@ -79,10 +78,54 @@ router.delete('/:cat/:r_id', mongoChecker, (req, res) => {
         })
         .catch((error) => {
           if (isMongoError(error)) {
-            log('Internal server error saving new resturant:\n', error);
+            log('Internal server error saving deleting reminder:\n', error);
             res.status(500).send('Internal server error');
           } else {
             log('Bad request:\n', error);
+            res.status(400).send('Bad Request');
+          }
+        });
+    })
+    .catch((error) => {
+      log(error);
+      res.status(500).send('Internal Server Error');
+    });
+});
+
+/**
+ * Update status of a reminder of a category for user
+ * of current session using the reminder's id
+ */
+router.patch('/update/:cat/:r_id/', mongoChecker, (req, res) => {
+  const cat = decodeURI(req.params.cat);
+  const rid = req.params.r_id;
+  const { newReminder } = req.body;
+
+  User.findById(req.session.user_id)
+    .then(async (user) => {
+      const reminders = user.reminders[cat];
+      console.log('TEST', reminders);
+      const index = await reminders.map((rem, i) => {
+        if (rem.id === rid) {
+          return i;
+        }
+      })[0];
+      user.reminders[cat][index] = newReminder;
+      return user;
+    })
+    .then((user) => {
+      user
+        .save()
+        .then((result) => {
+          log('Original reminder updated\n', result);
+          res.status(200).send({ user: result });
+        })
+        .catch((error) => {
+          if (isMongoError(error)) {
+            log('Internal server error updating reminder:\n', error);
+            res.status(500).send('Internal server error');
+          } else {
+            log('Bad update request:\n', error);
             res.status(400).send('Bad Request');
           }
         });
