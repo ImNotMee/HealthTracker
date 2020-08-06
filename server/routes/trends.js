@@ -69,10 +69,10 @@ router.get('/getAll', (req, res) => {
 
 // Adding user data to trends
 router.post('/updateWeight', (req, res) => {
-  const val = req.body.value;
+  const data = {date: req.body.date, value: req.body.value};
   const id = req.session.user_id;
 
-  User.findOneAndUpdate({_id: id}, {"$push": { "trends.weight" : val}},{new: true}).then((user) => {
+  User.findOneAndUpdate({_id: id}, {"$push": { "trends.weight" : data}},{new: true}).then((user) => {
     if (!user) {
       res.status(404).send();
     } else {
@@ -85,10 +85,10 @@ router.post('/updateWeight', (req, res) => {
 });
 
 router.post('/updateSleep', (req, res) => {
-  const val = req.body.value;
+  const data = {date: req.body.date, value: req.body.value};
   const id = req.session.user_id;
 
-  User.findOneAndUpdate({_id: id}, {"$push": { "trends.sleep" : val}},{new: true}).then((user) => {
+  User.findOneAndUpdate({_id: id}, {"$push": { "trends.sleep" : data}},{new: true}).then((user) => {
     if (!user) {
       res.status(404).send();
     } else {
@@ -99,10 +99,10 @@ router.post('/updateSleep', (req, res) => {
   });
 });
 router.post('/updateStress', (req, res) => {
-  const val = req.body.value;
+  const data = {date: req.body.date, value: req.body.value};
   const id = req.session.user_id;
 
-  User.findOneAndUpdate({_id: id}, {"$push": { "trends.stress" : val}},{new: true}).then((user) => {
+  User.findOneAndUpdate({_id: id}, {"$push": { "trends.stress" : data}},{new: true}).then((user) => {
     if (!user) {
       res.status(404).send();
     } else {
@@ -113,10 +113,10 @@ router.post('/updateStress', (req, res) => {
   });
 });
 router.post('/updateCalories', (req, res) => {
-  const val = req.body.value;
+  const data = {date: req.body.date, value: req.body.value};
   const id = req.session.user_id;
 
-  User.findOneAndUpdate({_id: id}, {"$push": { "trends.calories" : val}},{new: true}).then((user) => {
+  User.findOneAndUpdate({_id: id}, {"$push": { "trends.calories" : data}},{new: true}).then((user) => {
     if (!user) {
       res.status(404).send();
     } else {
