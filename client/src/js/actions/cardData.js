@@ -192,7 +192,7 @@ export const setStress = (card, newStress) => {
   });
   console.log(user.user_card['Stress']);
 
-  sendSleep(newStress, today.now());
+  sendStress(newStress, today.now());
 };
 
 export const setSickness = (card, newSickness) => {
