@@ -64,11 +64,11 @@ export const fetchCardData = (user) => {
 
 export const setBMI = (card, newBMI, newHeight, newWeight, newUnit) => {
   console.log('updating BMI to ');
-  const { user_card, user } = card.state;
-  user_card['BMI']['value'] = newBMI;
-  user_card['BMI']['height'] = newHeight;
-  user_card['BMI']['weight'] = newWeight;
-  user_card['BMI']['unit'] = newUnit;
+  const { user } = card.state;
+  user.user_card['BMI']['value'] = newBMI;
+  user.user_card['BMI']['height'] = newHeight;
+  user.user_card['BMI']['weight'] = newWeight;
+  user.user_card['BMI']['unit'] = newUnit;
 
   const today = new Date();
   const day = today.getDay();
@@ -80,16 +80,15 @@ export const setBMI = (card, newBMI, newHeight, newWeight, newUnit) => {
   user.trends.weight[day] = trendWeight;
 
   card.setState({
-    user_card: user_card,
     user: user,
   });
-  console.log(user_card['BMI']['value']);
+  console.log(user.user_card['BMI']['value']);
 
   const BMIInfo = {
-    value: user_card['BMI']['value'],
-    height: user_card['BMI']['height'],
-    weight: user_card['BMI']['weight'],
-    unit: user_card['BMI']['unit'],
+    value: user.user_card['BMI']['value'],
+    height: user.user_card['BMI']['height'],
+    weight: user.user_card['BMI']['weight'],
+    unit: user.user_card['BMI']['unit'],
   };
   const request = new Request('http://localhost:5000/logPhysical/logBMI', {
     method: 'post',
@@ -113,21 +112,21 @@ export const setBMI = (card, newBMI, newHeight, newWeight, newUnit) => {
 
 export const setWater = (card, newWater) => {
   console.log('updating Water to ');
-  const { user_card } = card.state;
-  user_card['Water']['completed'] += parseInt(newWater, 10);
-  let remaining = 2000 - user_card['Water']['completed'];
+  const { user } = card.state;
+  user.user_card['Water']['completed'] += parseInt(newWater, 10);
+  let remaining = 2000 - user.user_card['Water']['completed'];
   if (remaining < 0) {
     remaining = 0;
   }
-  user_card['Water']['remaining'] = remaining;
+  user.user_card['Water']['remaining'] = remaining;
   card.setState({
-    user_card: user_card,
+    user: user,
   });
-  console.log(user_card['Water']);
+  console.log(user.user_card['Water']);
 
   const waterInfo = {
-    completed: user_card['Water']['completed'],
-    remaining: user_card['Water']['remaining'],
+    completed: user.user_card['Water']['completed'],
+    remaining: user.user_card['Water']['remaining'],
     unit: 'ml',
   };
   const request = new Request('http://localhost:5000/logPhysical/logWater', {
@@ -152,27 +151,26 @@ export const setWater = (card, newWater) => {
 
 export const setCalories = (card, newCalories) => {
   console.log('updating Calories to ');
-  const { user_card, user } = card.state;
-  user_card['Calories']['completed'] += parseInt(newCalories, 10);
-  let remaining = 2000 - user_card['Calories']['completed'];
+  const { user } = card.state;
+  user.user_card['Calories']['completed'] += parseInt(newCalories, 10);
+  let remaining = 2000 - user.user_card['Calories']['completed'];
   if (remaining < 0) {
     remaining = 0;
   }
-  user_card['Calories']['remaining'] = remaining;
+  user.user_card['Calories']['remaining'] = remaining;
 
   const today = new Date();
   const day = today.getDay();
   user.trends.calories[day] = newCalories;
 
   card.setState({
-    user_card: user_card,
     user: user,
   });
-  console.log(user_card['Calories']);
+  console.log(user.user_card['Calories']);
 
   const caloriesInfo = {
-    completed: user_card['Calories']['completed'],
-    remaining: user_card['Calories']['remaining'],
+    completed: user.user_card['Calories']['completed'],
+    remaining: user.user_card['Calories']['remaining'],
     unit: 'Calories',
   };
   const request = new Request('http://localhost:5000/logPhysical/logCalories', {

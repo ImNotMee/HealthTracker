@@ -1,12 +1,81 @@
 'use strict';
 const { mongoose } = require('../db/mongoose');
 mongoose.set('bufferCommands', false);
-const { CardData } = require('../models/CardData');
 const { User } = require('../models/User');
 const express = require('express');
 const { reset } = require('nodemon');
 const router = express.Router();
 const log = console.log;
+
+router.post('/logBMI', (req, res) => {
+	User.findById(req.session.user_id).then((user) => {
+		if (!user) {
+			res.status(404).send('Resource not found')
+		}
+		else {
+			user.user_card.BMI.value = req.body.value
+			user.user_card.BMI.weight = req.body.weight
+			user.user_card.BMI.height = req.body.height
+			user.user_card.BMI.unit = req.body.unit
+			user.save().then((updatedUser) => {
+				res.status(200).send(updatedUser)
+			}).catch((error) => {
+				log(error)
+				res.status(400).send('Bad Request')
+			})
+		}
+	}).catch((e) => {
+		log('cant find user', e)
+		res.status(500).send('Internal Server Error')
+	})
+})
+
+
+router.post('/logWater', (req, res) => {
+	User.findById(req.session.user_id).then((user) => {
+		if (!user) {
+			res.status(404).send('Resource not found')
+		}
+		else {
+			user.user_card.Water.completed = req.body.completed
+			user.user_card.Water.remaining = req.body.remaining
+			user.user_card.Water.unit = req.body.unit
+			user.save().then((updatedUser) => {
+				res.status(200).send(updatedUser)
+			}).catch((error) => {
+				log(error)
+				res.status(400).send('Bad Request')
+            })
+		}
+	}).catch((e) => {
+		log('cant find user', e)
+		res.status(500).send('Internal Server Error')
+	})
+})
+
+router.post('/logCalories', (req, res) => {
+	User.findById(req.session.user_id).then((user) => {
+		if (!user) {
+			res.status(404).send('Resource not found')
+		}
+		else {
+			user.user_card.Calories.completed = req.body.completed
+			user.user_card.Calories.remaining = req.body.remaining
+			user.user_card.Calories.unit = req.body.unit
+			user.save().then((updatedUser) => {
+				res.status(200).send(updatedUser)
+			}).catch((error) => {
+				log(error)
+				res.status(400).send('Bad Request')
+			})
+		}
+	}).catch((e) => {
+		log('cant find user', e)
+		res.status(500).send('Internal Server Error')
+	})
+})
+
+
 
 router.post('/logMood', (req, res) => {
 	const value = req.body.value;
