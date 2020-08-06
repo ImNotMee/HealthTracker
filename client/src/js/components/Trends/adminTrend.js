@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './styles.css';
 import Graph from './Graph/index.jsx';
-import { avgStress, avgCalories, avgSleep, avgWeight } from '../../actions/trends';
+import { getAllUserTrends } from '../../actions/trends';
 
 class AdminTrends extends Component {
   state = {
     user: this.props.activeUser,
-    //userDB: this.props.userDB,
+    avgData: [],
     trends: {
       title: '',
       data: [],
@@ -14,45 +14,62 @@ class AdminTrends extends Component {
     },
   };
 
+  componentDidMount() {
+    this.fetchData();
+    // this.setState({
+    //   avgData: [
+    //     [111,113,144,145,145,155,143],
+    //     [111,113,144,145,145,155,143],
+    //     [111,113,144,145,145,155,143],
+    //     [111,113,144,145,145,155,143]
+    //   ]
+    // });
+  }
+
+  fetchData() {
+    fetch('http://localhost:5000/trends/getAll')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        const d = getAllUserTrends(responseJson);
+        this.setState({ avgData: d });
+        console.log(this.state.avgData);
+      });
+  }
+
   renderGraph(type) {
-    let avg = [];
     switch (type) {
       case 'weight':
-        avg = avgWeight();
         this.setState({
           trends: {
-            title: 'Average Body Weight',
-            data: avg,
+            title: 'Average Body Weight (lb)',
+            data: this.state.avgData[0],
             type: 'line',
           },
         });
         break;
       case 'sleep':
-        avg = avgSleep();
         this.setState({
           trends: {
             title: 'Average Hours of Sleep',
-            data: avg,
+            data: this.state.avgData[1],
             type: 'bar',
           },
         });
         break;
       case 'calories':
-        avg = avgCalories();
         this.setState({
           trends: {
-            title: 'Average Calorie Intake',
-            data: avg,
+            title: 'Average Calorie Intake (cal)',
+            data: this.state.avgData[2],
             type: 'bar',
           },
         });
         break;
       case 'stress':
-        avg = avgStress();
         this.setState({
           trends: {
-            title: 'Average Stress Level',
-            data: avg,
+            title: 'Average Stress Level (1- 10)',
+            data: this.state.avgData[3],
             type: 'line',
           },
         });
@@ -61,7 +78,7 @@ class AdminTrends extends Component {
         this.setState({
           trends: {
             title: '',
-            data: avg,
+            data: [],
             type: 'line',
           },
         });

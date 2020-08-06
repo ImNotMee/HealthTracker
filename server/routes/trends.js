@@ -12,7 +12,14 @@ router.get('/weight', (req, res) => {
   const id = req.session.user_id;
   User.findOne({_id: id}).then((data) => {
     let weightArr = data.trends.weight;
-    res.send({weight: weightArr});
+    if (weightArr.length > 7) {
+      weightArr = weightArr.slice(weightArr.length - 8, weightArr.length - 1);
+    }
+    let values = [];
+    weightArr.forEach(e => {
+        values.push(e.value);
+    })
+    res.send({weight: values});
   }).catch((e) => {
     res.status(404).send('Cannot get weight trend');
   });
@@ -22,7 +29,14 @@ router.get('/sleep', (req, res) => {
   const id = req.session.user_id;
   User.findOne({_id: id}).then((data) => {
     let sleepArr = data.trends.sleep;
-    res.send({sleep: sleepArr});
+    if (sleepArr.length > 7) {
+      sleepArr = sleepArr.slice(sleepArr.length - 8, sleepArr.length - 1);
+    }
+    let values = [];
+    sleepArr.forEach(e => {
+        values.push(e.value);
+    })
+    res.send({sleep: values});
   }).catch((e) => {
     res.status(404).send('Cannot get sleep trend');
   });
@@ -32,7 +46,14 @@ router.get('/calories', (req, res) => {
   const id = req.session.user_id;
   User.findOne({_id: id}).then((data) => {
     let caloriesArr = data.trends.calories;
-    res.send({calories: caloriesArr});
+    if (caloriesArr.length > 7) {
+      caloriesArr = caloriesArr.slice(caloriesArr.length - 8, caloriesArr.length - 1);
+    }
+    let values = [];
+    caloriesArr.forEach(e => {
+        values.push(e.value);
+    })
+    res.send({calories: values});
   }).catch((e) => {
     res.status(404).send('Cannot get calories trend');
   });
@@ -41,8 +62,15 @@ router.get('/calories', (req, res) => {
 router.get('/stress', (req, res) => {
   const id = req.session.user_id;
   User.findOne({_id: id}).then((data) => {
-    let sleepArr = data.trends.sleep;
-    res.send({sleep: sleepArr});
+    let stressArr = data.trends.stress;
+    if (stressArr.length > 7) {
+      stressArr = stressArr.slice(stressArr.length - 8, stressArr.length - 1);
+    }
+    let values = [];
+    stressArr.forEach(e => {
+        values.push(e.value);
+    })
+    res.send({stress: values});
   }).catch((e) => {
     res.status(404).send('Cannot get stress trend');
   });
