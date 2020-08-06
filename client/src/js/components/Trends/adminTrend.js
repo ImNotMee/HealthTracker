@@ -27,7 +27,10 @@ class AdminTrends extends Component {
   }
 
   fetchData() {
-    fetch('http://localhost:5000/trends/getAll')
+    fetch('http://localhost:5000/trends/getAll', {
+      method: 'GET',
+      credentials: 'include',
+    })
       .then((response) => response.json())
       .then((responseJson) => {
         const d = getAllUserTrends(responseJson);

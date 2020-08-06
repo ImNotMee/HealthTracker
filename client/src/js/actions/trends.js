@@ -1,29 +1,6 @@
 const log = console.log;
 
 export const getAllUserTrends = (json) => {
-  // const url = 'http://localhost:5000/trends/getAll';
-  // let data = [];
-  // fetch(url)
-  //   .then((res) => {
-  //     if (res.status === 200) {
-  //       log("reading resss")
-  //       return res.json();
-  //     }
-  //     else {
-  //       log("a");
-  //     }
-  //   })
-  //   .then((json) => {
-  //      data.push(avgWeight(json));
-  //      data.push(avgStress(json));
-  //      data.push(avgSleep(json));
-  //      data.push(avgCalories(json));
-  //      log(data);
-  //      return data;
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
   let data = [];
   data.push(avgWeight(json));
   data.push(avgStress(json));
@@ -114,18 +91,4 @@ export const avgCalories = (allUserData) => {
   const weekAvg = weekTotal.map((x) => x / count);
   log('average calories loaded');
   return weekAvg;
-};
-
-export const getData = (user, type) => {
-  const url = 'http://localhost:5000/trends/' + type;
-  log(url);
-  // fetch(url)
-  //    .then((res) => {
-  //      if (res.status === 200) {
-  //        return res.json();
-  //      }
-  //    })
-  //    .catch((error) => {
-  //      console.log(error);
-  //    });
 };

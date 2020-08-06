@@ -5,23 +5,68 @@ import Graph from './Graph/index.jsx';
 class Trends extends Component {
   state = {
     user: this.props.activeUser,
+    sleep: [],
+    weight: [],
+    calories: [],
+    stress: [],
     trends: {
       title: '',
-      sleep: [],
-      weight: [],
-      calories: [],
-      stress: [],
+      data: [],
       type: 'line',
     },
   };
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData() {
+    fetch('http://localhost:5000/trends/weight', {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        const d = getData(responseJson);
+        this.setState({ weight: responseJson.weight });
+      });
+    fetch('http://localhost:5000/trends/sleep', {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        const d = getData(responseJson);
+        this.setState({ sleep: responseJson.sleep });
+      });
+    fetch('http://localhost:5000/trends/stress', {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        const d = getData(responseJson);
+        this.setState({ stress: responseJson.stress });
+      });
+    fetch('http://localhost:5000/trends/calories', {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        const d = getData(responseJson);
+        this.setState({ calories: responseJson.calories });
+      });
+    console.log(this.state);
+  }
 
   renderGraph(type) {
     switch (type) {
       case 'weight':
         this.setState({
           trends: {
-            title: 'Body Weight',
-            data: this.state.user.trends.weight,
+            title: 'Body Weight (lb)',
+            data: this.state.weight,
             type: 'line',
           },
         });
@@ -30,7 +75,7 @@ class Trends extends Component {
         this.setState({
           trends: {
             title: 'Hours of Sleep',
-            data: this.state.user.trends.sleep,
+            data: this.state.sleep,
             type: 'bar',
           },
         });
@@ -38,8 +83,8 @@ class Trends extends Component {
       case 'calories':
         this.setState({
           trends: {
-            title: 'Calorie Intake',
-            data: this.state.user.trends.calories,
+            title: 'Calorie Intake (cal)',
+            data: this.state.calories,
             type: 'bar',
           },
         });
@@ -47,8 +92,8 @@ class Trends extends Component {
       case 'stress':
         this.setState({
           trends: {
-            title: 'Stress Level',
-            data: this.state.user.trends.stress,
+            title: 'Stress Level (1- 10)',
+            data: this.state.stress,
             type: 'line',
           },
         });
