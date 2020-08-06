@@ -19,6 +19,15 @@ class Reminders extends Component {
     user: this.props.activeUser,
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      this.props.activeUser !== prevProps.activeUser &&
+      this.props.activeUser !== prevState.user
+    ) {
+      this.setState({ user: this.props.activeUser });
+    }
+  }
+
   getReminderCatView = (type) => {
     return (
       <div key={type}>
@@ -74,7 +83,7 @@ class Reminders extends Component {
 
   render() {
     return (
-      <div id="RemindersWrapper">
+      <div key={this.state.user} id="RemindersWrapper">
         {this.state.user?.type === USER_ACCOUNT_TYPE
           ? this.getUserReminderView()
           : this.getAdminReminderView()}
