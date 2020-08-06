@@ -163,7 +163,7 @@ export const setSleep = (card, newSleepHours, newSleepQuality) => {
   const { user } = card.state;
   user.user_card['Sleep']['hours'] = newSleepHours;
   user.user_card['Sleep']['quality'] = newSleepQuality;
-  user.user_card['Sleep']['date'] = today.now();
+  user.user_card['Sleep']['date'] = Date.now();
 
   // do trend stuff here
   user.trends.sleep[day] = newSleepHours;
@@ -173,7 +173,7 @@ export const setSleep = (card, newSleepHours, newSleepQuality) => {
   });
   console.log(user.user_card['Sleep']);
 
-  sendSleep(newSleepHours, newSleepQuality, today.now());
+  sendSleep(newSleepHours, newSleepQuality, Date.now());
 };
 
 export const setStress = (card, newStress) => {
@@ -183,7 +183,7 @@ export const setStress = (card, newStress) => {
 
   const { user } = card.state;
   user.user_card['Stress']['value'] = newStress;
-  user.user_card['Stress']['date'] = today.now();
+  user.user_card['Stress']['date'] = Date.now();
 
   user.trends.stress[day] = newStress;
 
@@ -192,7 +192,7 @@ export const setStress = (card, newStress) => {
   });
   console.log(user.user_card['Stress']);
 
-  sendStress(newStress, today.now());
+  sendStress(newStress, Date.now());
 };
 
 export const setSickness = (card, newSickness) => {
