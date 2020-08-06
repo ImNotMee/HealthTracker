@@ -6,7 +6,7 @@ import { avgStress, avgCalories, avgSleep, avgWeight } from '../../actions/trend
 class AdminTrends extends Component {
   state = {
     user: this.props.activeUser,
-    userDB: this.props.userDB,
+    //userDB: this.props.userDB,
     trends: {
       title: '',
       data: [],
@@ -18,7 +18,7 @@ class AdminTrends extends Component {
     let avg = [];
     switch (type) {
       case 'weight':
-        avg = avgWeight(this.state.userDB);
+        avg = avgWeight();
         this.setState({
           trends: {
             title: 'Average Body Weight',
@@ -28,7 +28,7 @@ class AdminTrends extends Component {
         });
         break;
       case 'sleep':
-        avg = avgSleep(this.state.userDB);
+        avg = avgSleep();
         this.setState({
           trends: {
             title: 'Average Hours of Sleep',
@@ -38,7 +38,7 @@ class AdminTrends extends Component {
         });
         break;
       case 'calories':
-        avg = avgCalories(this.state.userDB);
+        avg = avgCalories();
         this.setState({
           trends: {
             title: 'Average Calorie Intake',
@@ -48,7 +48,7 @@ class AdminTrends extends Component {
         });
         break;
       case 'stress':
-        avg = avgStress(this.state.userDB);
+        avg = avgStress();
         this.setState({
           trends: {
             title: 'Average Stress Level',

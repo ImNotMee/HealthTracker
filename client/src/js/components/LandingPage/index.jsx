@@ -6,6 +6,7 @@ import SignUpForm from './SignUp';
 
 // Importing actions/required methods
 import { onLoginHandler } from '../../actions/login';
+import { signUpUser } from '../../actions/signUp';
 
 import './styles.css';
 
@@ -51,7 +52,12 @@ class LandingPage extends Component {
             </div>
           </div>
           <div id="signUpWapper">
-            <SignUpForm users={this.props.users} addUserHandler={this.props.addUserHandler} />
+            <SignUpForm
+              users={this.props.users}
+              signUpUser={(signUpCtx) => {
+                signUpUser(this, signUpCtx);
+              }}
+            />
           </div>
         </div>
       </div>

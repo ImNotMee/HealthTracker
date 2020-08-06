@@ -11,7 +11,6 @@ import {
   deleteLocationHandler,
   editLocationHandler,
 } from './js/actions/adminCheckIn';
-import { addUserHandler } from './js/actions/signUp';
 import { setActiveUser, readCookie } from './js/actions/login';
 import { logoutUser } from './js/actions/logout';
 import { removeNotificationHandler, addTimerHandler } from './js/actions/notification';
@@ -24,9 +23,9 @@ import {
   notifyAboutReminder,
 } from './js/actions/reminders';
 import {
-  USERS,
+  //USERS,
   PAGE_ADDRESS,
-  LOCATIONS,
+  //LOCATIONS,
   USER_ACCOUNT_TYPE,
   ADMIN_ACCOUNT_TYPE,
 } from './js/constants';
@@ -41,8 +40,8 @@ class App extends Component {
 
   state = {
     activeUser: null,
-    locationsDB: LOCATIONS,
-    userDB: USERS,
+    // locationsDB: LOCATIONS,
+    // userDB: USERS,
   };
 
   checkLoginState = () => {
@@ -81,9 +80,6 @@ class App extends Component {
                 <LandingPage
                   activeUser={this.state.activeUser}
                   users={this.state.userDB}
-                  addUserHandler={(newUser) => {
-                    addUserHandler(this, newUser);
-                  }}
                   setActiveUserHandler={(user) => {
                     setActiveUser(this, user);
                   }}

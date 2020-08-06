@@ -1,25 +1,42 @@
-import { HEALTH_CATEGORIES, USER_ACCOUNT_TYPE } from '../constants';
-
+import { API } from '../constants';
 const log = console.log;
 
-export const addUserHandler = (ctx, newUser) => {
-  log('Adding user...');
-  const users = ctx.state.userDB;
-
-  users[newUser.hash] = newUser;
-  ctx.setState({
-    userDB: users,
-  });
-  log(ctx.state.userDB);
-};
-
-export const signUpUser = (signUpCtx) => {
+export const signUpUser = (landingPage, signUpCtx) => {
   log('Creating user...');
   if (_signUpInputValidate(signUpCtx)) {
     const inputs = signUpCtx.state;
-    const newUser = new User(inputs.first, inputs.last, inputs.email, inputs.password, inputs.sex);
-    signUpCtx.props.addUserHandler(newUser);
-    log('User successfully added');
+    const { first, last, email, password, sex } = inputs;
+    const request = new Request(API.siginup, {
+      method: 'post',
+      body: JSON.stringify({ firstName: first, lastName: last, email, password, sex }),
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+    });
+
+    // Send the request with fetch()
+    fetch(request)
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        }
+      })
+      .then((res) => {
+        // check login attempt
+        if (res === undefined || res.activeUser === null || res.activeUser === undefined) {
+          landingPage.setState({
+            invalidLogin: true,
+          });
+          log('Invalid aogin attempt. Try again');
+        } else {
+          landingPage.props.setActiveUserHandler(res.activeUser);
+          log('User successfully added');
+        }
+      })
+      .catch((error) => {
+        log('Signup failed', error);
+      });
   } else {
     log('Unsuccessful in adding user');
   }
@@ -59,29 +76,6 @@ const _isEmailValid = (users, email) => {
 const _isInvalid = (value) => {
   return value !== null && value !== undefined && value !== '' && value !== 'select';
 };
-
-export class User {
-  constructor(firstName, lastName, email, password, sex) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.email = email;
-    this.password = password;
-    this.type = USER_ACCOUNT_TYPE;
-    this.sex = sex;
-    this.hash = this.email + this.password;
-    this.reminders = {
-      [HEALTH_CATEGORIES.medical]: [],
-      [HEALTH_CATEGORIES.mental]: [],
-      [HEALTH_CATEGORIES.phsycial]: [],
-    };
-    this.notifications = [];
-    this.trends = [];
-  }
-
-  getHash = () => {
-    return this.hash;
-  };
-}
 
 const _clearSignUpInputs = (ctx) => {
   ctx.setState({

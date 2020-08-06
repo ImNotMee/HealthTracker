@@ -1,6 +1,7 @@
 //Routes
 'use strict';
 const auth = require('./auth');
+const signup = require('./signup');
 const trends =  require('./trends');
 
 /**
@@ -25,6 +26,7 @@ const initRoutes = (app) => {
   });
 
   app.use('/auth', auth);
+  app.use('/account', signup);
   app.use('/trends', trends);
 };
 
