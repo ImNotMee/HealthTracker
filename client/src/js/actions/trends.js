@@ -37,7 +37,7 @@ export const avgWeight = (allUserData) => {
   let weekTotal = [0, 0, 0, 0, 0, 0, 0];
   let day = 0; // 0 = sun -> 6 = sat
   let count = 0;
-  let sum = 0;
+
   //for (let x in allUserData) {
   allUserData['weight'].forEach((r) => {
     log(r.length);
@@ -57,7 +57,7 @@ export const avgStress = (allUserData) => {
   let weekTotal = [0, 0, 0, 0, 0, 0, 0];
   let day = 0; // 0 = sun -> 6 = sat
   let count = 0;
-  let sum = 0;
+
   //for (let x in allUserData) {
   allUserData['stress'].forEach((r) => {
     log(r.length);
@@ -78,7 +78,7 @@ export const avgSleep = (allUserData) => {
   let weekTotal = [0, 0, 0, 0, 0, 0, 0];
   let day = 0; // 0 = sun -> 6 = sat
   let count = 0;
-  let sum = 0;
+
   //for (let x in allUserData) {
   allUserData['sleep'].forEach((r) => {
     log(r.length);
@@ -99,7 +99,7 @@ export const avgCalories = (allUserData) => {
   let weekTotal = [0, 0, 0, 0, 0, 0, 0];
   let day = 0; // 0 = sun -> 6 = sat
   let count = 0;
-  let sum = 0;
+
   //for (let x in allUserData) {
   allUserData['calories'].forEach((r) => {
     log(r.length);
