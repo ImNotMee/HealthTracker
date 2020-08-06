@@ -18,10 +18,10 @@ router.post('/logMood', (req, res) => {
 		} else {
 			user.user_card.Mood.value = value;
 			user.save().then((updatedUser) => {
-				console.log(updatedUser)
+				log`Updated Mood ${updatedUser}`
 				res.status(200).send(updatedUser)
 			}).catch((error) => {
-				console.log(error)
+				log(error)
 				res.status(400).send('Bad Request') 
 			})
 		}
@@ -48,10 +48,10 @@ router.post('/logSleep', (req, res) => {
 				user.user_card.Sleep.date = Date.now()
 			}
 			user.save().then((updatedUser) => {
-				console.log(updatedUser)
+				log`Updated Sleep ${updatedUser}`
 				res.status(200).send(updatedUser)
 			}).catch((error) => {
-				console.log(error)
+				log(error)
 				res.status(400).send('Bad Request') 
 			})
 		}
@@ -77,10 +77,10 @@ router.post('/logStress', (req, res) => {
 				user.user_card.Stress.date = Date.now()
 			}
 			user.save().then((updatedUser) => {
-				console.log(updatedUser)
+				log`Updated Stress ${updatedUser}`
 				res.status(200).send(updatedUser)
 			}).catch((error) => {
-				console.log(error)
+				log(error)
 				res.status(400).send('Bad Request') 
 			})
 		}
@@ -100,10 +100,10 @@ router.post('/logSickness', (req, res) => {
 		} else {
 			user.user_card.Sickness = sickness;
 			user.save().then((updatedUser) => {
-				console.log(updatedUser)
+				log`Updated Sickness ${updatedUser}`
 				res.status(200).send(updatedUser)
 			}).catch((error) => {
-				console.log(error)
+				log(error)
 				res.status(400).send('Bad Request') 
 			})
 		}
