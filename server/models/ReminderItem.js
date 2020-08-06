@@ -2,6 +2,13 @@
 const mongoose = require('mongoose');
 
 const ReminderItem = mongoose.model('ReminderItem', {
+  id: {
+    type: String,
+    required: true,
+    minlegth: 20,
+    trim: true,
+    unique: true,
+  },
   category: {
     type: String,
     required: true,
