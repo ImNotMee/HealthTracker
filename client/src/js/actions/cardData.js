@@ -207,6 +207,9 @@ export const setSickness = (card, newSickness) => {
   sendSickness(newSickness);
 };
 
+// TODO: add a reset for all the data
+// TODO: add methods for trends
+
 /////////////////////
 // API REQUESTS BELOW
 /////////////////////
