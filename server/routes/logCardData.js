@@ -61,14 +61,32 @@ router.post('/logSleep', (req, res) => {
 });
 
 router.post('/logStress', (req, res) => {
-	const completed = req.body.completed;
-	const remaining = req.body.remaining;
-	const unit = req.body.unit;
-	log(req.session.activeUser.email)
-	User.findOne({ email: req.session.activeUser.email }).then((user) => {
-		log(user)
-		res.send(user)
-	})
+	const value = req.body.value;
+	const date = req.body.date;
+
+	log(req.session.user_id)
+	User.findById(req.session.user_id).then((user) => {
+		if (!user) {
+			res.status(404).send("User not found")
+		} else {
+			user.user_card.Stress.value = value;
+			user.user_card.Stress.date = date;
+			if (date !== null | date !== undefined) {
+				user.user_card.Stress.date = date
+			} else {
+				user.user_card.Stress.date = Date.now()
+			}
+			user.save().then((updatedUser) => {
+				console.log(updatedUser)
+				res.status(200).send(updatedUser)
+			}).catch((error) => {
+				console.log(error)
+				res.status(400).send('Bad Request') 
+			})
+		}
+	}).catch((error) => {
+		res.status(500).send('Internal Server Error')  // server error
+	});
 
 });
 

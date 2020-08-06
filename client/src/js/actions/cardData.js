@@ -171,25 +171,28 @@ export const setSleep = (card, newSleepHours, newSleepQuality) => {
   card.setState({
     user: user,
   });
-  console.log(user.user_card['Sleep']['hours'], 'and ', user.user_card['Sleep']['quality']);
+  console.log(user.user_card['Sleep']);
 
   sendSleep(newSleepHours, newSleepQuality, today.now());
 };
 
 export const setStress = (card, newStress) => {
   console.log('updating Stress to ');
-  const { user_card, user } = card.state;
-  user_card['Stress']['value'] = newStress;
-
   const today = new Date();
   const day = today.getDay();
+
+  const { user } = card.state;
+  user.user_card['Stress']['value'] = newStress;
+  user.user_card['Stress']['date'] = today.now();
+
   user.trends.stress[day] = newStress;
 
   card.setState({
-    user_card: user_card,
     user: user,
   });
-  console.log(user_card['Stress']['value']);
+  console.log(user_card['Stress']);
+
+  sendSleep(newStress, today.now());
 };
 
 export const setSickness = (card, newSickness) => {
@@ -267,5 +270,39 @@ const sendSleep = (hours, quality, date = undefined) => {
     })
     .catch((error) => {
       console.log('Sleep Failed: ', error);
+    });
+};
+
+const sendStress = (value, date = undefined) => {
+  const reqBody = {
+    value: value,
+    date: date,
+  };
+
+  const request = new Request('http://localhost:5000/logCardData/logStress', {
+    method: 'post',
+    body: JSON.stringify(reqBody),
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+    },
+  });
+
+  // Send the request with fetch()
+  fetch(request)
+    .then((res) => {
+      if (res.status === 200) {
+        res
+          .json()
+          .then((json) => {
+            console.log`Updated Stress: ${json}`;
+          })
+          .catch((error) => {
+            console.log('Stress Failed: ', error);
+          });
+      }
+    })
+    .catch((error) => {
+      console.log('Stress Failed: ', error);
     });
 };
