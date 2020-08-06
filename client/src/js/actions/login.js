@@ -58,7 +58,7 @@ export const onLoginHandler = (landingPage, email, password) => {
         landingPage.setState({
           invalidLogin: true,
         });
-        log('Invalid aogin attempt. Try again');
+        log('Invalid login attempt. Try again');
       } else {
         landingPage.setState({
           userEmail: email,
