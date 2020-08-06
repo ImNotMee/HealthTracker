@@ -101,7 +101,7 @@ MongoClient.connect(DB_URI, DEFAULT_DB_CONNECT_OPS, (error, client) => {
           Calories: {
             completed: 300,
             remaining: 1700,
-            unit: 'Calories',
+            unit: 'calories',
             date: '2020-07-27T10:15',
           },
           Mood: {
@@ -118,7 +118,7 @@ MongoClient.connect(DB_URI, DEFAULT_DB_CONNECT_OPS, (error, client) => {
           },
           Sickness: [
           ],
-        }        
+        },        
       },
       {
         firstName: 'IAmAdmin',

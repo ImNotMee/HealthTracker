@@ -144,12 +144,15 @@ export const setCalories = (card, newCalories) => {
 
 export const setMood = (card, newMood) => {
   console.log('updating Mood to ');
-  const { user_card } = card.state;
-  user_card['Mood']['value'] = newMood;
+  const { user } = card.state;
+  user.user_card['Mood']['value'] = newMood;
   card.setState({
-    user_card: user_card,
+    user: user,
   });
-  console.log(user_card['Mood']['value']);
+  console.log(user.user_card['Mood']['value']);
+
+  // updating server
+  sendMood(newMood);
 };
 
 export const setSleep = (card, newSleepHours, newSleepQuality) => {
@@ -160,6 +163,8 @@ export const setSleep = (card, newSleepHours, newSleepQuality) => {
 
   const today = new Date();
   const day = today.getDay();
+
+  // do trend stuff here
   user.trends.sleep[day] = newSleepHours;
 
   card.setState({
@@ -193,4 +198,37 @@ export const setSickness = (card, newSickness) => {
     user_card: user_card,
   });
   console.log(user_card['Sickness']);
+};
+
+const sendMood = (mood) => {
+  const reqBody = {
+    value: mood,
+  };
+
+  const request = new Request('http://localhost:5000/logCardData/logMood', {
+    method: 'post',
+    body: JSON.stringify(reqBody),
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+    },
+  });
+
+  // Send the request with fetch()
+  fetch(request)
+    .then((res) => {
+      if (res.status === 200) {
+        res
+          .json()
+          .then((json) => {
+            console.log`Updated Mood: ${json}`;
+          })
+          .catch((error) => {
+            console.log('Mood Failed: ', error);
+          });
+      }
+    })
+    .catch((error) => {
+      console.log('Mood Failed: ', error);
+    });
 };
