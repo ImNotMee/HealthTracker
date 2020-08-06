@@ -65,6 +65,7 @@ const createNewUser = ({ firstName, lastName, email, sex }) => {
     stress: [],
   });
 
+  // to do add card data 
   let reminders = new Reminders({
     [Constants.HEALTH_CATEGORIES.medical]: [],
     [Constants.HEALTH_CATEGORIES.mental]: [],

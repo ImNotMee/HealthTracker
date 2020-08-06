@@ -32,6 +32,11 @@ const User = mongoose.model('User', {
     minlegth: 1,
     trim: true,
     unique: true,
+    /** 
+    validate: {
+      validator: validator.isEmail, // custom validator
+      message: 'Not valid email',
+    },*/
   },
   type: {
     type: String,
@@ -60,9 +65,9 @@ const User = mongoose.model('User', {
     type: Trends.schema,
     required: false,
   },
-    userCard: {
-        type: CardData.schema,
-        required: false,
+  user_card: {
+      type: CardData.schema,
+      required: false,
     },
 });
 
