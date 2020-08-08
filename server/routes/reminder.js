@@ -104,7 +104,6 @@ router.patch('/update/:cat/:r_id/', mongoChecker, (req, res) => {
   User.findById(req.session.user_id)
     .then(async (user) => {
       const reminders = user.reminders[cat];
-      console.log('TEST', reminders);
       const index = await reminders.map((rem, i) => {
         if (rem.id === rid) {
           return i;

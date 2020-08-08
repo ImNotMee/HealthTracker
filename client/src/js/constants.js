@@ -267,4 +267,12 @@ export const API = {
   updateReminder: (cat, id) => {
     return `http://localhost:5000/reminder/update/${cat}/${id}`;
   },
+  allLocation: 'http://localhost:5000/locations/all',
+  addLocation: 'http://localhost:5000/locations/add',
+  deleteLocation: (id) => {
+    return `http://localhost:5000/locations/delete/${id}`;
+  },
+  updateLocation: (id) => {
+    return `http://localhost:5000/locations/update/${id}`;
+  },
 };
