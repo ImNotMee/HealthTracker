@@ -32,9 +32,36 @@ MongoClient.connect(DB_URI, DEFAULT_DB_CONNECT_OPS, (error, client) => {
 
   const db = client.db(DB_NAME);
 
+  db.collection(DB_COLLECTIONS.locations).insertMany(
+    [
+      {
+        id: "Queen's Park",
+        name: "Queen's Park",
+        isAvaliable: true,
+        address: '111 Wellesley St W, Toronto, ON',
+        country: 'Canada',
+        imageUrl:
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Looking_down_University_Avenue_Toronto_August_2012.jpg/1200px-Looking_down_University_Avenue_Toronto_August_2012.jpg',
+        maxOccupancy: 53,
+        currOccupancy: 52,
+        description: 'some information about the park',
+      },
+    ],
+    (error, result) => {
+      if (error) {
+        log("Can't insert deafult locations", error);
+      } else {
+        log(result.ops);
+        log(result.ops[0]._id.getTimestamp());
+      }
+      // close connection
+      client.close();
+    },
+  );
+
   db.collection(DB_COLLECTIONS.login).insertMany([userLogin, adminLogin], (error, result) => {
     if (error) {
-      log("Can't insert deafult users", error);
+      log("Can't insert deafult logins", error);
     } else {
       log(result.ops);
       log(result.ops[0]._id.getTimestamp());

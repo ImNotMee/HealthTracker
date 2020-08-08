@@ -5,6 +5,7 @@ const DB_NAME = 'HealthTrackerApp';
 const DB_COLLECTIONS = {
   users: 'users',
   login: 'logins',
+  locations: 'locations',
 };
 
 const DEFAULT_DB_CONNECT_OPS = {
