@@ -1,6 +1,5 @@
 import { NOTIFICATION_TYPE, USER_ACCOUNT_TYPE, API } from '../constants';
 import { Notification } from './notification';
-import { AppLocation } from './checkIn';
 
 const log = console.log;
 
