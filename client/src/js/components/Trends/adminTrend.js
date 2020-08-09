@@ -16,14 +16,6 @@ class AdminTrends extends Component {
 
   componentDidMount() {
     this.fetchData();
-    // this.setState({
-    //   avgData: [
-    //     [111,113,144,145,145,155,143],
-    //     [111,113,144,145,145,155,143],
-    //     [111,113,144,145,145,155,143],
-    //     [111,113,144,145,145,155,143]
-    //   ]
-    // });
   }
 
   fetchData() {
@@ -35,7 +27,7 @@ class AdminTrends extends Component {
       .then((responseJson) => {
         const d = getAllUserTrends(responseJson);
         this.setState({ avgData: d });
-        console.log(this.state.avgData);
+        //console.log(this.state.avgData);
       });
   }
 
@@ -63,7 +55,7 @@ class AdminTrends extends Component {
         this.setState({
           trends: {
             title: 'Average Calorie Intake (cal)',
-            data: this.state.avgData[2],
+            data: this.state.avgData[3],
             type: 'bar',
           },
         });
@@ -72,7 +64,7 @@ class AdminTrends extends Component {
         this.setState({
           trends: {
             title: 'Average Stress Level (1- 10)',
-            data: this.state.avgData[3],
+            data: this.state.avgData[2],
             type: 'line',
           },
         });

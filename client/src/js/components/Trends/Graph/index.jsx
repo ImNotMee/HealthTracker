@@ -15,7 +15,7 @@ class Graph extends Component {
 
   buildChart = () => {
     const graphRef = this.chartRef.current.getContext('2d');
-    new Chart(graphRef, {
+    const char = new Chart(graphRef, {
       type: this.props.type,
       data: {
         labels: DAYSOFWEEK,

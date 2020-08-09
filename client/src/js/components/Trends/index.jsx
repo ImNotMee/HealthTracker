@@ -53,7 +53,7 @@ class Trends extends Component {
       .then((responseJson) => {
         this.setState({ calories: responseJson.calories });
       });
-    console.log(this.state);
+    //console.log(this.state);
   }
 
   renderGraph(type) {
