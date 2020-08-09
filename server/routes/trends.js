@@ -108,59 +108,78 @@ router.post('/updateWeight', (req, res) => {
     } else {
       const selected = user.trends.weight.filter(history => history.date != date);
       selected.push({"date": date, "value": value})
-      log(selected);
+      user.trends.weight = selected;
       user.save().then(r => {
         res.send({"updated": selected });
       }).catch((e) => {
-        log(e);
+          res.status(404).send('Cannot add weight data to trends');
       })
     }
-  }).catch((e) => {
-    res.status(404).send('Cannot add weight data to trends');
-  });
+  })
 });
 
 router.post('/updateSleep', (req, res) => {
-  const data = {date: req.body.date, value: req.body.value};
+  const value = parseInt(req.body.value, 10);
+  const date = req.body.date;
   const id = req.session.user_id;
 
-  User.findOneAndUpdate({_id: id}, {"$push": { "trends.sleep" : data}},{new: true}).then((user) => {
+  User.findById(id).then((user) => {
     if (!user) {
       res.status(404).send();
     } else {
-      res.send({"updated": user.trends.sleep});
+      const selected = user.trends.sleep.filter(history => history.date != date);
+      selected.push({"date": date, "value": value})
+      user.trends.sleep = selected;
+      user.save().then(r => {
+        res.send({"updated": selected });
+      }).catch((e) => {
+          res.status(404).send('Cannot add sleep data to trends');
+      })
     }
-  }).catch((e) => {
-    res.status(404).send('Cannot add sleep data to trends');
-  });
+  })
 });
+
+
 router.post('/updateStress', (req, res) => {
-  const data = {date: req.body.date, value: req.body.value};
+  const value = parseInt(req.body.value, 10);
+  const date = req.body.date;
   const id = req.session.user_id;
 
-  User.findOneAndUpdate({_id: id}, {"$push": { "trends.stress" : data}},{new: true}).then((user) => {
+  User.findById(id).then((user) => {
     if (!user) {
       res.status(404).send();
     } else {
-      res.send({"updated": user.trends.stress});
+      const selected = user.trends.stress.filter(history => history.date != date);
+      selected.push({"date": date, "value": value})
+      user.trends.stress = selected;
+      user.save().then(r => {
+        res.send({"updated": selected });
+      }).catch((e) => {
+          res.status(404).send('Cannot add stress data to trends');
+      })
     }
-  }).catch((e) => {
-    res.status(404).send('Cannot add stress data to trends');
-  });
+  })
 });
+
 router.post('/updateCalories', (req, res) => {
-  const data = {date: req.body.date, value: req.body.value};
+  const value = parseInt(req.body.value, 10);
+  const date = req.body.date;
   const id = req.session.user_id;
 
-  User.findOneAndUpdate({_id: id}, {"$push": { "trends.calories" : data}},{new: true}).then((user) => {
+  User.findById(id).then((user) => {
     if (!user) {
       res.status(404).send();
     } else {
-      res.send({"updated": user.trends.calories});
+      const selected = user.trends.calories.filter(history => history.date != date);
+      selected.push({"date": date, "value": value})
+      user.trends.calories = selected;
+      user.save().then(r => {
+        res.send({"updated": selected });
+      }).catch((e) => {
+          res.status(404).send('Cannot add calories data to trends');
+      })
     }
-  }).catch((e) => {
-    res.status(404).send('Cannot add calories data to trends');
-  });
+  })
 });
 
 module.exports = router;
