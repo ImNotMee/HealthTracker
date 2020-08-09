@@ -97,15 +97,23 @@ router.get('/getAll', (req, res) => {
 
 // Adding user data to trends
 router.post('/updateWeight', (req, res) => {
-  const data = {date: req.body.date, value: req.body.value};
-  const id = req.session.user_id;
+  const value = parseInt(req.body.value, 10);
+  const date = req.body.date;
+  const id = req.body.user_id;
 
-  User.findOneAndUpdate({_id: id}, {"$push": { "trends.weight" : data}},{new: true}).then((user) => {
+  //User.findOneAndUpdate({_id: id}, {"$push": { "trends.weight" : data}},{new: true}).then((user) => {
+  User.findById(id).then((user) => {
     if (!user) {
       res.status(404).send();
     } else {
-      log(user.trends.weight);
-      res.send({"updated": user.trends.weight});
+      const selected = user.trends.weight.filter(history => history.date != date);
+      selected.push({"date": date, "value": value})
+      log(selected);
+      user.save().then(r => {
+        res.send({"updated": selected });
+      }).catch((e) => {
+        log(e);
+      })
     }
   }).catch((e) => {
     res.status(404).send('Cannot add weight data to trends');

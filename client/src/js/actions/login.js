@@ -13,7 +13,7 @@ export const readCookie = (app) => {
     })
     .then((json) => {
       if (json && json.activeUser) {
-        setActiveUser(app, json.activeUser);
+        setActiveUserAndLocs(app, json.activeUser, json.locations);
       }
       log('Cookie read');
     })
@@ -22,10 +22,11 @@ export const readCookie = (app) => {
     });
 };
 
-export const setActiveUser = (app, user) => {
+export const setActiveUserAndLocs = (app, user, locations) => {
   app.setState(
     {
       activeUser: user,
+      locationsDB: locations,
     },
     () => {
       log(`${app.state.activeUser === user ? 'Successfully' : 'Unsuccessfully'} login`);
@@ -58,14 +59,14 @@ export const onLoginHandler = (landingPage, email, password) => {
         landingPage.setState({
           invalidLogin: true,
         });
-        log('Invalid aogin attempt. Try again');
+        log('Invalid login attempt. Try again');
       } else {
         landingPage.setState({
           userEmail: email,
           userPassword: password,
           invalidLogin: false,
         });
-        landingPage.props.setActiveUserHandler(res.activeUser);
+        landingPage.props.setActiveUserAndLocsHandler(res.activeUser, res.locations);
       }
     })
     .catch((error) => {

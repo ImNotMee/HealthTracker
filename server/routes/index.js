@@ -2,6 +2,8 @@
 'use strict';
 const auth = require('./auth');
 const signup = require('./signup');
+const reminder = require('./reminder');
+const locations = require('./locations');
 const trends =  require('./trends');
 
 /**
@@ -25,8 +27,10 @@ const initRoutes = (app) => {
     next();
   });
 
+  app.use('/locations', locations);
   app.use('/auth', auth);
   app.use('/account', signup);
+  app.use('/reminder', reminder);
   app.use('/trends', trends);
 };
 
