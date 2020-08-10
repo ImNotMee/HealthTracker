@@ -17,7 +17,6 @@ router.post('/logBMI', (req, res) => {
 			user.user_card.BMI.weight = req.body.weight
 			user.user_card.BMI.height = req.body.height
 			user.user_card.BMI.unit = req.body.unit
-			user.user_card.BMI.date =req.body.date
 			user.save().then((updatedUser) => {
 				res.status(200).send(updatedUser)
 			}).catch((error) => {
@@ -63,7 +62,6 @@ router.post('/logCalories', (req, res) => {
 			user.user_card.Calories.completed = req.body.completed
 			user.user_card.Calories.remaining = req.body.remaining
 			user.user_card.Calories.unit = req.body.unit
-			user.user_card.Calories.date = req.body.date
 			user.save().then((updatedUser) => {
 				res.status(200).send(updatedUser)
 			}).catch((error) => {
