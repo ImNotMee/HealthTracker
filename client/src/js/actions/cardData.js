@@ -90,7 +90,7 @@ export const setBMI = (card, newBMI, newHeight, newWeight, newUnit) => {
     weight: user.user_card['BMI']['weight'],
     unit: user.user_card['BMI']['unit'],
   };
-  const request = new Request('http://localhost:5000/logPhysical/logBMI', {
+  const request = new Request('http://localhost:5000/logCardData/logBMI', {
     method: 'post',
     body: JSON.stringify(BMIInfo),
     headers: {
@@ -129,7 +129,7 @@ export const setWater = (card, newWater) => {
     remaining: user.user_card['Water']['remaining'],
     unit: 'ml',
   };
-  const request = new Request('http://localhost:5000/logPhysical/logWater', {
+  const request = new Request('http://localhost:5000/logCardData/logWater', {
     method: 'post',
     body: JSON.stringify(waterInfo),
     headers: {
@@ -173,7 +173,7 @@ export const setCalories = (card, newCalories) => {
     remaining: user.user_card['Calories']['remaining'],
     unit: 'Calories',
   };
-  const request = new Request('http://localhost:5000/logPhysical/logCalories', {
+  const request = new Request('http://localhost:5000/logCardData/logCalories', {
     method: 'post',
     body: JSON.stringify(caloriesInfo),
     headers: {
