@@ -2,9 +2,12 @@
 const { mongoose } = require('../db/mongoose');
 mongoose.set('bufferCommands', false);
 const { Login } = require('../models/Login');
+const { Locations } = require('../models/Locations');
 const { User } = require('../models/User');
 const express = require('express');
 const router = express.Router();
+
+const log = console.log;
 
 /**
  * Login user
@@ -26,7 +29,25 @@ router.post('/login', (req, res) => {
           // const activeUser = { email: login.email, type: user.type };
           // req.session.activeUser = activeUser;
           // res.send({ activeUser: activeUser });
-          res.send({ activeUser: user });
+
+          Locations.find({})
+            .then(async (locations) => {
+              const resLocs = {};
+              await locations.forEach((loc) => {
+                resLocs[loc.name] = loc;
+              });
+              log('All locations \n', resLocs);
+              res.status(200).send({ activeUser: user, locations: resLocs });
+            })
+            .catch((error) => {
+              if (isMongoError(error)) {
+                log('Internal server error getting all locations:\n', error);
+                res.status(500).send('Internal server error');
+              } else {
+                log('Bad request:\n', error);
+                res.status(400).send('Bad Request');
+              }
+            });
         })
         .catch((e) => {
           res.status(500).send('Cannot find user');

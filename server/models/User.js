@@ -37,6 +37,7 @@ const User = mongoose.model('User', {
       validator: validator.isEmail, // custom validator
       message: 'Not valid email',
     },*/
+    // TODO: fix validation
   },
   type: {
     type: String,

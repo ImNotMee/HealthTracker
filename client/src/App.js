@@ -11,7 +11,7 @@ import {
   deleteLocationHandler,
   editLocationHandler,
 } from './js/actions/adminCheckIn';
-import { setActiveUser, readCookie } from './js/actions/login';
+import { setActiveUserAndLocs, readCookie } from './js/actions/login';
 import { logoutUser } from './js/actions/logout';
 import { removeNotificationHandler, addTimerHandler } from './js/actions/notification';
 import { checkInHandler, checkoutHandler } from './js/actions/checkIn';
@@ -25,7 +25,7 @@ import {
 import {
   //USERS,
   PAGE_ADDRESS,
-  //LOCATIONS,
+  LOCATIONS,
   USER_ACCOUNT_TYPE,
   ADMIN_ACCOUNT_TYPE,
 } from './js/constants';
@@ -40,7 +40,7 @@ class App extends Component {
 
   state = {
     activeUser: null,
-    // locationsDB: LOCATIONS,
+    locationsDB: LOCATIONS,
     // userDB: USERS,
   };
 
@@ -80,8 +80,8 @@ class App extends Component {
                 <LandingPage
                   activeUser={this.state.activeUser}
                   users={this.state.userDB}
-                  setActiveUserHandler={(user) => {
-                    setActiveUser(this, user);
+                  setActiveUserAndLocsHandler={(user, locs) => {
+                    setActiveUserAndLocs(this, user, locs);
                   }}
                 />
               )}

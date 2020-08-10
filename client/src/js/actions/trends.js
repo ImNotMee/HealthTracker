@@ -1,81 +1,94 @@
 const log = console.log;
 
-export const avgWeight = (allUser) => {
-  let weekAvg = [];
+export const getAllUserTrends = (json) => {
+  let data = [];
+  data.push(avgWeight(json));
+  data.push(avgStress(json));
+  data.push(avgSleep(json));
+  data.push(avgCalories(json));
+  return data;
+};
+
+// admin trend functions
+export const avgWeight = (allUserData) => {
+  let weekTotal = [0, 0, 0, 0, 0, 0, 0];
+  let day = 0; // 0 = sun -> 6 = sat
   let count = 0;
-  for (let i = 0; i < 7; i++) {
-    let sum = 0;
-    for (let x in allUser) {
-      if (allUser[x].type === 'user') {
-        sum = sum + allUser[x].trends.weight[i];
-        count = count + 1;
-      }
+
+  //for (let x in allUserData) {
+  allUserData['weight'].forEach((r) => {
+    log(r.length);
+    for (let i = 0; i < 7; i++) {
+      weekTotal[day] = weekTotal[day] + r[i].value;
+      day = day + 1;
     }
-    if (count !== 0) {
-      weekAvg.push(sum / count);
-    }
-    count = 0;
-  }
-  log('average weight loaded');
+    day = 0;
+  });
+  count = count + 1;
+  //}
+  const weekAvg = weekTotal.map((x) => x / count);
   return weekAvg;
 };
 
-export const avgStress = (allUser) => {
-  let weekAvg = [];
+export const avgStress = (allUserData) => {
+  let weekTotal = [0, 0, 0, 0, 0, 0, 0];
+  let day = 0; // 0 = sun -> 6 = sat
   let count = 0;
-  for (let i = 0; i < 7; i++) {
-    let sum = 0;
-    for (let x in allUser) {
-      if (allUser[x].type === 'user') {
-        sum = sum + allUser[x].trends.stress[i];
-        count = count + 1;
-      }
+
+  //for (let x in allUserData) {
+  allUserData['stress'].forEach((r) => {
+    log(r.length);
+    for (let i = 0; i < 7; i++) {
+      weekTotal[day] = weekTotal[day] + r[i].value;
+      day = day + 1;
     }
-    if (count !== 0) {
-      weekAvg.push(sum / count);
-    }
-    count = 0;
-  }
+    day = 0;
+  });
+  count = count + 1;
+  //}
+  const weekAvg = weekTotal.map((x) => x / count);
   log('average stress  loaded');
   return weekAvg;
 };
 
-export const avgSleep = (allUser) => {
-  let weekAvg = [];
+export const avgSleep = (allUserData) => {
+  let weekTotal = [0, 0, 0, 0, 0, 0, 0];
+  let day = 0; // 0 = sun -> 6 = sat
   let count = 0;
-  for (let i = 0; i < 7; i++) {
-    let sum = 0;
-    for (let x in allUser) {
-      if (allUser[x].type === 'user') {
-        sum = sum + allUser[x].trends.sleep[i];
-        count = count + 1;
-      }
+
+  //for (let x in allUserData) {
+  allUserData['sleep'].forEach((r) => {
+    log(r.length);
+    for (let i = 0; i < 7; i++) {
+      weekTotal[day] = weekTotal[day] + r[i].value;
+      day = day + 1;
     }
-    if (count !== 0) {
-      weekAvg.push(sum / count);
-    }
-    count = 0;
-  }
+    day = 0;
+  });
+  count = count + 1;
+  //}
+  const weekAvg = weekTotal.map((x) => x / count);
   log('average sleep loaded');
   return weekAvg;
 };
 
-export const avgCalories = (allUser) => {
-  let weekAvg = [];
+export const avgCalories = (allUserData) => {
+  let weekTotal = [0, 0, 0, 0, 0, 0, 0];
+  let day = 0; // 0 = sun -> 6 = sat
   let count = 0;
-  for (let i = 0; i < 7; i++) {
-    let sum = 0;
-    for (let x in allUser) {
-      if (allUser[x].type === 'user') {
-        sum = sum + allUser[x].trends.calories[i];
-        count = count + 1;
-      }
+
+  //for (let x in allUserData) {
+  allUserData['calories'].forEach((r) => {
+    log(r.length);
+    for (let i = 0; i < 7; i++) {
+      weekTotal[day] = weekTotal[day] + r[i].value;
+      day = day + 1;
     }
-    if (count !== 0) {
-      weekAvg.push(sum / count);
-    }
-    count = 0;
-  }
+    day = 0;
+  });
+  count = count + 1;
+  //}
+  const weekAvg = weekTotal.map((x) => x / count);
   log('average calories loaded');
   return weekAvg;
 };

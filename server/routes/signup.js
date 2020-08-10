@@ -34,7 +34,20 @@ router.post('/signup', (req, res) => {
         .then((result) => {
           log('New login added in DB', result);
           req.session.login_id = login._id;
-          res.status(200).send({ activeUser: activeUser });
+          Locations.find({})
+            .then((locations) => {
+              log('All locations \n', locations);
+              res.status(200).send({ activeUser: user, locations });
+            })
+            .catch((error) => {
+              if (isMongoError(error)) {
+                log('Internal server error getting all locations:\n', error);
+                res.status(500).send('Internal server error');
+              } else {
+                log('Bad request:\n', error);
+                res.status(400).send('Bad Request');
+              }
+            });
         })
         .catch((error) => {
           if (isMongoError(error)) {

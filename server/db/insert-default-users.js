@@ -32,9 +32,36 @@ MongoClient.connect(DB_URI, DEFAULT_DB_CONNECT_OPS, (error, client) => {
 
   const db = client.db(DB_NAME);
 
+  db.collection(DB_COLLECTIONS.locations).insertMany(
+    [
+      {
+        id: "Queen's Park",
+        name: "Queen's Park",
+        isAvaliable: true,
+        address: '111 Wellesley St W, Toronto, ON',
+        country: 'Canada',
+        imageUrl:
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Looking_down_University_Avenue_Toronto_August_2012.jpg/1200px-Looking_down_University_Avenue_Toronto_August_2012.jpg',
+        maxOccupancy: 53,
+        currOccupancy: 52,
+        description: 'some information about the park',
+      },
+    ],
+    (error, result) => {
+      if (error) {
+        log("Can't insert deafult locations", error);
+      } else {
+        log(result.ops);
+        log(result.ops[0]._id.getTimestamp());
+      }
+      // close connection
+      client.close();
+    },
+  );
+
   db.collection(DB_COLLECTIONS.login).insertMany([userLogin, adminLogin], (error, result) => {
     if (error) {
-      log("Can't insert deafult users", error);
+      log("Can't insert deafult logins", error);
     } else {
       log(result.ops);
       log(result.ops[0]._id.getTimestamp());
@@ -61,7 +88,7 @@ MongoClient.connect(DB_URI, DEFAULT_DB_CONNECT_OPS, (error, client) => {
               category: 'Medical Health',
               subCategory: 'Appointments',
               name: 'Annual Check Up',
-              time: '2020-07-27T10:15',
+              time: '2020-07-27',
               note: 'Call Dr.Jones 1hr before',
               status: 'active',
             },
@@ -79,10 +106,120 @@ MongoClient.connect(DB_URI, DEFAULT_DB_CONNECT_OPS, (error, client) => {
           },
         ],
         trends: {
-          weight: [120, 119, 119, 120, 122, 119, 117],
-          sleep: [5, 6, 6, 7, 9, 10, 7],
-          calories: [1800, 1899, 2100, 2000, 1789, 1987, 1788],
-          stress: [2, 3, 2, 1, 4, 6, 5],
+          weight: [
+            {
+              date:"2020-08-01",
+              value: 120,
+            },
+            {
+              date:"2020-08-02",
+              value: 121,
+            },
+            {
+              date:"2020-08-03",
+              value: 124,
+            },
+            {
+              date:"2020-08-04",
+              value: 121,
+            },
+            {
+              date:"2020-08-05",
+              value: 119,
+            },
+            {
+              date:"2020-08-06",
+              value: 118,
+            },
+            {
+              date:"2020-08-07",
+              value: 120,
+            }
+          ],
+          sleep: [  {
+              date:"2020-08-01",
+              value: 7,
+            },
+            {
+              date:"2020-08-02",
+              value: 5,
+            },
+            {
+              date:"2020-08-03",
+              value: 5,
+            },
+            {
+              date:"2020-08-04",
+              value: 7,
+            },
+            {
+              date:"2020-08-05",
+              value: 6,
+            },
+            {
+              date:"2020-08-06",
+              value: 8,
+            },
+            {
+              date:"2020-08-07",
+              value: 9,
+            }],
+          calories: [  {
+              date:"2020-08-01",
+              value: 1600,
+            },
+            {
+              date:"2020-08-02",
+              value: 2000,
+            },
+            {
+              date:"2020-08-03",
+              value: 2200,
+            },
+            {
+              date:"2020-08-04",
+              value: 2300,
+            },
+            {
+              date:"2020-08-05",
+              value: 1900,
+            },
+            {
+              date:"2020-08-06",
+              value: 1987,
+            },
+            {
+              date:"2020-08-07",
+              value: 1876,
+            }],
+          stress: [  {
+              date:"2020-08-01",
+              value: 1,
+            },
+            {
+              date:"2020-08-02",
+              value: 6,
+            },
+            {
+              date:"2020-08-03",
+              value: 3,
+            },
+            {
+              date:"2020-08-04",
+              value: 5,
+            },
+            {
+              date:"2020-08-05",
+              value: 4,
+            },
+            {
+              date:"2020-08-06",
+              value: 3,
+            },
+            {
+              date:"2020-08-07",
+              value: 3,
+            }],
         },
         user_card: {
           BMI: {

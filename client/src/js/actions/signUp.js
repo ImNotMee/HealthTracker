@@ -30,7 +30,7 @@ export const signUpUser = (landingPage, signUpCtx) => {
           });
           log('Invalid aogin attempt. Try again');
         } else {
-          landingPage.props.setActiveUserHandler(res.activeUser);
+          landingPage.props.setActiveUserAndLocsHandler(res.activeUser, res.locations);
           log('User successfully added');
         }
       })
