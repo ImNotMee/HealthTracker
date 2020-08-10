@@ -1,3 +1,7 @@
+const datetime = require('date-and-time');
+require('date-and-time/plugin/meridiem');
+datetime.plugin('meridiem');
+
 export const fetchCardData = (user) => {
   // it should call an endpoint to fetch user card data
   const user_card = {
