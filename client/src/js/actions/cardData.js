@@ -89,6 +89,7 @@ export const setBMI = (card, newBMI, newHeight, newWeight, newUnit) => {
     height: user.user_card['BMI']['height'],
     weight: user.user_card['BMI']['weight'],
     unit: user.user_card['BMI']['unit'],
+    date: datetime.format(Date.now(), 'YYYY-MM-DD'),
   };
   const request = new Request('http://localhost:5000/logPhysical/logBMI', {
     method: 'post',
@@ -172,6 +173,7 @@ export const setCalories = (card, newCalories) => {
     completed: user.user_card['Calories']['completed'],
     remaining: user.user_card['Calories']['remaining'],
     unit: 'Calories',
+    date: datetime.format(Date.now(), 'YYYY-MM-DD'),
   };
   const request = new Request('http://localhost:5000/logPhysical/logCalories', {
     method: 'post',
