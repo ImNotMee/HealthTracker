@@ -13,6 +13,34 @@ import { NavLink } from 'react-router-dom';
 class ManageUser extends Component {
   onClickDeleteUser = (user) => {
     if (user in USERS) {
+      const userEmail = {
+        email: USERS[user].email,
+      };
+      const request = new Request('http://localhost:5000/manageUser/deleteUser', {
+        method: 'post',
+        body: JSON.stringify(userEmail),
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+        },
+      });
+
+      fetch(request)
+        .then((res) => {
+          if (res.status === 200) {
+            res
+              .json()
+              .then((json) => {
+                console.log`user Info sent: ${json}`;
+              })
+              .catch((error) => {
+                console.log('sent Failed: ', error);
+              });
+          }
+        })
+        .catch((error) => {
+          console.log('sent Failed: ', error);
+        });
       delete USERS[user];
       this.forceUpdate();
     }
@@ -22,6 +50,36 @@ class ManageUser extends Component {
       USERS[user].type = ADMIN_ACCOUNT_TYPE;
       USERS[user].reminders = { [ADMIN_REMINDER_TYPES.task]: [] };
       this.forceUpdate();
+
+      const userEmail = {
+        email: USERS[user].email,
+      };
+
+      const request = new Request('http://localhost:5000/manageUser/assignAdmin', {
+        method: 'post',
+        body: JSON.stringify(userEmail),
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+        },
+      });
+
+      fetch(request)
+        .then((res) => {
+          if (res.status === 200) {
+            res
+              .json()
+              .then((json) => {
+                console.log`user Info sent: ${json}`;
+              })
+              .catch((error) => {
+                console.log('sent Failed: ', error);
+              });
+          }
+        })
+        .catch((error) => {
+          console.log('sent Failed: ', error);
+        });
     }
   };
 
