@@ -10,10 +10,10 @@ const mapStyles = {
 };
 
 export class MapContainer extends Component {
-  constructor(props) {
-    super(props);
-    //this.getAddress = this.getAddress.bind(this);
-  }
+  // constructor(props) {
+  //   super(props);
+  //   //this.getAddress = this.getAddress.bind(this);
+  // }
 
   state = {
     user: this.props.activeUser,
