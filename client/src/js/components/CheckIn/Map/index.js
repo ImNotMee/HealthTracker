@@ -10,11 +10,6 @@ const mapStyles = {
 };
 
 export class MapContainer extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   //this.getAddress = this.getAddress.bind(this);
-  // }
-
   state = {
     user: this.props.activeUser,
     showingInfoWindow: false,
@@ -54,7 +49,7 @@ export class MapContainer extends Component {
     fetch(url)
       .then((response) => response.json())
       .then((responseJson) => {
-        console.log(responseJson.results[0].geometry.location);
+        //console.log(responseJson.results[0].geometry.location);
         this.setState({
           area: responseJson.results[0].geometry.location,
         });
@@ -71,7 +66,11 @@ export class MapContainer extends Component {
           initialCenter={{ lat: 43.6643, lng: -79.3923 }}
           mapTypeControl={false}
         >
-          <Marker onClick={this.onMarkerClick} name={this.props.location.name} />
+          <Marker
+            onClick={this.onMarkerClick}
+            name={this.props.location.name}
+            position={{ lat: 43.6643, lng: -79.3923 }}
+          />
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
