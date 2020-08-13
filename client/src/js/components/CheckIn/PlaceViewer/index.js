@@ -7,7 +7,6 @@ import goodIcon from '../../../../assets/good_status.png';
 import badIcon from '../../../../assets/bad_status.png';
 import { isCheckInValid } from '../../../actions/checkIn';
 import { ADMIN_ACCOUNT_TYPE } from '../../../constants';
-import map from '../../../../assets/map.png';
 import GoogleApiWrapper from '../Map/index.js';
 import './styles.css';
 

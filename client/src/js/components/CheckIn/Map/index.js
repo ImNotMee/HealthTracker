@@ -61,7 +61,6 @@ export class MapContainer extends Component {
   };
 
   render() {
-    const { location, activeUser } = this.props;
     return (
       <div id="googleMapWrapper">
         <Map
