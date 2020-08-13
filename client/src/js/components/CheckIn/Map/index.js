@@ -12,18 +12,19 @@ const mapStyles = {
 export class MapContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      user: this.props.activeUser,
-      showingInfoWindow: false,
-      area: {},
-      activeMarker: {},
-      selectedPlace: {},
-    };
-    this.getAddress = this.getAddress.bind(this);
+    //this.getAddress = this.getAddress.bind(this);
   }
 
+  state = {
+    user: this.props.activeUser,
+    showingInfoWindow: false,
+    area: {},
+    activeMarker: {},
+    selectedPlace: {},
+  };
+
   componentDidMount() {
-    this.getAddress();
+    //this.getAddress();
   }
 
   onMarkerClick = (props, marker, e) =>
@@ -78,7 +79,7 @@ export class MapContainer extends Component {
             maxWidth={200}
           >
             <div>
-              <h4>{this.props.location.name}</h4>
+              <h3>{this.props.location.name}</h3>
               <p>Address: {this.props.location.address}</p>
               <p>Information: {this.props.location.description}</p>
               <p>Max Occupancy: {this.props.location.maxOccupancy}</p>
