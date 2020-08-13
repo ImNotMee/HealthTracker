@@ -24,7 +24,7 @@ export class MapContainer extends Component {
   };
 
   componentDidMount() {
-    //this.getAddress();
+    this.getAddress();
   }
 
   onMarkerClick = (props, marker, e) =>
