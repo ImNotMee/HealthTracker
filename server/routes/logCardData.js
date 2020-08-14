@@ -7,6 +7,28 @@ const { reset } = require('nodemon');
 const router = express.Router();
 const log = console.log;
 
+router.post('/reset', (req, res) => {
+	User.findById(req.session.user_id).then((user) => {
+		if (!user) {
+			res.status(404).send('Resource not found')
+		}
+		else {
+			user.trends = user.user_card.push(user.curr_card)
+			user.user_card = req.body
+			user.save().then((updatedUser) => {
+				res.status(200).send(updatedUser)
+			}).catch((error) => {
+				log(error)
+				res.status(400).send('Bad Request')
+			})
+		}
+	}).catch((e) => {
+		log('cant find user', e)
+		res.status(500).send('Internal Server Error')
+	})
+})
+
+
 router.post('/logBMI', (req, res) => {
 	User.findById(req.session.user_id).then((user) => {
 		if (!user) {
