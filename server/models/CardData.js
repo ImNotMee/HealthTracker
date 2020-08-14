@@ -18,9 +18,10 @@ const BMISchema = new mongoose.Schema({
         trim: true,
         enum: ["metric", "standard"],
         default: "metric",
-    }, date: {
-        type: Date,
-        default: Date.now,
+    }, completed: {
+        type: Boolean,
+        required: true,
+        default: false,
     },
 })
 
@@ -29,24 +30,22 @@ const WaterSchema = new mongoose.Schema({
         type: Number,
         required: true,
         trim: true
-    },
-    remaining: {
+    }, remaining: {
         type: Number,
         required: true,
         trim: true
-    },
-    unit: {
+    }, unit: {
         type: String,
         enum: ["ml"],
         required: false,
         trim: true,
         default: "ml",
         lowercase: true,
+    }, completed: {
+        type: Boolean,
+        required: true,
+        default: false,
     },
-    date: {
-        type: Date,
-        default: Date.now,
-    }
 });
 
 const CalroiesSchema = new mongoose.Schema({
@@ -63,9 +62,10 @@ const CalroiesSchema = new mongoose.Schema({
         trim: true,
         lowercase: true,
         default: "calories",
-    }, date: {
-        type: Date,
-        default: Date.now,
+    }, completed: {
+        type: Boolean,
+        required: true,
+        default: false,
     },
 });
 
@@ -77,6 +77,10 @@ const MoodSchema = new mongoose.Schema({
         lowercase: true,
         enum: ["angry", "sad", "thoughtful", "soso", "happy", "lovely"],
         default: "happy" 
+    }, completed: {
+        type: Boolean,
+        required: true,
+        default: false,
     },
 });
 
@@ -89,21 +93,22 @@ const SleepSchema = new mongoose.Schema({
         enum: ['Bad', 'Normal', 'Good'],
         trim: true,
         required: true,
-    }, date: {
-        type: Date,
-        default: Date.now,
-    }
+    }, completed: {
+        type: Boolean,
+        required: true,
+        default: false,
+    }, 
 });
 
-const StreeSchema = new mongoose.Schema({
+const StressSchema = new mongoose.Schema({
     value: {
         type: Number,
         required: true,
-    }, date: {
-        type: Date,
-        required: false,
-        default: Date.now,
-    }
+    }, completed: {
+        type: Boolean,
+        required: true,
+        default: false,
+    }, 
 });
 
 
@@ -124,7 +129,7 @@ const CardData = mongoose.model('CardData', {
         type: SleepSchema,
         required: true,
     }, Stress: {
-        type: StreeSchema,
+        type: StressSchema,
         required: true,
     }, Sickness: [{
         type: String,
