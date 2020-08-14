@@ -62,14 +62,14 @@ const User = mongoose.model('User', {
     type: Reminders.schema,
     required: true,
   },
-  trends: {
-    type: Trends.schema,
-    required: false,
-  },
   user_card: {
       type: CardData.schema,
       required: false,
     },
+  trends: {
+    type: [CardData.schema],
+    required: false,
+  }
 });
 
 module.exports = { User };
