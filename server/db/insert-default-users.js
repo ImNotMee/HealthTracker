@@ -10,6 +10,7 @@ const {
   ERROR_MSG,
 } = require('./constants');
 const log = console.log;
+const { card_1, card_2, card_3, card_4, card_5, card_6, card_7 } = require('./example_data')
 
 let salt = bcrypt.genSaltSync(10, this.saltRounds);
 const userLogin = {
@@ -105,157 +106,8 @@ MongoClient.connect(DB_URI, DEFAULT_DB_CONNECT_OPS, (error, client) => {
             message: 'explor our app',
           },
         ],
-        trends: {
-          weight: [
-            {
-              date:"2020-08-01",
-              value: 120,
-            },
-            {
-              date:"2020-08-02",
-              value: 121,
-            },
-            {
-              date:"2020-08-03",
-              value: 124,
-            },
-            {
-              date:"2020-08-04",
-              value: 121,
-            },
-            {
-              date:"2020-08-05",
-              value: 119,
-            },
-            {
-              date:"2020-08-06",
-              value: 118,
-            },
-            {
-              date:"2020-08-07",
-              value: 120,
-            }
-          ],
-          sleep: [  {
-              date:"2020-08-01",
-              value: 7,
-            },
-            {
-              date:"2020-08-02",
-              value: 5,
-            },
-            {
-              date:"2020-08-03",
-              value: 5,
-            },
-            {
-              date:"2020-08-04",
-              value: 7,
-            },
-            {
-              date:"2020-08-05",
-              value: 6,
-            },
-            {
-              date:"2020-08-06",
-              value: 8,
-            },
-            {
-              date:"2020-08-07",
-              value: 9,
-            }],
-          calories: [  {
-              date:"2020-08-01",
-              value: 1600,
-            },
-            {
-              date:"2020-08-02",
-              value: 2000,
-            },
-            {
-              date:"2020-08-03",
-              value: 2200,
-            },
-            {
-              date:"2020-08-04",
-              value: 2300,
-            },
-            {
-              date:"2020-08-05",
-              value: 1900,
-            },
-            {
-              date:"2020-08-06",
-              value: 1987,
-            },
-            {
-              date:"2020-08-07",
-              value: 1876,
-            }],
-          stress: [  {
-              date:"2020-08-01",
-              value: 1,
-            },
-            {
-              date:"2020-08-02",
-              value: 6,
-            },
-            {
-              date:"2020-08-03",
-              value: 3,
-            },
-            {
-              date:"2020-08-04",
-              value: 5,
-            },
-            {
-              date:"2020-08-05",
-              value: 4,
-            },
-            {
-              date:"2020-08-06",
-              value: 3,
-            },
-            {
-              date:"2020-08-07",
-              value: 3,
-            }],
-        },
-        user_card: {
-          BMI: {
-            value: 22.0,
-            height: 160,
-            weight: 60,
-            unit: 'metric', // metric and standard
-            date: '2020-07-27T10:15',
-          },
-          Water: {
-            completed: 800,
-            remaining: 1200,
-            unit: 'ml',
-            date: '2020-07-27T10:15',
-          },
-          Calories: {
-            completed: 300,
-            remaining: 1700,
-            unit: 'calories',
-            date: '2020-07-27T10:15',
-          },
-          Mood: {
-            value: 'happy',
-          },
-          Sleep: {
-            hours: 8,
-            quality: 'Good', // 3 levels bad, okay, good
-            date: '2020-07-27T10:15',
-          },
-          Stress: {
-            value: 1,
-            date: '2020-07-27T10:15',
-          },
-          Sickness: [
-          ],
-        },        
+        trends: [card_1, card_2, card_3, card_4, card_5, card_6],
+        user_card: card_7,        
       },
       {
         firstName: 'IAmAdmin',
