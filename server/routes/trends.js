@@ -1,80 +1,119 @@
 'use strict';
 const { mongoose } = require('../db/mongoose');
 mongoose.set('bufferCommands', false);
-const { Trends } = require('../models/Trends');
+const { CardData } = require('../models/CardData')
 const { User } = require('../models/User');
 const express = require('express');
 const router = express.Router();
 const log = console.log;
 
-// Get data routes
-router.get('/weight', (req, res) => {
+// helper function 
+function date_range_helper (card, days) {
+  let date = new Date()
+  let date_range = new Date(date);
+  date_range.setDate(date_range.getDate() - days)
+  let card_date = new Date(card.date)
+
+  return card_date < date && card.date >= date_range
+}
+
+
+router.post('/weight', (req, res) => {
   const id = req.session.user_id;
-  User.findOne({_id: id}).then((data) => {
-    let weightArr = data.trends.weight;
-    if (weightArr.length > 7) {
-      weightArr = weightArr.slice(weightArr.length - 8, weightArr.length - 1);
-    }
-    let values = [];
-    weightArr.forEach(e => {
-        values.push(e.value);
-    })
-    res.send({weight: values});
-  }).catch((e) => {
-    res.status(404).send('Cannot get weight trend');
-  });
+  let result = [];
+	User.findById(id).then((user) => {
+		if (!user) {
+			res.status(404).send("User not found")
+		} else {
+      user.trends.filter((card) => date_range_helper(card, 7)).forEach(
+        (card) => {
+          result.push(card.BMI.value)
+      }) 
+      result.push(user.user_card.BMI.value)
+      res.send(result)
+		}
+	}).catch((error) => {
+		res.status(500).send('Internal Server Error')  // server error
+	});
 });
 
-router.get('/sleep', (req, res) => {
+
+router.post('/calories', (req, res) => {
   const id = req.session.user_id;
-  User.findOne({_id: id}).then((data) => {
-    let sleepArr = data.trends.sleep;
-    if (sleepArr.length > 7) {
-      sleepArr = sleepArr.slice(sleepArr.length - 8, sleepArr.length - 1);
-    }
-    let values = [];
-    sleepArr.forEach(e => {
-        values.push(e.value);
-    })
-    res.send({sleep: values});
-  }).catch((e) => {
-    res.status(404).send('Cannot get sleep trend');
-  });
+  let result = [];
+	User.findById(id).then((user) => {
+		if (!user) {
+			res.status(404).send("User not found")
+		} else {
+      user.trends.filter((card) => date_range_helper(card, 7)).forEach(
+        (card) => {
+          result.push(card.Calories.completed)
+        })
+      result.push(user.user_card.Calories.completed)
+      res.send(result)
+		}
+	}).catch((error) => {
+		res.status(500).send('Internal Server Error')  // server error
+	});
 });
 
-router.get('/calories', (req, res) => {
+
+router.post('/sleep', (req, res) => {
   const id = req.session.user_id;
-  User.findOne({_id: id}).then((data) => {
-    let caloriesArr = data.trends.calories;
-    if (caloriesArr.length > 7) {
-      caloriesArr = caloriesArr.slice(caloriesArr.length - 8, caloriesArr.length - 1);
-    }
-    let values = [];
-    caloriesArr.forEach(e => {
-        values.push(e.value);
-    })
-    res.send({calories: values});
-  }).catch((e) => {
-    res.status(404).send('Cannot get calories trend');
-  });
+  let result = [];
+	User.findById(id).then((user) => {
+		if (!user) {
+			res.status(404).send("User not found")
+		} else {
+      user.trends.filter((card) => date_range_helper(card, 7)).forEach(
+        (card) => {
+          result.push(card.Sleep.hours)
+        })
+      result.push(user.user_card.Sleep.hours)
+      res.send(result)
+		}
+	}).catch((error) => {
+		res.status(500).send('Internal Server Error')  // server error
+	});
 });
 
-router.get('/stress', (req, res) => {
+
+router.post('/stress', (req, res) => {
   const id = req.session.user_id;
-  User.findOne({_id: id}).then((data) => {
-    let stressArr = data.trends.stress;
-    if (stressArr.length > 7) {
-      stressArr = stressArr.slice(stressArr.length - 8, stressArr.length - 1);
-    }
-    let values = [];
-    stressArr.forEach(e => {
-        values.push(e.value);
-    })
-    res.send({stress: values});
-  }).catch((e) => {
-    res.status(404).send('Cannot get stress trend');
-  });
+  let result = [];
+	User.findById(id).then((user) => {
+		if (!user) {
+			res.status(404).send("User not found")
+		} else {
+      user.trends.filter((card) => date_range_helper(card, 7)).forEach(
+        (card) => {
+          result.push(card.Stress.value)
+        })
+      result.push(user.user_card.Stress.value)
+      res.send(result)
+		}
+	}).catch((error) => {
+		res.status(500).send('Internal Server Error')  // server error
+	});
 });
+
+
+router.post('/getAllUser', (req, res) => {
+  const id = req.session.user_id;
+  let result = [];
+	User.findById(id).then((user) => {
+		if (!user) {
+			res.status(404).send("User not found")
+		} else {
+      result = user.trends.filter((card) => date_range_helper(card, 7)) 
+      result.push(user.user_card)
+      res.send(result)
+		}
+	}).catch((error) => {
+		res.status(500).send('Internal Server Error')  // server error
+	});
+});
+
 
 router.get('/getAll', (req, res) => {
   let weight = [];
