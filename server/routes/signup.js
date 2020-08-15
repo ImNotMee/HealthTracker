@@ -5,12 +5,17 @@ const { Login } = require('../models/Login');
 //const { Trends } = require('../models/Trends');
 const { Reminders } = require('../models/Reminders');
 const { User } = require('../models/User');
+<<<<<<< HEAD
 const { CardData, StressSchema, SleepSchema, MoodSchema, CaloriesSchema, WaterSchema, BMISchema } = require('../models/CardData');
+=======
+const { CardData } = require('../models/CardData')
+>>>>>>> ba351ee9638b5fea4434fb0bdb8da675e059a655
 const { isMongoError } = require('../db/utils');
 const Constants = require('../constants');
 const express = require('express');
 const router = express.Router();
 const log = console.log;
+const { }
 
 /**
  * Login user
@@ -85,15 +90,42 @@ const createNewUser = (firstName, lastName, email, password, sex ) => {
     [Constants.HEALTH_CATEGORIES.phsycial]: [],
   });
 
-  let usercard = new CardData({
-      Sickness: [],
-      BMI: new BMISchema({ value: 0, height: 0, weight: 0, unit: 'metric', streak: false }),
-      Water: new WaterSchema({completed: 0, remaining: 0, unit: 'ml', streak: false}),
-      Calories: new CaloriesSchema({completed: 0, remaining: 0, unit: 'calories', streak: false}),
-      Mood: new MoodSchema({value: "", streak: false}),
-      Sleep: new SleepSchema({ hours: 0, quality: "", streak: false }),
-      Stress: new StressSchema({ value: 0, streak: false }),
-})
+  const defaultCard = new CardData({
+    BMI: {
+      // need to take previous data
+      value: 0,
+      height: 0,
+      weight: 0,
+      unit: 'metric', // metric and standard
+      streak: false,
+    },
+    Water: {
+      completed: 0,
+      remaining: 2000,
+      unit: 'ml',
+      streak: false,
+    },
+    Calories: {
+      completed: 0,
+      remaining: 2000,
+      unit: 'calories',
+      streak: false,
+    },
+    Mood: {
+      value: 'happy',
+      streak: false,
+    },
+    Sleep: {
+      hours: 0,
+      quality: 'Good', // 3 levels bad, okay, good
+      streak: false,
+    },
+    Stress: {
+      value: 1,
+      streak: false,
+    },
+    Sickness: [],
+  });
 
   let user = new User({
     firstName: firstName,
@@ -108,7 +140,7 @@ const createNewUser = (firstName, lastName, email, password, sex ) => {
     notification: [],
     reminders: reminders,
     trends: [],
-    user_card: usercard
+    user_card: defaultCard,
   });
   console.log(user)
   return user;

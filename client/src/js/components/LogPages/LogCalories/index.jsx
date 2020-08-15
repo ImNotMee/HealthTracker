@@ -49,7 +49,7 @@ class LogCalories extends Component {
             Calories
           </h1>
           <div className="logBox">
-            <h3>How much did you eat?</h3>
+            <h3>How much did you eat? Add calories below!</h3>
             <input
               type="number"
               id="inputLog"
