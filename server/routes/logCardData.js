@@ -161,11 +161,6 @@ router.post('/logSleep', (req, res) => {
 			user.user_card.Sleep.quality = quality;
 			user.user_card.Sleep.streak = req.body.streak
 			user.user_card.date = req.body.date
-			if (date !== null | date !== undefined) {
-				user.user_card.Sleep.date = date
-			} else {
-				user.user_card.Sleep.date = Date.now()
-			}
 			user.save().then((updatedUser) => {
 				log`Updated Sleep ${updatedUser}`
 				res.status(200).send(updatedUser)
@@ -191,14 +186,8 @@ router.post('/logStress', (req, res) => {
 			res.status(404).send("User not found")
 		} else {
 			user.user_card.Stress.value = value;
-			user.user_card.Stress.date = date;
 			user.user_card.Stress.streak = req.body.streak
 			user.user_card.date = req.body.date
-			if (date !== null | date !== undefined) {
-				user.user_card.Stress.date = date
-			} else {
-				user.user_card.Stress.date = Date.now()
-			}
 			user.save().then((updatedUser) => {
 				log`Updated Stress ${updatedUser}`
 				res.status(200).send(updatedUser)
