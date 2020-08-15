@@ -40,6 +40,8 @@ class App extends Component {
 
   state = {
     activeUser: null,
+    // locationsDB: LOCATIONS,
+    // userDB: USERS,
   };
 
   checkLoginState = () => {
