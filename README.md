@@ -287,7 +287,7 @@ Click the Calories tab at the top of the page, it will render a line graph displ
 
 Works exactly the same as a regular user’s reminder but only when **adding and editing a reminder, the category options will change**.
 
-Create a new reminder, click on **add reminder** button on the button right, then select **Tasks** for categories, **Marking for Phase 1** as the title, and enter a valid date, **2020-07-25:10:00:PM**, with the format of **YYYY-MM-DDTHH:MM:(AM/PM)**. 
+Create a new reminder, click on **add reminder** button on the button right, then select **Tasks** for categories, **Marking for Phase 1** as the title, and select a date, **2020-08-25:10:00:PM**.
 
 Enter **Hope all the projects are nice** for notes (could leave it blank if you wish).
 
