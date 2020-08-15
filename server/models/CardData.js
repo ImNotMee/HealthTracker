@@ -48,7 +48,7 @@ const WaterSchema = new mongoose.Schema({
     },
 });
 
-const CalroiesSchema = new mongoose.Schema({
+const CaloriesSchema = new mongoose.Schema({
     completed: {
         type: Number,
         required: true,
@@ -120,7 +120,7 @@ const CardData = mongoose.model('CardData', {
         type: WaterSchema,
         required: true,
     }, Calories: {
-        type: CalroiesSchema,
+        type: CaloriesSchema,
         required: true,
     }, Mood: {
         type: MoodSchema,
@@ -153,5 +153,5 @@ const CardData = mongoose.model('CardData', {
     }   
 });
 
-module.exports = { CardData };
+module.exports = { CardData, StressSchema, SleepSchema, MoodSchema, CaloriesSchema, WaterSchema, BMISchema };
 
