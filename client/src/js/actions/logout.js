@@ -9,4 +9,9 @@ export const logoutUser = (ctx) => {
       log(`User ${ctx.state.activeUser === null ? 'successfully' : 'unsuccessfully'} logged out`);
     },
   );
+  const url = '/auth/logout';
+
+  fetch(url).catch((error) => {
+    console.log(error);
+  });
 };
