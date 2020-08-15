@@ -7,7 +7,7 @@ import goodIcon from '../../../../assets/good_status.png';
 import badIcon from '../../../../assets/bad_status.png';
 import { isCheckInValid } from '../../../actions/checkIn';
 import { ADMIN_ACCOUNT_TYPE } from '../../../constants';
-import map from '../../../../assets/map.png';
+import GoogleApiWrapper from '../Map/index.js';
 import './styles.css';
 
 class PlaceViewer extends Component {
@@ -51,7 +51,7 @@ class PlaceViewer extends Component {
           ''
         ) : (
           <div id="Map">
-            <img src={map} alt="map"></img>
+            <GoogleApiWrapper location={location} activeUser={activeUser} />
           </div>
         )}
         {activeUser.type === ADMIN_ACCOUNT_TYPE ? (

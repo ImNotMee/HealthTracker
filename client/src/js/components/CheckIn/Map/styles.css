@@ -1,0 +1,4 @@
+#googleMapWrapper div:first-child {
+  position: relative !important;
+  height: 500px !important;
+}
