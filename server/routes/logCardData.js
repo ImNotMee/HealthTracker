@@ -4,10 +4,11 @@ mongoose.set('bufferCommands', false);
 const { User } = require('../models/User');
 const express = require('express');
 const { reset } = require('nodemon');
+const { authenticate } = require("../utils.js");
 const router = express.Router();
 const log = console.log;
 
-router.post('/reset', (req, res) => {
+router.post('/reset',  (req, res) => {
 	User.findById(req.session.user_id).then((user) => {
 		if (!user) {
 			res.status(404).send('Resource not found')
@@ -29,7 +30,10 @@ router.post('/reset', (req, res) => {
 })
 
 
-router.post('/logBMI', (req, res) => {
+router.post('/logBMI',authenticate, (req, res) => {
+	if (req.user !== undefined || req.user !== null) {
+		res.status(400).send('Bad Request')
+	}
 	if (mongoose.connection.readyState != 1) {
 		log('Issue with mongoose connection')
 		res.status(500).send('Internal server error')
@@ -61,7 +65,10 @@ router.post('/logBMI', (req, res) => {
 })
 
 
-router.post('/logWater', (req, res) => {
+router.post('/logWater',authenticate, (req, res) => {
+	if (req.user !== undefined || req.user !== null) {
+		res.status(400).send('Bad Request')
+	}
 	if (mongoose.connection.readyState != 1) {
 		log('Issue with mongoose connection')
 		res.status(500).send('Internal server error')
@@ -92,7 +99,10 @@ router.post('/logWater', (req, res) => {
 	})
 })
 
-router.post('/logCalories', (req, res) => {
+router.post('/logCalories',authenticate, (req, res) => {
+	if (req.user !== undefined || req.user !== null) {
+		res.status(400).send('Bad Request')
+	}
 	if (mongoose.connection.readyState != 1) {
 		log('Issue with mongoose connection')
 		res.status(500).send('Internal server error')
@@ -123,7 +133,10 @@ router.post('/logCalories', (req, res) => {
 
 
 
-router.post('/logMood', (req, res) => {
+router.post('/logMood',authenticate, (req, res) => {
+	if (req.user !== undefined || req.user !== null) {
+		res.status(400).send('Bad Request')
+	}
 	const value = req.body.value;
 
 	log(req.session.user_id)
@@ -147,7 +160,10 @@ router.post('/logMood', (req, res) => {
 	});
 });
 
-router.post('/logSleep', (req, res) => {
+router.post('/logSleep',authenticate, (req, res) => {
+	if (req.user !== undefined || req.user !== null) {
+		res.status(400).send('Bad Request')
+	}
 	const hours = req.body.hours;
 	const quality = req.body.quality;
 	const date = req.body.date;
@@ -179,7 +195,10 @@ router.post('/logSleep', (req, res) => {
 	});
 });
 
-router.post('/logStress', (req, res) => {
+router.post('/logStress',authenticate, (req, res) => {
+	if (req.user !== undefined || req.user !== null) {
+		res.status(400).send('Bad Request')
+	}
 	const value = req.body.value;
 	const date = req.body.date;
 
@@ -213,7 +232,10 @@ router.post('/logStress', (req, res) => {
 
 });
 
-router.post('/logSickness', (req, res) => {
+router.post('/logSickness',authenticate, (req, res) => {
+	if (req.user !== undefined || req.user !== null) {
+		res.status(400).send('Bad Request')
+	}
 	const sickness = req.body.sickness;
 
 	log(req.session.user_id)
