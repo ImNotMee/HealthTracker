@@ -24,6 +24,10 @@ const ReminderItem = mongoose.model('ReminderItem', {
     minlegth: 1,
     trim: true,
   },
+  // seen: {
+  //   type: Boolean,
+  //   required: false,
+  // },
   time: {
     type: String,
     required: true,
