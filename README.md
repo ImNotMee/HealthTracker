@@ -130,8 +130,6 @@ Afterwards, the user can input the location and other relevant information in th
 
 ## Trends:
 
-**(Some data are hard coded and will require database call)**
-
 To access the **trends** page, use the side bar and select **Trends**.(Very similar to user trends page)
 
 Click the Weight tab at the top of the page, it will render a line graph displaying the current week of the user's weight.
@@ -152,7 +150,7 @@ To access the **calendar** page, use the side bar and select **Calendar**.
 
 Click the **Calendar** tab at the top of the page to see all the appointments that the user has within this month.
 
-Click the **Streak** tab at the top of the page to see all the streaks of their goals (physical, mental, medical) that the user has within this month. **(Data is hard coded, will require server call)**
+Click the **Streak** tab at the top of the page to see all the streaks of their goals (physical, mental, medical) that the user has within this month.
 
 ## Reminders:
 
@@ -301,7 +299,7 @@ Editing an existing reminder will be the same as creating a new one. But you cli
 
 A call will be made to google maps API and to a backend database of covid cases which will grab thee cases and populate the map in this section
 
-This will provide the admin with information to select locations which regular users should be alerted about possible COVID contamination
+This will provide the admin with the locations around the area where there are covid cases.
 
 ### Add Location
 
@@ -392,60 +390,3 @@ Now log on to a **user account**, and it will display the alert that the admin h
 - To start the database run: `npm run db`
   - I you're using Windows 10 then open powershell and run: `mkdir ../mongo-data; mongod --dbpath ../mongo-data`
 - To start web app in browser run: `npm start` (then open browser and go to `http://localhost:5000/`)
-  
-
-## Working On App
-
-### Working On A Page
-- Put reusable components of that page into a folder with that page's name (e.g. `MyComponent`) in the `components` dir
-- Inside `MyComponent` dir make a `index.jxs` file (we use `.jsx` to make commenting easier)
-  - If applicable, you can add a `sytles.css` to put all your component's sytling in
-  - If applicable, you can add a `action.js` file to the `actoins` dir
-    - this file is where you can put state or other business logic for your component. This is recommneded to us by the prof, to make phase 2 easier
-
-### CSS Styling
-- See `App.css` for general css classes that can be reused
-- Use css variable to unify app styling by using `property: var(--some-var-name);`
-- Ensure CSS class names follow the [BEM methodology](http://getbem.com/naming/).
-
-### Using Git Issues
-- Create issues (github verion of 'stories' for small tasks that need to be completed
-  - Tag issuess with piority level
-  - Tag issues with an 'epic' following this format `Epic: Name of Epic`
-- Create 'milestone' for major sections involing the completion of multiple epics
-
-### Pull Requests
-- Make them small! Less than 150 lines!
-- Make sure the app builds!
-
-### Project Tree
-```
-team27
-├── README.md
-├── YARN_README.md
-├── node_modules
-├── package.json
-├── yark.lock
-├── .gitignore
-├── public
-│   ├── index.html
-│   └── ...
-├── package.json
-├── tests
-│   └── ...
-└── src
-    ├── actions
-    │   └── login.js
-    ├── components
-    │   ├── LandingPage
-    │   │   ├── Login
-    │   │   ├── index.js
-    │   │   └── styles.css
-    │   └── ...
-    ├── App.js
-    ├── App.test.js
-    ├── index.js
-    ├── setupTests.js
-    ├── setupTests.js
-    └── serviceWorker.js
-```
