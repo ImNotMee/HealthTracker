@@ -1,4 +1,5 @@
 import reminderSound from '../../assets/light.mp3';
+import { NOTIFICATION_TYPE } from '../constants';
 
 const log = console.log;
 
@@ -17,11 +18,20 @@ export const removeNotificationHandler = (ctx, id) => {
   const user = ctx.state.activeUser;
   const notifications = user.notifications;
   const index = _getNotificationIndex(notifications, id);
-  notifications.splice(index, 1);
-  user.notifications = notifications;
-  ctx.setState({
-    activeUser: user,
-  });
+  const notif = notifications[index];
+  if (notif.type === NOTIFICATION_TYPE.reminder) {
+    notifications.splice(index, 1);
+    user.notifications = notifications;
+    ctx.setState(
+      {
+        activeUser: user,
+      },
+      () => {
+        console.log('Removed notification banner');
+      },
+    );
+  } else {
+  }
 };
 
 const _getNotificationIndex = (list, id) => {

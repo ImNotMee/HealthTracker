@@ -27,6 +27,10 @@ import './styles.css';
 import { getNumNotifs } from '../../actions/notification';
 import { NOTIFICATION_TYPE } from '../../constants';
 
+// reminder setup
+import { playSound } from '../../actions/notification';
+import { HEALTH_CATEGORIES } from '../../constants';
+
 //import { USER_CARD } from '../../constants'; // needs to be changed to server call later
 import {
   setBMI,
@@ -47,6 +51,35 @@ class HomePage extends Component {
     check: false,
     count: getNumNotifs(this.props.activeUser?.notifications),
   };
+
+  componentWillMount() {
+    console.log(this.props.activeUser);
+    Object.keys(HEALTH_CATEGORIES).forEach((key) => {
+      console.log(key, this.props.activeUser.reminders[HEALTH_CATEGORIES[key]]);
+      this.props.activeUser.reminders[HEALTH_CATEGORIES[key]].forEach((reminder) => {
+        const currTime = new Date().getTime();
+        const reminderTime = new Date(reminder.time);
+        const time = reminderTime - currTime;
+        if (!this.notificationExists(reminder._id)) {
+          this.reminderTimer = setTimeout(() => {
+            playSound();
+            this.props.notifyAboutReminder(reminder);
+          }, time);
+          this.props.addTimerHandler(reminder._id, this.reminderTimer);
+        }
+      });
+    });
+  }
+
+  notificationExists(id) {
+    let i;
+    for (i = 0; i < this.props.activeUser?.timers.length; i++) {
+      if (this.props.activeUser?.timers[i].id === id) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   render() {
     return (

@@ -59,6 +59,35 @@ router.patch('/alert-by-loc-history', (req, res) => {
 /**
  * Add new notificaiton to user
  */
+// router.patch('/dismiss', (req, res) => {
+//   User.findById(req.session.user_id)
+//     .then((user) => {
+//       const nid = req.body._id;
+//       const notifToDismiss = user.notifications.id(nid);
+//       user
+//         .save()
+//         .then((result) => {
+//           res.status(200).send({ user: result });
+//         })
+//         .catch((error) => {
+//           if (isMongoError(error)) {
+//             log('Internal server error adding notification to user:\n', error);
+//             res.status(500).send('Internal server error');
+//           } else {
+//             log('Bad request:\n', error);
+//             res.status(400).send('Bad Request for user');
+//           }
+//         });
+//     })
+//     .catch((error) => {
+//       log(error);
+//       res.status(500).send('Internal Server Error');
+//     });
+// });
+
+/**
+ * Add new notificaiton to user
+ */
 router.patch('/add', (req, res) => {
   User.findById(req.session.user_id)
     .then((user) => {
