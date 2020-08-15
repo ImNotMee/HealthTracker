@@ -57,6 +57,9 @@ export class MapContainer extends Component {
   };
 
   render() {
+    if (this.state.area === {}) {
+      return <div></div>;
+    }
     return (
       <div id="googleMapWrapper">
         <Map
@@ -69,7 +72,7 @@ export class MapContainer extends Component {
           <Marker
             onClick={this.onMarkerClick}
             name={this.props.location.name}
-            position={{ lat: 43.6643, lng: -79.3923 }}
+            position={this.state.area}
           />
           <InfoWindow
             marker={this.state.activeMarker}
