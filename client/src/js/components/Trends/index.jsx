@@ -27,7 +27,8 @@ class Trends extends Component {
     })
       .then((response) => response.json())
       .then((responseJson) => {
-        this.setState({ weight: responseJson.weight });
+        const data = this.dateProcessor(responseJson);
+        this.setState({ weight: data });
       });
     fetch('http://localhost:5000/trends/sleep', {
       method: 'GET',
@@ -35,7 +36,8 @@ class Trends extends Component {
     })
       .then((response) => response.json())
       .then((responseJson) => {
-        this.setState({ sleep: responseJson.sleep });
+        const data = this.dateProcessor(responseJson);
+        this.setState({ sleep: data });
       });
     fetch('http://localhost:5000/trends/stress', {
       method: 'GET',
@@ -43,7 +45,8 @@ class Trends extends Component {
     })
       .then((response) => response.json())
       .then((responseJson) => {
-        this.setState({ stress: responseJson.stress });
+        const data = this.dateProcessor(responseJson);
+        this.setState({ stress: data });
       });
     fetch('http://localhost:5000/trends/calories', {
       method: 'GET',
@@ -51,9 +54,18 @@ class Trends extends Component {
     })
       .then((response) => response.json())
       .then((responseJson) => {
-        this.setState({ calories: responseJson.calories });
+        const data = this.dateProcessor(responseJson);
+        this.setState({ calories: data });
       });
-    //console.log(this.state);
+  }
+
+  dateProcessor(list) {
+    const a = [0, 0, 0, 0, 0, 0, 0];
+    list.forEach((item) => {
+      let d = new Date(item.date).getDay();
+      a[d] = item.value;
+    });
+    return a;
   }
 
   renderGraph(type) {
