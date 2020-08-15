@@ -18,7 +18,7 @@ export const readCookie = (app) => {
       log('Cookie read');
     })
     .catch((error) => {
-      console.log(error);
+      log(error);
     });
 };
 
@@ -69,6 +69,6 @@ export const onLoginHandler = (landingPage, email, password) => {
       }
     })
     .catch((error) => {
-      console.log('Login request failed', error);
+      log('Login request failed', error);
     });
 };

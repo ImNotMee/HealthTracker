@@ -34,7 +34,6 @@ const _wasUserCheckedIn = (user, location) => {
   let i;
   for (i = 0; i < locs?.length; i++) {
     if (locs[i]?.location.id === location.id) {
-      console.log('was true');
       return true;
     }
   }

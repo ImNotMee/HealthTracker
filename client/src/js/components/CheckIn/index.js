@@ -4,30 +4,34 @@ import { viewPlace } from '../../actions/checkIn';
 import PlaceViewer from './PlaceViewer';
 import './styles.css';
 import CheckOutView from './CheckOutView';
+import { ACCOUNT_TYPES } from '../../constants';
 
 class CheckIn extends Component {
   state = {
     user: this.props.activeUser,
     locationViewed: undefined,
+    checkedInLocation: this.props.activeUser?.checkedInLocation,
   };
 
   render() {
     return (
-      <div id="PageWrapper">
-        {this.state.user?.checkedInLocation !== null ? (
-          <div id="CheckOutWrapper">
+      <div key="2309ur0j0rj0" id="PageWrapper">
+        {this.state.user.type !== ACCOUNT_TYPES.admin ? (
+          <div key="ciewqioruq" id="CheckOutWrapper">
             <CheckOutView
-              location={this.state.user?.checkedInLocation}
+              key="fiu49fhqewjiew"
+              location={this.state.checkedInLocation}
               checkoutHandler={() => {
-                this.props.checkoutHandler();
+                this.props.checkoutHandler(this);
               }}
             />
           </div>
         ) : (
           ''
         )}
-        <div id="CheckInWrapper" className="windowWrapper">
+        <div key="124eriufgh981r" id="CheckInWrapper" className="windowWrapper">
           <LocationSelector
+            key="jkfgauy23e23"
             header="Check-In Menu"
             message="Help prevent the spead of COVID by practiciing social ditancing. 
             By using our check-in system you can see the copacity of parks you want 
@@ -39,13 +43,18 @@ class CheckIn extends Component {
             }}
           />
           {this.state.locationViewed !== undefined ? (
-            <div>
+            <div key="fsdakj23ouu90">
               <hr className="detailsDivider" />
               <PlaceViewer
+                key="2823uihdwjhbsf "
                 activeUser={this.state.user}
-                location={this.state.locationViewed}
-                onCheckInHandler={() => {
-                  this.props.checkInHandler(this.state.locationViewed);
+                location={
+                  this.state.locationViewed === undefined
+                    ? undefined
+                    : this.props.locations[this.state.locationViewed?.name]
+                }
+                onCheckInHandler={(location) => {
+                  this.props.checkInHandler(this, location);
                 }}
               />
             </div>

@@ -3,13 +3,14 @@ import './styles.css';
 
 class CheckOutView extends Component {
   render() {
-    const { location, checkoutHandler } = this.props;
+    const { checkoutHandler, location } = this.props;
     return (
-      <div id="CheckInStatus" className="windowWrapper">
-        {this.props.location?.name !== undefined ? (
-          <div id="CheckoutView">
-            <h2> You Are Currently Checked In At {location?.name} </h2>
+      <div key="co_86567-09" id="CheckInStatus" className="windowWrapper">
+        {location?.name !== undefined ? (
+          <div key="csdfo_86567-09" id="CheckoutView">
+            <h2 key="ci_loca123"> You Are Currently Checked In At {location?.name} </h2>
             <button
+              key="fja320jfsd"
               className="primary-btn"
               onClick={() => {
                 checkoutHandler();
@@ -19,7 +20,7 @@ class CheckOutView extends Component {
             </button>
           </div>
         ) : (
-          <h2> You Are Currently Not Checked In Anywhere </h2>
+          <h2 key="defaultMsgCI"> You Are Currently Not Checked In Anywhere </h2>
         )}
       </div>
     );

@@ -6,6 +6,7 @@ const logCardData = require('./logCardData')
 const manageUser = require('./manageUser')
 const reminder = require('./reminder');
 const locations = require('./locations');
+const checkinsys = require('./check-in');
 const trends =  require('./trends');
 const streaks = require('./streaks')
 
@@ -20,7 +21,7 @@ const initRoutes = (app) => {
     // TODO change header to 5000
     res.setHeader('Access-Control-Allow-Origin', '*');
     // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, PATCH, PUT');
     // Request headers you wish to allow
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,Content-Type');
     // Set to true if you need the website to include cookies in the requests sent
@@ -35,6 +36,7 @@ const initRoutes = (app) => {
   app.use('/account', signup);
   app.use('/logCardData', logCardData)
   app.use('/reminder', reminder);
+  app.use('/checkinsys', checkinsys);
   app.use('/trends', trends);
   app.use('/streaks', streaks);
   app.use('/manageUser', manageUser)
