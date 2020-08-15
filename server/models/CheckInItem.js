@@ -1,16 +1,15 @@
 const mongoose = require('mongoose');
+const { Locations } = require('./Locations');
 
 const CheckInItem = mongoose.model('CheckInItem', {
   location: {
-    type: String,
+    type: Locations.schema,
     required: true,
-    minlegth: 1,
-    trim: true,
   },
   time: {
     type: String,
     required: true,
-    minlegth: 10,
+    minlegth: 8,
     trim: true,
   },
 });

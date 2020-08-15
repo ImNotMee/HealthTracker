@@ -124,7 +124,7 @@ class HomePage extends Component {
               path="/check-in"
               render={() => (
                 <CheckIn
-                  activeUser={this.state.user}
+                  activeUser={this.props.activeUser}
                   checkInHandler={this.props.checkInHandler}
                   checkoutHandler={this.props.checkoutHandler}
                   locations={this.props.locations}

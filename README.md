@@ -39,6 +39,8 @@ This is located at the on the right side of the landing page (where you first st
 
 Enter  	**“Bob"** for first name, **“Jones”** for last name, **“boundless”** for email, **“password”** for password and select **male**(or female) for gender.
 
+Email must be in format of "example@example.com" and password must have at least 6 characters.
+
 Click **create account**, and now you can sign in with this account.
 
 **Please do not refresh the page, since these data are not stored in a database.**

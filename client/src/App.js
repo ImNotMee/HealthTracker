@@ -44,7 +44,7 @@ class App extends Component {
   };
 
   checkLoginState = () => {
-    if (this.state.activeUser === null) {
+    if (this.state.activeUser === null || this.state.activeUser === undefined) {
       return <Redirect to="/signup" />;
     }
 
@@ -103,11 +103,11 @@ class App extends Component {
                     addTimerHandler={(id, timer) => {
                       addTimerHandler(this, id, timer);
                     }}
-                    checkInHandler={(location) => {
-                      checkInHandler(this, location);
+                    checkInHandler={(ciCtx, location) => {
+                      checkInHandler(this, ciCtx, location);
                     }}
-                    checkoutHandler={() => {
-                      checkoutHandler(this);
+                    checkoutHandler={(ciCtx) => {
+                      checkoutHandler(this, ciCtx);
                     }}
                     addReminderHandler={(reminderCtx) => {
                       addReminderHandler(this, reminderCtx);

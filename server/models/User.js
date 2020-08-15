@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
+const { Locations } = require('./Locations');
 const { Reminders } = require('./Reminders');
 const { CheckInItem } = require('./CheckInItem');
 const { Trends } = require('./Trends');
@@ -50,9 +51,8 @@ const User = mongoose.model('User', {
     required: true,
   },
   checkedInLocation: {
-    type: String,
+    type: Locations.schema,
     required: false,
-    trim: true,
   },
   checkInHistory: {
     type: [CheckInItem.schema],
