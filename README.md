@@ -357,8 +357,47 @@ Now log on to a **user account**, and it will display the alert that the admin h
 ![img](https://i.imgur.com/gey6QTu.png)
 
 
-    
-    
+## Routes
+
+All of the routes on our express server will require a cookie.
+
+### Auth
+
+> Post request ("/login") with the user's email and password in the body. Sends the current user object and a list of locations.
+> Get request ("logout), destroyed the current session when log out.
+> Get request ("/session"), looks for the current session user and sends the user object.
+
+### Sign up
+
+> Post request ("/signup"), takes in the user email and creates the user, sends back the created user object and a list of locations.
+
+### Check In
+
+> 
+
+### Locations
+   
+### logCardData
+
+### reminder
+
+> Post request ("/add"), takes in all the inputs on the add remainders page and the current user and creates a new remainder under the user, sends back the new user object.
+> Delete request ("/:cat/:r_id"), takes remainder ID from current user and removes it,then sends back the new user object.
+> Patch request ("/update/:cat/:r_id/") takes in the category and the remainder id, remove it from user then send back the user new object  
+
+### trends
+
+> get request for the four datas ("/weight","/calories","/sleep","/stress"), requires the current session user and sends back a list of objects that has a date and a value.
+> post request to get all user data ("/getAll"), sends back an object containing 4 lists of values with the types as their keys.
+
+### Streaks
+> post request for the five datas ("/weight","/calories","/sleep","/stress", "/mood"), requires the current session user and the month, sends back a list of dates where that type is completed.
+
+### Manage User
+ > post request ("/assignAdmin") to assign an user admin, requires the user's email and returns the updated user.
+ > post request ("/deleteuser") to remove a user, requires the user's email and returns "deleted".
+ > get request ("/getUsers") gets all the users and send it back
+ >
     
 <br>
 <br>
