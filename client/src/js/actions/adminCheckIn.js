@@ -1,5 +1,4 @@
 import { NOTIFICATION_TYPE, API } from '../constants';
-import { Notification } from './notification';
 
 const log = console.log;
 
