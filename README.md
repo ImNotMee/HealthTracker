@@ -363,41 +363,46 @@ All of the routes on our express server will require a cookie.
 
 ### Auth
 
-> Post request ("/login") with the user's email and password in the body. Sends the current user object and a list of locations.
-> Get request ("logout), destroyed the current session when log out.
-> Get request ("/session"), looks for the current session user and sends the user object.
+- Post request ("/login") with the user's email and password in the body. Sends the current user object and a list of locations.
+- Get request ("logout), destroyed the current session when log out.
+- Get request ("/session"), looks for the current session user and sends the user object.
 
 ### Sign up
 
-> Post request ("/signup"), takes in the user email and creates the user, sends back the created user object and a list of locations.
+- Post request ("/signup"), takes in the user email and creates the user, sends back the created user object and a list of locations.
 
 ### Check In
-
-> 
+- patch request ("/checkin/:l_id", "/checkout/:l_id") requires the location object id, updates the location occupancy by 1 (add or subtract), return the new location object and the new user.
 
 ### Locations
+- Get request ("/all") to get all the locations stored in the db, sends back the set of location objects.
+- Post request ("/add") to add a new location into the db, need to have name, isAvaliable,address,country,imageUrl,maxOccupancy,currOccupancy, description in the body, returns the new location object.
+-  delete request ("/delete/:l_id") requires the location object id, removes it from the db and send the update set of locations.
+- put request ("/update/:l_id/") requires the location object id, updates the status of the location, return the new location object 
    
 ### logCardData
+- post request ("/reset"), resets the user's data for current day, returns the updated user object.
+- post request on logging data ("/logWater","/logSickness","logStress","/logSleep","/logMood","/logCalories") will require the body to have a value, returns the updated user object.
 
 ### reminder
 
-> Post request ("/add"), takes in all the inputs on the add remainders page and the current user and creates a new remainder under the user, sends back the new user object.
-> Delete request ("/:cat/:r_id"), takes remainder ID from current user and removes it,then sends back the new user object.
-> Patch request ("/update/:cat/:r_id/") takes in the category and the remainder id, remove it from user then send back the user new object  
+- Post request ("/add"), takes in all the inputs on the add remainders page and the current user and creates a new remainder under the user, sends back the new user object.
+- Delete request ("/:cat/:r_id"), takes remainder ID from current user and removes it,then sends back the new user object.
+- Patch request ("/update/:cat/:r_id/") takes in the category and the remainder id, remove it from user then send back the user new object  
 
 ### trends
 
-> get request for the four datas ("/weight","/calories","/sleep","/stress"), requires the current session user and sends back a list of objects that has a date and a value.
-> post request to get all user data ("/getAll"), sends back an object containing 4 lists of values with the types as their keys.
+- get request for the four datas ("/weight","/calories","/sleep","/stress"), requires the current session user and sends back a list of objects that has a date and a value.
+- post request to get all user data ("/getAll"), sends back an object containing 4 lists of values with the types as their keys.
 
 ### Streaks
-> post request for the five datas ("/weight","/calories","/sleep","/stress", "/mood"), requires the current session user and the month, sends back a list of dates where that type is completed.
+- post request for the five datas ("/weight","/calories","/sleep","/stress", "/mood"), requires the current session user and the month, sends back a list of dates where that type is completed.
 
 ### Manage User
- > post request ("/assignAdmin") to assign an user admin, requires the user's email and returns the updated user.
- > post request ("/deleteuser") to remove a user, requires the user's email and returns "deleted".
- > get request ("/getUsers") gets all the users and send it back
- >
+- post request ("/assignAdmin") to assign an user admin, requires the user's email and returns the updated user.
+- post request ("/deleteuser") to remove a user, requires the user's email and returns "deleted".
+- get request ("/getUsers") gets all the users and send it back
+- post request ("/setUserInfo"), takes in user info, like email, first name, last name, sex, password and updates if the user object if there is any changes, sends back the updated user object.
     
 <br>
 <br>
