@@ -1,62 +1,103 @@
-export const card_1 = {
+export const defaultCard = {
   BMI: {
     // need to take previous data
     value: 0,
     height: 0,
     weight: 0,
     unit: 'metric', // metric and standard
-    completed: false,
+    streak: false,
   },
   Water: {
     completed: 0,
     remaining: 2000,
     unit: 'ml',
-    completed: false,
+    streak: false,
   },
   Calories: {
     completed: 0,
     remaining: 2000,
     unit: 'calories',
-    completed: false,
+    streak: false,
   },
   Mood: {
     value: 'happy',
-    completed: false,
+    streak: false,
   },
   Sleep: {
     hours: 0,
     quality: 'Good', // 3 levels bad, okay, good
-    completed: false,
+    streak: false,
   },
   Stress: {
     value: 1,
-    completed: false,
+    streak: false,
   },
   Sickness: [],
 };
 
 // lists of actions to change user_card state
 
+export const resetToday = (card) => {
+  const { user } = card.state;
+  const card_date = new Date(user.user_card.date);
+  const date = new Date();
+  // check if it's a new day
+  if (date.getMonth() !== card_date.getMonth() || date.getDate() !== card_date.getDate()) {
+    console.log('Resetting');
+    let reset_card = defaultCard;
+    reset_card['BMI']['value'] = user.user_card['BMI']['value'];
+    reset_card['BMI']['height'] = user.user_card['BMI']['height'];
+    reset_card['BMI']['weight'] = user.user_card['BMI']['weight'];
+    reset_card['BMI']['unit'] = user.user_card['BMI']['unit'];
+    reset_card['date'] = Date.now();
+
+    user.trends.push(user.user_card);
+    user.user_card = reset_card;
+
+    const request = new Request('http://localhost:5000/logCardData/reset', {
+      method: 'post',
+      body: JSON.stringify(reset_card),
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+    });
+
+    // Send the request with fetch()
+    fetch(request)
+      .then((res) => {
+        if (res.status === 200) {
+          res
+            .json()
+            .then((json) => {
+              console.log`Reset user card: ${json}`;
+            })
+            .catch((error) => {
+              console.log('Reset Failed: ', error);
+            });
+        }
+      })
+      .catch((error) => {
+        console.log('Reset Failed: ', error);
+      });
+  }
+};
+
 export const setBMI = (card, newBMI, newHeight, newWeight, newUnit) => {
+  resetToday(card); // check if it requires resetting
+
   console.log('updating BMI to ');
   const { user } = card.state;
   user.user_card['BMI']['value'] = newBMI;
   user.user_card['BMI']['height'] = newHeight;
   user.user_card['BMI']['weight'] = newWeight;
   user.user_card['BMI']['unit'] = newUnit;
-
-  const today = new Date();
-  const day = today.getDay();
-  // conversion from standard to metric
-  let trendWeight = newWeight;
-  if (newUnit === 'metric') {
-    trendWeight = newWeight * 2.205;
-  }
-  user.trends.weight[day] = trendWeight;
+  user.user_card['BMI']['streak'] = true;
 
   card.setState({
     user: user,
   });
+
   console.log(user.user_card['BMI']['value']);
 
   const BMIInfo = {
@@ -64,8 +105,10 @@ export const setBMI = (card, newBMI, newHeight, newWeight, newUnit) => {
     height: user.user_card['BMI']['height'],
     weight: user.user_card['BMI']['weight'],
     unit: user.user_card['BMI']['unit'],
+    streak: user.user_card['BMI']['streak'],
+    date: Date.now(),
   };
-  const request = new Request('http://localhost:5000/logPhysical/logBMI', {
+  const request = new Request('http://localhost:5000/logCardData/logBMI', {
     method: 'post',
     body: JSON.stringify(BMIInfo),
     headers: {
@@ -86,14 +129,19 @@ export const setBMI = (card, newBMI, newHeight, newWeight, newUnit) => {
 };
 
 export const setWater = (card, newWater) => {
+  resetToday(card); // check if it requires resetting
+
   console.log('updating Water to ');
   const { user } = card.state;
+  let streak = false;
   user.user_card['Water']['completed'] += parseInt(newWater, 10);
   let remaining = 2000 - user.user_card['Water']['completed'];
-  if (remaining < 0) {
+  if (remaining <= 0) {
     remaining = 0;
+    streak = true;
   }
   user.user_card['Water']['remaining'] = remaining;
+  user.user_card['Water']['streak'] = streak;
   card.setState({
     user: user,
   });
@@ -103,8 +151,10 @@ export const setWater = (card, newWater) => {
     completed: user.user_card['Water']['completed'],
     remaining: user.user_card['Water']['remaining'],
     unit: 'ml',
+    streak: streak,
+    date: Date.now(),
   };
-  const request = new Request('http://localhost:5000/logPhysical/logWater', {
+  const request = new Request('http://localhost:5000/logCardData/logWater', {
     method: 'post',
     body: JSON.stringify(waterInfo),
     headers: {
@@ -125,30 +175,33 @@ export const setWater = (card, newWater) => {
 };
 
 export const setCalories = (card, newCalories) => {
+  resetToday(card); // check if it requires resetting
+
   console.log('updating Calories to ');
   const { user } = card.state;
+  let streak = false;
   user.user_card['Calories']['completed'] += parseInt(newCalories, 10);
   let remaining = 2000 - user.user_card['Calories']['completed'];
-  if (remaining < 0) {
+  if (remaining <= 0) {
     remaining = 0;
+    streak = true;
   }
   user.user_card['Calories']['remaining'] = remaining;
-
-  const today = new Date();
-  const day = today.getDay();
-  user.trends.calories[day] = newCalories;
 
   card.setState({
     user: user,
   });
+
   console.log(user.user_card['Calories']);
 
   const caloriesInfo = {
     completed: user.user_card['Calories']['completed'],
     remaining: user.user_card['Calories']['remaining'],
     unit: 'Calories',
+    streak: streak,
+    date: Date.now(),
   };
-  const request = new Request('http://localhost:5000/logPhysical/logCalories', {
+  const request = new Request('http://localhost:5000/logCardData/logCalories', {
     method: 'post',
     body: JSON.stringify(caloriesInfo),
     headers: {
@@ -169,6 +222,8 @@ export const setCalories = (card, newCalories) => {
 };
 
 export const setMood = (card, newMood) => {
+  resetToday(card); // check if it requires resetting
+
   console.log('updating Mood to ');
   const { user } = card.state;
   user.user_card['Mood']['value'] = newMood;
@@ -189,7 +244,6 @@ export const setSleep = (card, newSleepHours, newSleepQuality) => {
   const { user } = card.state;
   user.user_card['Sleep']['hours'] = newSleepHours;
   user.user_card['Sleep']['quality'] = newSleepQuality;
-  user.user_card['Sleep']['date'] = Date.now();
 
   // do trend stuff here
   user.trends.sleep[day] = newSleepHours;
@@ -199,26 +253,21 @@ export const setSleep = (card, newSleepHours, newSleepQuality) => {
   });
   console.log(user.user_card['Sleep']);
 
-  sendSleep(newSleepHours, newSleepQuality, Date.now());
+  sendSleep(newSleepHours, newSleepQuality);
 };
 
 export const setStress = (card, newStress) => {
   console.log('updating Stress to ');
-  const today = new Date();
-  const day = today.getDay();
 
   const { user } = card.state;
   user.user_card['Stress']['value'] = newStress;
-  user.user_card['Stress']['date'] = Date.now();
-
-  user.trends.stress[day] = newStress;
 
   card.setState({
     user: user,
   });
   console.log(user.user_card['Stress']);
 
-  sendStress(newStress, Date.now());
+  sendStress(newStress);
 };
 
 export const setSickness = (card, newSickness) => {
@@ -243,6 +292,8 @@ export const setSickness = (card, newSickness) => {
 const sendMood = (mood) => {
   const reqBody = {
     value: mood,
+    streak: true,
+    date: Date.now(),
   };
 
   const request = new Request('http://localhost:5000/logCardData/logMood', {
@@ -273,11 +324,12 @@ const sendMood = (mood) => {
     });
 };
 
-const sendSleep = (hours, quality, date = undefined) => {
+const sendSleep = (hours, quality) => {
   const reqBody = {
     hours: hours,
     quality: quality,
-    date: date,
+    date: Date.now(),
+    streak: true,
   };
 
   const request = new Request('http://localhost:5000/logCardData/logSleep', {
@@ -308,10 +360,11 @@ const sendSleep = (hours, quality, date = undefined) => {
     });
 };
 
-const sendStress = (value, date = undefined) => {
+const sendStress = (value) => {
   const reqBody = {
     value: value,
-    date: date,
+    date: Date.now(),
+    streak: true,
   };
 
   const request = new Request('http://localhost:5000/logCardData/logStress', {
