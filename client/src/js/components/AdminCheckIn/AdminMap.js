@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import './styles.css';
 const KEY = 'AIzaSyCf9XZFO5JATuT08FHK3AIrcoHAPMpHd-Y';
 
@@ -22,7 +22,7 @@ export class MapContainer extends Component {
   componentDidMount() {
     const lists = this.props.location;
     let bb = [];
-    if (lists != {}) {
+    if (lists !== {}) {
       Object.keys(lists).forEach(function (key) {
         const a = lists[key];
         console.log(a.address);
@@ -52,7 +52,7 @@ export class MapContainer extends Component {
   };
 
   buildMarker = () => {
-    if (this.state.area != []) {
+    if (this.state.area !== []) {
       this.state.area.forEach((a) => {
         this.getAddress(a);
       });
