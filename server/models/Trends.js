@@ -1,22 +1,36 @@
 const mongoose = require('mongoose');
 
+const TrendHistorySchema = new mongoose.Schema({
+    date: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    value: {
+      type: Number,
+      required: true,
+    }
+});
+
 const Trends = mongoose.model('Trends', {
   weight: {
-    type: [Number],
-    required: false,
+    type: [TrendHistorySchema],
+    required: true,
   },
   sleep: {
-    type: [Number],
-    required: false,
+    type: [TrendHistorySchema],
+    required: true,
   },
   calories: {
-    type: [Number],
-    required: false,
+    type: [TrendHistorySchema],
+    required: true,
   },
   stress: {
-    type: [Number],
-    required: false,
+    type: [TrendHistorySchema],
+    required: true,
   },
 });
 
-module.exports = { Trends };
+
+const TrendsHistory = mongoose.model('TrendsHistory', TrendHistorySchema);
+module.exports = { Trends,TrendsHistory };

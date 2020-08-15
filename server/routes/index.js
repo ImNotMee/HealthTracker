@@ -2,8 +2,11 @@
 'use strict';
 const auth = require('./auth');
 const signup = require('./signup');
+const logCardData = require('./logCardData')
 const reminder = require('./reminder');
 const locations = require('./locations');
+const trends =  require('./trends');
+const streaks = require('./streaks')
 
 /**
  * Add routes to given express app object
@@ -29,7 +32,10 @@ const initRoutes = (app) => {
   app.use('/locations', locations);
   app.use('/auth', auth);
   app.use('/account', signup);
+  app.use('/logCardData', logCardData)
   app.use('/reminder', reminder);
+  app.use('/trends', trends);
+  app.use('/streaks', streaks);
 };
 
 module.exports = {

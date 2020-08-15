@@ -8,7 +8,7 @@ class Overview extends Component {
     super(props);
     this.state = {
       activeUser: this.props.activeUser,
-      user_card: this.props.user_card,
+      user_card: this.props.activeUser.user_card,
       medication: [],
       appointments: [],
     };
@@ -26,6 +26,8 @@ class Overview extends Component {
     }
     this.state.medication = medication;
     this.state.appointments = appointments;
+
+    this.props.resetToday();
   }
 
   render() {

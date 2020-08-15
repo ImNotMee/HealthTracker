@@ -5,6 +5,7 @@ const validator = require('validator');
 const { Reminders } = require('./Reminders');
 const { CheckInItem } = require('./CheckInItem');
 const { Trends } = require('./Trends');
+const { CardData } = require('./CardData');
 
 const User = mongoose.model('User', {
   firstName: {
@@ -31,6 +32,11 @@ const User = mongoose.model('User', {
     minlegth: 1,
     trim: true,
     unique: true,
+    /** 
+    validate: {
+      validator: validator.isEmail, // custom validator
+      message: 'Not valid email',
+    },*/
     // TODO: fix validation
   },
   type: {
@@ -56,10 +62,14 @@ const User = mongoose.model('User', {
     type: Reminders.schema,
     required: true,
   },
+  user_card: {
+      type: CardData.schema,
+      required: false,
+    },
   trends: {
-    type: Trends.schema,
+    type: [CardData.schema],
     required: false,
-  },
+  }
 });
 
 module.exports = { User };
