@@ -275,4 +275,7 @@ export const API = {
   updateLocation: (id) => {
     return `http://localhost:5000/locations/update/${id}`;
   },
+  checkin: (id) => {
+    return `http://localhost:5000/checkinsys/checkin/${id}`;
+  },
 };

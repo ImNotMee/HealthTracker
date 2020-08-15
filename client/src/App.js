@@ -104,8 +104,8 @@ class App extends Component {
                     addTimerHandler={(id, timer) => {
                       addTimerHandler(this, id, timer);
                     }}
-                    checkInHandler={(location) => {
-                      checkInHandler(this, location);
+                    checkInHandler={(ciCtx, location) => {
+                      checkInHandler(this, ciCtx, location);
                     }}
                     checkoutHandler={() => {
                       checkoutHandler(this);

@@ -12,7 +12,8 @@ import './styles.css';
 
 class PlaceViewer extends Component {
   state = {
-    user: this.props.activeUser,
+    activeUser: this.props.activeUser,
+    location: this.props.location,
     open: false,
   };
 
@@ -25,8 +26,8 @@ class PlaceViewer extends Component {
   };
 
   render() {
-    const { open } = this.state;
-    const { location, activeUser } = this.props;
+    const { open, location, activeUser } = this.state;
+    //const { location, activeUser } = this.props;
     return (
       <div id="PlaceViewerWrapper">
         <div id="PlaceViewrHeader">
@@ -86,7 +87,13 @@ class PlaceViewer extends Component {
             </IconButton>
           </div>
         ) : isCheckInValid(this, location) ? (
-          <button id="CheckInBtn" className="primary-btn" onClick={this.props.onCheckInHandler}>
+          <button
+            id="CheckInBtn"
+            className="primary-btn"
+            onClick={() => {
+              this.props.onCheckInHandler(location);
+            }}
+          >
             Check In
           </button>
         ) : (
