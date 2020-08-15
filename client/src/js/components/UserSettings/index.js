@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import ListSelector from '../General/ListSelector';
+import { getUser } from '../../actions/manageUser';
 import { onInputChangeHandler } from '../../actions/utils';
 import { ADMIN_ACCOUNT_TYPE } from '../../constants';
 import './styles.css';
@@ -19,6 +20,7 @@ class UserSettings extends Component {
     isPassValid: true,
     isSexValid: true,
     newInfoSet: false,
+    userList: [],
   };
 
   goToAlertSystem = () => {
@@ -41,6 +43,7 @@ class UserSettings extends Component {
   };
 
   render() {
+    getUser(this);
     return (
       <div id="UserSettingsWrapper">
         {this.goToAlertSystem()}

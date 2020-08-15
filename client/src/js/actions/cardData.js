@@ -43,7 +43,6 @@ export const resetToday = (card) => {
   const date = new Date();
   // check if it's a new day
   if (date.getMonth() !== card_date.getMonth() || date.getDate() !== card_date.getDate()) {
-    console.log('Resetting');
     let reset_card = defaultCard;
     reset_card['BMI']['value'] = user.user_card['BMI']['value'];
     reset_card['BMI']['height'] = user.user_card['BMI']['height'];
@@ -85,8 +84,6 @@ export const resetToday = (card) => {
 
 export const setBMI = (card, newBMI, newHeight, newWeight, newUnit) => {
   resetToday(card); // check if it requires resetting
-
-  console.log('updating BMI to ');
   const { user } = card.state;
   user.user_card['BMI']['value'] = newBMI;
   user.user_card['BMI']['height'] = newHeight;
@@ -97,8 +94,6 @@ export const setBMI = (card, newBMI, newHeight, newWeight, newUnit) => {
   card.setState({
     user: user,
   });
-
-  console.log(user.user_card['BMI']['value']);
 
   const BMIInfo = {
     value: user.user_card['BMI']['value'],
@@ -131,7 +126,6 @@ export const setBMI = (card, newBMI, newHeight, newWeight, newUnit) => {
 export const setWater = (card, newWater) => {
   resetToday(card); // check if it requires resetting
 
-  console.log('updating Water to ');
   const { user } = card.state;
   let streak = false;
   user.user_card['Water']['completed'] += parseInt(newWater, 10);
@@ -145,7 +139,6 @@ export const setWater = (card, newWater) => {
   card.setState({
     user: user,
   });
-  console.log(user.user_card['Water']);
 
   const waterInfo = {
     completed: user.user_card['Water']['completed'],
@@ -177,7 +170,6 @@ export const setWater = (card, newWater) => {
 export const setCalories = (card, newCalories) => {
   resetToday(card); // check if it requires resetting
 
-  console.log('updating Calories to ');
   const { user } = card.state;
   let streak = false;
   user.user_card['Calories']['completed'] += parseInt(newCalories, 10);
@@ -191,8 +183,6 @@ export const setCalories = (card, newCalories) => {
   card.setState({
     user: user,
   });
-
-  console.log(user.user_card['Calories']);
 
   const caloriesInfo = {
     completed: user.user_card['Calories']['completed'],
@@ -224,13 +214,11 @@ export const setCalories = (card, newCalories) => {
 export const setMood = (card, newMood) => {
   resetToday(card); // check if it requires resetting
 
-  console.log('updating Mood to ');
   const { user } = card.state;
   user.user_card['Mood']['value'] = newMood;
   card.setState({
     user: user,
   });
-  console.log(user.user_card['Mood']['value']);
 
   // updating server
   sendMood(newMood);
@@ -257,15 +245,12 @@ export const setSleep = (card, newSleepHours, newSleepQuality) => {
 };
 
 export const setStress = (card, newStress) => {
-  console.log('updating Stress to ');
-
   const { user } = card.state;
   user.user_card['Stress']['value'] = newStress;
 
   card.setState({
     user: user,
   });
-  console.log(user.user_card['Stress']);
 
   sendStress(newStress);
 };
