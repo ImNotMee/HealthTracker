@@ -53,7 +53,7 @@ class App extends Component {
       window.location.pathname === '/signup' &&
       this.state.activeUser.type === USER_ACCOUNT_TYPE
     ) {
-      if (location.pathname) return <Redirect to="/overview" />;
+      return <Redirect to="/overview" />;
     }
 
     if (

@@ -98,15 +98,12 @@ export const checkoutHandler = (ctx, ciCtx) => {
         log('Checkout user request failed to get response');
       } else {
         locationsDB[activeUser.checkedInLocation.name] = res.location;
-        console.log('RESSScheckout: ', res);
-        console.log('RESUSERR checkout', res.user);
         ctx.setState(
           {
             activeUser: res.user,
             locationsDB: locationsDB,
           },
           () => {
-            // ctx.forceUpdate();
             ciCtx.setState(
               {
                 user: res.user,

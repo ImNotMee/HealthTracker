@@ -13,49 +13,9 @@ class CheckIn extends Component {
     checkedInLocation: this.props.activeUser?.checkedInLocation,
   };
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log(
-  //     'BEFORE',
-  //     prevProps.activeUser?.checkedInLocation,
-  //     prevState,
-  //     this.props.activeUser?.checkedInLocation,
-  //     this.state,
-  //   );
-  //   if (this.state.checkedInLocation !== prevState.checkedInLocation) {
-  //     console.log(prevProps, prevState, this.props, this.state);
-  //     this.forceUpdate();
-  //     //this.setState({ checkedIn : true });
-  //   }
-  // }
-
-  // renderCheckOutView(checkInLocState) {
-  //   console.log('DOUCBLE CEHCK', checkInLocState);
-  //   return checkInLocState !== undefined ? (
-  //     <div key="ciewqioruq" id="CheckOutWrapper">
-  //       <CheckOutView
-  //         key="fiu49fhqewjiew"
-  //         location={checkInLocState}
-  //         checkoutHandler={() => {
-  //           this.props.checkoutHandler();
-  //         }}
-  //       />
-  //     </div>
-  //   ) : (
-  //     ''
-  //   );
-  // }
-
   render() {
     return (
       <div key="2309ur0j0rj0" id="PageWrapper">
-        {console.log(
-          'THINKNKNFDSKN',
-          this.props.activeUser,
-          this.state.user,
-          'LOC\n',
-          this.props.activeUser?.checkedInLocation,
-          this.state.checkedInLocation,
-        )}
         {this.state.user.type !== ACCOUNT_TYPES.admin ? (
           <div key="ciewqioruq" id="CheckOutWrapper">
             <CheckOutView
