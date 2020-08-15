@@ -1,41 +1,46 @@
 /* User mongoose model */
 const mongoose = require('mongoose');
 
-const ReminderItem = mongoose.model('ReminderItem', {
-  id: {
-    type: String,
-    trim: true,
-  },
-  category: {
-    type: String,
-    required: true,
-    minlegth: 1,
-    trim: true,
-  },
-  subCategory: {
-    type: String,
-    required: true,
-    minlegth: 1,
-    trim: true,
-  },
+const Locations = mongoose.model('Locations', {
   name: {
     type: String,
     required: true,
     minlegth: 1,
     trim: true,
   },
-  time: {
+  isAvaliable: {
+    type: Boolean,
+    required: true,
+  },
+  address: {
     type: String,
     required: true,
-    minlegth: 10,
+    minlegth: 1,
     trim: true,
   },
-  note: {
+  country: {
     type: String,
-    required: false,
+    required: true,
+    minlegth: 1,
     trim: true,
   },
-  status: {
+  imageUrl: {
+    type: String,
+    required: true,
+    minlegth: 1,
+    trim: true,
+  },
+  maxOccupancy: {
+    type: Number,
+    required: true,
+    min: 1,
+  },
+  currOccupancy: {
+    type: Number,
+    required: true,
+    min: 0,
+  },
+  description: {
     type: String,
     required: true,
     minlegth: 1,
@@ -43,4 +48,4 @@ const ReminderItem = mongoose.model('ReminderItem', {
   },
 });
 
-module.exports = { ReminderItem };
+module.exports = { Locations };

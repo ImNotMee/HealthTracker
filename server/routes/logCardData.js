@@ -7,6 +7,28 @@ const { reset } = require('nodemon');
 const router = express.Router();
 const log = console.log;
 
+router.post('/reset', (req, res) => {
+	User.findById(req.session.user_id).then((user) => {
+		if (!user) {
+			res.status(404).send('Resource not found')
+		}
+		else {
+			user.trends.push(user.user_card)
+			user.user_card = req.body
+			user.save().then((updatedUser) => {
+				res.status(200).send(updatedUser)
+			}).catch((error) => {
+				log(error)
+				res.status(400).send('Bad Request')
+			})
+		}
+	}).catch((e) => {
+		log('cant find user', e)
+		res.status(500).send('Internal Server Error')
+	})
+})
+
+
 router.post('/logBMI', (req, res) => {
 	if (mongoose.connection.readyState != 1) {
 		log('Issue with mongoose connection')
@@ -23,6 +45,8 @@ router.post('/logBMI', (req, res) => {
 			user.user_card.BMI.weight = req.body.weight
 			user.user_card.BMI.height = req.body.height
 			user.user_card.BMI.unit = req.body.unit
+			user.user_card.BMI.streak = req.body.streak
+			user.user_card.date = req.body.date
 			user.save().then((updatedUser) => {
 				res.status(200).send(updatedUser)
 			}).catch((error) => {
@@ -45,12 +69,16 @@ router.post('/logWater', (req, res) => {
 	}
 	User.findById(req.session.user_id).then((user) => {
 		if (!user) {
+			log(req.session.user_id)
 			res.status(404).send('Resource not found')
 		}
 		else {
+			log(req.session.user_id, user)
 			user.user_card.Water.completed = req.body.completed
 			user.user_card.Water.remaining = req.body.remaining
 			user.user_card.Water.unit = req.body.unit
+			user.user_card.Water.streak = req.body.streak
+			user.user_card.date = req.body.date
 			user.save().then((updatedUser) => {
 				res.status(200).send(updatedUser)
 			}).catch((error) => {
@@ -78,6 +106,8 @@ router.post('/logCalories', (req, res) => {
 			user.user_card.Calories.completed = req.body.completed
 			user.user_card.Calories.remaining = req.body.remaining
 			user.user_card.Calories.unit = req.body.unit
+			user.user_card.Calories.streak = req.body.streak
+			user.user_card.date = req.body.date
 			user.save().then((updatedUser) => {
 				res.status(200).send(updatedUser)
 			}).catch((error) => {
@@ -102,6 +132,8 @@ router.post('/logMood', (req, res) => {
 			res.status(404).send("User not found")
 		} else {
 			user.user_card.Mood.value = value;
+			user.user_card.Mood.streak = req.body.streak
+			user.user_card.date = req.body.date
 			user.save().then((updatedUser) => {
 				log`Updated Mood ${updatedUser}`
 				res.status(200).send(updatedUser)
@@ -127,6 +159,8 @@ router.post('/logSleep', (req, res) => {
 		} else {
 			user.user_card.Sleep.hours = hours;
 			user.user_card.Sleep.quality = quality;
+			user.user_card.Sleep.streak = req.body.streak
+			user.user_card.date = req.body.date
 			if (date !== null | date !== undefined) {
 				user.user_card.Sleep.date = date
 			} else {
@@ -152,10 +186,14 @@ router.post('/logStress', (req, res) => {
 	log(req.session.user_id)
 	User.findById(req.session.user_id).then((user) => {
 		if (!user) {
+			log("error")
+			log(req.session.user_id)
 			res.status(404).send("User not found")
 		} else {
 			user.user_card.Stress.value = value;
 			user.user_card.Stress.date = date;
+			user.user_card.Stress.streak = req.body.streak
+			user.user_card.date = req.body.date
 			if (date !== null | date !== undefined) {
 				user.user_card.Stress.date = date
 			} else {

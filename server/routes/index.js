@@ -6,7 +6,7 @@ const logCardData = require('./logCardData')
 const manageUser = require('./manageUser')
 const reminder = require('./reminder');
 const locations = require('./locations');
-const trends = require('./trends');
+const trends =  require('./trends');
 const streaks = require('./streaks')
 
 /**
@@ -30,6 +30,7 @@ const initRoutes = (app) => {
     next();
   });
 
+  app.use('/locations', locations);
   app.use('/auth', auth);
   app.use('/account', signup);
   app.use('/logCardData', logCardData)

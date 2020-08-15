@@ -26,6 +26,8 @@ class Overview extends Component {
     }
     this.state.medication = medication;
     this.state.appointments = appointments;
+
+    this.props.resetToday();
   }
 
   render() {

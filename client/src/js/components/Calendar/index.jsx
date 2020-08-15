@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './styles.css';
 import CalendarModule from './calendar.js';
-import { getMonth, loadAppointments } from '../../actions/calendarItems';
+import { getMonth, loadAppointments, loadStreaks } from '../../actions/calendarItems';
 
 class Calendar extends Component {
   state = {
@@ -18,7 +18,7 @@ class Calendar extends Component {
         items: appList,
       });
     } else if (type === 'streaks') {
-      const streaksList = []; //loadStreaks(this.state.user.hash);
+      const streaksList = loadStreaks(this.state.user.hash);
       this.setState({
         type: 'streaks',
         items: streaksList,

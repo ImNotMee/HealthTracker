@@ -10,6 +10,7 @@ const {
   ERROR_MSG,
 } = require('./constants');
 const log = console.log;
+const { card_1, card_2, card_3, card_4, card_5, card_6, card_7 } = require('./example_data')
 
 let salt = bcrypt.genSaltSync(10, this.saltRounds);
 const userLogin = {
@@ -32,9 +33,36 @@ MongoClient.connect(DB_URI, DEFAULT_DB_CONNECT_OPS, (error, client) => {
 
   const db = client.db(DB_NAME);
 
+  db.collection(DB_COLLECTIONS.locations).insertMany(
+    [
+      {
+        id: "Queen's Park",
+        name: "Queen's Park",
+        isAvaliable: true,
+        address: '111 Wellesley St W, Toronto, ON',
+        country: 'Canada',
+        imageUrl:
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Looking_down_University_Avenue_Toronto_August_2012.jpg/1200px-Looking_down_University_Avenue_Toronto_August_2012.jpg',
+        maxOccupancy: 53,
+        currOccupancy: 52,
+        description: 'some information about the park',
+      },
+    ],
+    (error, result) => {
+      if (error) {
+        log("Can't insert deafult locations", error);
+      } else {
+        log(result.ops);
+        log(result.ops[0]._id.getTimestamp());
+      }
+      // close connection
+      client.close();
+    },
+  );
+
   db.collection(DB_COLLECTIONS.login).insertMany([userLogin, adminLogin], (error, result) => {
     if (error) {
-      log("Can't insert deafult users", error);
+      log("Can't insert deafult logins", error);
     } else {
       log(result.ops);
       log(result.ops[0]._id.getTimestamp());
@@ -61,7 +89,7 @@ MongoClient.connect(DB_URI, DEFAULT_DB_CONNECT_OPS, (error, client) => {
               category: 'Medical Health',
               subCategory: 'Appointments',
               name: 'Annual Check Up',
-              time: '2020-07-27T10:15',
+              time: '2020-07-27',
               note: 'Call Dr.Jones 1hr before',
               status: 'active',
             },
@@ -78,47 +106,8 @@ MongoClient.connect(DB_URI, DEFAULT_DB_CONNECT_OPS, (error, client) => {
             message: 'explor our app',
           },
         ],
-        trends: {
-          weight: [120, 119, 119, 120, 122, 119, 117],
-          sleep: [5, 6, 6, 7, 9, 10, 7],
-          calories: [1800, 1899, 2100, 2000, 1789, 1987, 1788],
-          stress: [2, 3, 2, 1, 4, 6, 5],
-        },
-        user_card: {
-          BMI: {
-            value: 22.0,
-            height: 160,
-            weight: 60,
-            unit: 'metric', // metric and standard
-            date: '2020-07-27T10:15',
-          },
-          Water: {
-            completed: 800,
-            remaining: 1200,
-            unit: 'ml',
-            date: '2020-07-27T10:15',
-          },
-          Calories: {
-            completed: 300,
-            remaining: 1700,
-            unit: 'calories',
-            date: '2020-07-27T10:15',
-          },
-          Mood: {
-            value: 'happy',
-          },
-          Sleep: {
-            hours: 8,
-            quality: 'Good', // 3 levels bad, okay, good
-            date: '2020-07-27T10:15',
-          },
-          Stress: {
-            value: 1,
-            date: '2020-07-27T10:15',
-          },
-          Sickness: [
-          ],
-        },        
+        trends: [card_1, card_2, card_3, card_4, card_5, card_6],
+        user_card: card_7,        
       },
       {
         firstName: 'IAmAdmin',
