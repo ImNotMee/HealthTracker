@@ -5,6 +5,7 @@ const { Login } = require('../models/Login');
 const { Trends } = require('../models/Trends');
 const { Reminders } = require('../models/Reminders');
 const { User } = require('../models/User');
+const { CardData } = require('../models/CardData')
 const { isMongoError } = require('../db/utils');
 const Constants = require('../constants');
 const express = require('express');
@@ -79,7 +80,7 @@ const createNewUser = ({ firstName, lastName, email, sex }) => {
     [Constants.HEALTH_CATEGORIES.phsycial]: [],
   });
 
-  const defaultCard = {
+  const defaultCard = new CardData({
     BMI: {
       // need to take previous data
       value: 0,
@@ -114,7 +115,7 @@ const createNewUser = ({ firstName, lastName, email, sex }) => {
       streak: false,
     },
     Sickness: [],
-  };
+  });
 
   let user = new User({
     firstName: firstName,
