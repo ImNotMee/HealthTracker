@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './styles.css';
 import Graph from './Graph/index.jsx';
-import { getAllUserTrends } from '../../actions/trends';
 
 class AdminTrends extends Component {
   state = {
@@ -26,7 +25,6 @@ class AdminTrends extends Component {
       .then((response) => response.json())
       .then((responseJson) => {
         console.log(responseJson);
-        //const d = getAllUserTrends(responseJson);
         this.setState({ avgData: responseJson });
       });
   }
