@@ -20,14 +20,14 @@ class AdminTrends extends Component {
 
   fetchData() {
     fetch('http://localhost:5000/trends/getAll', {
-      method: 'GET',
+      method: 'POST',
       credentials: 'include',
     })
       .then((response) => response.json())
       .then((responseJson) => {
-        const d = getAllUserTrends(responseJson);
-        this.setState({ avgData: d });
-        //console.log(this.state.avgData);
+        console.log(responseJson);
+        //const d = getAllUserTrends(responseJson);
+        this.setState({ avgData: responseJson });
       });
   }
 
@@ -37,7 +37,7 @@ class AdminTrends extends Component {
         this.setState({
           trends: {
             title: 'Average Body Weight (lb)',
-            data: this.state.avgData[0],
+            data: this.state.avgData['weight'],
             type: 'line',
           },
         });
@@ -46,7 +46,7 @@ class AdminTrends extends Component {
         this.setState({
           trends: {
             title: 'Average Hours of Sleep',
-            data: this.state.avgData[1],
+            data: this.state.avgData['sleep'],
             type: 'bar',
           },
         });
@@ -55,7 +55,7 @@ class AdminTrends extends Component {
         this.setState({
           trends: {
             title: 'Average Calorie Intake (cal)',
-            data: this.state.avgData[3],
+            data: this.state.avgData['calories'],
             type: 'bar',
           },
         });
@@ -64,7 +64,7 @@ class AdminTrends extends Component {
         this.setState({
           trends: {
             title: 'Average Stress Level (1- 10)',
-            data: this.state.avgData[2],
+            data: this.state.avgData['stress'],
             type: 'line',
           },
         });
