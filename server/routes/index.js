@@ -3,6 +3,7 @@
 const auth = require('./auth');
 const signup = require('./signup');
 const logCardData = require('./logCardData')
+const manageUser = require('./manageUser')
 const reminder = require('./reminder');
 const locations = require('./locations');
 const trends =  require('./trends');
@@ -36,6 +37,7 @@ const initRoutes = (app) => {
   app.use('/reminder', reminder);
   app.use('/trends', trends);
   app.use('/streaks', streaks);
+  app.use('/manageUser', manageUser)
 };
 
 module.exports = {

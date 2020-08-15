@@ -30,6 +30,12 @@ router.post('/reset', (req, res) => {
 
 
 router.post('/logBMI', (req, res) => {
+	if (mongoose.connection.readyState != 1) {
+		log('Issue with mongoose connection')
+		res.status(500).send('Internal server error')
+		return;
+	}
+
 	User.findById(req.session.user_id).then((user) => {
 		if (!user) {
 			res.status(404).send('Resource not found')
@@ -56,6 +62,11 @@ router.post('/logBMI', (req, res) => {
 
 
 router.post('/logWater', (req, res) => {
+	if (mongoose.connection.readyState != 1) {
+		log('Issue with mongoose connection')
+		res.status(500).send('Internal server error')
+		return;
+	}
 	User.findById(req.session.user_id).then((user) => {
 		if (!user) {
 			log(req.session.user_id)
@@ -82,6 +93,11 @@ router.post('/logWater', (req, res) => {
 })
 
 router.post('/logCalories', (req, res) => {
+	if (mongoose.connection.readyState != 1) {
+		log('Issue with mongoose connection')
+		res.status(500).send('Internal server error')
+		return;
+	}
 	User.findById(req.session.user_id).then((user) => {
 		if (!user) {
 			res.status(404).send('Resource not found')
