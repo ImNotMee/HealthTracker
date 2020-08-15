@@ -235,9 +235,6 @@ export const setSleep = (card, newSleepHours, newSleepQuality) => {
   user.user_card['Sleep']['hours'] = newSleepHours;
   user.user_card['Sleep']['quality'] = newSleepQuality;
 
-  // do trend stuff here
-  user.trends.sleep[day] = newSleepHours;
-
   card.setState({
     user: user,
   });
