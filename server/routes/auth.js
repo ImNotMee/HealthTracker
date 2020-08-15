@@ -6,7 +6,6 @@ const { Locations } = require('../models/Locations');
 const { User } = require('../models/User');
 const express = require('express');
 const router = express.Router();
-
 const log = console.log;
 
 /**
