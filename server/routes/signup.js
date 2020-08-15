@@ -10,6 +10,7 @@ const Constants = require('../constants');
 const express = require('express');
 const router = express.Router();
 const log = console.log;
+const { }
 
 /**
  * Login user
@@ -71,19 +72,49 @@ router.post('/signup', (req, res) => {
 });
 
 const createNewUser = ({ firstName, lastName, email, sex }) => {
-  const trends = new Trends({
-    weight: [],
-    sleep: [],
-    calories: [],
-    stress: [],
-  });
-
   // to do add card data 
   let reminders = new Reminders({
     [Constants.HEALTH_CATEGORIES.medical]: [],
     [Constants.HEALTH_CATEGORIES.mental]: [],
     [Constants.HEALTH_CATEGORIES.phsycial]: [],
   });
+
+  const defaultCard = {
+    BMI: {
+      // need to take previous data
+      value: 0,
+      height: 0,
+      weight: 0,
+      unit: 'metric', // metric and standard
+      streak: false,
+    },
+    Water: {
+      completed: 0,
+      remaining: 2000,
+      unit: 'ml',
+      streak: false,
+    },
+    Calories: {
+      completed: 0,
+      remaining: 2000,
+      unit: 'calories',
+      streak: false,
+    },
+    Mood: {
+      value: 'happy',
+      streak: false,
+    },
+    Sleep: {
+      hours: 0,
+      quality: 'Good', // 3 levels bad, okay, good
+      streak: false,
+    },
+    Stress: {
+      value: 1,
+      streak: false,
+    },
+    Sickness: [],
+  };
 
   let user = new User({
     firstName: firstName,
@@ -95,7 +126,8 @@ const createNewUser = ({ firstName, lastName, email, sex }) => {
     checkedInLocation: '',
     checkInHistory: [],
     reminders: reminders,
-    trends: trends,
+    trends: [],
+    user_card: defaultCard,
   });
 
   return user;
