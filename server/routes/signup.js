@@ -73,7 +73,15 @@ router.post('/signup', (req, res) => {
         else {
             res.status(404).send('user email already exists')
         }
-    })
+    }).catch((error) => {
+        if (isMongoError(error)) {
+            log('Internal server error saving new user:\n', error);
+            res.status(500).send('Internal server error');
+        } else {
+            log('Bad request:\n', error);
+            res.status(400).send('Bad Request');
+        }
+    });
 });
 
 const createNewUser = (firstName, lastName, email, password, sex ) => {
