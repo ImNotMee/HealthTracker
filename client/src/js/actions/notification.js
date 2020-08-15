@@ -1,4 +1,5 @@
 import reminderSound from '../../assets/light.mp3';
+import { NOTIFICATION_TYPE, API } from '../constants';
 
 const log = console.log;
 
@@ -15,19 +16,65 @@ export const addNotificationHandler = (ctx, type, title, message) => {
 
 export const removeNotificationHandler = (ctx, id) => {
   const user = ctx.state.activeUser;
+  console.log(user);
   const notifications = user.notifications;
   const index = _getNotificationIndex(notifications, id);
-  notifications.splice(index, 1);
-  user.notifications = notifications;
-  ctx.setState({
-    activeUser: user,
-  });
+  const notif = notifications[index];
+  console.log(notif, index);
+  if (notif.type === NOTIFICATION_TYPE.reminder) {
+    notifications.splice(index, 1);
+    user.notifications = notifications;
+    ctx.setState(
+      {
+        activeUser: user,
+      },
+      () => {
+        console.log('Removed reminder notification banner', user);
+      },
+    );
+  } else {
+    const request = new Request(API.removeNotif, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        _id: id,
+      }),
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+    });
+
+    fetch(request)
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        }
+      })
+      .then((res) => {
+        if (res === undefined || res.user === undefined) {
+          log('Remove alert request failed to get response');
+        } else {
+          ctx.setState(
+            {
+              activeUser: res.user,
+            },
+            () => {
+              console.log('Removed alert banner', user);
+            },
+          );
+        }
+      })
+      .catch((error) => {
+        log('Remove alert request failed with error\n', error);
+      });
+  }
 };
 
 const _getNotificationIndex = (list, id) => {
   let i;
   for (i = 0; i < list.length; i++) {
-    if (list[i].id === id) {
+    log('list', list[i].id, id);
+    if (list[i]._id === id) {
       return i;
     }
   }

@@ -6,7 +6,7 @@ import { NOTIFICATION_TYPE } from '../../../constants';
 
 class Notification extends Component {
   state = {
-    id: this.props.notification?.id,
+    id: this.props.notification?._id,
     type: this.props.notification?.type,
     title: this.props.notification?.title,
     message: this.props.notification?.message,
@@ -14,18 +14,18 @@ class Notification extends Component {
 
   render() {
     return (
-      <div id="NotificationItemWrapper" className={[this.state.type]}>
+      <div id="NotificationItemWrapper" className={[this.props.notification?.type]}>
         <img
           id="NotifIcon"
-          src={this.state.type === NOTIFICATION_TYPE.alert ? alertIcon : bellIcon}
+          src={this.props.notification?.type === NOTIFICATION_TYPE.alert ? alertIcon : bellIcon}
           alt="notification-icon"
         />
-        <span className="type"> {this.state.type}! &nbsp; </span>
-        <span> {this.state.title} </span>
+        <span className="type"> {this.props.notification?.type}! &nbsp; </span>
+        <span> {this.props.notification?.title} </span>
         <span
           className="closeBtn"
           onClick={() => {
-            this.props.removeNotificationHandler(this.state.id);
+            this.props.removeNotificationHandler(this.props.notification?._id);
           }}
         >
           &times;

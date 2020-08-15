@@ -5,6 +5,7 @@ const { Locations } = require('../models/Locations');
 const { ObjectID } = require('mongodb');
 const { mongoChecker, isMongoError } = require('../db/utils');
 const express = require('express');
+const { authenticate } = require("../utils.js");
 const router = express.Router();
 
 const log = console.log;
@@ -12,10 +13,12 @@ const log = console.log;
 /**
  * Add a location to db
  */
-router.get('/all', mongoChecker, (req, res) => {
+router.get('/all', mongoChecker,authenticate, (req, res) => {
+  if (req.user !== undefined || req.user !== null) {
+    res.status(400).send('Bad Request')
+  }
   Locations.find({})
     .then((locations) => {
-      log('All locations \n', locations);
       res.status(200).send({ locations });
     })
     .catch((error) => {
@@ -32,7 +35,10 @@ router.get('/all', mongoChecker, (req, res) => {
 /**
  * Add a location to db
  */
-router.post('/add', mongoChecker, (req, res) => {
+router.post('/add', mongoChecker,authenticate, (req, res) => {
+  if (req.user !== undefined || req.user !== null) {
+    res.status(400).send('Bad Request')
+  }
   const {
     name,
     isAvaliable,
@@ -75,7 +81,10 @@ router.post('/add', mongoChecker, (req, res) => {
 /**
  * Remove a locations from db
  */
-router.delete('/delete/:l_id', mongoChecker, (req, res) => {
+router.delete('/delete/:l_id', mongoChecker,authenticate, (req, res) => {
+  if (req.user !== undefined || req.user !== null) {
+    res.status(400).send('Bad Request')
+  }
   const lid = req.params.l_id;
 
   if (!ObjectID.isValid(lid)) {
@@ -106,7 +115,10 @@ router.delete('/delete/:l_id', mongoChecker, (req, res) => {
  * Update status of a reminder of a category for user
  * of current session using the reminder's id
  */
-router.put('/update/:l_id/', mongoChecker, (req, res) => {
+router.put('/update/:l_id/', mongoChecker,authenticate, (req, res) => {
+  if (req.user !== undefined || req.user !== null) {
+    res.status(400).send('Bad Request')
+  }
   const lid = req.params.l_id;
   if (!ObjectID.isValid(lid)) {
     res.status(404).send('Resource not found');

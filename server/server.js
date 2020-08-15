@@ -32,6 +32,18 @@ app.use(
   }),
 );
 
+const sessionChecker = (req, res, next) => {
+    if (req.session.user_id) {
+        res.redirect('/overview');
+    } else {
+        next();
+    }
+};
+
+app.get('/trends', sessionChecker, (req, res) => {
+	res.redirect('/trends')
+})
+
 // initlaize api routes
 const RoutesUtil = require('./routes/index');
 RoutesUtil.initRoutes(app);
@@ -76,6 +88,7 @@ app.get('*', (req, res) => {
 
   res.sendFile(path.normalize(__dirname + '/..//client/build/index.html'));
 });
+
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {

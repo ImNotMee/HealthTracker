@@ -7,7 +7,7 @@ const express = require('express');
 const router = express.Router();
 const log = console.log;
 
-// helper function 
+// helper function
 function get_this_month (card, month) {
   const card_date = new Date(card.date)
   const card_month = card_date.getMonth()
@@ -63,7 +63,7 @@ router.post('/water', (req, res) => {
       res.status(500).send('Internal Server Error')  // server error
   });
 });
-  
+
 
 router.post('/calories', (req, res) => {
   const id = req.session.user_id;
@@ -88,7 +88,7 @@ router.post('/calories', (req, res) => {
       res.status(500).send('Internal Server Error')  // server error
   });
 });
-  
+
 router.post('/mood', (req, res) => {
   const id = req.session.user_id;
   const month = req.body.month
@@ -112,7 +112,7 @@ router.post('/mood', (req, res) => {
       res.status(500).send('Internal Server Error')  // server error
   });
 });
-  
+
 
 router.post('/sleep', (req, res) => {
   const id = req.session.user_id;
@@ -137,7 +137,7 @@ router.post('/sleep', (req, res) => {
       res.status(500).send('Internal Server Error')  // server error
   });
 });
-  
+
 
 
 router.post('/stress', (req, res) => {
@@ -163,7 +163,7 @@ router.post('/stress', (req, res) => {
       res.status(500).send('Internal Server Error')  // server error
   });
 });
-  
+
 
 
 module.exports = router;
