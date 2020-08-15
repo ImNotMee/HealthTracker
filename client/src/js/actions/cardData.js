@@ -228,8 +228,6 @@ export const setMood = (card, newMood) => {
 
 export const setSleep = (card, newSleepHours, newSleepQuality) => {
   console.log('updating Sleep to ');
-  const today = new Date();
-  const day = today.getDay();
 
   const { user } = card.state;
   user.user_card['Sleep']['hours'] = newSleepHours;
