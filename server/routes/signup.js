@@ -2,9 +2,10 @@
 const { mongoose } = require('../db/mongoose');
 mongoose.set('bufferCommands', false);
 const { Login } = require('../models/Login');
-const { Trends } = require('../models/Trends');
+//const { Trends } = require('../models/Trends');
 const { Reminders } = require('../models/Reminders');
 const { User } = require('../models/User');
+const { CardData, StressSchema, SleepSchema, MoodSchema, CaloriesSchema, WaterSchema, BMISchema } = require('../models/CardData');
 const { isMongoError } = require('../db/utils');
 const Constants = require('../constants');
 const express = require('express');
@@ -15,8 +16,7 @@ const log = console.log;
  * Login user
  */
 router.post('/signup', (req, res) => {
-  const { firstName, lastName, email, password, sex } = req.body;
-  const user = createNewUser(req.body);
+  const user = createNewUser(req.body.firstName, req.body.lastName, req.body.email, req.body.password, req.body.sex);
   const login = createNewLogin(req.body);
 
   user
@@ -70,14 +70,14 @@ router.post('/signup', (req, res) => {
     });
 });
 
-const createNewUser = ({ firstName, lastName, email, sex }) => {
-  const trends = new Trends({
+const createNewUser = (firstName, lastName, email, password, sex ) => {
+ /* const trends = new Trends({
     weight: [],
     sleep: [],
     calories: [],
     stress: [],
   });
-
+  */
   // to do add card data 
   let reminders = new Reminders({
     [Constants.HEALTH_CATEGORIES.medical]: [],
@@ -85,19 +85,32 @@ const createNewUser = ({ firstName, lastName, email, sex }) => {
     [Constants.HEALTH_CATEGORIES.phsycial]: [],
   });
 
+  let usercard = new CardData({
+      Sickness: [],
+      BMI: new BMISchema({ value: 0, height: 0, weight: 0, unit: 'metric', streak: false }),
+      Water: new WaterSchema({completed: 0, remaining: 0, unit: 'ml', streak: false}),
+      Calories: new CaloriesSchema({completed: 0, remaining: 0, unit: 'calories', streak: false}),
+      Mood: new MoodSchema({value: "", streak: false}),
+      Sleep: new SleepSchema({ hours: 0, quality: "", streak: false }),
+      Stress: new StressSchema({ value: 0, streak: false }),
+})
+
   let user = new User({
     firstName: firstName,
     lastName: lastName,
+    hash: email + password,
     sex: sex,
     email: email,
     type: Constants.ACCOUNT_TYPES.user,
     timers: [],
     checkedInLocation: '',
     checkInHistory: [],
+    notification: [],
     reminders: reminders,
-    trends: trends,
+    trends: [],
+    user_card: usercard
   });
-
+  console.log(user)
   return user;
 };
 

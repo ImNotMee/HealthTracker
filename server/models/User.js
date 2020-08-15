@@ -26,6 +26,12 @@ const User = mongoose.model('User', {
     required: true,
     trim: true,
   },
+  hash: {
+    type: String,
+    required: true,
+    trim: true,
+    unique: true,
+  },
   email: {
     type: String,
     required: true,
