@@ -7,7 +7,7 @@ const express = require('express');
 const router = express.Router();
 const log = console.log;
 
-// helper function 
+// helper function
 function date_range_helper (card, days) {
   let date = new Date()
   let date_range = new Date(date);
@@ -21,12 +21,12 @@ function date_range_helper (card, days) {
 // [
 //   {
 //     date: date,
-//     value: value you need 
-//   }, 
+//     value: value you need
+//   },
 //   {
 //     date: date,
-//     value: value you need 
-//   }, 
+//     value: value you need
+//   },
 // ]
 
 router.get('/weight', (req, res) => {
@@ -43,7 +43,7 @@ router.get('/weight', (req, res) => {
             value: card.BMI.weight
           }
           result.push(data)
-      }) 
+      })
       const data = {
         date: user.user_card.date,
         value: user.user_card.BMI.weight,

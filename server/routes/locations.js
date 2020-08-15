@@ -15,7 +15,6 @@ const log = console.log;
 router.get('/all', mongoChecker, (req, res) => {
   Locations.find({})
     .then((locations) => {
-      log('All locations \n', locations);
       res.status(200).send({ locations });
     })
     .catch((error) => {

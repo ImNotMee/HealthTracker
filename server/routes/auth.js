@@ -35,7 +35,7 @@ router.post('/login', (req, res) => {
               await locations.forEach((loc) => {
                 resLocs[loc.name] = loc;
               });
-              log('All locations \n', resLocs);
+              //log('All locations \n', resLocs);
               res.status(200).send({ activeUser: user, locations: resLocs });
             })
             .catch((error) => {

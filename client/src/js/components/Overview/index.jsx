@@ -8,7 +8,7 @@ class Overview extends Component {
     super(props);
     this.state = {
       activeUser: this.props.activeUser,
-      user_card: this.props.activeUser.user_card,
+      user_card: this.props.activeUser?.user_card,
       medication: [],
       appointments: [],
     };
@@ -31,6 +31,9 @@ class Overview extends Component {
   }
 
   render() {
+    if (this.state.user_card === undefined) {
+      return <div></div>;
+    }
     return (
       <div id="OverviewWrapper">
         <h1 id="h1-headers">Physical Health</h1>

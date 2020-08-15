@@ -5,6 +5,7 @@ const { ReminderItem } = require('../models/ReminderItem');
 //const { Reminder } = require('../models/Reminders');
 const { User } = require('../models/User');
 const { mongoChecker, isMongoError } = require('../db/utils');
+const { authenticate } = require('../utils');
 const express = require('express');
 const router = express.Router();
 
@@ -13,8 +14,9 @@ const log = console.log;
 /**
  * Add a reminders of a category to user of current session
  */
-router.post('/add', mongoChecker, (req, res) => {
+router.post('/add', mongoChecker,authenticate, (req, res) => {
   const { id, category, subCategory, name, time, note, status } = req.body;
+  console.log(req.user);
   User.findById(req.session.user_id)
     .then((user) => {
       const reminderItem = new ReminderItem({

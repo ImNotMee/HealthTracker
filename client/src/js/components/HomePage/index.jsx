@@ -42,7 +42,7 @@ import {
 class HomePage extends Component {
   state = {
     user: this.props.activeUser,
-    user_card: this.props.activeUser.user_card,
+    user_card: this.props.activeUser?.user_card,
     userDB: this.props.userDB,
     check: false,
     count: getNumNotifs(this.props.activeUser?.notifications),

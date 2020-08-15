@@ -139,7 +139,7 @@ router.post('/logMood', (req, res) => {
 				res.status(200).send(updatedUser)
 			}).catch((error) => {
 				log(error)
-				res.status(400).send('Bad Request') 
+				res.status(400).send('Bad Request')
 			})
 		}
 	}).catch((error) => {
@@ -171,7 +171,7 @@ router.post('/logSleep', (req, res) => {
 				res.status(200).send(updatedUser)
 			}).catch((error) => {
 				log(error)
-				res.status(400).send('Bad Request') 
+				res.status(400).send('Bad Request')
 			})
 		}
 	}).catch((error) => {
@@ -204,7 +204,7 @@ router.post('/logStress', (req, res) => {
 				res.status(200).send(updatedUser)
 			}).catch((error) => {
 				log(error)
-				res.status(400).send('Bad Request') 
+				res.status(400).send('Bad Request')
 			})
 		}
 	}).catch((error) => {
@@ -227,7 +227,7 @@ router.post('/logSickness', (req, res) => {
 				res.status(200).send(updatedUser)
 			}).catch((error) => {
 				log(error)
-				res.status(400).send('Bad Request') 
+				res.status(400).send('Bad Request')
 			})
 		}
 	}).catch((error) => {
