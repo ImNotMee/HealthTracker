@@ -5,9 +5,7 @@ export const signUpUser = (landingPage, signUpCtx) => {
   log('Creating user...');
   if (_signUpInputValidate(signUpCtx)) {
     const inputs = signUpCtx.state;
-    log(inputs);
 
-    //const { first, last, email, password, sex } = inputs;
     const request = new Request(API.siginup, {
       method: 'post',
       body: JSON.stringify({
@@ -36,7 +34,7 @@ export const signUpUser = (landingPage, signUpCtx) => {
           landingPage.setState({
             invalidLogin: true,
           });
-          log('Invalid aogin attempt. Try again');
+          log('Invalid login attempt. Try again');
         } else {
           landingPage.props.setActiveUserAndLocsHandler(res.activeUser, res.locations);
           log('User successfully added');
