@@ -16,31 +16,24 @@ router.patch('/alert-by-loc-history', (req, res) => {
   const { location, type, title, message } = req.body;
   const newNotif = new Notification({ type, title, message });
   const limitDate = new Date();
-  limitDate.setDate(date.getDate() + 14);
+  limitDate.setDate(limitDate.getDate() + 14);
 
   User.find({ type: 'user' })
     .then(async (users) => {
       console.log('USERS MATCH', users);
-      let count = 0;
-      await users
+      const resUsers = await users
         .filter(async (user) => {
           return (
             (await user.checkInHistory.filter((loc) => {
-              console.log(loc, loc.location.name, location.name);
-
               return loc.location.name === location.name && new Date(loc.time) < limitDate;
             }).length) > 0
           );
         })
-        .forEach(async (user) => {
-          console.log('ALERT\n', user, 'NOTES', user.notifications);
+        .map(async (user) => {
           user.notifications.push(newNotif);
-          console.log('PUSHED', user.notifications);
           await user
             .save()
-            .then((result) => {
-              count += 1;
-            })
+            .then(console.log('Alert Sent'))
             .catch((error) => {
               if (isMongoError(error)) {
                 log('Internal server error alerting user:\n', error);
@@ -50,11 +43,12 @@ router.patch('/alert-by-loc-history', (req, res) => {
                 res.status(400).send('Bad Request for alerting user');
               }
             });
+          return user;
         });
-      return count;
+      return resUsers;
     })
-    .then((count) => {
-      res.status(200).send({ count });
+    .then((resUsers) => {
+      res.status(200).send({ count: resUsers.length });
     })
     .catch((error) => {
       log(error);
