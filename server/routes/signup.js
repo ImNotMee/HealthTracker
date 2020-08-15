@@ -11,7 +11,6 @@ const Constants = require('../constants');
 const express = require('express');
 const router = express.Router();
 const log = console.log;
-const { }
 
 /**
  * Login user
