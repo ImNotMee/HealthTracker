@@ -83,7 +83,7 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div id="HomeWrapper">
+      <div key={`this_${this.props.activeUser}`} id="HomeWrapper">
         <div id="NavBarWrapper">
           <SideBar
             reminderCount={getNumNotifs(
@@ -97,10 +97,11 @@ class HomePage extends Component {
         </div>
         <div id="HomeContentWrapper">
           <div id="NotificationWrapper">
-            {this.state.user?.notifications?.map((notification) => {
+            {this.props.activeUser?.notifications?.map((notification) => {
+              console.log(notification);
               return (
                 <Notification
-                  key={notification.id}
+                  key={notification._id}
                   notification={notification}
                   removeNotificationHandler={this.props.removeNotificationHandler}
                 />

@@ -118,6 +118,7 @@ router.patch('/add', (req, res) => {
 router.patch('/remove', (req, res) => {
   User.findById(req.session.user_id)
     .then((user) => {
+      console.log('BODDDDY', req.body);
       const notif = user.notifications.id(req.body._id);
       notif.remove();
       user
