@@ -19,6 +19,7 @@
     "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "google-maps-react": "^2.0.6",
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.25",
     "validator": "^13.1.1"

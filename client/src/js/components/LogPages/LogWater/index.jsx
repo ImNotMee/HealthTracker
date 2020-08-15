@@ -51,7 +51,7 @@ class LogWater extends Component {
           </h1>
           <div className="logBox">
             <h3>
-              How much water did you drink?
+              How much water did you drink? Add water drank below!
               <img
                 id="iconWater"
                 src="https://image.flaticon.com/icons/svg/3100/3100525.svg"

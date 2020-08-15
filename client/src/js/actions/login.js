@@ -35,7 +35,6 @@ export const setActiveUserAndLocs = (app, user, locations) => {
 };
 
 export const onLoginHandler = (landingPage, email, password) => {
-  log(email, password);
   const loginCred = { email: email, password: password };
   const request = new Request(API.login, {
     method: 'post',

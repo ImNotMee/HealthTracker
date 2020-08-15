@@ -6,7 +6,6 @@ const { Locations } = require('../models/Locations');
 const { User } = require('../models/User');
 const express = require('express');
 const router = express.Router();
-
 const log = console.log;
 
 /**
@@ -76,8 +75,10 @@ router.get('/logout', (req, res) => {
  * User session id
  */
 router.get('/session', (req, res) => {
-  if (req.session.activeUser) {
-    res.send({ activeUser: req.session.activeUser });
+  if (req.session.user_id) {
+    User.findById(req.session.user_id).then(user => {
+      res.send({ activeUser: user });
+    });
   } else {
     res.status(401).send('No valid session found');
   }

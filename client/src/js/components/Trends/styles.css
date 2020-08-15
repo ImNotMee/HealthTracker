@@ -8,3 +8,7 @@
   display: flex;
   text-align: center;
 }
+
+#tab {
+  max-height: 200px;
+}

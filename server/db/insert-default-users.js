@@ -10,6 +10,7 @@ const {
   ERROR_MSG,
 } = require('./constants');
 const log = console.log;
+const { card_1, card_2, card_3, card_4, card_5, card_6, card_7 } = require('./example_data')
 
 let salt = bcrypt.genSaltSync(10, this.saltRounds);
 const userLogin = {
@@ -88,7 +89,7 @@ MongoClient.connect(DB_URI, DEFAULT_DB_CONNECT_OPS, (error, client) => {
               category: 'Medical Health',
               subCategory: 'Appointments',
               name: 'Annual Check Up',
-              time: '2020-07-27T10:15',
+              time: '2020-07-27',
               note: 'Call Dr.Jones 1hr before',
               status: 'active',
             },
@@ -105,12 +106,8 @@ MongoClient.connect(DB_URI, DEFAULT_DB_CONNECT_OPS, (error, client) => {
             message: 'explor our app',
           },
         ],
-        trends: {
-          weight: [120, 119, 119, 120, 122, 119, 117],
-          sleep: [5, 6, 6, 7, 9, 10, 7],
-          calories: [1800, 1899, 2100, 2000, 1789, 1987, 1788],
-          stress: [2, 3, 2, 1, 4, 6, 5],
-        },
+        trends: [card_1, card_2, card_3, card_4, card_5, card_6],
+        user_card: card_7,        
       },
       {
         firstName: 'IAmAdmin',

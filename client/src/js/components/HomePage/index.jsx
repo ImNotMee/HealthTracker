@@ -27,7 +27,7 @@ import './styles.css';
 import { getNumNotifs } from '../../actions/notification';
 import { NOTIFICATION_TYPE } from '../../constants';
 
-import { USER_CARD } from '../../constants'; // needs to be changed to server call later
+//import { USER_CARD } from '../../constants'; // needs to be changed to server call later
 import {
   setBMI,
   setWater,
@@ -36,12 +36,13 @@ import {
   setSleep,
   setStress,
   setSickness,
+  resetToday,
 } from '../../actions/cardData';
 
 class HomePage extends Component {
   state = {
     user: this.props.activeUser,
-    user_card: USER_CARD,
+    user_card: this.props.activeUser.user_card,
     userDB: this.props.userDB,
     check: false,
     count: getNumNotifs(this.props.activeUser?.notifications),
@@ -92,7 +93,11 @@ class HomePage extends Component {
               exact
               path="/overview"
               render={() => (
-                <Overview user_card={this.state.user_card} activeUser={this.state.user} />
+                <Overview
+                  user_card={this.state.user_card}
+                  activeUser={this.state.user}
+                  resetToday={() => resetToday(this)}
+                />
               )}
             />
             <Route exact path="/trends" render={() => <Trends activeUser={this.state.user} />} />

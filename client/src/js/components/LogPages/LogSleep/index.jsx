@@ -68,6 +68,7 @@ class LogSleep extends Component {
               type="number"
               id="inputLog"
               placeholder="Enter Hours"
+              min="0"
               value={this.state.hours}
               onChange={this.changeHours}
             />
