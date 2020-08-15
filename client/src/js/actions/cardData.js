@@ -39,19 +39,21 @@ export const defaultCard = {
 
 export const resetToday = (card) => {
   const { user } = card.state;
-  const card_date = new Date(user.user_card.date);
+  const card_date = new Date(user?.user_card?.date);
   const date = new Date();
   // check if it's a new day
   if (date.getMonth() !== card_date.getMonth() || date.getDate() !== card_date.getDate()) {
     let reset_card = defaultCard;
-    reset_card['BMI']['value'] = user.user_card['BMI']['value'];
-    reset_card['BMI']['height'] = user.user_card['BMI']['height'];
-    reset_card['BMI']['weight'] = user.user_card['BMI']['weight'];
-    reset_card['BMI']['unit'] = user.user_card['BMI']['unit'];
+    reset_card['BMI']['value'] = user?.user_card['BMI']['value'];
+    reset_card['BMI']['height'] = user?.user_card['BMI']['height'];
+    reset_card['BMI']['weight'] = user?.user_card['BMI']['weight'];
+    reset_card['BMI']['unit'] = user?.user_card['BMI']['unit'];
     reset_card['date'] = Date.now();
 
-    user.trends.push(user.user_card);
-    user.user_card = reset_card;
+    if (user != null) {
+      user.trends.push(user?.user_card);
+      user.user_card = reset_card;
+    }
 
     const request = new Request('http://localhost:5000/logCardData/reset', {
       method: 'post',
@@ -96,11 +98,11 @@ export const setBMI = (card, newBMI, newHeight, newWeight, newUnit) => {
   });
 
   const BMIInfo = {
-    value: user.user_card['BMI']['value'],
-    height: user.user_card['BMI']['height'],
-    weight: user.user_card['BMI']['weight'],
-    unit: user.user_card['BMI']['unit'],
-    streak: user.user_card['BMI']['streak'],
+    value: user?.user_card['BMI']['value'],
+    height: user?.user_card['BMI']['height'],
+    weight: user?.user_card['BMI']['weight'],
+    unit: user?.user_card['BMI']['unit'],
+    streak: user?.user_card['BMI']['streak'],
     date: Date.now(),
   };
   const request = new Request('http://localhost:5000/logCardData/logBMI', {
@@ -141,8 +143,8 @@ export const setWater = (card, newWater) => {
   });
 
   const waterInfo = {
-    completed: user.user_card['Water']['completed'],
-    remaining: user.user_card['Water']['remaining'],
+    completed: user?.user_card['Water']['completed'],
+    remaining: user?.user_card['Water']['remaining'],
     unit: 'ml',
     streak: streak,
     date: Date.now(),
@@ -185,8 +187,8 @@ export const setCalories = (card, newCalories) => {
   });
 
   const caloriesInfo = {
-    completed: user.user_card['Calories']['completed'],
-    remaining: user.user_card['Calories']['remaining'],
+    completed: user?.user_card['Calories']['completed'],
+    remaining: user?.user_card['Calories']['remaining'],
     unit: 'Calories',
     streak: streak,
     date: Date.now(),
@@ -239,7 +241,7 @@ export const setSleep = (card, newSleepHours, newSleepQuality) => {
   card.setState({
     user: user,
   });
-  console.log(user.user_card['Sleep']);
+  console.log(user?.user_card['Sleep']);
 
   sendSleep(newSleepHours, newSleepQuality);
 };
@@ -262,7 +264,7 @@ export const setSickness = (card, newSickness) => {
   card.setState({
     user: user,
   });
-  console.log(user.user_card['Sickness']);
+  console.log(user?.user_card['Sickness']);
 
   sendSickness(newSickness);
 };

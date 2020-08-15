@@ -1,43 +1,40 @@
-import { NOTIFICATION_TYPE, USER_ACCOUNT_TYPE, API } from '../constants';
-import { Notification } from './notification';
+import { NOTIFICATION_TYPE, API } from '../constants';
 
 const log = console.log;
 
 export const sendAlertHandler = (ctx, location) => {
   log('Alerting users...');
-  const users = ctx.state.userDB;
-  for (let key in users) {
-    let user = users[key];
-    if (user.type === USER_ACCOUNT_TYPE && _wasUserCheckedIn(user, location)) {
-      let notif = new Notification(
-        NOTIFICATION_TYPE.alert,
-        `You Have Recently Visted ${location.name} Which Has Had A COVID Case`,
-        `A covid case has been reported at ${location.name}`,
-      );
-      user.notifications.push(notif);
-      users[key] = user;
-    }
-  }
-
-  ctx.setState(
-    {
-      userDB: users,
+  const request = new Request(API.alertAllByLoc, {
+    method: 'PATCH',
+    body: JSON.stringify({
+      location,
+      type: NOTIFICATION_TYPE.alert,
+      title: `You Have Recently Visted ${location.name} Which Has Had A COVID Case`,
+      message: `A covid case has been reported at ${location.name}`,
+    }),
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
     },
-    () => {
-      log('Successfully alerted users ', ctx.state.userDB);
-    },
-  );
-};
+  });
 
-const _wasUserCheckedIn = (user, location) => {
-  const locs = user.checkInHistory;
-  let i;
-  for (i = 0; i < locs?.length; i++) {
-    if (locs[i]?.location.id === location.id) {
-      return true;
-    }
-  }
-  return false;
+  fetch(request)
+    .then((res) => {
+      if (res.status === 200) {
+        return res.json();
+      }
+    })
+    .then((res) => {
+      if (res === undefined || res.count === undefined) {
+        log('Alert users request failed to get response');
+      } else {
+        log(`${res.count} alerts sent`);
+      }
+    })
+    .catch((error) => {
+      log('Alerts user request failed with error\n', error);
+    });
+  log('Successfully alerted users ');
 };
 
 export const deleteLocationHandler = (ctx, adCtx, location) => {

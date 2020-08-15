@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import LandingPage from './js/components/LandingPage';
 import HomePage from './js/components/HomePage';
@@ -52,99 +52,107 @@ class App extends Component {
       window.location.pathname === '/signup' &&
       this.state.activeUser.type === USER_ACCOUNT_TYPE
     ) {
-      return <Redirect to="/overview" />;
+      const curr = window.location.pathname;
+      if (window.location.pathname === '/signup') {
+        return <Redirect to="/overview" />;
+      } else {
+        return <Redirect to={curr} />;
+      }
     }
 
     if (
       window.location.pathname === '/signup' &&
       this.state.activeUser.type === ADMIN_ACCOUNT_TYPE
     ) {
-      return <Redirect to="/manage-users" />;
+      const curr = window.location.pathname;
+      if (window.location.pathname === '/signup') {
+        return <Redirect to="/manage-users" />;
+      } else {
+        return <Redirect to={curr} />;
+      }
     }
   };
 
   render() {
     return (
       <div className="App">
-        <BrowserRouter>
-          {this.checkLoginState()}
-          <Switch>
-            {' '}
-            {/* Similar to a switch statement - shows the component depending on the URL path */}
-            {/* Each Route below shows a different component depending on the exact path in the URL  */}
-            <Route
-              exact
-              path="/signup"
-              render={() => (
-                <LandingPage
-                  activeUser={this.state.activeUser}
-                  users={this.state.userDB}
-                  setActiveUserAndLocsHandler={(user, locs) => {
-                    setActiveUserAndLocs(this, user, locs);
+        {this.checkLoginState()}
+        <Switch>
+          {' '}
+          {/* Similar to a switch statement - shows the component depending on the URL path */}
+          {/* Each Route below shows a different component depending on the exact path in the URL  */}
+          <Route
+            exact
+            path="/signup"
+            render={() => (
+              <LandingPage
+                activeUser={this.state.activeUser}
+                users={this.state.userDB}
+                setActiveUserAndLocsHandler={(user, locs) => {
+                  setActiveUserAndLocs(this, user, locs);
+                }}
+              />
+            )}
+          />
+          <Route
+            exact
+            path={PAGE_ADDRESS}
+            render={() => (
+              <div>
+                <HomePage
+                  logoutHandler={() => {
+                    logoutUser(this);
                   }}
+                  saveUserInfoHandler={(setCtx) => {
+                    saveUserInfoHandler(this, setCtx);
+                  }}
+                  removeNotificationHandler={(id) => {
+                    removeNotificationHandler(this, id);
+                  }}
+                  addTimerHandler={(id, timer) => {
+                    addTimerHandler(this, id, timer);
+                  }}
+                  checkInHandler={(ciCtx, location) => {
+                    checkInHandler(this, ciCtx, location);
+                  }}
+                  checkoutHandler={(ciCtx) => {
+                    checkoutHandler(this, ciCtx);
+                  }}
+                  addReminderHandler={(reminderCtx) => {
+                    addReminderHandler(this, reminderCtx);
+                  }}
+                  editReminderHandler={(reminderCtx, category, id) => {
+                    editReminderHandler(this, reminderCtx, category, id);
+                  }}
+                  notifyAboutReminder={(reminder) => {
+                    notifyAboutReminder(this, reminder);
+                  }}
+                  completeReminderHandler={(category, id, timeout) => {
+                    completeReminderHandler(this, category, id, timeout);
+                  }}
+                  deleteReminderHandler={(category, id, timeout) => {
+                    deleteReminderHandler(this, category, id, timeout);
+                  }}
+                  sendAlertHandler={(location) => {
+                    sendAlertHandler(this, location);
+                  }}
+                  addLocationHandler={(location) => {
+                    addLocationHandler(this, location);
+                  }}
+                  deleteLocationHandler={(adCtx, location) => {
+                    deleteLocationHandler(this, adCtx, location);
+                  }}
+                  editLocationHandler={(locCtx) => {
+                    editLocationHandler(this, locCtx);
+                  }}
+                  activeUser={this.state.activeUser}
+                  userDB={this.state.userDB}
+                  locations={this.state.locationsDB}
                 />
-              )}
-            />
-            <Route
-              exact
-              path={PAGE_ADDRESS}
-              render={() => (
-                <div>
-                  <HomePage
-                    logoutHandler={() => {
-                      logoutUser(this);
-                    }}
-                    saveUserInfoHandler={(setCtx) => {
-                      saveUserInfoHandler(this, setCtx);
-                    }}
-                    removeNotificationHandler={(id) => {
-                      removeNotificationHandler(this, id);
-                    }}
-                    addTimerHandler={(id, timer) => {
-                      addTimerHandler(this, id, timer);
-                    }}
-                    checkInHandler={(ciCtx, location) => {
-                      checkInHandler(this, ciCtx, location);
-                    }}
-                    checkoutHandler={(ciCtx) => {
-                      checkoutHandler(this, ciCtx);
-                    }}
-                    addReminderHandler={(reminderCtx) => {
-                      addReminderHandler(this, reminderCtx);
-                    }}
-                    editReminderHandler={(reminderCtx, category, id) => {
-                      editReminderHandler(this, reminderCtx, category, id);
-                    }}
-                    notifyAboutReminder={(reminder) => {
-                      notifyAboutReminder(this, reminder);
-                    }}
-                    completeReminderHandler={(category, id, timeout) => {
-                      completeReminderHandler(this, category, id, timeout);
-                    }}
-                    deleteReminderHandler={(category, id, timeout) => {
-                      deleteReminderHandler(this, category, id, timeout);
-                    }}
-                    sendAlertHandler={(location) => {
-                      sendAlertHandler(this, location);
-                    }}
-                    addLocationHandler={(location) => {
-                      addLocationHandler(this, location);
-                    }}
-                    deleteLocationHandler={(adCtx, location) => {
-                      deleteLocationHandler(this, adCtx, location);
-                    }}
-                    editLocationHandler={(locCtx) => {
-                      editLocationHandler(this, locCtx);
-                    }}
-                    activeUser={this.state.activeUser}
-                    userDB={this.state.userDB}
-                    locations={this.state.locationsDB}
-                  />
-                </div>
-              )}
-            />
-          </Switch>
-        </BrowserRouter>
+              </div>
+            )}
+          />
+        </Switch>
       </div>
     );
   }

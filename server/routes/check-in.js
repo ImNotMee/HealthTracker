@@ -6,6 +6,7 @@ const { CheckInItem } = require('../models/CheckInItem');
 const { User } = require('../models/User');
 const { isMongoError } = require('../db/utils');
 const Constants = require('../constants');
+const { authenticate } = require("../utils.js");
 const express = require('express');
 const router = express.Router();
 const log = console.log;
@@ -17,7 +18,10 @@ const _isAvaliable = (location) => {
 /**
  * checkin user
  */
-router.patch('/checkin/:l_id', (req, res) => {
+router.patch('/checkin/:l_id',authenticate, (req, res) => {
+  if (req.user !== undefined || req.user !== null) {
+    res.status(400).send('Bad Request')
+  }
   const lid = req.params.l_id;
 
   User.findById(req.session.user_id)
@@ -82,9 +86,11 @@ router.patch('/checkin/:l_id', (req, res) => {
 /**
  * checkout user
  */
-router.patch('/checkout/:l_id', (req, res) => {
+router.patch('/checkout/:l_id',authenticate, (req, res) => {
   const lid = req.params.l_id;
-
+  if (req.user !== undefined || req.user !== null) {
+    res.status(400).send('Bad Request')
+  }
   User.findById(req.session.user_id)
     .then((user) => {
       log('USER CHECKOUT', user, req.session.user_id);

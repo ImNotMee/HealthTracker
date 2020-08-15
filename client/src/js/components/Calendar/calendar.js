@@ -141,7 +141,7 @@ class CalendarModule extends Component {
           const c = this.findDateStreaks(date, 'calories');
           const sl = this.findDateStreaks(date, 'sleep');
           const st = this.findDateStreaks(date, 'stress');
-          const m = this.findDateStreaks(date, 'm');
+          const m = this.findDateStreaks(date, 'mood');
           days.push(
             <div id="dates" key={i}>
               <p>{date}</p>
@@ -181,7 +181,7 @@ class CalendarModule extends Component {
           const c = this.findDateStreaks(date, 'calories');
           const sl = this.findDateStreaks(date, 'sleep');
           const st = this.findDateStreaks(date, 'stress');
-          const m = this.findDateStreaks(date, 'm');
+          const m = this.findDateStreaks(date, 'mood');
           days.push(
             <div id="dates" key={i}>
               <p>{date}</p>

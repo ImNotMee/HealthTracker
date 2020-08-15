@@ -1,3 +1,10 @@
+'use strict';
+const { mongoose } = require('./db/mongoose');
+mongoose.set('bufferCommands', false);
+const { User } = require('./models/User');
+const express = require('express');
+const log = console.log;
+
 // Middleware for authentication of resources
 const authenticate = (req, res, next) => {
 	if (req.session.user_id) {
