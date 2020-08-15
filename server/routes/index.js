@@ -35,7 +35,7 @@ const initRoutes = (app) => {
   app.use('/logCardData', logCardData)
   app.use('/reminder', reminder);
   app.use('/trends', trends);
-  app.use('./streaks', streaks);
+  app.use('/streaks', streaks);
 };
 
 module.exports = {

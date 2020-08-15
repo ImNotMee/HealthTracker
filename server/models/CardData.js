@@ -18,7 +18,7 @@ const BMISchema = new mongoose.Schema({
         trim: true,
         enum: ["metric", "standard"],
         default: "metric",
-    }, completed: {
+    }, streak: {
         type: Boolean,
         required: true,
         default: false,
@@ -41,7 +41,7 @@ const WaterSchema = new mongoose.Schema({
         trim: true,
         default: "ml",
         lowercase: true,
-    }, completed: {
+    }, streak: {
         type: Boolean,
         required: true,
         default: false,
@@ -62,7 +62,7 @@ const CalroiesSchema = new mongoose.Schema({
         trim: true,
         lowercase: true,
         default: "calories",
-    }, completed: {
+    }, streak: {
         type: Boolean,
         required: true,
         default: false,
@@ -77,7 +77,7 @@ const MoodSchema = new mongoose.Schema({
         lowercase: true,
         enum: ["angry", "sad", "thoughtful", "soso", "happy", "lovely"],
         default: "happy" 
-    }, completed: {
+    }, streak: {
         type: Boolean,
         required: true,
         default: false,
@@ -93,7 +93,7 @@ const SleepSchema = new mongoose.Schema({
         enum: ['Bad', 'Normal', 'Good'],
         trim: true,
         required: true,
-    }, completed: {
+    }, streak: {
         type: Boolean,
         required: true,
         default: false,
@@ -104,7 +104,7 @@ const StressSchema = new mongoose.Schema({
     value: {
         type: Number,
         required: true,
-    }, completed: {
+    }, streak: {
         type: Boolean,
         required: true,
         default: false,
