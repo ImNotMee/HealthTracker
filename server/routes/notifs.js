@@ -6,13 +6,14 @@ const { User } = require('../models/User');
 const { isMongoError } = require('../db/utils');
 const Constants = require('../constants');
 const express = require('express');
+const { authenticate } = require("../utils.js");
 const router = express.Router();
 const log = console.log;
 
 /**
  * Add new notificaiton to user
  */
-router.patch('/alert-by-loc-history', (req, res) => {
+router.patch('/alert-by-loc-history',authenticate, (req, res) => {
   const { location, type, title, message } = req.body;
   const newNotif = new Notification({ type, title, message });
   const limitDate = new Date();
@@ -88,7 +89,7 @@ router.patch('/alert-by-loc-history', (req, res) => {
 /**
  * Add new notificaiton to user
  */
-router.patch('/add', (req, res) => {
+router.patch('/add',authenticate, (req, res) => {
   User.findById(req.session.user_id)
     .then((user) => {
       const { type, title, message } = req.body;
@@ -115,7 +116,7 @@ router.patch('/add', (req, res) => {
     });
 });
 
-router.patch('/remove', (req, res) => {
+router.patch('/remove',authenticate, (req, res) => {
   User.findById(req.session.user_id)
     .then((user) => {
       console.log('BODDDDY', req.body);
