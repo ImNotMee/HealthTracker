@@ -17,8 +17,19 @@ function date_range_helper (card, days) {
   return card_date < date && card.date >= date_range
 }
 
+// functions below will return an array
+// [
+//   {
+//     date: date,
+//     value: value you need 
+//   }, 
+//   {
+//     date: date,
+//     value: value you need 
+//   }, 
+// ]
 
-router.post('/weight', (req, res) => {
+router.get('/weight', (req, res) => {
   const id = req.session.user_id;
   let result = [];
 	User.findById(id).then((user) => {
@@ -27,9 +38,17 @@ router.post('/weight', (req, res) => {
 		} else {
       user.trends.filter((card) => date_range_helper(card, 7)).forEach(
         (card) => {
-          result.push(card.BMI.value)
+          const data = {
+            date: card.date,
+            value: card.BMI.weight
+          }
+          result.push(data)
       }) 
-      result.push(user.user_card.BMI.value)
+      const data = {
+        date: user.user_card.date,
+        value: user.user_card.BMI.weight,
+      }
+      result.push(data)
       res.send(result)
 		}
 	}).catch((error) => {
@@ -38,7 +57,7 @@ router.post('/weight', (req, res) => {
 });
 
 
-router.post('/calories', (req, res) => {
+router.get('/calories', (req, res) => {
   const id = req.session.user_id;
   let result = [];
 	User.findById(id).then((user) => {
@@ -47,9 +66,17 @@ router.post('/calories', (req, res) => {
 		} else {
       user.trends.filter((card) => date_range_helper(card, 7)).forEach(
         (card) => {
-          result.push(card.Calories.completed)
+          const data = {
+            date: card.date,
+            value: card.Calories.completed,
+          }
+          result.push(data)
         })
-      result.push(user.user_card.Calories.completed)
+        const data = {
+          date: user.user_card.date,
+          value: user.user_card.Calories.completed,
+        }
+      result.push(data)
       res.send(result)
 		}
 	}).catch((error) => {
@@ -58,7 +85,7 @@ router.post('/calories', (req, res) => {
 });
 
 
-router.post('/sleep', (req, res) => {
+router.get('/sleep', (req, res) => {
   const id = req.session.user_id;
   let result = [];
 	User.findById(id).then((user) => {
@@ -67,9 +94,17 @@ router.post('/sleep', (req, res) => {
 		} else {
       user.trends.filter((card) => date_range_helper(card, 7)).forEach(
         (card) => {
-          result.push(card.Sleep.hours)
+          const data = {
+            date: card.date,
+            value: card.Sleep.hours,
+          }
+          result.push(data)
         })
-      result.push(user.user_card.Sleep.hours)
+        const data = {
+          date: user.user_card.date,
+          value: user.user_card.Sleep.hours,
+        }
+      result.push(data)
       res.send(result)
 		}
 	}).catch((error) => {
@@ -78,7 +113,7 @@ router.post('/sleep', (req, res) => {
 });
 
 
-router.post('/stress', (req, res) => {
+router.get('/stress', (req, res) => {
   const id = req.session.user_id;
   let result = [];
 	User.findById(id).then((user) => {
@@ -87,9 +122,17 @@ router.post('/stress', (req, res) => {
 		} else {
       user.trends.filter((card) => date_range_helper(card, 7)).forEach(
         (card) => {
-          result.push(card.Stress.value)
+          const data = {
+            date: card.date,
+            value: card.Stress.value,
+          }
+          result.push(data)
         })
-      result.push(user.user_card.Stress.value)
+        const data = {
+          date: user.user_card.date,
+          value: user.user_card.Stress.value,
+        }
+      result.push(data)
       res.send(result)
 		}
 	}).catch((error) => {
@@ -97,38 +140,33 @@ router.post('/stress', (req, res) => {
 	});
 });
 
-
-router.post('/getAllUser', (req, res) => {
-  const id = req.session.user_id;
-  let result = [];
-	User.findById(id).then((user) => {
-		if (!user) {
-			res.status(404).send("User not found")
-		} else {
-      result = user.trends.filter((card) => date_range_helper(card, 7)) 
-      result.push(user.user_card)
-      res.send(result)
-		}
-	}).catch((error) => {
-		res.status(500).send('Internal Server Error')  // server error
-	});
-});
-
-
-router.get('/getAll', (req, res) => {
+router.post('/getAll', (req, res) => {
   let weight = [];
   let stress = [];
   let sleep = [];
   let calories = [];
   User.find({type: "user"}).then((data) => {
     data.forEach(user => {
-      weight.push(user.trends.weight);
-      stress.push(user.trends.stress);
-      sleep.push(user.trends.sleep);
-      calories.push(user.trends.calories);
+
+      // for each user, get past trends in correct date range
+      user.trends.filter((card) => date_range_helper(card, 7))
+      .forEach((card) => {
+        weight.push(card.BMI.weight);
+        stress.push(card.Stress.value);
+        sleep.push(card.Sleep.hours);
+        calories.push(card.Calories.completed);
+      })
+
+      // for each user, get current card data
+      weight.push(user.user_card.BMI.weight);
+      stress.push(user.user_card.Stress.value);
+      sleep.push(user.user_card.Sleep.hours);
+      calories.push(user.user_card.Calories.completed);
     })
-  }).then((d) => {
-      res.send({weight: weight, stress: stress, sleep: sleep, calories: calories});
+
+    // send all the data
+    res.send({weight: weight, stress: stress, sleep: sleep, calories: calories});
+
   }).catch((e) => {
     res.status(404).send('Cannot find all user data for trends');
   });
