@@ -278,4 +278,7 @@ export const API = {
   checkin: (id) => {
     return `http://localhost:5000/checkinsys/checkin/${id}`;
   },
+  checkout: (id) => {
+    return `http://localhost:5000/checkinsys/checkout/${id}`;
+  },
 };

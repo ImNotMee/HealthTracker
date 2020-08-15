@@ -4,6 +4,7 @@ import { viewPlace } from '../../actions/checkIn';
 import PlaceViewer from './PlaceViewer';
 import './styles.css';
 import CheckOutView from './CheckOutView';
+import { ACCOUNT_TYPES } from '../../constants';
 
 class CheckIn extends Component {
   state = {
@@ -12,43 +13,62 @@ class CheckIn extends Component {
     checkedInLocation: this.props.activeUser?.checkedInLocation,
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log(
-      'BEFORE',
-      prevProps.activeUser?.checkedInLocation,
-      prevState,
-      this.props.activeUser?.checkedInLocation,
-      this.state,
-    );
-    if (this.state.checkedInLocation !== prevState.checkedInLocation) {
-      console.log(prevProps, prevState, this.props, this.state);
-      this.forceUpdate();
-      //this.setState({ checkedIn : true });
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log(
+  //     'BEFORE',
+  //     prevProps.activeUser?.checkedInLocation,
+  //     prevState,
+  //     this.props.activeUser?.checkedInLocation,
+  //     this.state,
+  //   );
+  //   if (this.state.checkedInLocation !== prevState.checkedInLocation) {
+  //     console.log(prevProps, prevState, this.props, this.state);
+  //     this.forceUpdate();
+  //     //this.setState({ checkedIn : true });
+  //   }
+  // }
 
-  renderCheckOutView(checkInLocState) {
-    console.log('DOUCBLE CEHCK', checkInLocState);
-    return checkInLocState !== undefined ? (
-      <div key="ciewqioruq" id="CheckOutWrapper">
-        <CheckOutView
-          key="fiu49fhqewjiew"
-          location={checkInLocState}
-          checkoutHandler={() => {
-            this.props.checkoutHandler();
-          }}
-        />
-      </div>
-    ) : (
-      ''
-    );
-  }
+  // renderCheckOutView(checkInLocState) {
+  //   console.log('DOUCBLE CEHCK', checkInLocState);
+  //   return checkInLocState !== undefined ? (
+  //     <div key="ciewqioruq" id="CheckOutWrapper">
+  //       <CheckOutView
+  //         key="fiu49fhqewjiew"
+  //         location={checkInLocState}
+  //         checkoutHandler={() => {
+  //           this.props.checkoutHandler();
+  //         }}
+  //       />
+  //     </div>
+  //   ) : (
+  //     ''
+  //   );
+  // }
 
   render() {
     return (
       <div key="2309ur0j0rj0" id="PageWrapper">
-        {console.log('THINKNKNFDSKN', this.state.user, this.state.checkedInLocation)}
-        {this.renderCheckOutView(this.state.checkedInLocation)}
+        {console.log(
+          'THINKNKNFDSKN',
+          this.props.activeUser,
+          this.state.user,
+          'LOC\n',
+          this.props.activeUser?.checkedInLocation,
+          this.state.checkedInLocation,
+        )}
+        {this.state.user.type !== ACCOUNT_TYPES.admin ? (
+          <div key="ciewqioruq" id="CheckOutWrapper">
+            <CheckOutView
+              key="fiu49fhqewjiew"
+              location={this.state.checkedInLocation}
+              checkoutHandler={() => {
+                this.props.checkoutHandler(this);
+              }}
+            />
+          </div>
+        ) : (
+          ''
+        )}
         <div key="124eriufgh981r" id="CheckInWrapper" className="windowWrapper">
           <LocationSelector
             key="jkfgauy23e23"
@@ -68,7 +88,11 @@ class CheckIn extends Component {
               <PlaceViewer
                 key="2823uihdwjhbsf "
                 activeUser={this.state.user}
-                location={this.state.locationViewed}
+                location={
+                  this.state.locationViewed === undefined
+                    ? undefined
+                    : this.props.locations[this.state.locationViewed?.name]
+                }
                 onCheckInHandler={(location) => {
                   this.props.checkInHandler(this, location);
                 }}

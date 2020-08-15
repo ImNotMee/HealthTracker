@@ -26,10 +26,11 @@ class PlaceViewer extends Component {
   };
 
   render() {
-    const { open, location, activeUser } = this.state;
-    //const { location, activeUser } = this.props;
+    const { open } = this.state;
+    const { location, activeUser } = this.props;
     return (
       <div id="PlaceViewerWrapper">
+        {console.log('PLACEVIEW', location)}
         <div id="PlaceViewrHeader">
           <h2>{location?.name}</h2>
           <img src={location?.isAvaliable ? goodIcon : badIcon} alt="status" />

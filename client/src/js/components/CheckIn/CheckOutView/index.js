@@ -2,25 +2,14 @@ import React, { Component } from 'react';
 import './styles.css';
 
 class CheckOutView extends Component {
-  state = {
-    location: this.props.location,
-  };
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.location === undefined) {
-      this.setState({ checkedIn: true });
-    }
-  }
-
   render() {
-    const { checkoutHandler } = this.props;
-    const { location } = this.state;
+    const { checkoutHandler, location } = this.props;
     return (
       <div key="co_86567-09" id="CheckInStatus" className="windowWrapper">
-        {console.log('TESTE', this.state.location)}
+        {console.log('TESTE', location)}
         {location?.name !== undefined ? (
           <div key="csdfo_86567-09" id="CheckoutView">
-            <h2 key={this.state.location}> You Are Currently Checked In At {location?.name} </h2>
+            <h2 key="ci_loca123"> You Are Currently Checked In At {location?.name} </h2>
             <button
               key="fja320jfsd"
               className="primary-btn"

@@ -11,7 +11,7 @@ export const viewPlace = (ctx, locations, location) => {
 
 export const checkInHandler = (ctx, ciCtx, location) => {
   log(`Checking in user...`);
-  const { locationsDB } = ctx.state;
+  const { activeUser, locationsDB } = ctx.state;
   // locationsDB[location.id].currOccupancy += 1;
   // locationsDB[location.id].isAvaliable = _isAvaliable(locationsDB[location.id]);
   // activeUser.checkedInLocation = location;
@@ -25,46 +25,44 @@ export const checkInHandler = (ctx, ciCtx, location) => {
     },
   });
 
-  ctx.setState({ checkingInStatus: 'loading' }, () => {
-    fetch(request)
-      .then((res) => {
-        if (res.status === 200) {
-          return res.json();
-        }
-      })
-      .then((res) => {
-        if (res === undefined || res.user === undefined || res.location === undefined) {
-          log('Checkin user request failed to get response');
-        } else {
-          locationsDB[location.name] = res.location;
-          console.log('RESSS: ', res);
-          ctx.setState(
-            {
-              activeUser: res.user,
-              locationsDB: locationsDB,
-              checkingInStatus: 'complete',
-            },
-            () => {
-              ciCtx.setState(
-                {
-                  checkedInLocation: ctx.state.activeUser.checkedInLocation?.name,
-                },
-                () => {
-                  log(
-                    `User successfully checked in at ${ctx.state.activeUser.checkedInLocation?.name}`,
-                  );
-                },
-              );
-            },
-          );
-        }
-      })
-      .catch((error) => {
-        log('User checkin request failed with error\n', error);
-      });
-  });
-
-  ciCtx.setState({ checkInReqMade: true });
+  fetch(request)
+    .then((res) => {
+      if (res.status === 200) {
+        return res.json();
+      }
+    })
+    .then((res) => {
+      if (res === undefined || res.user === undefined || res.location === undefined) {
+        log('Checkin user request failed to get response');
+      } else {
+        locationsDB[location.name] = res.location;
+        console.log('RESSS: ', res);
+        console.log('RESUSERR', res.user);
+        ctx.setState(
+          {
+            activeUser: res.user,
+            locationsDB: locationsDB,
+          },
+          () => {
+            ctx.forceUpdate();
+            ciCtx.setState(
+              {
+                user: res.user,
+                checkedInLocation: ctx.state.activeUser.checkedInLocation,
+              },
+              () => {
+                log(
+                  `User successfully checked in at ${ctx.state.activeUser.checkedInLocation?.name}`,
+                );
+              },
+            );
+          },
+        );
+      }
+    })
+    .catch((error) => {
+      log('User checkin request failed with error\n', error);
+    });
 };
 
 const _isAvaliable = (location) => {
@@ -78,22 +76,72 @@ export const isCheckInValid = (ctx, location) => {
   );
 };
 
-export const checkoutHandler = (ctx) => {
+export const checkoutHandler = (ctx, ciCtx) => {
   log(`Checking-out user...`);
   const { activeUser, locationsDB } = ctx.state;
-  const location = activeUser.checkedInLocation;
-  locationsDB[location.name].currOccupancy -= 1;
-  locationsDB[location.name].isAvaliable = _isAvaliable(locationsDB[location.name]);
-  activeUser.checkedInLocation = undefined;
-  ctx.setState({
-    activeUser: activeUser,
-    locationsDB: locationsDB,
+  const request = new Request(API.checkout(activeUser.checkedInLocation._id), {
+    method: 'PATCH',
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+    },
   });
-  log(
-    `User ${
-      ctx.state.activeUser.checkedInLocation === undefined ? 'successfully' : 'unsuccessfully'
-    } checked-out from ${location?.name}`,
-  );
+
+  fetch(request)
+    .then((res) => {
+      if (res.status === 200) {
+        return res.json();
+      }
+    })
+    .then((res) => {
+      if (res === undefined || res.user === undefined || res.location === undefined) {
+        log('Checkout user request failed to get response');
+      } else {
+        locationsDB[activeUser.checkedInLocation.name] = res.location;
+        console.log('RESSScheckout: ', res);
+        console.log('RESUSERR checkout', res.user);
+        ctx.setState(
+          {
+            activeUser: res.user,
+            locationsDB: locationsDB,
+          },
+          () => {
+            // ctx.forceUpdate();
+            ciCtx.setState(
+              {
+                user: res.user,
+                checkedInLocation: ctx.state.activeUser.checkedInLocation,
+              },
+              () => {
+                log(
+                  `User ${
+                    ctx.state.activeUser.checkedInLocation === undefined
+                      ? 'successfully'
+                      : 'unsuccessfully'
+                  } checked-out from ${activeUser.checkedInLocation?.name}`,
+                );
+              },
+            );
+          },
+        );
+      }
+    })
+    .catch((error) => {
+      log('User checkin request failed with error\n', error);
+    });
+  // const location = activeUser.checkedInLocation;
+  // locationsDB[location.name].currOccupancy -= 1;
+  // locationsDB[location.name].isAvaliable = _isAvaliable(locationsDB[location.name]);
+  // activeUser.checkedInLocation = undefined;
+  // ctx.setState({
+  //   activeUser: activeUser,
+  //   locationsDB: locationsDB,
+  // });
+  // log(
+  //   `User ${
+  //     ctx.state.activeUser.checkedInLocation === undefined ? 'successfully' : 'unsuccessfully'
+  //   } checked-out from ${location?.name}`,
+  // );
 };
 
 export class AppLocation {
