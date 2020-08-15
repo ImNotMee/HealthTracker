@@ -30,7 +30,6 @@ class PlaceViewer extends Component {
     const { location, activeUser } = this.props;
     return (
       <div id="PlaceViewerWrapper">
-        {console.log('PLACEVIEW', location)}
         <div id="PlaceViewrHeader">
           <h2>{location?.name}</h2>
           <img src={location?.isAvaliable ? goodIcon : badIcon} alt="status" />

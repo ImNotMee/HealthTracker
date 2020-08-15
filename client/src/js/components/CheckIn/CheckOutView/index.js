@@ -6,7 +6,6 @@ class CheckOutView extends Component {
     const { checkoutHandler, location } = this.props;
     return (
       <div key="co_86567-09" id="CheckInStatus" className="windowWrapper">
-        {console.log('TESTE', location)}
         {location?.name !== undefined ? (
           <div key="csdfo_86567-09" id="CheckoutView">
             <h2 key="ci_loca123"> You Are Currently Checked In At {location?.name} </h2>

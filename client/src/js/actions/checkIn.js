@@ -11,12 +11,7 @@ export const viewPlace = (ctx, locations, location) => {
 
 export const checkInHandler = (ctx, ciCtx, location) => {
   log(`Checking in user...`);
-  const { activeUser, locationsDB } = ctx.state;
-  // locationsDB[location.id].currOccupancy += 1;
-  // locationsDB[location.id].isAvaliable = _isAvaliable(locationsDB[location.id]);
-  // activeUser.checkedInLocation = location;
-  // activeUser.checkInHistory.push({ location: location, time: new Date() });
-
+  const { locationsDB } = ctx.state;
   const request = new Request(API.checkin(location._id), {
     method: 'PATCH',
     headers: {
@@ -36,8 +31,6 @@ export const checkInHandler = (ctx, ciCtx, location) => {
         log('Checkin user request failed to get response');
       } else {
         locationsDB[location.name] = res.location;
-        console.log('RESSS: ', res);
-        console.log('RESUSERR', res.user);
         ctx.setState(
           {
             activeUser: res.user,
@@ -63,10 +56,6 @@ export const checkInHandler = (ctx, ciCtx, location) => {
     .catch((error) => {
       log('User checkin request failed with error\n', error);
     });
-};
-
-const _isAvaliable = (location) => {
-  return location.maxOccupancy > location.currOccupancy;
 };
 
 export const isCheckInValid = (ctx, location) => {
@@ -126,19 +115,6 @@ export const checkoutHandler = (ctx, ciCtx) => {
     .catch((error) => {
       log('User checkin request failed with error\n', error);
     });
-  // const location = activeUser.checkedInLocation;
-  // locationsDB[location.name].currOccupancy -= 1;
-  // locationsDB[location.name].isAvaliable = _isAvaliable(locationsDB[location.name]);
-  // activeUser.checkedInLocation = undefined;
-  // ctx.setState({
-  //   activeUser: activeUser,
-  //   locationsDB: locationsDB,
-  // });
-  // log(
-  //   `User ${
-  //     ctx.state.activeUser.checkedInLocation === undefined ? 'successfully' : 'unsuccessfully'
-  //   } checked-out from ${location?.name}`,
-  // );
 };
 
 export class AppLocation {
