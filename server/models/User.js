@@ -5,6 +5,7 @@ const validator = require('validator');
 const { Locations } = require('./Locations');
 const { Reminders } = require('./Reminders');
 const { CheckInItem } = require('./CheckInItem');
+const { Notification } = require('./Notification');
 const { Trends } = require('./Trends');
 const { CardData } = require('./CardData');
 
@@ -69,13 +70,17 @@ const User = mongoose.model('User', {
     required: true,
   },
   user_card: {
-      type: CardData.schema,
-      required: false,
-    },
+    type: CardData.schema,
+    required: false,
+  },
   trends: {
     type: [CardData.schema],
     required: false,
-  }
+  },
+  notifications: {
+    type: [Notification.schema],
+    required: false,
+  },
 });
 
 module.exports = { User };

@@ -281,4 +281,7 @@ export const API = {
   checkout: (id) => {
     return `http://localhost:5000/checkinsys/checkout/${id}`;
   },
+  addNotif: 'http://localhost:5000/notifs/add',
+  removeNotif: 'http://localhost:5000/notifs/remove',
+  alertAllByLoc: 'http://localhost:5000/notifs/alert-by-loc-history',
 };
