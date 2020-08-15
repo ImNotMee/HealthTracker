@@ -360,20 +360,38 @@ Now log on to a **user account**, and it will display the alert that the admin h
 ## Routes
 
 All of the routes on our express server will require a cookie.
+In order to the get the session, you must use the post request ("/login") before doing anything. The session will contain the user email.
 
 ### Auth
 
 - Post request ("/login") with the user's email and password in the body. Sends the current user object and a list of locations.
+ Example: 
+ body: {
+    email :"user@user.com",
+    password: "useruser"
+ }
+
 - Get request ("logout), destroyed the current session when log out.
 - Get request ("/session"), looks for the current session user and sends the user object.
 
 ### Sign up
 
-- Post request ("/signup"), takes in the user email and creates the user, sends back the created user object and a list of locations.
-
+- Post request ("/signup"), takes in the user data and creates the user, sends back the created user object and a list of locations.
+Example:
+body: {
+  email: "user@user.com",
+  firstName: "Test",
+  lastName: "Test",
+  password: "testing",
+  sex: "male"
+}
 ### Check In
 - patch request ("/checkin/:l_id", "/checkout/:l_id") requires the location object id, updates the location occupancy by 1 (add or subtract), return the new location object and the new user.
+Example: /checkin/
+body: {
 
+
+}
 ### Locations
 - Get request ("/all") to get all the locations stored in the db, sends back the set of location objects.
 - Post request ("/add") to add a new location into the db, need to have name, isAvaliable,address,country,imageUrl,maxOccupancy,currOccupancy, description in the body, returns the new location object.
