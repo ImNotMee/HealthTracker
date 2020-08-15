@@ -26,11 +26,11 @@ router.post('/weight', (req, res) => {
 			res.status(404).send("User not found")
 		} else {
       user.trends.filter((card) => get_this_month(card, month))
-      .filter(card => card.BMI.completed === true )
+      .filter(card => card.BMI.streak === true )
       .forEach((card) => {
         completed.push(card.date)
       })
-      if (user.user_card.BMI.completed === true) {
+      if (user.user_card.BMI.streak === true) {
         completed.push(user.user_card.date)
       }
       res.send(completed)
@@ -39,7 +39,6 @@ router.post('/weight', (req, res) => {
 		res.status(500).send('Internal Server Error')  // server error
 	});
 });
-
 
 router.post('/water', (req, res) => {
   const id = req.session.user_id;
@@ -51,11 +50,11 @@ router.post('/water', (req, res) => {
       res.status(404).send("User not found")
     } else {
       user.trends.filter((card) => get_this_month(card, month))
-      .filter(card => card.Water.completed === true )
+      .filter(card => card.Water.streak === true )
       .forEach((card) => {
         completed.push(card.date)
       })
-      if (user.user_card.Water.completed === true) {
+      if (user.user_card.Water.streak === true) {
         completed.push(user.user_card.date)
       }
       res.send(completed)
@@ -76,11 +75,11 @@ router.post('/calories', (req, res) => {
       res.status(404).send("User not found")
     } else {
       user.trends.filter((card) => get_this_month(card, month))
-      .filter(card => card.Calories.completed === true )
+      .filter(card => card.Calories.streak === true )
       .forEach((card) => {
         completed.push(card.date)
       })
-      if (user.user_card.Calories.completed === true) {
+      if (user.user_card.Calories.streak === true) {
         completed.push(user.user_card.date)
       }
       res.send(completed)
@@ -100,11 +99,11 @@ router.post('/mood', (req, res) => {
       res.status(404).send("User not found")
     } else {
       user.trends.filter((card) => get_this_month(card, month))
-      .filter(card => card.Mood.completed === true )
+      .filter(card => card.Mood.streak === true )
       .forEach((card) => {
         completed.push(card.date)
       })
-      if (user.user_card.Mood.completed === true) {
+      if (user.user_card.Mood.streak === true) {
         completed.push(user.user_card.date)
       }
       res.send(completed)
@@ -125,11 +124,11 @@ router.post('/sleep', (req, res) => {
       res.status(404).send("User not found")
     } else {
       user.trends.filter((card) => get_this_month(card, month))
-      .filter(card => card.Sleep.completed === true )
+      .filter(card => card.Sleep.streak === true )
       .forEach((card) => {
         completed.push(card.date)
       })
-      if (user.user_card.Sleep.completed === true) {
+      if (user.user_card.Sleep.streak === true) {
         completed.push(user.user_card.date)
       }
       res.send(completed)
@@ -151,11 +150,11 @@ router.post('/stress', (req, res) => {
       res.status(404).send("User not found")
     } else {
       user.trends.filter((card) => get_this_month(card, month))
-      .filter(card => card.Stress.completed === true )
+      .filter(card => card.Stress.streak === true )
       .forEach((card) => {
         completed.push(card.date)
       })
-      if (user.user_card.Stress.completed === true) {
+      if (user.user_card.Stress.streak === true) {
         completed.push(user.user_card.date)
       }
       res.send(completed)
