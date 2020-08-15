@@ -67,6 +67,7 @@ class LogWeight extends Component {
           type="number"
           id="inputLog"
           placeholder="Enter Weight"
+          min="0"
           value={this.state.weight}
           onChange={this.weightChange}
         />
@@ -75,6 +76,7 @@ class LogWeight extends Component {
           type="number"
           id="inputLog"
           placeholder="Enter Height"
+          min="0"
           value={this.state.height}
           onChange={this.heightChange}
         />
