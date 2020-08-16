@@ -4,7 +4,6 @@
 mongo-data/*
 server/node_modules/*
 client/node_modules/*
-client/build/*
 
 # dependencies
 */node_modules*
@@ -15,7 +14,7 @@ client/build/*
 /coverage
 
 # production
-*/build/*
+../client/build
 
 # misc
 .DS_Store
@@ -38,7 +37,7 @@ yarn-error.log*
 /coverage
 
 # production
-*/build*
+*/build
 
 # misc
 .DS_Store
