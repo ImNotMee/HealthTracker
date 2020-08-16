@@ -3,7 +3,7 @@ const log = console.log;
 
 export const readCookie = (app) => {
   log('Reading cookie...');
-  const url = 'http://localhost:5000/auth/session';
+  const url = 'https://csc309-2020-team27.herokuapp.com/auth/session';
 
   fetch(url)
     .then((res) => {
