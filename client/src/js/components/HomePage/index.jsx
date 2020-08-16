@@ -53,22 +53,24 @@ class HomePage extends Component {
   };
 
   componentWillMount() {
-    console.log(this.props.activeUser);
-    Object.keys(HEALTH_CATEGORIES).forEach((key) => {
-      console.log(key, this.props.activeUser.reminders[HEALTH_CATEGORIES[key]]);
-      this.props.activeUser.reminders[HEALTH_CATEGORIES[key]].forEach((reminder) => {
-        const currTime = new Date().getTime();
-        const reminderTime = new Date(reminder.time);
-        const time = reminderTime - currTime;
-        if (!this.notificationExists(reminder._id)) {
-          this.reminderTimer = setTimeout(() => {
-            playSound();
-            this.props.notifyAboutReminder(reminder);
-          }, time);
-          this.props.addTimerHandler(reminder._id, this.reminderTimer);
-        }
+    if (this.props.activeUser !== undefined || this.props.activeUser !== null) {
+      //console.log(this.props.activeUser);
+      Object.keys(HEALTH_CATEGORIES).forEach((key) => {
+        console.log(key, this.props.activeUser?.reminders[HEALTH_CATEGORIES[key]]);
+        this.props.activeUser.reminders[HEALTH_CATEGORIES[key]].forEach((reminder) => {
+          const currTime = new Date().getTime();
+          const reminderTime = new Date(reminder.time);
+          const time = reminderTime - currTime;
+          if (!this.notificationExists(reminder._id)) {
+            this.reminderTimer = setTimeout(() => {
+              playSound();
+              this.props.notifyAboutReminder(reminder);
+            }, time);
+            this.props.addTimerHandler(reminder._id, this.reminderTimer);
+          }
+        });
       });
-    });
+    }
   }
 
   notificationExists(id) {
