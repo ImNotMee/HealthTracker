@@ -9,7 +9,7 @@ export const getUser = (page) => {
       if (res.status === 200) {
         return res.json();
       } else {
-        alert("can't get user list");
+        console.log('cant get user list');
       }
     })
     .then((json) => {

@@ -74,7 +74,6 @@ router.post('/logWater',authenticate, (req, res) => {
 			res.status(404).send('Resource not found')
 		}
 		else {
-			log(req.session.user_id, user)
 			user.user_card.Water.completed = req.body.completed
 			user.user_card.Water.remaining = req.body.remaining
 			user.user_card.Water.unit = req.body.unit
