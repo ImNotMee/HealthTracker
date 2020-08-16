@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "db": "rm -r ./mongo-data; mkdir ./mongo-data; mongod --dbpath ./mongo-data",
-    "start": "npm run client && npm run init-data && node ./server.js",
+    "start": "node ./server.js",
     "quick-start": "cd ./client && npm run build && cd ../ && npm run serve",
     "serve": "nodemon ./server.js",
     "client": "cd ./client && npm ci && npm run build && cd ../",
