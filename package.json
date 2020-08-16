@@ -4,14 +4,15 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "db": "rm -r ../mkdir; mkdir ../mongo-data; mongod --dbpath ../mongo-data",
-    "start": "npm run client && npm run init-data && npm run serve",
-    "quick-start": "cd ../client && npm run build && cd ../server && npm run serve",
+    "db": "rm -r ./mongo-data; mkdir ./mongo-data; mongod --dbpath ./mongo-data",
+    "start": "node ./server.js",
+    "quick-start": "cd ./client && npm run build && cd ../ && npm run serve",
     "serve": "nodemon ./server.js",
-    "client": "cd ../client && npm ci && npm run build && cd ../server",
+    "client": "cd ./client && npm install && npm run build && cd ../",
     "init-data": "node ./db/insert-default-users.js",
     "open": "open http://localhost:5000",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run client"
   },
   "author": "",
   "license": "ISC",

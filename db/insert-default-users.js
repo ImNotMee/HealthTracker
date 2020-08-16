@@ -9,8 +9,9 @@ const {
   DEFAULT_DB_CONNECT_OPS,
   ERROR_MSG,
 } = require('./constants');
+const mongoose = require('mongoose');
 const log = console.log;
-const { card_1, card_2, card_3, card_4, card_5, card_6, card_7 } = require('./example_data')
+const { card_1, card_2, card_3, card_4, card_5, card_6, card_7 } = require('./example_data');
 
 let salt = bcrypt.genSaltSync(10, this.saltRounds);
 const userLogin = {
@@ -23,8 +24,8 @@ const adminLogin = {
   email: 'admin',
   password: bcrypt.hashSync('admin', salt),
 };
-
-MongoClient.connect(DB_URI, DEFAULT_DB_CONNECT_OPS, (error, client) => {
+const mongoURI = process.env.MONGODB_URI || DB_URI;
+MongoClient.connect(mongoURI, DEFAULT_DB_CONNECT_OPS, (error, client) => {
   if (error) {
     log(ERROR_MSG.connection, DB_URI, error);
     return;

@@ -5,7 +5,7 @@ function isMongoError(error) {
 
 const mongoChecker = (req, res, next) => {
   // check mongoose connection established.
-  const { mongoose } = require('../db/mongoose');
+  const { mongoose } = require('./mongoose');
   mongoose.set('bufferCommands', false);
 
   if (mongoose.connection.readyState != 1) {
