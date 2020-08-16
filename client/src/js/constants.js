@@ -258,30 +258,30 @@ export const MONTHS = [
 ];
 
 export const API = {
-  login: 'http://localhost:5000/auth/login',
-  siginup: 'http://localhost:5000/account/signup',
-  addReminder: 'http://localhost:5000/reminder/add',
+  login: 'https://csc309-2020-team27.herokuapp.com/auth/login',
+  siginup: 'https://csc309-2020-team27.herokuapp.com/account/signup',
+  addReminder: 'https://csc309-2020-team27.herokuapp.com//reminder/add',
   deleteReminder: (cat, id) => {
-    return `http://localhost:5000/reminder/${cat}/${id}`;
+    return `https://csc309-2020-team27.herokuapp.com/reminder/${cat}/${id}`;
   },
   updateReminder: (cat, id) => {
-    return `http://localhost:5000/reminder/update/${cat}/${id}`;
+    return `https://csc309-2020-team27.herokuapp.com/reminder/update/${cat}/${id}`;
   },
-  allLocation: 'http://localhost:5000/locations/all',
-  addLocation: 'http://localhost:5000/locations/add',
+  allLocation: 'https://csc309-2020-team27.herokuapp.com/locations/all',
+  addLocation: 'https://csc309-2020-team27.herokuapp.com/locations/add',
   deleteLocation: (id) => {
-    return `http://localhost:5000/locations/delete/${id}`;
+    return `https://csc309-2020-team27.herokuapp.com/locations/delete/${id}`;
   },
   updateLocation: (id) => {
-    return `http://localhost:5000/locations/update/${id}`;
+    return `https://csc309-2020-team27.herokuapp.com/locations/update/${id}`;
   },
   checkin: (id) => {
-    return `http://localhost:5000/checkinsys/checkin/${id}`;
+    return `https://csc309-2020-team27.herokuapp.com/checkinsys/checkin/${id}`;
   },
   checkout: (id) => {
-    return `http://localhost:5000/checkinsys/checkout/${id}`;
+    return `https://csc309-2020-team27.herokuapp.com/checkinsys/checkout/${id}`;
   },
-  addNotif: 'http://localhost:5000/notifs/add',
-  removeNotif: 'http://localhost:5000/notifs/remove',
-  alertAllByLoc: 'http://localhost:5000/notifs/alert-by-loc-history',
+  addNotif: 'https://csc309-2020-team27.herokuapp.com/notifs/add',
+  removeNotif: 'https://csc309-2020-team27.herokuapp.com/notifs/remove',
+  alertAllByLoc: 'https://csc309-2020-team27.herokuapp.com/notifs/alert-by-loc-history',
 };
