@@ -145,7 +145,6 @@ const createNewUser = (firstName, lastName, email, password, sex) => {
     email: email,
     type: Constants.ACCOUNT_TYPES.user,
     timers: [],
-    checkedInLocation: {},
     checkInHistory: [],
     notification: [],
     reminders: reminders,
