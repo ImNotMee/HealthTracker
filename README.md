@@ -360,23 +360,89 @@ Now log on to a **user account**, and it will display the alert that the admin h
 ## Routes
 
 All of the routes on our express server will require a cookie.
-In order to the get the session, you must use the post request ("/login") before doing anything. The session will contain the user email.
+In order to the get the session, you must use the post request ("domain/auth/login") before doing anything. The session will contain the user email.
+The domain of our app is "https://"
+
+Example of user object:
+user = {
+    firstName: firstName,
+    lastName: lastName,
+    hash: email + password,
+    sex: sex,
+    email: email,
+    type: Constants.ACCOUNT_TYPES.user,
+    timers: [],
+    checkedInLocation: '',
+    checkInHistory: [],
+    notification: [],
+    reminders: reminders,
+    trends: [],
+    user_card: user card object here,
+  }
+
+Example of user card object: 
+ user_card = {
+    BMI: {
+      value: 0,
+      height: 0,
+      weight: 0,
+      unit: 'metric', 
+      streak: false,
+    },
+    Water: {
+      completed: 0,
+      remaining: 2000,
+      unit: 'ml',
+      streak: false,
+    },
+    Calories: {
+      completed: 0,
+      remaining: 2000,
+      unit: 'calories',
+      streak: false,
+    },
+    Mood: {
+      value: 'happy',
+      streak: false,
+    },
+    Sleep: {
+      hours: 0,
+      quality: 'Good',
+      streak: false,
+    },
+    Stress: {
+      value: 1,
+      streak: false,
+    },
+    Sickness: [],
+  }
+
 
 ### Auth
 
-- Post request ("/login") with the user's email and password in the body. Sends the current user object and a list of locations.
+- Post request ("domain/auth/login") with the user's email and password in the body. Sends the current user object and a list of locations.
  Example: 
  body: {
     email :"user@user.com",
     password: "useruser"
  }
 
-- Get request ("logout), destroyed the current session when log out.
-- Get request ("/session"), looks for the current session user and sends the user object.
+ Output: 
+ {
+    activeUser: user object,
+    locations: [list of locations]
+ }
+
+- Get request ("domain/auth/logout), destroyed the current session when log out.
+Output: nothing
+- Get request ("domain/auth/session"), looks for the current session user and sends the user object. 
+Output: {
+   activeUser: user object
+}
 
 ### Sign up
 
-- Post request ("/signup"), takes in the user data and creates the user, sends back the created user object and a list of locations.
+- Post request ("domain/account/signup"), takes in the user data and creates the user, sends back the created user object and a list of locations.
 Example:
 body: {
   email: "user@user.com",
@@ -385,42 +451,404 @@ body: {
   password: "testing",
   sex: "male"
 }
-### Check In
-- patch request ("/checkin/:l_id", "/checkout/:l_id") requires the location object id, updates the location occupancy by 1 (add or subtract), return the new location object and the new user.
-Example: /checkin/
-body: {
 
-
+output: {
+   activeUser:  user object
+   locations: [array of locations]
 }
+
+### Check In
+- patch request ("domain/checkinsys/checkin/:l_id", "domain/checkinsys/checkin/checkout/:l_id") requires the location object id, updates the location occupancy by 1 (add or subtract), return the new location object and the new user.
+
+Example: "domain/checkinsys/checkin/:l_id"
+output: {
+   user: user object
+   location: location that user checked in
+}
+
+Example: "domain/checkinsys/checkout/:l_id"
+output: {
+   user: user object
+   location: location that user checked out
+}
+
+
 ### Locations
-- Get request ("/all") to get all the locations stored in the db, sends back the set of location objects.
-- Post request ("/add") to add a new location into the db, need to have name, isAvaliable,address,country,imageUrl,maxOccupancy,currOccupancy, description in the body, returns the new location object.
--  delete request ("/delete/:l_id") requires the location object id, removes it from the db and send the update set of locations.
-- put request ("/update/:l_id/") requires the location object id, updates the status of the location, return the new location object 
+- Get request ("domain/locations/all") to get all the locations stored in the db, sends back the set of location objects.
+output: {[
+   { 
+      location object
+   }
+   {
+      location object
+   } 
+   ... 
+]}
+
+- Post request ("domain/locations/add") to add a new location into the db, need to have name, isAvaliable,address,country,imageUrl,maxOccupancy,currOccupancy, description in the body, returns the new location object.
+
+Example:
+body: {
+   name: "CN Tower",
+   isAvailable: True,
+   address: "Toronto",
+   country: "Canada",
+   imageUrl: "http://example.com/image",
+   maxOccupancy: 7,
+   currOccupancy: 2,
+   description: "Example location"
+}
+
+output: {
+   newLoc: {
+      name: "CN Tower",
+      isAvailable: True,
+      address: "Toronto",
+      country: "Canada",
+      imageUrl: "http://example.com/image",
+      maxOccupancy: 7,
+      currOccupancy: 2,
+      description: "Example location"
+   }
+}
+
+-  delete request ("domain/locations/delete/:l_id") requires the location object id, removes it from the db and send the update set of locations.
+
+Example: "domain/locations/delete/:l_id"
+output: {
+   deletedLocation: {
+      name: "CN Tower",
+      isAvailable: True,
+      address: "Toronto",
+      country: "Canada",
+      imageUrl: "http://example.com/image",
+      maxOccupancy: 7,
+      currOccupancy: 2,
+      description: "Example location"
+   }
+}
+
+- put request ("domain/locations/update/:l_id/") requires the location object id, updates the status of the location, return the new location object 
+
+Example: "domain/locations/update/:l_id" - updating the CN Tower location
+body: {
+   name: "Not CN Tower",
+   isAvailable: True,
+   address: "Toronto",
+   country: "Canada",
+   imageUrl: "http://example.com/NotRealImage",
+   maxOccupancy: 7,
+   currOccupancy: 2,
+   description: "Example location"
+}
+
+output: {
+   updatedLocation: {
+      name: "Not CN Tower",
+      isAvailable: True,
+      address: "Toronto",
+      country: "Canada",
+      imageUrl: "http://example.com/NotRealImage",
+      maxOccupancy: 7,
+      currOccupancy: 2,
+      description: "Example location"
+   }
+}
    
 ### logCardData
-- post request ("/reset"), resets the user's data for current day, returns the updated user object.
-- post request on logging data ("/logWater","/logSickness","logStress","/logSleep","/logMood","/logCalories") will require the body to have a value, returns the updated user object.
+- post request ("domain/logCardData/reset"), pushes the user's card data into trends and updates user's card data to the request body. Returns the updated user object.
+Example:
+body: {
+   BMI: {
+    value: 0,
+    height: 0,
+    weight: 0,
+    unit: 'metric', 
+    streak: false,
+  },
+  Water: {
+    completed: 0,
+    remaining: 2000,
+    unit: 'ml',
+    streak: false,
+  },
+  Calories: {
+    completed: 0,
+    remaining: 2000,
+    unit: 'calories',
+    streak: false,
+  },
+  Mood: {
+    value: 'happy',
+    streak: false,
+  },
+  Sleep: {
+    hours: 0,
+    quality: 'Good',
+    streak: false,
+  },
+  Stress: {
+    value: 1,
+    streak: false,
+  },
+  Sickness: [],
+}
+
+output: 
+{
+   user object
+}
+
+
+- post request on logging data ("domain/logCardData/logBMI", "domain/logCardData/logWater","domain/logCardData/logSickness","domain/logCardData/logStress","domain/logCardData/logSleep","domain/logCardData/logMood","domain/logCardData/logCalories") will require the body to have the required values. Returns the updated user object.
+
+Example: "domain/logCardData/logBMI"
+body: {
+   value: 100,
+   weight: 200, 
+   height: 1.8, 
+   unit: "metric",
+   streak: True,
+   date: "2020-08-20T14:15:00.000Z" 
+}
+
+output: {
+   user object
+}
+
+Example: "domain/logCardData/logWater"
+body: {
+   completed: 2000,
+   remaining: 0, 
+   unit: "ml",
+   streak: True,
+   date: "2020-08-20T14:15:00.000Z" 
+}
+
+output: {
+   user object
+}
+
+Example: "domain/logCardData/logCalories"
+body: {
+   completed: 2000,
+   remaining: 0, 
+   unit: "calories",
+   streak: True,
+   date: "2020-08-20T14:15:00.000Z" 
+}
+
+output: {
+   user object
+}
+
+Example: "domain/logCardData/logMood"
+body: {
+   value: "happy",
+   streak: True,
+   date: "2020-08-20T14:15:00.000Z" 
+}
+
+output: {
+   user object
+}
+
+Example: "domain/logCardData/logSleep"
+body: {
+   hours: 7,
+   quality: "Good",
+   streak: True,
+   date: "2020-08-20T14:15:00.000Z" 
+}
+
+output: {
+   user object
+}
+
+Example: "domain/logCardData/logStress"
+body: {
+   value: 7,
+   streak: True,
+   date: "2020-08-20T14:15:00.000Z" 
+}
+
+output: {
+   user object
+}
+
+Example: "domain/logCardData/logSickness"
+body: {
+   sickness: [
+      'Fever or chills',
+      'Cough'
+   ]
+}
+
+output: {
+   user object
+}
 
 ### reminder
 
-- Post request ("/add"), takes in all the inputs on the add remainders page and the current user and creates a new remainder under the user, sends back the new user object.
-- Delete request ("/:cat/:r_id"), takes remainder ID from current user and removes it,then sends back the new user object.
-- Patch request ("/update/:cat/:r_id/") takes in the category and the remainder id, remove it from user then send back the user new object  
+- Post request ("domain/reminder/add"), takes in all the inputs on the add remainders page and the current user and creates a new remainder under the user, sends back the new user object.
+Example: 
+body: {
+   id: 'r01',
+   category: 'Medical Health',
+   subCategory: 'Appointments',
+   name: 'Annual Check Up',
+   time: '2020-07-27',
+   note: 'Call Dr.Jones 1hr before',
+   status: 'active',
+}
+
+output: {
+   user: user object
+}
+
+- Delete request ("domain/reminder/:cat/:r_id"), takes remainder ID from current user and removes it,then sends back the new user object.
+Example: "domain/reminder/"Medical Health"/r01"
+output: {
+   user: user object
+}
+
+- Patch request ("domain/reminder/update/:cat/:r_id/") takes in the category and the remainder id, remove it from user then send back the user new object  
+Example: "domain/reminder/update/"Medical Health"/r01/"
+body: {
+   id: 'r01',
+   category: 'Medical Health',
+   subCategory: 'Appointments',
+   name: 'New Annual Check Up',
+   time: '2020-10-27',
+   note: 'New Call Dr.Jones 1hr before',
+   status: 'active',
+}
+
+output: {
+   user: user object
+}
 
 ### trends
 
-- get request for the four datas ("/weight","/calories","/sleep","/stress"), requires the current session user and sends back a list of objects that has a date and a value.
-- post request to get all user data ("/getAll"), sends back an object containing 4 lists of values with the types as their keys.
+- get request for the four datas ("domain/trends/weight","domain/trends/calories","domain/trends/sleep","domain/trends/stress"), requires the current session user and sends back a list of objects that has a date and a value.
+Example:"domain/trends/weight"
+output: 
+[  {
+      date: "2020-08-20T14:15:00.000Z" ,
+      value: 80
+   },
+   {
+      date: "2020-08-21T14:15:00.000Z" 
+      value: 87
+   },
+]
+
+- post request to get all user data ("domain/trends/getAll"), sends back an object containing 4 lists of values with the types as their keys.
+Example:
+output: {
+   weight: [70, 71],
+   stress: [5, 6],
+   sleep: [7, 8 ],
+   calories: [2000, 1500],
+}
+
 
 ### Streaks
-- post request for the five datas ("/weight","/calories","/sleep","/stress", "/mood"), requires the current session user and the month, sends back a list of dates where that type is completed.
+- post request for the five datas ("domain/streaks/weight","domain/streaks/calories","domain/streaks/sleep","domain/streaks/stress", "domain/streaks/mood"), requires the current session user and the month, sends back a list of dates where that type is completed.
+Example: "domain/streaks/weight" (same input and output for rest of the streaks routes)
+body: {
+   month: 7
+}
+
+output: {
+   [
+      "2020-08-20T14:15:00.000Z",
+      "2020-08-21T14:15:00.000Z",
+   ]
+}
 
 ### Manage User
-- post request ("/assignAdmin") to assign an user admin, requires the user's email and returns the updated user.
-- post request ("/deleteuser") to remove a user, requires the user's email and returns "deleted".
-- get request ("/getUsers") gets all the users and send it back
-- post request ("/setUserInfo"), takes in user info, like email, first name, last name, sex, password and updates if the user object if there is any changes, sends back the updated user object.
+- post request ("domain/manageUser/assignAdmin") to assign an user admin, requires the user's email and returns the updated user.
+Example:
+body: {
+   email: "user"
+}
+
+output: {
+   user object 
+}
+
+- post request ("domain/manageUser/deleteuser") to remove a user, requires the user's email and returns "deleted".
+Example: 
+body: {
+   email: "user"
+}
+
+output: "deleted"
+
+
+- get request ("domain/manageUser/getUsers") gets all the users and send it back
+Example: 
+output: {[
+   {
+      user objects
+   },
+   {
+      user objects
+   }
+]}
+
+
+- post request ("domain/manageUser/setUserInfo"), takes in user info, like email, first name, last name, sex, password and updates if the user object if there is any changes, sends back the updated user object.
+Example:
+body: {
+   prevEmail: "user",
+   email: "newUser",
+   password: "password",
+   firstName: "user",
+   lastName: "user",
+   sex: "male"
+}
+
+output: {
+   email: "newUser",
+   password: "password"
+}
+
+### Notification
+- patch request ("domain/notifs/alert-by-loc-history") to add a new notification related to an area to users checked in to that area
+Example:
+body: {
+   location: "CN Tower",
+   type: "Alert",
+   title: "Test",
+   message: "Test test"
+}
+
+output: {
+   count: 2
+}
+
+- patch request ("domain/notifs/add") to add a new notification to a user
+Example:
+body: {
+   type: "Reminder",
+   title: "Test",
+   message: "Test test"
+}
+
+output: {
+   user object
+}
+
+- patch request ("domain/notifs/remove") to remove a notification from a user based on the id in the body, and it would then send the user object back
+body: {
+   _id: notification id
+}
+
+output: {
+   user object
+}
     
 <br>
 <br>
