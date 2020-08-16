@@ -1,6 +1,8 @@
 # team27
 ## The landing page of the app is also where users can sign up an account (regular user) and sign in access for both admin and user.
 
+Link: https://csc309-2020-team27.herokuapp.com/
+
 ### Our app consists of 5 main features for a regular user:
   1. They are able to log and see their physical, mental, and medical goals within the app. This is located in the overview page.
   2. They are able to see their progress of some of their goals in the trends page. By switching tabs of each type of tracking activity, the user will be able to see this current week’s progress.
