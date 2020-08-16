@@ -1,4 +1,4 @@
-const DB_URI = 'mongodb+srv://root:root@cluster0.34ubc.mongodb.net/test';
+const DB_URI = 'mongodb://localhost:27017/HealthTrackerApp';
 
 const DB_NAME = 'HealthTrackerApp';
 
