@@ -87,7 +87,7 @@ app.get('*', (req, res) => {
     res.status(404);
   }
 
-  res.sendFile(path.normalize(__dirname + '/..//client/build/index.html'));
+  res.sendFile(path.normalize(__dirname + '/client/build/index.html'));
 });
 
 const port = process.env.PORT || 5000;
