@@ -24,7 +24,7 @@ class CalendarModule extends Component {
     const reqBody = {
       month: d,
     };
-    const request = new Request('http://localhost:5000/streaks/' + type, {
+    const request = new Request('https://csc309-2020-team27.herokuapp.com/streaks/' + type, {
       method: 'post',
       body: JSON.stringify(reqBody),
       headers: {

@@ -55,7 +55,7 @@ export const resetToday = (card) => {
       user.user_card = reset_card;
     }
 
-    const request = new Request('http://localhost:5000/logCardData/reset', {
+    const request = new Request('https://csc309-2020-team27.herokuapp.com/reset', {
       method: 'post',
       body: JSON.stringify(reset_card),
       headers: {
@@ -105,7 +105,7 @@ export const setBMI = (card, newBMI, newHeight, newWeight, newUnit) => {
     streak: user?.user_card['BMI']['streak'],
     date: Date.now(),
   };
-  const request = new Request('http://localhost:5000/logCardData/logBMI', {
+  const request = new Request('https://csc309-2020-team27.herokuapp.com/logCardData/logBMI', {
     method: 'post',
     body: JSON.stringify(BMIInfo),
     headers: {
@@ -149,7 +149,7 @@ export const setWater = (card, newWater) => {
     streak: streak,
     date: Date.now(),
   };
-  const request = new Request('http://localhost:5000/logCardData/logWater', {
+  const request = new Request('https://csc309-2020-team27.herokuapp.com/logWater', {
     method: 'post',
     body: JSON.stringify(waterInfo),
     headers: {
@@ -193,7 +193,7 @@ export const setCalories = (card, newCalories) => {
     streak: streak,
     date: Date.now(),
   };
-  const request = new Request('http://localhost:5000/logCardData/logCalories', {
+  const request = new Request('https://csc309-2020-team27.herokuapp.com/logCalories', {
     method: 'post',
     body: JSON.stringify(caloriesInfo),
     headers: {
@@ -278,7 +278,7 @@ const sendMood = (mood) => {
     date: Date.now(),
   };
 
-  const request = new Request('http://localhost:5000/logCardData/logMood', {
+  const request = new Request('https://csc309-2020-team27.herokuapp.com/logMood', {
     method: 'post',
     body: JSON.stringify(reqBody),
     headers: {
@@ -314,7 +314,7 @@ const sendSleep = (hours, quality) => {
     streak: true,
   };
 
-  const request = new Request('http://localhost:5000/logCardData/logSleep', {
+  const request = new Request('https://csc309-2020-team27.herokuapp.com/logSleep', {
     method: 'post',
     body: JSON.stringify(reqBody),
     headers: {
@@ -349,7 +349,7 @@ const sendStress = (value) => {
     streak: true,
   };
 
-  const request = new Request('http://localhost:5000/logCardData/logStress', {
+  const request = new Request('https://csc309-2020-team27.herokuapp.com/logStress', {
     method: 'post',
     body: JSON.stringify(reqBody),
     headers: {
@@ -382,7 +382,7 @@ const sendSickness = (sickness) => {
     sickness: sickness,
   };
 
-  const request = new Request('http://localhost:5000/logCardData/logSickness', {
+  const request = new Request('https://csc309-2020-team27.herokuapp.com/logSickness', {
     method: 'post',
     body: JSON.stringify(reqBody),
     headers: {

@@ -21,7 +21,7 @@ class Trends extends Component {
   }
 
   fetchData() {
-    fetch('http://localhost:5000/trends/weight', {
+    fetch('https://csc309-2020-team27.herokuapp.com/weight', {
       method: 'GET',
       credentials: 'include',
     })
@@ -30,7 +30,7 @@ class Trends extends Component {
         const data = this.dateProcessor(responseJson);
         this.setState({ weight: data });
       });
-    fetch('http://localhost:5000/trends/sleep', {
+    fetch('https://csc309-2020-team27.herokuapp.com/sleep', {
       method: 'GET',
       credentials: 'include',
     })
@@ -39,7 +39,7 @@ class Trends extends Component {
         const data = this.dateProcessor(responseJson);
         this.setState({ sleep: data });
       });
-    fetch('http://localhost:5000/trends/stress', {
+    fetch('https://csc309-2020-team27.herokuapp.com/stress', {
       method: 'GET',
       credentials: 'include',
     })
@@ -48,7 +48,7 @@ class Trends extends Component {
         const data = this.dateProcessor(responseJson);
         this.setState({ stress: data });
       });
-    fetch('http://localhost:5000/trends/calories', {
+    fetch('https://csc309-2020-team27.herokuapp.com/trends/calories', {
       method: 'GET',
       credentials: 'include',
     })

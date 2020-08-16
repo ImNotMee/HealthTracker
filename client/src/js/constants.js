@@ -260,7 +260,7 @@ export const MONTHS = [
 export const API = {
   login: 'https://csc309-2020-team27.herokuapp.com/auth/login',
   siginup: 'https://csc309-2020-team27.herokuapp.com/account/signup',
-  addReminder: 'https://csc309-2020-team27.herokuapp.com//reminder/add',
+  addReminder: 'https://csc309-2020-team27.herokuapp.com/reminder/add',
   deleteReminder: (cat, id) => {
     return `https://csc309-2020-team27.herokuapp.com/reminder/${cat}/${id}`;
   },
