@@ -31,9 +31,6 @@ router.post('/reset',  (req, res) => {
 
 
 router.post('/logBMI',authenticate, (req, res) => {
-	if (req.user !== undefined || req.user !== null) {
-		res.status(400).send('Bad Request')
-	}
 	if (mongoose.connection.readyState != 1) {
 		log('Issue with mongoose connection')
 		res.status(500).send('Internal server error')
@@ -66,9 +63,6 @@ router.post('/logBMI',authenticate, (req, res) => {
 
 
 router.post('/logWater',authenticate, (req, res) => {
-	if (req.user !== undefined || req.user !== null) {
-		res.status(400).send('Bad Request')
-	}
 	if (mongoose.connection.readyState != 1) {
 		log('Issue with mongoose connection')
 		res.status(500).send('Internal server error')
@@ -100,9 +94,6 @@ router.post('/logWater',authenticate, (req, res) => {
 })
 
 router.post('/logCalories',authenticate, (req, res) => {
-	if (req.user !== undefined || req.user !== null) {
-		res.status(400).send('Bad Request')
-	}
 	if (mongoose.connection.readyState != 1) {
 		log('Issue with mongoose connection')
 		res.status(500).send('Internal server error')
@@ -134,9 +125,6 @@ router.post('/logCalories',authenticate, (req, res) => {
 
 
 router.post('/logMood',authenticate, (req, res) => {
-	if (req.user !== undefined || req.user !== null) {
-		res.status(400).send('Bad Request')
-	}
 	const value = req.body.value;
 
 	log(req.session.user_id)
@@ -161,9 +149,6 @@ router.post('/logMood',authenticate, (req, res) => {
 });
 
 router.post('/logSleep',authenticate, (req, res) => {
-	if (req.user !== undefined || req.user !== null) {
-		res.status(400).send('Bad Request')
-	}
 	const hours = req.body.hours;
 	const quality = req.body.quality;
 	const date = req.body.date;
@@ -191,9 +176,6 @@ router.post('/logSleep',authenticate, (req, res) => {
 });
 
 router.post('/logStress',authenticate, (req, res) => {
-	if (req.user !== undefined || req.user !== null) {
-		res.status(400).send('Bad Request')
-	}
 	const value = req.body.value;
 	const date = req.body.date;
 
@@ -222,9 +204,6 @@ router.post('/logStress',authenticate, (req, res) => {
 });
 
 router.post('/logSickness',authenticate, (req, res) => {
-	if (req.user !== undefined || req.user !== null) {
-		res.status(400).send('Bad Request')
-	}
 	const sickness = req.body.sickness;
 
 	log(req.session.user_id)

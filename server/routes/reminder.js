@@ -15,9 +15,6 @@ const log = console.log;
  * Add a reminders of a category to user of current session
  */
 router.post('/add', mongoChecker,authenticate, (req, res) => {
-  if (req.user !== undefined || req.user !== null) {
-    res.status(400).send('Bad Request')
-  }
   const { id, category, subCategory, name, time, note, status } = req.body;
   console.log(req.user);
   User.findById(req.session.user_id)
@@ -62,9 +59,6 @@ router.post('/add', mongoChecker,authenticate, (req, res) => {
  * using the reminder's id
  */
 router.delete('/:cat/:r_id', mongoChecker,authenticate, (req, res) => {
-  if (req.user !== undefined || req.user !== null) {
-    res.status(400).send('Bad Request')
-  }
   const cat = decodeURI(req.params.cat);
   const rid = req.params.r_id;
   User.findById(req.session.user_id)
@@ -105,9 +99,6 @@ router.delete('/:cat/:r_id', mongoChecker,authenticate, (req, res) => {
  * of current session using the reminder's id
  */
 router.patch('/update/:cat/:r_id/', mongoChecker,authenticate,(req, res) => {
-  if (req.user !== undefined || req.user !== null) {
-    res.status(400).send('Bad Request')
-  }
   const cat = decodeURI(req.params.cat);
   const rid = req.params.r_id;
   const { newReminder } = req.body;

@@ -10,9 +10,6 @@ const { authenticate } = require("../utils.js");
 const log = console.log;
 
 router.post('/assignAdmin',authenticate, (req, res) => {
-    if (req.user !== undefined || req.user !== null) {
-      res.status(400).send('Bad Request')
-    }
     if (mongoose.connection.readyState != 1) {
         log('Issue with mongoose connection')
         res.status(500).send('Internal server error')
@@ -40,9 +37,6 @@ router.post('/assignAdmin',authenticate, (req, res) => {
 })
 
 router.post('/deleteUser',authenticate, (req, res) => {
-    if (req.user !== undefined || req.user !== null) {
-      res.status(400).send('Bad Request')
-    }
     if (mongoose.connection.readyState != 1) {
         log('Issue with mongoose connection')
         res.status(500).send('Internal server error')
@@ -63,9 +57,6 @@ router.post('/deleteUser',authenticate, (req, res) => {
 })
 
 router.get('/getUsers',authenticate, (req, res) => {
-    if (req.user !== undefined || req.user !== null) {
-      res.status(400).send('Bad Request')
-    }
     User.find().then(users => {
         res.send({ users })
     }).catch((error) => {
@@ -76,9 +67,6 @@ router.get('/getUsers',authenticate, (req, res) => {
 })
 
 router.post('/setUserInfo',authenticate, (req, res) => {
-    if (req.user !== undefined || req.user !== null) {
-      res.status(400).send('Bad Request')
-    }
     if (mongoose.connection.readyState != 1) {
         log('Issue with mongoose connection')
         res.status(500).send('Internal server error')
