@@ -98,16 +98,9 @@ MongoClient.connect(DB_URI, DEFAULT_DB_CONNECT_OPS, (error, client) => {
           'Physical Health': [],
           otherReminders: null,
         },
-        notifications: [
-          {
-            id: 'unique',
-            type: 'Alert',
-            title: 'Welcome Explor The Check-In Alert System =D',
-            message: 'explor our app',
-          },
-        ],
+        notifications: [],
         trends: [card_1, card_2, card_3, card_4, card_5, card_6],
-        user_card: card_7,        
+        user_card: card_7,
       },
       {
         firstName: 'IAmAdmin',
