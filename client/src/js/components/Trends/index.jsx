@@ -21,7 +21,7 @@ class Trends extends Component {
   }
 
   fetchData() {
-    fetch('https://csc309-2020-team27.herokuapp.com/weight', {
+    fetch('https://csc309-2020-team27.herokuapp.com/trends/weight', {
       method: 'GET',
       credentials: 'include',
     })
@@ -30,7 +30,7 @@ class Trends extends Component {
         const data = this.dateProcessor(responseJson);
         this.setState({ weight: data });
       });
-    fetch('https://csc309-2020-team27.herokuapp.com/sleep', {
+    fetch('https://csc309-2020-team27.herokuapp.com/trends/sleep', {
       method: 'GET',
       credentials: 'include',
     })
@@ -39,7 +39,7 @@ class Trends extends Component {
         const data = this.dateProcessor(responseJson);
         this.setState({ sleep: data });
       });
-    fetch('https://csc309-2020-team27.herokuapp.com/stress', {
+    fetch('https://csc309-2020-team27.herokuapp.com/trends/stress', {
       method: 'GET',
       credentials: 'include',
     })
@@ -73,7 +73,7 @@ class Trends extends Component {
       case 'weight':
         this.setState({
           trends: {
-            title: 'Body Weight (lb)',
+            title: 'Body Weight (kg)',
             data: this.state.weight,
             type: 'line',
           },

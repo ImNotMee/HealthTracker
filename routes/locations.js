@@ -14,9 +14,6 @@ const log = console.log;
  * Add a location to db
  */
 router.get('/all', mongoChecker,authenticate, (req, res) => {
-  if (req.user !== undefined || req.user !== null) {
-    res.status(400).send('Bad Request')
-  }
   Locations.find({})
     .then((locations) => {
       res.status(200).send({ locations });
@@ -36,9 +33,6 @@ router.get('/all', mongoChecker,authenticate, (req, res) => {
  * Add a location to db
  */
 router.post('/add', mongoChecker,authenticate, (req, res) => {
-  if (req.user !== undefined || req.user !== null) {
-    res.status(400).send('Bad Request')
-  }
   const {
     name,
     isAvaliable,
@@ -82,9 +76,6 @@ router.post('/add', mongoChecker,authenticate, (req, res) => {
  * Remove a locations from db
  */
 router.delete('/delete/:l_id', mongoChecker,authenticate, (req, res) => {
-  if (req.user !== undefined || req.user !== null) {
-    res.status(400).send('Bad Request')
-  }
   const lid = req.params.l_id;
 
   if (!ObjectID.isValid(lid)) {
@@ -116,9 +107,6 @@ router.delete('/delete/:l_id', mongoChecker,authenticate, (req, res) => {
  * of current session using the reminder's id
  */
 router.put('/update/:l_id/', mongoChecker,authenticate, (req, res) => {
-  if (req.user !== undefined || req.user !== null) {
-    res.status(400).send('Bad Request')
-  }
   const lid = req.params.l_id;
   if (!ObjectID.isValid(lid)) {
     res.status(404).send('Resource not found');

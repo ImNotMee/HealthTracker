@@ -60,8 +60,9 @@ export const checkInHandler = (ctx, ciCtx, location) => {
 
 export const isCheckInValid = (ctx, location) => {
   return (
-    (ctx.state.user?.checkedInLocation !== null || ctx.state.selectedLocation !== undefined) &&
-    ctx.state.user?.checkedInLocation?.id !== location?.id
+    (ctx.props.activeUser?.checkedInLocation !== null ||
+      ctx.state.selectedLocation !== undefined) &&
+    ctx.props.activeUser?.checkedInLocation?.id !== location?.id
   );
 };
 

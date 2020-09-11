@@ -21,7 +21,7 @@ export const saveUserInfoHandler = (ctx, setCtx) => {
       password: setCtx.state.pass,
       sex: setCtx.state.sex,
     };
-    const request = new Request('http://localhost:5000/manageUser/setUserInfo', {
+    const request = new Request('https://csc309-2020-team27.herokuapp.com/manageUser/setUserInfo', {
       method: 'post',
       body: JSON.stringify(newInfo),
       headers: {

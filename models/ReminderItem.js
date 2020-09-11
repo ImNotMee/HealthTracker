@@ -14,7 +14,7 @@ const ReminderItem = mongoose.model('ReminderItem', {
   },
   subCategory: {
     type: String,
-    required: true,
+    required: false,
     minlegth: 1,
     trim: true,
   },

@@ -39,48 +39,50 @@ export const defaultCard = {
 
 export const resetToday = (card) => {
   const { user } = card.state;
-  const card_date = new Date(user?.user_card?.date);
-  const date = new Date();
-  // check if it's a new day
-  if (date.getMonth() !== card_date.getMonth() || date.getDate() !== card_date.getDate()) {
-    let reset_card = defaultCard;
-    reset_card['BMI']['value'] = user?.user_card['BMI']['value'];
-    reset_card['BMI']['height'] = user?.user_card['BMI']['height'];
-    reset_card['BMI']['weight'] = user?.user_card['BMI']['weight'];
-    reset_card['BMI']['unit'] = user?.user_card['BMI']['unit'];
-    reset_card['date'] = Date.now();
+  if (user !== null && user !== undefined) {
+    const card_date = new Date(user?.user_card?.date);
+    const date = new Date();
+    // check if it's a new day
+    if (date.getMonth() !== card_date.getMonth() || date.getDate() !== card_date.getDate()) {
+      let reset_card = defaultCard;
+      reset_card['BMI']['value'] = user?.user_card['BMI']['value'];
+      reset_card['BMI']['height'] = user?.user_card['BMI']['height'];
+      reset_card['BMI']['weight'] = user?.user_card['BMI']['weight'];
+      reset_card['BMI']['unit'] = user?.user_card['BMI']['unit'];
+      reset_card['date'] = Date.now();
 
-    if (user != null) {
-      user.trends.push(user?.user_card);
-      user.user_card = reset_card;
-    }
+      if (user != null) {
+        user.trends.push(user?.user_card);
+        user.user_card = reset_card;
+      }
 
-    const request = new Request('https://csc309-2020-team27.herokuapp.com/reset', {
-      method: 'post',
-      body: JSON.stringify(reset_card),
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json',
-      },
-    });
-
-    // Send the request with fetch()
-    fetch(request)
-      .then((res) => {
-        if (res.status === 200) {
-          res
-            .json()
-            .then((json) => {
-              console.log`Reset user card: ${json}`;
-            })
-            .catch((error) => {
-              console.log('Reset Failed: ', error);
-            });
-        }
-      })
-      .catch((error) => {
-        console.log('Reset Failed: ', error);
+      const request = new Request('https://csc309-2020-team27.herokuapp.com/logCardData/reset', {
+        method: 'post',
+        body: JSON.stringify(reset_card),
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+        },
       });
+
+      // Send the request with fetch()
+      fetch(request)
+        .then((res) => {
+          if (res.status === 200) {
+            res
+              .json()
+              .then((json) => {
+                console.log`Reset user card: ${json}`;
+              })
+              .catch((error) => {
+                console.log('Reset Failed: ', error);
+              });
+          }
+        })
+        .catch((error) => {
+          console.log('Reset Failed: ', error);
+        });
+    }
   }
 };
 
@@ -149,7 +151,7 @@ export const setWater = (card, newWater) => {
     streak: streak,
     date: Date.now(),
   };
-  const request = new Request('https://csc309-2020-team27.herokuapp.com/logWater', {
+  const request = new Request('https://csc309-2020-team27.herokuapp.com/logCardData/logWater', {
     method: 'post',
     body: JSON.stringify(waterInfo),
     headers: {
@@ -193,7 +195,7 @@ export const setCalories = (card, newCalories) => {
     streak: streak,
     date: Date.now(),
   };
-  const request = new Request('https://csc309-2020-team27.herokuapp.com/logCalories', {
+  const request = new Request('https://csc309-2020-team27.herokuapp.com/logCardData/logCalories', {
     method: 'post',
     body: JSON.stringify(caloriesInfo),
     headers: {
@@ -278,7 +280,7 @@ const sendMood = (mood) => {
     date: Date.now(),
   };
 
-  const request = new Request('https://csc309-2020-team27.herokuapp.com/logMood', {
+  const request = new Request('https://csc309-2020-team27.herokuapp.com/logCardData/logMood', {
     method: 'post',
     body: JSON.stringify(reqBody),
     headers: {
@@ -314,7 +316,7 @@ const sendSleep = (hours, quality) => {
     streak: true,
   };
 
-  const request = new Request('https://csc309-2020-team27.herokuapp.com/logSleep', {
+  const request = new Request('https://csc309-2020-team27.herokuapp.com/logCardData/logSleep', {
     method: 'post',
     body: JSON.stringify(reqBody),
     headers: {
@@ -349,7 +351,7 @@ const sendStress = (value) => {
     streak: true,
   };
 
-  const request = new Request('https://csc309-2020-team27.herokuapp.com/logStress', {
+  const request = new Request('https://csc309-2020-team27.herokuapp.com/logCardData/logStress', {
     method: 'post',
     body: JSON.stringify(reqBody),
     headers: {
@@ -382,7 +384,7 @@ const sendSickness = (sickness) => {
     sickness: sickness,
   };
 
-  const request = new Request('https://csc309-2020-team27.herokuapp.com/logSickness', {
+  const request = new Request('https://csc309-2020-team27.herokuapp.com/logCardData/logSickness', {
     method: 'post',
     body: JSON.stringify(reqBody),
     headers: {

@@ -18,7 +18,7 @@ class AdminTrends extends Component {
   }
 
   fetchData() {
-    fetch('http://localhost:5000/trends/getAll', {
+    fetch('https://csc309-2020-team27.herokuapp.com/trends/getAll', {
       method: 'POST',
       credentials: 'include',
     })

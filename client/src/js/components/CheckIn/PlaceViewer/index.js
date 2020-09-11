@@ -5,7 +5,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import goodIcon from '../../../../assets/good_status.png';
 import badIcon from '../../../../assets/bad_status.png';
-import { isCheckInValid } from '../../../actions/checkIn';
 import { ADMIN_ACCOUNT_TYPE } from '../../../constants';
 import GoogleApiWrapper from '../Map/index.js';
 import './styles.css';
@@ -86,7 +85,8 @@ class PlaceViewer extends Component {
               <DeleteIcon />
             </IconButton>
           </div>
-        ) : isCheckInValid(this, location) ? (
+        ) : this.props.activeUser?.checkedInLocation !== null &&
+          this.props.activeUser?.checkedInLocation?._id !== location?._id ? (
           <button
             id="CheckInBtn"
             className="primary-btn"

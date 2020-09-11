@@ -1,7 +1,4 @@
 # team27
-
-Please count "e7ccaf3ac6e54c2522f9d106e4ffd6e790bfabf3" as our last commit.
-
 ## The landing page of the app is also where users can sign up an account (regular user) and sign in access for both admin and user.
 
 Link: https://csc309-2020-team27.herokuapp.com/

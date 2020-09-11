@@ -5,7 +5,6 @@ import AddIcon from '@material-ui/icons/Add';
 import PlaceViewer from '../CheckIn/PlaceViewer';
 import LocationSelector from '../General/LocationSelector';
 import { viewPlace } from '../../actions/checkIn';
-import GoogleApiWrapper from './AdminMap.js';
 import './styles.css';
 
 class AdminCheckIn extends Component {
@@ -42,12 +41,6 @@ class AdminCheckIn extends Component {
           ) : (
             ''
           )}
-        </div>
-        <div id="GeoLoc" className="windowWrapper">
-          <h2> COVID Cases: Geo Locator </h2>
-          <div id="Map">
-            <GoogleApiWrapper location={this.props.locations} activeUser={this.props.activeUser} />
-          </div>
         </div>
         <NavLink className="fabNavLink" to="/alert-system/add">
           <Fab variant="extended" id="Fab" color="primary" aria-label="add">

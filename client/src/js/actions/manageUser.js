@@ -25,7 +25,7 @@ export const deleteUser = (page, user) => {
     const userEmail = {
       email: user['email'],
     };
-    const request = new Request('http://localhost:5000/manageUser/deleteUser', {
+    const request = new Request('https://csc309-2020-team27.herokuapp.com/manageUser/deleteUser', {
       method: 'post',
       body: JSON.stringify(userEmail),
       headers: {
@@ -64,7 +64,7 @@ export const assignAdmin = (page, user) => {
       email: user['email'],
     };
 
-    const request = new Request('http://localhost:5000/manageUser/assignAdmin', {
+    const request = new Request('https://csc309-2020-team27.herokuapp.com/manageUser/assignAdmin', {
       method: 'post',
       body: JSON.stringify(userEmail),
       headers: {
